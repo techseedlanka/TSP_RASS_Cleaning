@@ -1,0 +1,1131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Pay_Ledger" language="groovy" pageWidth="1008" pageHeight="612" orientation="Landscape" columnWidth="968" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="0b45828e-d4cb-4359-b244-821d86c4e731">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<field name="rpt_epf" class="java.lang.String"/>
+	<field name="rpt_name" class="java.lang.String"/>
+	<field name="rpt_totShift" class="java.lang.Double"/>
+	<field name="rpt_exOTAmt" class="java.lang.Double"/>
+	<field name="rpt_noPay" class="java.lang.Double"/>
+	<field name="rpt_noPayDays" class="java.lang.Double"/>
+	<field name="rpt_basic" class="java.lang.Double"/>
+	<field name="rpt_taxEarn" class="java.lang.Double"/>
+	<field name="rpt_workDay" class="java.lang.Double"/>
+	<field name="rpt_budjet" class="java.lang.Double"/>
+	<field name="rpt_OT" class="java.lang.Double"/>
+	<field name="rpt_attenInsen" class="java.lang.Double"/>
+	<field name="rpt_sunDay" class="java.lang.Double"/>
+	<field name="rpt_poya" class="java.lang.Double"/>
+	<field name="rpt_shiftInten" class="java.lang.Double"/>
+	<field name="rpt_performance" class="java.lang.Double"/>
+	<field name="rpt_other" class="java.lang.Double"/>
+	<field name="rpt_noOfSunday" class="java.lang.Double"/>
+	<field name="rpt_OThrs" class="java.lang.Double"/>
+	<field name="rpt_gross" class="java.lang.Double"/>
+	<field name="rpt_welfare" class="java.lang.Double"/>
+	<field name="rpt_adv1" class="java.lang.Double"/>
+	<field name="rpt_adv2" class="java.lang.Double"/>
+	<field name="rpt_festivAdv" class="java.lang.Double"/>
+	<field name="rpt_meals" class="java.lang.Double"/>
+	<field name="rpt_rental" class="java.lang.Double"/>
+	<field name="rpt_death" class="java.lang.Double"/>
+	<field name="rpt_insu" class="java.lang.Double"/>
+	<field name="rpt_shoe" class="java.lang.Double"/>
+	<field name="rpt_uni" class="java.lang.Double"/>
+	<field name="rpt_loan1" class="java.lang.Double"/>
+	<field name="rpt_loan2" class="java.lang.Double"/>
+	<field name="rpt_epf8" class="java.lang.Double"/>
+	<field name="rpt_otherDeduc" class="java.lang.Double"/>
+	<field name="rpt_totDeduc" class="java.lang.Double"/>
+	<field name="rpt_bankCash" class="java.lang.Double"/>
+	<field name="rpt_month" class="java.lang.String"/>
+	<field name="rpt_year" class="java.lang.String"/>
+	<field name="rpt_rank" class="java.lang.String"/>
+	<field name="rpt_company" class="java.lang.String"/>
+	<field name="rpt_address" class="java.lang.String"/>
+	<field name="rpt_tel" class="java.lang.String"/>
+	<field name="rpt_emp_loc" class="java.lang.String"/>
+	<field name="rpt_emp_locName" class="java.lang.String"/>
+	<field name="rpt_employee_type" class="java.lang.String"/>
+	<field name="rpt_sikura_noPay_amount" class="java.lang.Double"/>
+	<field name="rpt_sikura_noPay_days" class="java.lang.Double"/>
+	<variable name="Worked_Shift_Total" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[$F{rpt_totShift}]]></variableExpression>
+	</variable>
+	<variable name="No.of Employee" class="java.lang.Integer" calculation="Count">
+		<variableExpression><![CDATA[$F{rpt_epf}]]></variableExpression>
+	</variable>
+	<variable name="Basic_Total" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[$F{rpt_taxEarn}]]></variableExpression>
+	</variable>
+	<variable name="BR_Total" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[$F{rpt_budjet}]]></variableExpression>
+	</variable>
+	<variable name="Perfomance_Total" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[$F{rpt_OT}]]></variableExpression>
+	</variable>
+	<variable name="Atten_Inc_Total" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[$F{rpt_attenInsen}]]></variableExpression>
+	</variable>
+	<variable name="Sunday_total" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[$F{rpt_sunDay}]]></variableExpression>
+	</variable>
+	<variable name="Poya_Total" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[$F{rpt_poya}]]></variableExpression>
+	</variable>
+	<variable name="Shift_incen_Total" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[$F{rpt_shiftInten}]]></variableExpression>
+	</variable>
+	<variable name="MC_Total" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[$F{rpt_performance}]]></variableExpression>
+	</variable>
+	<variable name="Other_Allo_Total" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[$F{rpt_other}]]></variableExpression>
+	</variable>
+	<variable name="Welfare_Total" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[$F{rpt_welfare}]]></variableExpression>
+	</variable>
+	<variable name="Gross_Total" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[$F{rpt_gross}]]></variableExpression>
+	</variable>
+	<variable name="Adv1_Total" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[$F{rpt_adv1}]]></variableExpression>
+	</variable>
+	<variable name="Adv2_Total" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[$F{rpt_adv2}]]></variableExpression>
+	</variable>
+	<variable name="Fes_Adv_Total" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[$F{rpt_festivAdv}]]></variableExpression>
+	</variable>
+	<variable name="Meal_Total" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[$F{rpt_meals}]]></variableExpression>
+	</variable>
+	<variable name="Rent_Total" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[$F{rpt_rental}]]></variableExpression>
+	</variable>
+	<variable name="Less_Shift_Total" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[$F{rpt_noPay}]]></variableExpression>
+	</variable>
+	<variable name="Death_Total" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[$F{rpt_death}]]></variableExpression>
+	</variable>
+	<variable name="Shoe" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[$F{rpt_shoe}]]></variableExpression>
+	</variable>
+	<variable name="Uniform_Total" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[$F{rpt_uni}]]></variableExpression>
+	</variable>
+	<variable name="Loan1_Total" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[$F{rpt_loan1}]]></variableExpression>
+	</variable>
+	<variable name="Loan2_Total" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[$F{rpt_loan2}]]></variableExpression>
+	</variable>
+	<variable name="EPF_Total" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[$F{rpt_epf8}]]></variableExpression>
+	</variable>
+	<variable name="TotalDeduct" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[$F{rpt_totDeduc}]]></variableExpression>
+	</variable>
+	<variable name="Net_Total" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[$F{rpt_bankCash}]]></variableExpression>
+	</variable>
+	<variable name="OtherDeduc_Total" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[$F{rpt_otherDeduc}]]></variableExpression>
+	</variable>
+	<variable name="Sikura_NoPayDays" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[$F{rpt_sikura_noPay_days}]]></variableExpression>
+	</variable>
+	<variable name="Sikura_NoPayAMT" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[$F{rpt_sikura_noPay_amount}]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="83" splitType="Stretch">
+			<staticText>
+				<reportElement x="384" y="41" width="169" height="25" uuid="d6eedc1f-dac2-4eaf-90e5-71360215e934"/>
+				<textElement>
+					<font fontName="Times New Roman" size="18"/>
+				</textElement>
+				<text><![CDATA[PAY  LEDGER  FOR]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="6" y="58" width="89" height="25" uuid="7a7d92cc-d37d-4585-85e8-f512f84a2067"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Employee Type :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="0" width="425" height="25" uuid="5fc4e47d-800b-406a-87db-812dde6c11db"/>
+				<textElement>
+					<font fontName="Times New Roman" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[TARGET ENVIRONMENTAL SERVICES COMPANY (PVT) LTD.]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="61" splitType="Stretch">
+			<rectangle>
+				<reportElement x="0" y="0" width="0" height="0" uuid="ec2bbea4-2abb-422e-923c-639a07c28a70"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="0" y="29" width="150" height="32" uuid="be435444-04c4-4d76-a9c7-dad6e26c8f52"/>
+				<box leftPadding="5">
+					<pen lineWidth="0.5" lineStyle="Solid"/>
+					<topPen lineWidth="0.5" lineStyle="Solid"/>
+					<leftPen lineWidth="0.5" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.5" lineStyle="Solid"/>
+					<rightPen lineWidth="0.5" lineStyle="Solid"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12"/>
+				</textElement>
+				<text><![CDATA[Employee]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="190" y="29" width="39" height="32" uuid="f58bb5b4-184b-4fa3-b616-96548789f00c"/>
+				<box leftPadding="4">
+					<pen lineWidth="0.5" lineStyle="Solid"/>
+					<topPen lineWidth="0.5" lineStyle="Solid"/>
+					<leftPen lineWidth="0.5" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.5" lineStyle="Solid"/>
+					<rightPen lineWidth="0.5" lineStyle="Solid"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="10"/>
+				</textElement>
+				<text><![CDATA[Basic]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="150" y="29" width="20" height="32" uuid="6c20a84b-e89d-441a-937a-58e984466083"/>
+				<box>
+					<pen lineWidth="0.5" lineStyle="Solid"/>
+					<topPen lineWidth="0.5" lineStyle="Solid"/>
+					<leftPen lineWidth="0.5" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.5" lineStyle="Solid"/>
+					<rightPen lineWidth="0.5" lineStyle="Solid"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12"/>
+				</textElement>
+				<text><![CDATA[D]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="229" y="29" width="81" height="12" uuid="92387b09-4602-4855-af9b-bbf203aa607a"/>
+				<box leftPadding="3">
+					<pen lineWidth="0.5" lineStyle="Solid"/>
+					<topPen lineWidth="0.5" lineStyle="Solid"/>
+					<leftPen lineWidth="0.5" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.5" lineStyle="Solid"/>
+					<rightPen lineWidth="0.5" lineStyle="Solid"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Goverment Allowance]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="310" y="29" width="38" height="32" uuid="bcd53b3f-b9cc-4b20-b5b3-9570a5a2cda6"/>
+				<box>
+					<pen lineWidth="0.5" lineStyle="Solid"/>
+					<topPen lineWidth="0.5" lineStyle="Solid"/>
+					<leftPen lineWidth="0.5" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.5" lineStyle="Solid"/>
+					<rightPen lineWidth="0.5" lineStyle="Solid"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Basic For EPF]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="348" y="29" width="32" height="32" uuid="34b66f4b-fd8c-4192-aca5-12ac12377b2c"/>
+				<box leftPadding="2">
+					<pen lineWidth="0.5" lineStyle="Solid"/>
+					<topPen lineWidth="0.5" lineStyle="Solid"/>
+					<leftPen lineWidth="0.5" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.5" lineStyle="Solid"/>
+					<rightPen lineWidth="0.5" lineStyle="Solid"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Sunday OT]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="380" y="29" width="20" height="32" uuid="f255c050-c9ac-4ea5-a69f-eedb5529e0e6"/>
+				<box leftPadding="5">
+					<pen lineWidth="0.5" lineStyle="Solid"/>
+					<topPen lineWidth="0.5" lineStyle="Solid"/>
+					<leftPen lineWidth="0.5" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.5" lineStyle="Solid"/>
+					<rightPen lineWidth="0.5" lineStyle="Solid"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[OT Hrs.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="567" y="29" width="34" height="32" uuid="e0af60fc-bbe8-468f-9af0-08d6d79785c2"/>
+				<box leftPadding="3">
+					<pen lineWidth="0.5" lineStyle="Solid"/>
+					<topPen lineWidth="0.5" lineStyle="Solid"/>
+					<leftPen lineWidth="0.5" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.5" lineStyle="Solid"/>
+					<rightPen lineWidth="0.5" lineStyle="Solid"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Advance]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="601" y="29" width="32" height="32" uuid="2890738a-b80d-4ab1-8dc6-b54b9c98ea4b"/>
+				<box leftPadding="3">
+					<pen lineWidth="0.5" lineStyle="Solid"/>
+					<topPen lineWidth="0.5" lineStyle="Solid"/>
+					<leftPen lineWidth="0.5" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.5" lineStyle="Solid"/>
+					<rightPen lineWidth="0.5" lineStyle="Solid"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Loan]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="633" y="29" width="32" height="32" uuid="ada41fd6-6748-4c67-9bff-438545589cd5"/>
+				<box leftPadding="2">
+					<pen lineWidth="0.5" lineStyle="Solid"/>
+					<topPen lineWidth="0.5" lineStyle="Solid"/>
+					<leftPen lineWidth="0.5" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.5" lineStyle="Solid"/>
+					<rightPen lineWidth="0.5" lineStyle="Solid"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fines & Other Deduc:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="665" y="29" width="32" height="32" uuid="0cfae6aa-b8c7-40a1-ab90-2cf2f78e4fc9"/>
+				<box leftPadding="2">
+					<pen lineWidth="0.5" lineStyle="Solid"/>
+					<topPen lineWidth="0.5" lineStyle="Solid"/>
+					<leftPen lineWidth="0.5" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.5" lineStyle="Solid"/>
+					<rightPen lineWidth="0.5" lineStyle="Solid"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Additional Uniform]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="697" y="29" width="32" height="32" uuid="586be974-b571-4f53-864f-19b9a54ea711"/>
+				<box leftPadding="2">
+					<pen lineWidth="0.5" lineStyle="Solid"/>
+					<topPen lineWidth="0.5" lineStyle="Solid"/>
+					<leftPen lineWidth="0.5" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.5" lineStyle="Solid"/>
+					<rightPen lineWidth="0.5" lineStyle="Solid"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Meals]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="761" y="29" width="48" height="32" uuid="c2675c63-1030-4935-8783-a8ace2d7ade7"/>
+				<box leftPadding="4">
+					<pen lineWidth="0.5" lineStyle="Solid"/>
+					<topPen lineWidth="0.5" lineStyle="Solid"/>
+					<leftPen lineWidth="0.5" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.5" lineStyle="Solid"/>
+					<rightPen lineWidth="0.5" lineStyle="Solid"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Total Deductions]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="809" y="29" width="51" height="32" uuid="7ddf21fc-29a1-4fbd-8fc0-dad6af93ed9e"/>
+				<box leftPadding="2">
+					<pen lineWidth="0.5" lineStyle="Solid"/>
+					<topPen lineWidth="0.5" lineStyle="Solid"/>
+					<leftPen lineWidth="0.5" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.5" lineStyle="Solid"/>
+					<rightPen lineWidth="0.5" lineStyle="Solid"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Net Salary]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="465" y="0" width="100" height="20" uuid="47e9e3c7-d886-497c-82d6-4d42c474462d"/>
+				<box rightPadding="4"/>
+				<textElement textAlignment="Right">
+					<font fontName="Times New Roman" size="12" isBold="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[EARNINGS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="568" y="0" width="100" height="20" uuid="9f8d6a63-b307-4d01-b8aa-402b7c5ec659"/>
+				<box leftPadding="4"/>
+				<textElement>
+					<font fontName="Times New Roman" size="12" isBold="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[DEDUCTIONS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="170" y="29" width="20" height="32" uuid="a7d67337-3298-4c1b-b67c-203b084107f0"/>
+				<box>
+					<pen lineWidth="0.5" lineStyle="Solid"/>
+					<topPen lineWidth="0.5" lineStyle="Solid"/>
+					<leftPen lineWidth="0.5" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.5" lineStyle="Solid"/>
+					<rightPen lineWidth="0.5" lineStyle="Solid"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12"/>
+				</textElement>
+				<text><![CDATA[N]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="229" y="41" width="27" height="20" uuid="01f4188c-8a08-4c50-afc9-302bd6ce48a4"/>
+				<box leftPadding="3">
+					<pen lineWidth="0.5" lineStyle="Solid"/>
+					<topPen lineWidth="0.5" lineStyle="Solid"/>
+					<leftPen lineWidth="0.5" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.5" lineStyle="Solid"/>
+					<rightPen lineWidth="0.5" lineStyle="Solid"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[40]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="256" y="41" width="27" height="20" uuid="804a500b-7e5b-4d7c-a01d-d453c4b1246f"/>
+				<box leftPadding="3">
+					<pen lineWidth="0.5" lineStyle="Solid"/>
+					<topPen lineWidth="0.5" lineStyle="Solid"/>
+					<leftPen lineWidth="0.5" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.5" lineStyle="Solid"/>
+					<rightPen lineWidth="0.5" lineStyle="Solid"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[60]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="283" y="41" width="27" height="20" uuid="dd27536a-1657-4400-ac40-5eabec8e27f0"/>
+				<box leftPadding="3">
+					<pen lineWidth="0.5" lineStyle="Solid"/>
+					<topPen lineWidth="0.5" lineStyle="Solid"/>
+					<leftPen lineWidth="0.5" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.5" lineStyle="Solid"/>
+					<rightPen lineWidth="0.5" lineStyle="Solid"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[40]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="400" y="29" width="32" height="32" uuid="750ab640-4bf7-4049-9684-67ca35da27cb"/>
+				<box leftPadding="5">
+					<pen lineWidth="0.5" lineStyle="Solid"/>
+					<topPen lineWidth="0.5" lineStyle="Solid"/>
+					<leftPen lineWidth="0.5" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.5" lineStyle="Solid"/>
+					<rightPen lineWidth="0.5" lineStyle="Solid"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[OT Amount]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="432" y="29" width="35" height="32" uuid="21f7745d-2c43-4767-a94e-93670cccb5a4"/>
+				<box leftPadding="5">
+					<pen lineWidth="0.5" lineStyle="Solid"/>
+					<topPen lineWidth="0.5" lineStyle="Solid"/>
+					<leftPen lineWidth="0.5" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.5" lineStyle="Solid"/>
+					<rightPen lineWidth="0.5" lineStyle="Solid"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Attn: & OtherAllo:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="467" y="29" width="39" height="32" uuid="44745e27-e336-48a3-988a-5c2025950f9a"/>
+				<box leftPadding="5">
+					<pen lineWidth="0.5" lineStyle="Solid"/>
+					<topPen lineWidth="0.5" lineStyle="Solid"/>
+					<leftPen lineWidth="0.5" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.5" lineStyle="Solid"/>
+					<rightPen lineWidth="0.5" lineStyle="Solid"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Gross Salary]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="506" y="29" width="30" height="32" uuid="904453d0-f938-49a5-bf11-9efa1f9883b4"/>
+				<box leftPadding="5">
+					<pen lineWidth="0.5" lineStyle="Solid"/>
+					<topPen lineWidth="0.5" lineStyle="Solid"/>
+					<leftPen lineWidth="0.5" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.5" lineStyle="Solid"/>
+					<rightPen lineWidth="0.5" lineStyle="Solid"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ETF 3%]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="536" y="29" width="30" height="32" uuid="3b42526e-a374-4d68-a57f-be3ba64f9f83"/>
+				<box leftPadding="5">
+					<pen lineWidth="0.5" lineStyle="Solid"/>
+					<topPen lineWidth="0.5" lineStyle="Solid"/>
+					<leftPen lineWidth="0.5" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.5" lineStyle="Solid"/>
+					<rightPen lineWidth="0.5" lineStyle="Solid"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="7" isBold="true"/>
+				</textElement>
+				<text><![CDATA[EPF 12%]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="729" y="29" width="32" height="32" uuid="fed48f40-dc16-4e93-92ca-fdf7234be452"/>
+				<box leftPadding="2">
+					<pen lineWidth="0.5" lineStyle="Solid"/>
+					<topPen lineWidth="0.5" lineStyle="Solid"/>
+					<leftPen lineWidth="0.5" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.5" lineStyle="Solid"/>
+					<rightPen lineWidth="0.5" lineStyle="Solid"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[EPF 8%]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="860" y="29" width="55" height="32" uuid="f6fb6bcf-b4ef-4d73-9c9c-bccf16fda8b7"/>
+				<box leftPadding="2">
+					<pen lineWidth="0.5" lineStyle="Solid"/>
+					<topPen lineWidth="0.5" lineStyle="Solid"/>
+					<leftPen lineWidth="0.5" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.5" lineStyle="Solid"/>
+					<rightPen lineWidth="0.5" lineStyle="Solid"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="10"/>
+				</textElement>
+				<text><![CDATA[Signature]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="915" y="29" width="45" height="32" uuid="a2fdea3f-8b88-4853-9d4e-f4c2d91d2513"/>
+				<box leftPadding="2">
+					<pen lineWidth="0.5" lineStyle="Solid"/>
+					<topPen lineWidth="0.5" lineStyle="Solid"/>
+					<leftPen lineWidth="0.5" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.5" lineStyle="Solid"/>
+					<rightPen lineWidth="0.5" lineStyle="Solid"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="10"/>
+				</textElement>
+				<text><![CDATA[Pay Type]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="159" splitType="Stretch">
+			<rectangle>
+				<reportElement x="860" y="0" width="55" height="47" uuid="32acb144-5b95-4cbc-81ee-c555e15d7a07"/>
+				<graphicElement>
+					<pen lineWidth="0.75" lineStyle="Dashed"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="729" y="0" width="32" height="47" uuid="37f5f8c0-f99f-45c8-97e8-3ce1300e3622"/>
+				<graphicElement>
+					<pen lineWidth="0.75" lineStyle="Dashed"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="506" y="0" width="30" height="47" uuid="67528bd2-1b11-4eac-9b79-eb203abd556b"/>
+				<graphicElement>
+					<pen lineWidth="0.75" lineStyle="Dashed"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="432" y="0" width="35" height="47" uuid="68b06bab-1071-45c6-a67c-6c08c8d6fd1a"/>
+				<graphicElement>
+					<pen lineWidth="0.75" lineStyle="Dashed"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="400" y="0" width="32" height="47" uuid="5c8d90e3-3e9f-427e-857a-20729401d95e"/>
+				<graphicElement>
+					<pen lineWidth="0.75" lineStyle="Dashed"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="310" y="0" width="38" height="47" uuid="6f656a2e-0a7e-455d-b32c-677e6294547e"/>
+				<graphicElement>
+					<pen lineWidth="0.75" lineStyle="Dashed"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="283" y="0" width="27" height="47" uuid="f5ae830c-c76f-43de-aaab-7c0488dcbfdf"/>
+				<graphicElement>
+					<pen lineWidth="0.75" lineStyle="Dashed"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="150" y="0" width="20" height="47" uuid="0df85f14-bcfa-4344-87c2-616aaa70ac93"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineStyle="Dashed"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="0" y="0" width="150" height="47" uuid="cf3127b4-edef-4b2d-9e30-89dd128e2636"/>
+				<graphicElement>
+					<pen lineWidth="0.75" lineStyle="Dashed"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="229" y="0" width="27" height="47" uuid="fb9edac8-acd4-4786-9aec-ca4ee2978784"/>
+				<graphicElement>
+					<pen lineWidth="0.75" lineStyle="Dashed"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="348" y="0" width="32" height="47" uuid="c374c1bc-279c-4cdd-8ee8-5b8b51c24b1a"/>
+				<graphicElement>
+					<pen lineWidth="0.75" lineStyle="Dashed"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="380" y="0" width="20" height="47" uuid="aa4c1e93-3525-475f-aae4-50735e565806"/>
+				<graphicElement>
+					<pen lineWidth="0.75" lineStyle="Dashed"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="566" y="0" width="35" height="47" uuid="0de4902c-4a02-454d-9cc6-79841a9d1455"/>
+				<graphicElement>
+					<pen lineWidth="0.75" lineStyle="Dashed"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="601" y="0" width="32" height="47" uuid="95e05491-13c9-40dd-aa6e-973be2b4cfa2"/>
+				<graphicElement>
+					<pen lineWidth="0.75" lineStyle="Dashed"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="633" y="0" width="32" height="47" uuid="3e194bfe-7757-4a4f-9147-d888f41cc520"/>
+				<graphicElement>
+					<pen lineWidth="0.75" lineStyle="Dashed"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="665" y="0" width="32" height="47" uuid="bbf14c05-53c4-4c66-8e72-160a6d5b80a9"/>
+				<graphicElement>
+					<pen lineWidth="0.75" lineStyle="Dashed"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="697" y="0" width="32" height="47" uuid="5f5e0be9-4130-4a9f-ac91-e9a844039308"/>
+				<graphicElement>
+					<pen lineWidth="0.75" lineStyle="Dashed"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="761" y="0" width="48" height="47" uuid="675b44c1-9962-4652-ad09-03c81eadb526"/>
+				<graphicElement>
+					<pen lineWidth="0.75" lineStyle="Dashed"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="467" y="0" width="39" height="47" uuid="f95d943c-4c11-4a49-8be6-01bf42c54c6e"/>
+				<graphicElement>
+					<pen lineWidth="0.75" lineStyle="Dashed"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="809" y="0" width="51" height="47" uuid="542bff36-6dde-4e0e-b512-9b2c427a9be6"/>
+				<graphicElement>
+					<pen lineWidth="0.75" lineStyle="Dashed"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="170" y="0" width="20" height="47" uuid="59875943-fa79-4dac-9bd7-3f7aabfe7bfb"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineStyle="Dashed"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="190" y="0" width="39" height="47" uuid="43238ea7-aad6-408a-aeb1-cf07ed7ef472"/>
+				<graphicElement>
+					<pen lineWidth="0.75" lineStyle="Dashed"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="256" y="0" width="27" height="47" uuid="df4506a3-9063-440d-b805-d3c1844a1ee3"/>
+				<graphicElement>
+					<pen lineWidth="0.75" lineStyle="Dashed"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="536" y="0" width="30" height="47" uuid="08afa8e1-6900-4425-8da3-440bd18bc5ee"/>
+				<graphicElement>
+					<pen lineWidth="0.75" lineStyle="Dashed"/>
+				</graphicElement>
+			</rectangle>
+			<line>
+				<reportElement x="0" y="47" width="968" height="1" uuid="9732cbbf-7aff-496f-8808-0fcb373cb68e"/>
+			</line>
+			<rectangle>
+				<reportElement x="915" y="0" width="45" height="47" uuid="0815fdc8-1446-4dae-89bd-304cf5626c6b"/>
+				<graphicElement>
+					<pen lineWidth="0.75" lineStyle="Dashed"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="536" y="48" width="30" height="47" uuid="9c2a9f77-f3da-4da1-b639-5517e8ac61e5"/>
+				<graphicElement>
+					<pen lineWidth="0.75" lineStyle="Dashed"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="729" y="48" width="32" height="47" uuid="cdcb611e-5745-4e05-a36d-53b680a52b56"/>
+				<graphicElement>
+					<pen lineWidth="0.75" lineStyle="Dashed"/>
+				</graphicElement>
+			</rectangle>
+			<line>
+				<reportElement x="0" y="95" width="968" height="1" uuid="1140098f-bb21-44c1-95f6-583055bfcd0a"/>
+			</line>
+			<rectangle>
+				<reportElement x="348" y="48" width="32" height="47" uuid="26ec3a5c-c721-4c53-8e16-019aaf394f26"/>
+				<graphicElement>
+					<pen lineWidth="0.75" lineStyle="Dashed"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="697" y="48" width="32" height="47" uuid="17568fdf-a0f6-4589-8bfc-664771f42fb8"/>
+				<graphicElement>
+					<pen lineWidth="0.75" lineStyle="Dashed"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="506" y="48" width="30" height="47" uuid="e7ab65b8-5a7c-4958-b947-6628c36a1b74"/>
+				<graphicElement>
+					<pen lineWidth="0.75" lineStyle="Dashed"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="310" y="48" width="38" height="47" uuid="4d463497-6953-4a07-821e-9b13c593c297"/>
+				<graphicElement>
+					<pen lineWidth="0.75" lineStyle="Dashed"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="0" y="48" width="150" height="47" uuid="c38d5e23-926a-41e6-a224-4ae5a49057bb"/>
+				<graphicElement>
+					<pen lineWidth="0.75" lineStyle="Dashed"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="809" y="48" width="51" height="47" uuid="3de34916-90e2-4f8d-b690-249bc0a297a2"/>
+				<graphicElement>
+					<pen lineWidth="0.75" lineStyle="Dashed"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="229" y="48" width="27" height="47" uuid="74dbf4ff-7702-4b20-a6f3-303c9dcd00ac"/>
+				<graphicElement>
+					<pen lineWidth="0.75" lineStyle="Dashed"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="860" y="48" width="55" height="47" uuid="89e54e74-0f13-4006-84b2-cac72d6e638f"/>
+				<graphicElement>
+					<pen lineWidth="0.75" lineStyle="Dashed"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="190" y="48" width="39" height="47" uuid="7be471cc-cc76-4372-acef-dbbbfb5385e4"/>
+				<graphicElement>
+					<pen lineWidth="0.75" lineStyle="Dashed"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="400" y="48" width="32" height="47" uuid="2be5fc43-7544-4b57-84c6-4a5e46732230"/>
+				<graphicElement>
+					<pen lineWidth="0.75" lineStyle="Dashed"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="761" y="48" width="48" height="47" uuid="49798f18-fe08-4a8c-948e-100d7f095b2b"/>
+				<graphicElement>
+					<pen lineWidth="0.75" lineStyle="Dashed"/>
+				</graphicElement>
+			</rectangle>
+			<line>
+				<reportElement x="566" y="-13" width="1" height="109" uuid="c3e92560-821d-4dbd-a1ae-b073d67a9854"/>
+				<graphicElement>
+					<pen lineWidth="1.25"/>
+				</graphicElement>
+			</line>
+			<rectangle>
+				<reportElement x="915" y="48" width="45" height="47" uuid="6a4f37f9-02be-41ae-9a12-766eaa1dc278"/>
+				<graphicElement>
+					<pen lineWidth="0.75" lineStyle="Dashed"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="601" y="48" width="32" height="47" uuid="7afe9322-041d-42ba-bd3b-fd51332c2db3"/>
+				<graphicElement>
+					<pen lineWidth="0.75" lineStyle="Dashed"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="283" y="48" width="27" height="47" uuid="e682a356-ddbb-4db3-8e96-148a9346a6bf"/>
+				<graphicElement>
+					<pen lineWidth="0.75" lineStyle="Dashed"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="467" y="48" width="39" height="47" uuid="560f0440-95a0-4e0d-8e20-8cf5703fa465"/>
+				<graphicElement>
+					<pen lineWidth="0.75" lineStyle="Dashed"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="170" y="48" width="20" height="47" uuid="486c8fc3-eb3a-4457-97b3-bc3868ca99e9"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineStyle="Dashed"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="566" y="48" width="35" height="47" uuid="5761145d-cb30-4c9f-9748-91e54b50dad2"/>
+				<graphicElement>
+					<pen lineWidth="0.75" lineStyle="Dashed"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="633" y="48" width="32" height="47" uuid="c8ffc931-591a-46ee-acca-18219d64907f"/>
+				<graphicElement>
+					<pen lineWidth="0.75" lineStyle="Dashed"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="665" y="48" width="32" height="47" uuid="f05aaa1e-602c-42c7-b09b-5bc91a1ec354"/>
+				<graphicElement>
+					<pen lineWidth="0.75" lineStyle="Dashed"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="380" y="48" width="20" height="47" uuid="89586b29-cadf-4e8b-8d9d-42eb978d3b2d"/>
+				<graphicElement>
+					<pen lineWidth="0.75" lineStyle="Dashed"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="256" y="48" width="27" height="47" uuid="d02a73bf-d146-4d4a-bf1e-59109709a40e"/>
+				<graphicElement>
+					<pen lineWidth="0.75" lineStyle="Dashed"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="150" y="48" width="20" height="47" uuid="4d9e363f-9523-4d3a-899e-07c418c69a60"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineStyle="Dashed"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="432" y="48" width="35" height="47" uuid="8a1c241d-cd57-4dde-b87e-fb199f2fbc9a"/>
+				<graphicElement>
+					<pen lineWidth="0.75" lineStyle="Dashed"/>
+				</graphicElement>
+			</rectangle>
+			<line>
+				<reportElement x="567" y="-61" width="1" height="205" uuid="715088a1-78f2-4f81-9806-a54eba3ad1bc"/>
+				<graphicElement>
+					<pen lineWidth="1.25"/>
+				</graphicElement>
+			</line>
+			<rectangle>
+				<reportElement x="536" y="96" width="30" height="47" uuid="9d8e917e-b38a-4060-a41d-4cd7d56e9fad"/>
+				<graphicElement>
+					<pen lineWidth="0.75" lineStyle="Dashed"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="729" y="96" width="32" height="47" uuid="4413cecf-4f7a-4330-bb17-2e0a01277943"/>
+				<graphicElement>
+					<pen lineWidth="0.75" lineStyle="Dashed"/>
+				</graphicElement>
+			</rectangle>
+			<line>
+				<reportElement x="0" y="143" width="968" height="1" uuid="5a576ffe-97da-4bf4-bed0-f46379b1456a"/>
+			</line>
+			<rectangle>
+				<reportElement x="348" y="96" width="32" height="47" uuid="4b9bc813-9121-4e64-b8bf-e6944c93c34d"/>
+				<graphicElement>
+					<pen lineWidth="0.75" lineStyle="Dashed"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="697" y="96" width="32" height="47" uuid="267dbde8-ba83-4a9d-b2f8-be953fc6cf81"/>
+				<graphicElement>
+					<pen lineWidth="0.75" lineStyle="Dashed"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="506" y="96" width="30" height="47" uuid="204b4aa8-d53f-4af0-8791-91a224f7f899"/>
+				<graphicElement>
+					<pen lineWidth="0.75" lineStyle="Dashed"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="310" y="96" width="38" height="47" uuid="b6663968-0335-405c-872c-1527ed877ff6"/>
+				<graphicElement>
+					<pen lineWidth="0.75" lineStyle="Dashed"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="0" y="96" width="150" height="47" uuid="449a4328-5ad6-4172-b771-1e40d8edcbdf"/>
+				<graphicElement>
+					<pen lineWidth="0.75" lineStyle="Dashed"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="809" y="96" width="51" height="47" uuid="3548270a-8962-46b5-b87f-ab963a8f677d"/>
+				<graphicElement>
+					<pen lineWidth="0.75" lineStyle="Dashed"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="229" y="96" width="27" height="47" uuid="3a92198e-1040-4e72-bb21-85f328f3c520"/>
+				<graphicElement>
+					<pen lineWidth="0.75" lineStyle="Dashed"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="860" y="96" width="55" height="47" uuid="74544d39-8c8b-4466-8efb-99a2283c5d6f"/>
+				<graphicElement>
+					<pen lineWidth="0.75" lineStyle="Dashed"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="190" y="96" width="39" height="47" uuid="9c64f759-7ec2-4606-9699-445e285aeb95"/>
+				<graphicElement>
+					<pen lineWidth="0.75" lineStyle="Dashed"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="400" y="96" width="32" height="47" uuid="00a68232-248f-4739-a75f-10f3523a4dad"/>
+				<graphicElement>
+					<pen lineWidth="0.75" lineStyle="Dashed"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="761" y="96" width="48" height="47" uuid="e34780d3-f90e-4a8d-b1aa-331d206566d8"/>
+				<graphicElement>
+					<pen lineWidth="0.75" lineStyle="Dashed"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="915" y="96" width="45" height="47" uuid="fce21d28-ab8a-48a3-bd62-8e946771f15b"/>
+				<graphicElement>
+					<pen lineWidth="0.75" lineStyle="Dashed"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="601" y="96" width="32" height="47" uuid="9c8fa2c0-fb9b-4dd1-891f-c6aaed202b79"/>
+				<graphicElement>
+					<pen lineWidth="0.75" lineStyle="Dashed"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="283" y="96" width="27" height="47" uuid="2d3326ab-3998-4e47-a2bf-5886cc6e5a18"/>
+				<graphicElement>
+					<pen lineWidth="0.75" lineStyle="Dashed"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="467" y="96" width="39" height="47" uuid="f2ac6a09-7b52-49a0-ab80-37ea2e95e2e5"/>
+				<graphicElement>
+					<pen lineWidth="0.75" lineStyle="Dashed"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="170" y="96" width="20" height="47" uuid="1b0602ae-b5fe-4ac4-91bf-d064006a8f5b"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineStyle="Dashed"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="566" y="96" width="35" height="47" uuid="337a5478-692d-4c4e-940a-cf43d1fc6b97"/>
+				<graphicElement>
+					<pen lineWidth="0.75" lineStyle="Dashed"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="633" y="96" width="32" height="47" uuid="3f3726f3-1c3c-4281-9a3e-939ad948fd9b"/>
+				<graphicElement>
+					<pen lineWidth="0.75" lineStyle="Dashed"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="665" y="96" width="32" height="47" uuid="cec7a763-68ef-46d4-9681-446c47449adf"/>
+				<graphicElement>
+					<pen lineWidth="0.75" lineStyle="Dashed"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="380" y="96" width="20" height="47" uuid="9988dd6a-62c8-46a0-867e-58fe60835aae"/>
+				<graphicElement>
+					<pen lineWidth="0.75" lineStyle="Dashed"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="256" y="96" width="27" height="47" uuid="8c03633e-d063-49b9-96e0-79cc401cb0e2"/>
+				<graphicElement>
+					<pen lineWidth="0.75" lineStyle="Dashed"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="150" y="96" width="20" height="47" uuid="3ab4c448-191e-47cc-a295-ca5ce98489be"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineStyle="Dashed"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="432" y="96" width="35" height="47" uuid="96204843-3cbf-46e9-a73a-e7ce0ccde508"/>
+				<graphicElement>
+					<pen lineWidth="0.75" lineStyle="Dashed"/>
+				</graphicElement>
+			</rectangle>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="22" splitType="Stretch">
+			<staticText>
+				<reportElement x="1" y="2" width="262" height="20" uuid="0b2ad101-c2d5-4a8a-931a-836cb29dd961"/>
+				<textElement>
+					<font fontName="Times New Roman" size="11"/>
+				</textElement>
+				<text><![CDATA[TechSeed PayRoll System : www.techseedlk.com]]></text>
+			</staticText>
+			<textField pattern="dd/MM/yyyy h.mm a">
+				<reportElement x="426" y="0" width="100" height="20" uuid="2c40dab9-1599-4500-aa9b-59220ea1c6b5"/>
+				<textElement>
+					<font fontName="Times New Roman" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="827" y="0" width="80" height="20" uuid="6e1cb0a4-e03a-43bf-8b70-d61d79721312"/>
+				<textElement textAlignment="Right">
+					<font fontName="Times New Roman" size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="907" y="0" width="40" height="20" uuid="4a7f78a9-8061-42d8-91b0-50c137f335f4"/>
+				<textElement>
+					<font fontName="Times New Roman" size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="131" splitType="Stretch">
+			<staticText>
+				<reportElement x="1" y="110" width="120" height="20" uuid="9475d83f-6d43-4d71-8a63-7ae96bbb2a2b"/>
+				<box leftPadding="0" rightPadding="0">
+					<pen lineWidth="0.0" lineStyle="Solid"/>
+					<topPen lineWidth="0.0" lineStyle="Solid"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="11"/>
+				</textElement>
+				<text><![CDATA[Total No. of Employee:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="124" y="110" width="64" height="20" uuid="cc9476fe-325c-4f18-be6b-c2954c4910a7"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{No.of Employee}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="3" width="121" height="20" uuid="5946cad8-87a8-4561-90e8-7671b71e9725"/>
+				<box leftPadding="0">
+					<pen lineWidth="0.0" lineStyle="Solid"/>
+					<topPen lineWidth="0.0" lineStyle="Solid"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid"/>
+				</box>
+				<textElement verticalAlignment="Top">
+					<font fontName="Times New Roman" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Pay Ledger Summery :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="349" y="3" width="64" height="25" uuid="0fd2d711-c5eb-46ad-ab61-9c0bac03ad19"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top">
+					<font fontName="Times New Roman" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{rpt_year}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="260" y="3" width="82" height="25" uuid="3c905e6d-3866-4ec4-89a8-182b69227307"/>
+				<textElement textAlignment="Right" verticalAlignment="Top">
+					<font fontName="Times New Roman" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{rpt_month}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="124" y="3" width="125" height="25" uuid="4cde0ffe-b89b-4df3-b739-243764ee999e"/>
+				<textElement textAlignment="Right" verticalAlignment="Top">
+					<font fontName="Times New Roman" size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{rpt_employee_type}]]></textFieldExpression>
+			</textField>
+		</band>
+	</summary>
+</jasperReport>

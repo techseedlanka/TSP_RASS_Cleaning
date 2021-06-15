@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="VO_Wise_EMP_rpt" language="groovy" pageWidth="595" pageHeight="842" columnWidth="543" leftMargin="32" rightMargin="20" topMargin="20" bottomMargin="20" uuid="5677f752-9580-46f6-ae15-8455bce06620">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[SELECT
+     employee_reg.`EPFno` AS employee_reg_EPFno,
+     employee_reg.`FullName` AS employee_reg_FullName,
+     employee_reg.`NameWithInitials` AS employee_reg_NameWithInitials,
+     employee_reg.`DefLocation` AS employee_reg_DefLocation,
+employee_reg.`Designation`  ,
+     location_reg.`LocCode` AS location_reg_LocCode,
+     location_reg.`LocName` AS location_reg_LocName,
+     location_reg.`LocInchargeName` AS location_reg_LocInchargeName,
+     location_reg.`LocInchargeID` AS location_reg_LocInchargeID
+FROM
+     `employee_reg` employee_reg,
+     `location_reg` location_reg
+where employee_reg.`DefLocation` = location_reg.`LocCode`
+and location_reg.`LocInchargeID`='510'
+order by  employee_reg.`DefLocation`]]>
+	</queryString>
+	<field name="employee_reg_EPFno" class="java.lang.String"/>
+	<field name="employee_reg_FullName" class="java.lang.String"/>
+	<field name="employee_reg_NameWithInitials" class="java.lang.String"/>
+	<field name="employee_reg_DefLocation" class="java.lang.String"/>
+	<field name="Designation" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="location_reg_LocCode" class="java.lang.String"/>
+	<field name="location_reg_LocName" class="java.lang.String"/>
+	<field name="location_reg_LocInchargeName" class="java.lang.String"/>
+	<field name="location_reg_LocInchargeID" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="40" splitType="Stretch">
+			<staticText>
+				<reportElement x="186" y="0" width="278" height="20" uuid="c03fcd27-b417-4466-99ce-d1783ed2f8c2"/>
+				<textElement>
+					<font fontName="Times New Roman" size="14" isBold="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[Location Incharge Wise Employee Report]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="4" y="20" width="182" height="20" uuid="b93ceeb5-b029-4093-be1f-b00da7967470"/>
+				<textElement>
+					<font fontName="Times New Roman" size="12" isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[Seleena Security Services(Pvt)Ltd.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="389" y="20" width="154" height="20" uuid="991e0f1c-2877-4cf1-a42d-1013cd6b7eb2"/>
+				<textElement>
+					<font fontName="Times New Roman" size="12" isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[Incharge : W.B.M.S.S Bandara]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="24" splitType="Stretch">
+			<staticText>
+				<reportElement x="35" y="2" width="100" height="20" uuid="edbc398a-85e5-4213-a2cc-7c1eb26d5b49"/>
+				<textElement>
+					<font fontName="Times New Roman" size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[EPF No.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="154" y="2" width="100" height="20" uuid="e84fdc21-590e-4506-a952-32d5516a9571"/>
+				<textElement>
+					<font fontName="Times New Roman" size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Name]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="389" y="2" width="100" height="20" uuid="bca5809c-2070-4ae3-b203-53ce5eea034e"/>
+				<textElement>
+					<font fontName="Times New Roman" size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Designation]]></text>
+			</staticText>
+			<line>
+				<reportElement x="4" y="16" width="539" height="1" uuid="ef2c809f-db20-4ef7-894a-b4025b2e2e9b"/>
+			</line>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="47" splitType="Stretch">
+			<textField>
+				<reportElement x="35" y="20" width="100" height="20" uuid="07bf90e5-d63f-4fdb-a280-a4cc2a1bf237"/>
+				<textElement>
+					<font fontName="Times New Roman" size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{employee_reg_EPFno}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="389" y="20" width="100" height="20" uuid="0621fb98-00e7-45bb-94ac-7990658059be"/>
+				<textElement>
+					<font fontName="Times New Roman" size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Designation}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="false">
+				<reportElement isPrintRepeatedValues="false" x="4" y="0" width="100" height="20" isRemoveLineWhenBlank="true" uuid="73b2cf77-e9de-451e-a006-0f125c83d975"/>
+				<textElement>
+					<font fontName="Times New Roman" size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{employee_reg_DefLocation}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="false">
+				<reportElement isPrintRepeatedValues="false" x="122" y="0" width="216" height="20" isRemoveLineWhenBlank="true" uuid="8544a6b6-f63d-4fde-95e2-ec85912c8c58"/>
+				<textElement>
+					<font fontName="Times New Roman" size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{location_reg_LocName}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="154" y="20" width="197" height="20" uuid="7042ae39-f5c1-4c8c-b2ab-a0d14a0ee4bd"/>
+				<textFieldExpression><![CDATA[$F{employee_reg_NameWithInitials}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="21" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="251" height="20" uuid="0df3520e-d4ea-4c75-a00d-01a56d212c56"/>
+				<textElement verticalAlignment="Bottom">
+					<font fontName="Times New Roman" size="11"/>
+				</textElement>
+				<text><![CDATA[TechSeedPayrollSystem:www.techseedlk.com]]></text>
+			</staticText>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

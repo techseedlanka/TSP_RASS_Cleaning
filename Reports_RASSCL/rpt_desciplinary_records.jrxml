@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="rpt_desciplinary_records" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="4b7277c3-f4dd-432d-8d61-7bc8519df4cf">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[SELECT
+     emp_discipline.`EPFno`,
+     emp_discipline.`IncidentDate`,
+     emp_discipline.`Incident` ,
+     emp_discipline.`ReportedBy`,
+     emp_discipline.`EnteredBy`,
+     emp_discipline.`EnteredDate` ,
+     emp_discipline.`IncidentType`,
+     emp_discipline.`ReferenceID` ,
+     emp_discipline.`ReferenceIDOriginal`,
+     emp_discipline.`Name`,
+     emp_discipline.`Rank`,
+     emp_discipline.`Points`
+FROM
+     `emp_discipline` emp_discipline]]>
+	</queryString>
+	<field name="EPFno" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="IncidentDate" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Incident" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="ReportedBy" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="EnteredBy" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="EnteredDate" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="IncidentType" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="ReferenceID" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="ReferenceIDOriginal" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Name" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Rank" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Points" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="58" splitType="Stretch">
+			<staticText>
+				<reportElement x="193" y="0" width="198" height="20" uuid="bb63b1d5-eeed-4fe3-80a8-dbb22e4c4e5b"/>
+				<textElement>
+					<font fontName="Times New Roman" size="14" isBold="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[Employee Desciplinary Records]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="38" width="198" height="20" uuid="7fd8d9ca-293d-493c-b4e9-cc58e2fb5e53"/>
+				<textElement>
+					<font fontName="Times New Roman" size="12" isBold="false" isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[Seleena Security Services (pvt) Ltd.]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="44" splitType="Stretch">
+			<staticText>
+				<reportElement x="8" y="6" width="65" height="20" uuid="4f7fb262-816c-4588-9841-c32bd0c9d6bb"/>
+				<textElement>
+					<font fontName="Times New Roman" size="12" isBold="false" isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[Employee :]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="125" splitType="Stretch">
+			<textField>
+				<reportElement x="9" y="7" width="100" height="20" uuid="dccd0beb-bbeb-44a0-9ff6-a18e5ed622eb"/>
+				<textFieldExpression><![CDATA[$F{EPFno}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="124" y="11" width="100" height="20" uuid="8030ffaf-555f-42e4-9179-26c3be90454a"/>
+				<textFieldExpression><![CDATA[$F{IncidentDate}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="239" y="12" width="100" height="20" uuid="c122fa77-d6e2-4cde-bd9a-8a625c5a2128"/>
+				<textFieldExpression><![CDATA[$F{Incident}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

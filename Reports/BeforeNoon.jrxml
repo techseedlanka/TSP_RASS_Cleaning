@@ -1,0 +1,1214 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report2" language="groovy" pageWidth="240" pageHeight="538" columnWidth="240" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="adfc0b20-195d-4d1d-8d98-d0753dbdddf7">
+	<property name="ireport.zoom" value="5.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="898"/>
+	<queryString>
+		<![CDATA[SELECT
+     *
+FROM
+     `punching_card` punching_card]]>
+	</queryString>
+	<field name="no1" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="hr1" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="mm1" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="no2" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="hr2" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="mm2" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="no3" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="hr3" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="mm3" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="no4" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="hr4" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="mm4" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="no5" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="hr5" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="mm5" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="no6" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="hr6" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="mm6" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="no7" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="hr7" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="mm7" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="no8" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="hr8" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="mm8" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="no9" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="hr9" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="mm9" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="no10" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="hr10" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="mm10" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="no11" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="hr11" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="mm11" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="no12" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="hr12" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="mm12" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="no13" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="hr13" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="mm13" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="no14" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="hr14" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="mm14" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="no15" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="hr15" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="mm15" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="no1out" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="hr1out" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="mm1out" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="no2out" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="hr2out" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="mm2out" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="no3out" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="hr3out" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="mm3out" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="no4out" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="hr4out" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="mm4out" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="no5out" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="hr5out" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="mm5out" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="no6out" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="hr6out" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="mm6out" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="no7out" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="hr7out" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="mm7out" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="no8out" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="hr8out" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="mm8out" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="no9out" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="hr9out" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="mm9out" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="no10out" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="hr10out" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="mm10out" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="no11out" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="hr11out" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="mm11out" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="no12out" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="hr12out" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="mm12out" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="no13out" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="hr13out" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="mm13out" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="no14out" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="hr14out" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="mm14out" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="no15out" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="hr15out" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="mm15out" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="532" splitType="Stretch">
+			<staticText>
+				<reportElement x="41" y="202" width="4" height="15" uuid="b50b2618-833a-4e0a-ad0b-78427524cbcc"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Dot Matrix" size="14"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<textField pattern="#,##00;-#,##00" isBlankWhenNull="true">
+				<reportElement x="20" y="202" width="10" height="18" uuid="31665221-4a74-4f81-9dd1-b799fc3e61ed"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" rotation="Left">
+					<font fontName="Dot Matrix"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{no1}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##00;-#,##00" isBlankWhenNull="true">
+				<reportElement x="29" y="202" width="13" height="18" uuid="6e7d1a8b-a786-4c54-b464-eddb0435582e"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Dot Matrix" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{hr1}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##00;-#,##00" isBlankWhenNull="true">
+				<reportElement x="42" y="202" width="12" height="18" uuid="97008716-6aa8-4d65-9345-addbd1183043"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Dot Matrix"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{mm1}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="41" y="202" width="2" height="15" uuid="d3be65cc-4712-4f22-a263-02851731dea0">
+					<printWhenExpression><![CDATA[!($F{no1}.isEmpty())]]></printWhenExpression>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Dot Matrix" size="14"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<textField pattern="###00;-###00" isBlankWhenNull="true">
+				<reportElement isPrintRepeatedValues="false" x="20" y="219" width="10" height="18" uuid="13dbaf21-8a9c-43c1-b868-1367d3159a83"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" rotation="Left">
+					<font fontName="Dot Matrix"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{no2}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###00;-###00" isBlankWhenNull="true">
+				<reportElement isPrintRepeatedValues="false" x="20" y="236" width="10" height="18" uuid="033500ca-ae1a-4b04-a520-9f7d22b8fd74"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" rotation="Left">
+					<font fontName="Dot Matrix"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{no3}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###00;-###00" isBlankWhenNull="true">
+				<reportElement isPrintRepeatedValues="false" x="20" y="253" width="10" height="18" uuid="c6b63fc0-84b6-483a-b170-769f987a6fe3"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" rotation="Left">
+					<font fontName="Dot Matrix"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{no4}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###00;-###00" isBlankWhenNull="true">
+				<reportElement isPrintRepeatedValues="false" x="20" y="270" width="10" height="18" uuid="3c79557b-6d16-4da5-a873-8140c7570086"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" rotation="Left">
+					<font fontName="Dot Matrix"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{no5}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###00;-###00" isBlankWhenNull="true">
+				<reportElement isPrintRepeatedValues="false" x="20" y="287" width="10" height="18" uuid="9a9c580d-79d2-4f1f-b855-ed76a4d79263"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" rotation="Left">
+					<font fontName="Dot Matrix"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{no6}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###00;-###00" isBlankWhenNull="true">
+				<reportElement isPrintRepeatedValues="false" x="20" y="304" width="10" height="18" uuid="57bc2048-3d84-4db6-8979-841999696f2c"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" rotation="Left">
+					<font fontName="Dot Matrix"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{no7}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###00;-###00" isBlankWhenNull="true">
+				<reportElement isPrintRepeatedValues="false" x="20" y="321" width="10" height="18" uuid="ca98d38a-6208-4366-a0bd-35724f2ca21d"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" rotation="Left">
+					<font fontName="Dot Matrix"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{no8}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###00;-###00" isBlankWhenNull="true">
+				<reportElement isPrintRepeatedValues="false" x="20" y="338" width="10" height="18" uuid="eef4c50c-2a42-4c04-94bb-752ebb2ab040"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" rotation="Left">
+					<font fontName="Dot Matrix"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{no9}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###00;-###00" isBlankWhenNull="true">
+				<reportElement isPrintRepeatedValues="false" x="20" y="355" width="10" height="18" uuid="84faab3e-4474-494c-a042-9f8433b3dc08"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" rotation="Left">
+					<font fontName="Dot Matrix"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{no10}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###00;-###00" isBlankWhenNull="true">
+				<reportElement isPrintRepeatedValues="false" x="20" y="372" width="10" height="18" uuid="05b847e6-21af-4e28-b8e0-1aa1344cdc45"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" rotation="Left">
+					<font fontName="Dot Matrix"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{no11}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###00;-###00" isBlankWhenNull="true">
+				<reportElement isPrintRepeatedValues="false" x="20" y="389" width="10" height="18" uuid="f576f6a8-5d68-4190-8c1c-496129794912"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" rotation="Left">
+					<font fontName="Dot Matrix"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{no12}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###00;-###00" isBlankWhenNull="true">
+				<reportElement isPrintRepeatedValues="false" x="20" y="406" width="10" height="18" uuid="8d46ece3-5ec1-4cc1-8e28-883faf1e83a5"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" rotation="Left">
+					<font fontName="Dot Matrix"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{no13}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###00;-###00" isBlankWhenNull="true">
+				<reportElement isPrintRepeatedValues="false" x="20" y="423" width="10" height="18" uuid="c4a307a6-9440-461d-ad0f-d0abb2320a56"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" rotation="Left">
+					<font fontName="Dot Matrix"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{no14}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###00;-###00" isBlankWhenNull="true">
+				<reportElement isPrintRepeatedValues="false" x="20" y="440" width="10" height="18" uuid="7778d6aa-8958-4e4f-892b-7b04e0c649d7"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" rotation="Left">
+					<font fontName="Dot Matrix"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{no15}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###00;-###00" isBlankWhenNull="true">
+				<reportElement isPrintRepeatedValues="false" x="29" y="219" width="13" height="18" uuid="1da3bf19-d332-44e6-9cde-ff4b855743a8"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Dot Matrix" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{hr2}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###00;-###00" isBlankWhenNull="true">
+				<reportElement isPrintRepeatedValues="false" x="29" y="236" width="13" height="18" uuid="d0056caf-2602-467c-b78a-65d6d1d54110"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Dot Matrix" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{hr3}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###00;-###00" isBlankWhenNull="true">
+				<reportElement isPrintRepeatedValues="false" x="29" y="253" width="13" height="18" uuid="be3610e3-ba01-4ba7-b410-7534a764b6e9"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Dot Matrix" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{hr4}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###00;-###00" isBlankWhenNull="true">
+				<reportElement isPrintRepeatedValues="false" x="29" y="270" width="13" height="18" uuid="18c9b184-5e97-45f5-a083-0d6eb1d3dac6"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Dot Matrix" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{hr5}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###00;-###00" isBlankWhenNull="true">
+				<reportElement isPrintRepeatedValues="false" x="29" y="287" width="13" height="18" uuid="96d4b649-dc3d-45f0-8dd5-2ab5e5611f62"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Dot Matrix" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{hr6}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###00;-###00" isBlankWhenNull="true">
+				<reportElement isPrintRepeatedValues="false" x="29" y="304" width="13" height="18" uuid="6a85effd-cd70-47e3-b2dc-ee9efa2c589a"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Dot Matrix" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{hr7}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###00;-###00" isBlankWhenNull="true">
+				<reportElement isPrintRepeatedValues="false" x="29" y="321" width="13" height="18" uuid="b240ae24-97c8-4ec7-af4e-7ffed8555dee"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Dot Matrix" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{hr8}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###00;-###00" isBlankWhenNull="true">
+				<reportElement isPrintRepeatedValues="false" x="29" y="338" width="13" height="18" uuid="2fdddcc2-e1a0-4fdf-84d4-7a7d3d71ffa1"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Dot Matrix" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{hr9}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###00;-###00" isBlankWhenNull="true">
+				<reportElement isPrintRepeatedValues="false" x="29" y="355" width="13" height="18" uuid="f0b22b3b-2d94-4be3-9753-85b28792f856"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Dot Matrix" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{hr10}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###00;-###00" isBlankWhenNull="true">
+				<reportElement isPrintRepeatedValues="false" x="29" y="372" width="13" height="18" uuid="2242e2d1-0485-45c0-9676-39578dff1ae8"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Dot Matrix" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{hr11}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###00;-###00" isBlankWhenNull="true">
+				<reportElement isPrintRepeatedValues="false" x="29" y="389" width="13" height="18" uuid="c619baf7-3623-4d94-9735-5028706d007c"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Dot Matrix" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{hr12}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###00;-###00" isBlankWhenNull="true">
+				<reportElement isPrintRepeatedValues="false" x="29" y="406" width="13" height="18" uuid="f5a78441-65fe-4564-8051-3e284ec3e243"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Dot Matrix" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{hr13}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###00;-###00" isBlankWhenNull="true">
+				<reportElement isPrintRepeatedValues="false" x="29" y="423" width="13" height="18" uuid="3f9c9ab3-9936-4cae-86b9-53a7e54c87a9"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Dot Matrix" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{hr14}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###00;-###00" isBlankWhenNull="true">
+				<reportElement isPrintRepeatedValues="false" x="29" y="440" width="13" height="18" uuid="f7e18d1c-2a72-4bd2-8bbe-f21b444cb848"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Dot Matrix" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{hr15}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="41" y="236" width="4" height="16" uuid="b844a745-d9c6-4628-9646-f539b72f4436">
+					<printWhenExpression><![CDATA[!($F{no3}.isEmpty())]]></printWhenExpression>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Dot Matrix" size="14"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="41" y="253" width="4" height="16" uuid="a20af112-e7dd-48b1-8cd4-35a5ea9609e6">
+					<printWhenExpression><![CDATA[!($F{no4}.isEmpty())]]></printWhenExpression>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Dot Matrix" size="14"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="41" y="219" width="4" height="16" uuid="4e053341-e21d-4192-865b-d36406cce4eb">
+					<printWhenExpression><![CDATA[!($F{no2}.isEmpty())]]></printWhenExpression>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Dot Matrix" size="14"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="41" y="270" width="4" height="16" uuid="3a8eed28-deb9-4c63-a54c-adf78b95aaf7">
+					<printWhenExpression><![CDATA[!($F{no5}.isEmpty())]]></printWhenExpression>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Dot Matrix" size="14"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="41" y="304" width="4" height="16" uuid="9bb0a138-18c3-42e4-8374-8af54026978b">
+					<printWhenExpression><![CDATA[!($F{no7}.isEmpty())]]></printWhenExpression>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Dot Matrix" size="14"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="41" y="338" width="4" height="16" uuid="f7edb419-119e-4160-a616-6e8d2fcf99a2">
+					<printWhenExpression><![CDATA[!($F{no9}.isEmpty())]]></printWhenExpression>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Dot Matrix" size="14"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="41" y="321" width="4" height="16" uuid="ad9c0777-c2a9-486b-a9d4-6c21511d66d4">
+					<printWhenExpression><![CDATA[!($F{no8}.isEmpty())]]></printWhenExpression>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Dot Matrix" size="14"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="41" y="287" width="4" height="16" uuid="3d502003-d4a2-414c-82bb-08396df080f6">
+					<printWhenExpression><![CDATA[!($F{no6}.isEmpty())]]></printWhenExpression>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Dot Matrix" size="14"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="41" y="372" width="4" height="16" uuid="fec246fb-9054-49d7-93b2-2336bda8900c">
+					<printWhenExpression><![CDATA[!($F{no11}.isEmpty())]]></printWhenExpression>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Dot Matrix" size="14"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="41" y="406" width="4" height="16" uuid="ba9a3a3f-8634-4ef2-b528-9c3b35ebc4f6">
+					<printWhenExpression><![CDATA[!($F{no13}.isEmpty())]]></printWhenExpression>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Dot Matrix" size="14"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="41" y="389" width="4" height="16" uuid="7b82abe2-689f-4fcb-8b52-5253d264629b">
+					<printWhenExpression><![CDATA[!($F{no12}.isEmpty())]]></printWhenExpression>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Dot Matrix" size="14"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="41" y="355" width="4" height="16" uuid="cbe9757f-2100-463c-bc55-64b5ceadb87e">
+					<printWhenExpression><![CDATA[!($F{no10}.isEmpty())]]></printWhenExpression>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Dot Matrix" size="14"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="41" y="423" width="4" height="16" uuid="0f938569-24b4-48bb-b016-d0b3143ecc26">
+					<printWhenExpression><![CDATA[!($F{no14}.isEmpty())]]></printWhenExpression>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Dot Matrix" size="14"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="41" y="440" width="4" height="16" uuid="092738db-6704-49a1-a590-4c21c2ca31af">
+					<printWhenExpression><![CDATA[!($F{no15}.isEmpty())]]></printWhenExpression>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Dot Matrix" size="14"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<textField pattern="###00;-###00" isBlankWhenNull="true">
+				<reportElement isPrintRepeatedValues="false" x="42" y="219" width="12" height="18" uuid="98664c43-d2bf-47f6-a983-6f2ced0e2c5a"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Dot Matrix"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{mm2}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###00;-###00" isBlankWhenNull="true">
+				<reportElement isPrintRepeatedValues="false" x="42" y="236" width="12" height="18" uuid="8f669116-9e1a-44ee-88e2-59937b9b2f5f"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Dot Matrix"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{mm3}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###00;-###00" isBlankWhenNull="true">
+				<reportElement isPrintRepeatedValues="false" x="42" y="253" width="12" height="18" uuid="96cb676b-8cdf-402c-99b3-724be2cfcf1a"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Dot Matrix"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{mm4}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###00;-###00" isBlankWhenNull="true">
+				<reportElement isPrintRepeatedValues="false" x="42" y="270" width="12" height="18" uuid="7d1639fb-22f9-4b4a-b75b-74e30e38a139"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Dot Matrix"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{mm5}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###00;-###00" isBlankWhenNull="true">
+				<reportElement isPrintRepeatedValues="false" x="42" y="287" width="12" height="18" uuid="a606b31a-460a-4268-8df4-3a91cc064f55"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Dot Matrix"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{mm6}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###00;-###00" isBlankWhenNull="true">
+				<reportElement isPrintRepeatedValues="false" x="42" y="304" width="12" height="18" uuid="700c80a8-02bb-4c66-8004-f68d70f09b48"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Dot Matrix"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{mm7}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###00;-###00" isBlankWhenNull="true">
+				<reportElement isPrintRepeatedValues="false" x="42" y="321" width="12" height="18" uuid="cba11b2e-c679-4e5b-90ee-4c3ec9653364"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Dot Matrix"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{mm8}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###00;-###00" isBlankWhenNull="true">
+				<reportElement isPrintRepeatedValues="false" x="42" y="338" width="12" height="18" uuid="69a942fe-fccc-4fd9-a276-7b53058a5ede"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Dot Matrix"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{mm9}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###00;-###00" isBlankWhenNull="true">
+				<reportElement isPrintRepeatedValues="false" x="42" y="355" width="12" height="18" uuid="9ea21f9a-6bdd-45d5-be5f-ad69d98e7ced"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Dot Matrix"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{mm10}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###00;-###00" isBlankWhenNull="true">
+				<reportElement isPrintRepeatedValues="false" x="42" y="372" width="12" height="18" uuid="ccafae54-656f-487a-afd8-eafbc65a71fd"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Dot Matrix"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{mm11}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###00;-###00" isBlankWhenNull="true">
+				<reportElement isPrintRepeatedValues="false" x="42" y="389" width="12" height="18" uuid="4792f877-4f50-46ec-af31-7c82ba32e66a"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Dot Matrix"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{mm12}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###00;-###00" isBlankWhenNull="true">
+				<reportElement isPrintRepeatedValues="false" x="42" y="406" width="12" height="18" uuid="0da6f421-4679-454d-87db-d6e395eeba45"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Dot Matrix"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{mm13}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###00;-###00" isBlankWhenNull="true">
+				<reportElement isPrintRepeatedValues="false" x="42" y="423" width="12" height="18" uuid="db8693f3-b3b7-4d19-9e60-29055489c94a"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Dot Matrix"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{mm14}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###00;-###00" isBlankWhenNull="true">
+				<reportElement isPrintRepeatedValues="false" x="42" y="440" width="12" height="18" uuid="277e51bb-123a-44e5-8cf9-fff104bce00b"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Dot Matrix"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{mm15}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="77" y="389" width="4" height="16" uuid="0a5419b8-0137-45c0-ac04-f8c08fa30a32">
+					<printWhenExpression><![CDATA[!($F{no12out}.isEmpty())]]></printWhenExpression>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Dot Matrix" size="14"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="77" y="219" width="4" height="16" uuid="f81aaf8b-966f-4814-a9a1-2459550d83af">
+					<printWhenExpression><![CDATA[!($F{no2out}.isEmpty())]]></printWhenExpression>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Dot Matrix" size="14"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="77" y="287" width="4" height="16" uuid="d3b41beb-54ca-4268-b6ad-cd6215a06fbe">
+					<printWhenExpression><![CDATA[!($F{no6out}.isEmpty())]]></printWhenExpression>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Dot Matrix" size="14"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="77" y="304" width="4" height="16" uuid="c5f68c6d-94c8-40c2-9970-023887c98b47">
+					<printWhenExpression><![CDATA[!($F{no7out}.isEmpty())]]></printWhenExpression>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Dot Matrix" size="14"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<textField pattern="###00;-###00" isBlankWhenNull="true">
+				<reportElement isPrintRepeatedValues="false" x="56" y="440" width="10" height="18" uuid="5079f662-c362-4adf-bf27-6da0b4fae58a"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" rotation="Left">
+					<font fontName="Dot Matrix"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{no15out}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##00;-#,##00" isBlankWhenNull="true">
+				<reportElement isPrintRepeatedValues="false" x="65" y="355" width="13" height="18" uuid="4c139387-8b04-45bf-bc05-e3d2cb65c5fd"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None">
+					<font fontName="Dot Matrix" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{hr10out}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##00;-#,##00" isBlankWhenNull="true">
+				<reportElement isPrintRepeatedValues="false" x="65" y="389" width="13" height="18" uuid="d7db3b09-088d-4330-b040-5acc7c06fafb"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None">
+					<font fontName="Dot Matrix" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{hr12out}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##00;-#,##00" isBlankWhenNull="true">
+				<reportElement isPrintRepeatedValues="false" x="65" y="253" width="13" height="18" uuid="d2b79346-d1cc-4ef6-8278-1ac357f62d73"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None">
+					<font fontName="Dot Matrix" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{hr4out}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##00;-#,##00" isBlankWhenNull="true">
+				<reportElement isPrintRepeatedValues="false" x="65" y="406" width="13" height="18" uuid="008f7ba9-556d-4a9e-a481-88e3d58b8088"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None">
+					<font fontName="Dot Matrix" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{hr13out}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###00;-###00" isBlankWhenNull="true">
+				<reportElement isPrintRepeatedValues="false" x="56" y="270" width="10" height="18" uuid="ffe943b3-dfd6-4b82-8719-a5fe88c84330"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" rotation="Left">
+					<font fontName="Dot Matrix"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{no5out}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="77" y="440" width="4" height="16" uuid="7628c0b8-6fb7-4ea2-a8dd-fc58188a1945">
+					<printWhenExpression><![CDATA[!($F{no15out}.isEmpty())]]></printWhenExpression>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Dot Matrix" size="14"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<textField pattern="###00;-###00" isBlankWhenNull="true">
+				<reportElement isPrintRepeatedValues="false" x="56" y="321" width="10" height="18" uuid="c58d63d7-4936-4774-8f29-0f46a299c22a"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" rotation="Left">
+					<font fontName="Dot Matrix"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{no8out}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###00;-###00" isBlankWhenNull="true">
+				<reportElement isPrintRepeatedValues="false" x="56" y="287" width="10" height="18" uuid="9a63caa2-8331-4104-81bc-89392c8290b0"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" rotation="Left">
+					<font fontName="Dot Matrix"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{no6out}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="77" y="338" width="4" height="16" uuid="ad303f93-f6ec-4c93-9f55-65e3985ad3bc">
+					<printWhenExpression><![CDATA[!($F{no9out}.isEmpty())]]></printWhenExpression>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Dot Matrix" size="14"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="77" y="355" width="4" height="16" uuid="357c8c76-c6d2-46d2-a2cd-bdda60aa5695">
+					<printWhenExpression><![CDATA[!($F{no10out}.isEmpty())]]></printWhenExpression>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Dot Matrix" size="14"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<textField pattern="#,##00;-#,##00" isBlankWhenNull="true">
+				<reportElement isPrintRepeatedValues="false" x="65" y="338" width="13" height="18" uuid="b4896959-4416-498e-8639-607604ba922a"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None">
+					<font fontName="Dot Matrix" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{hr9out}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###00;-###00" isBlankWhenNull="true">
+				<reportElement isPrintRepeatedValues="false" x="56" y="202" width="10" height="18" uuid="486e279e-cebf-46f0-83d2-75f9f33a75eb"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" rotation="Left">
+					<font fontName="Dot Matrix"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{no1out}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##00;-#,##00" isBlankWhenNull="true">
+				<reportElement isPrintRepeatedValues="false" x="65" y="287" width="13" height="18" uuid="73436f99-c5b8-4f05-87cb-5e4942974b04"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None">
+					<font fontName="Dot Matrix" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{hr6out}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##00;-#,##00" isBlankWhenNull="true">
+				<reportElement isPrintRepeatedValues="false" x="65" y="270" width="13" height="18" uuid="357f308e-e6ef-47be-8582-0b78be3c615f"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None">
+					<font fontName="Dot Matrix" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{hr5out}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###00;-###00" isBlankWhenNull="true">
+				<reportElement isPrintRepeatedValues="false" x="56" y="253" width="10" height="18" uuid="8a3e1bc8-c3b9-468d-9acb-6f4fb849ddb5"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" rotation="Left">
+					<font fontName="Dot Matrix"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{no4out}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###00;-###00" isBlankWhenNull="true">
+				<reportElement isPrintRepeatedValues="false" x="56" y="389" width="10" height="18" uuid="0792ee1c-c09b-4adf-aadb-821e785be4ad"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" rotation="Left">
+					<font fontName="Dot Matrix"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{no12out}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##00;-#,##00" isBlankWhenNull="true">
+				<reportElement isPrintRepeatedValues="false" x="65" y="440" width="13" height="18" uuid="2747614e-df60-44b9-b10c-be7ea9c4e937"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None">
+					<font fontName="Dot Matrix" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{hr15out}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##00;-#,##00" isBlankWhenNull="true">
+				<reportElement isPrintRepeatedValues="false" x="65" y="321" width="13" height="18" uuid="0fa60972-1214-4dfa-a03c-9e9a2b988ebb"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None">
+					<font fontName="Dot Matrix" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{hr8out}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###00;-###00" isBlankWhenNull="true">
+				<reportElement isPrintRepeatedValues="false" x="56" y="372" width="10" height="18" uuid="238b4b3a-6846-41ae-a470-5a617bdfc022"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" rotation="Left">
+					<font fontName="Dot Matrix"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{no11out}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="77" y="321" width="4" height="16" uuid="efd9eeeb-0b95-4ceb-a8d4-dca334a26c31">
+					<printWhenExpression><![CDATA[!($F{no8out}.isEmpty())]]></printWhenExpression>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Dot Matrix" size="14"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="77" y="406" width="4" height="16" uuid="a325ba40-5838-46e6-80c7-8867a49da049">
+					<printWhenExpression><![CDATA[!($F{no13out}.isEmpty())]]></printWhenExpression>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Dot Matrix" size="14"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<textField pattern="#,##00;-#,##00" isBlankWhenNull="true">
+				<reportElement isPrintRepeatedValues="false" x="65" y="219" width="13" height="18" uuid="3e684bf8-5a4b-4c9d-a4e6-2a958028e646"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None">
+					<font fontName="Dot Matrix" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{hr2out}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##00;-#,##00" isBlankWhenNull="true">
+				<reportElement isPrintRepeatedValues="false" x="65" y="423" width="13" height="18" uuid="33825210-a686-4fb5-b26b-d55330a11915"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None">
+					<font fontName="Dot Matrix" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{hr14out}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="77" y="202" width="4" height="16" uuid="21b64c4d-a066-4d9d-8695-7df456a7ab59">
+					<printWhenExpression><![CDATA[!($F{no1out}.isEmpty())]]></printWhenExpression>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Dot Matrix" size="14"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<textField pattern="###00;-###00" isBlankWhenNull="true">
+				<reportElement isPrintRepeatedValues="false" x="56" y="219" width="10" height="18" uuid="1f399f88-1511-4a55-bd31-001b43dc6cf8"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" rotation="Left">
+					<font fontName="Dot Matrix"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{no2out}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##00;-#,##00" isBlankWhenNull="true">
+				<reportElement isPrintRepeatedValues="false" x="65" y="304" width="13" height="18" uuid="abe069e2-69fe-4ec2-912f-92b0941b3ec0"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None">
+					<font fontName="Dot Matrix" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{hr7out}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="77" y="270" width="4" height="16" uuid="3fd307b6-e283-49d8-ad9c-dac0847d8ae9">
+					<printWhenExpression><![CDATA[!($F{no5out}.isEmpty())]]></printWhenExpression>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Dot Matrix" size="14"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<textField pattern="###00;-###00" isBlankWhenNull="true">
+				<reportElement isPrintRepeatedValues="false" x="56" y="355" width="10" height="18" uuid="60b15fca-e83f-4297-8e96-0784dab6b4cd"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" rotation="Left">
+					<font fontName="Dot Matrix"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{no10out}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##00;-#,##00" isBlankWhenNull="true">
+				<reportElement isPrintRepeatedValues="false" x="65" y="202" width="13" height="18" uuid="14246ae6-b94a-40fc-96a4-1656b6a56508"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None">
+					<font fontName="Dot Matrix" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{hr1out}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="77" y="253" width="4" height="16" uuid="b6dc9afa-ed71-4b19-86c6-686d5a86b6fa">
+					<printWhenExpression><![CDATA[!($F{no4out}.isEmpty())]]></printWhenExpression>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Dot Matrix" size="14"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<textField pattern="###00;-###00" isBlankWhenNull="true">
+				<reportElement isPrintRepeatedValues="false" x="56" y="338" width="10" height="18" uuid="f3364dad-c91c-4aa5-a55e-b8611fd5ba70"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" rotation="Left">
+					<font fontName="Dot Matrix"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{no9out}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##00;-#,##00" isBlankWhenNull="true">
+				<reportElement isPrintRepeatedValues="false" x="65" y="372" width="13" height="18" uuid="746c7c31-5ce6-4fd1-a74e-7a48165bc484"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None">
+					<font fontName="Dot Matrix" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{hr11out}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="77" y="372" width="4" height="16" uuid="38518d6d-95d0-48ee-a64d-a217a778e6bf">
+					<printWhenExpression><![CDATA[!($F{no11out}.isEmpty())]]></printWhenExpression>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Dot Matrix" size="14"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<textField pattern="#,##00;-#,##00" isBlankWhenNull="true">
+				<reportElement isPrintRepeatedValues="false" x="65" y="236" width="13" height="18" uuid="3b19ac68-9079-4c2d-86d2-68ab21acc1aa"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None">
+					<font fontName="Dot Matrix" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{hr3out}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="77" y="236" width="4" height="16" uuid="68adec59-6613-4aae-95ae-4df58355f454">
+					<printWhenExpression><![CDATA[!($F{no3out}.isEmpty())]]></printWhenExpression>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Dot Matrix" size="14"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="77" y="423" width="4" height="16" uuid="92ffdd26-ce9c-4770-aea0-0907af9d5f9b">
+					<printWhenExpression><![CDATA[!($F{no14out}.isEmpty())]]></printWhenExpression>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Dot Matrix" size="14"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<textField pattern="###00;-###00" isBlankWhenNull="true">
+				<reportElement isPrintRepeatedValues="false" x="56" y="236" width="10" height="18" uuid="76ec13fc-fe47-4178-b15e-69e6a8632b7b"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" rotation="Left">
+					<font fontName="Dot Matrix"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{no3out}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###00;-###00" isBlankWhenNull="true">
+				<reportElement isPrintRepeatedValues="false" x="56" y="304" width="10" height="18" uuid="3e2b42a8-273c-44bf-bb27-6678c519bc27"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" rotation="Left">
+					<font fontName="Dot Matrix"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{no7out}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###00;-###00" isBlankWhenNull="true">
+				<reportElement isPrintRepeatedValues="false" x="56" y="406" width="10" height="18" uuid="b047fe71-a23b-470b-b655-72a20a8d7096"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" rotation="Left">
+					<font fontName="Dot Matrix"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{no13out}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###00;-###00" isBlankWhenNull="true">
+				<reportElement isPrintRepeatedValues="false" x="56" y="423" width="10" height="18" uuid="18f15b2c-a673-4040-b9f9-7ef799569fc0"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" rotation="Left">
+					<font fontName="Dot Matrix"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{no14out}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###00;-###00" isBlankWhenNull="true">
+				<reportElement x="78" y="202" width="12" height="18" uuid="1156d55c-d8f1-4413-857a-d719dae0b37a"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Dot Matrix"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{mm1out}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###00;-###00" isBlankWhenNull="true">
+				<reportElement x="78" y="219" width="12" height="18" uuid="0dc39116-5884-4264-ad63-39283f8b7bbf"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Dot Matrix"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{mm2out}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###00;-###00" isBlankWhenNull="true">
+				<reportElement x="78" y="236" width="12" height="18" uuid="16306e9a-93af-438f-80f8-b013d6be2eab"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Dot Matrix"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{mm3out}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###00;-###00" isBlankWhenNull="true">
+				<reportElement x="78" y="253" width="12" height="18" uuid="24f5b404-bfbb-4e07-9edf-61c71cea1207"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Dot Matrix"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{mm4out}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###00;-###00" isBlankWhenNull="true">
+				<reportElement x="78" y="270" width="12" height="18" uuid="1ec8ad92-b816-4df2-b6b2-4144da2e45bc"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Dot Matrix"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{mm5out}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###00;-###00" isBlankWhenNull="true">
+				<reportElement x="78" y="287" width="12" height="18" uuid="bed5728c-b8a2-41bd-bcdf-9d7ef7571dfb"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Dot Matrix"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{mm6out}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###00;-###00" isBlankWhenNull="true">
+				<reportElement x="78" y="304" width="12" height="18" uuid="a73b2a9f-11fb-435f-b510-8cc20cfb14ec"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Dot Matrix"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{mm7out}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###00;-###00" isBlankWhenNull="true">
+				<reportElement x="78" y="321" width="12" height="18" uuid="49a829f8-0315-4562-889d-6868243ccdc7"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Dot Matrix"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{mm8out}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###00;-###00" isBlankWhenNull="true">
+				<reportElement x="78" y="338" width="12" height="18" uuid="ce3af22f-f371-4e8c-9a8b-3999f637f26e"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Dot Matrix"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{mm9out}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###00;-###00" isBlankWhenNull="true">
+				<reportElement x="78" y="355" width="12" height="18" uuid="860d6c53-5d91-4234-8944-cc6beb58f2b6"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Dot Matrix"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{mm10out}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###00;-###00" isBlankWhenNull="true">
+				<reportElement x="78" y="372" width="12" height="18" uuid="53dabfe4-5175-46e5-81b6-760bd2ff0a51"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Dot Matrix"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{mm11out}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###00;-###00" isBlankWhenNull="true">
+				<reportElement x="78" y="389" width="12" height="18" uuid="9ea04590-d56d-444a-ae1a-8c40341bbfe9"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Dot Matrix"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{mm12out}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###00;-###00" isBlankWhenNull="true">
+				<reportElement x="78" y="406" width="12" height="18" uuid="09404eb6-110e-4c8c-861d-cb64087102d8"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Dot Matrix"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{mm13out}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###00;-###00" isBlankWhenNull="true">
+				<reportElement x="78" y="423" width="12" height="18" uuid="87723fc1-0356-489e-b11a-9d19d149a89d"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Dot Matrix"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{mm14out}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###00;-###00" isBlankWhenNull="true">
+				<reportElement x="78" y="440" width="12" height="18" uuid="af93b40f-aa64-4360-9c0b-5bae10266214"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Dot Matrix"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{mm15out}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band splitType="Stretch"/>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

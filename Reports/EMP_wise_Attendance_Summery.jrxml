@@ -1,0 +1,2219 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Attendance_Summery" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" whenNoDataType="AllSectionsNoDetail" columnWidth="788" leftMargin="34" rightMargin="20" topMargin="20" bottomMargin="20" uuid="e1686e1e-fc51-4d14-aae3-2a743b72e3ec">
+	<property name="ireport.zoom" value="1.1000000000000012"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="table">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<subDataset name="Table Dataset 1" uuid="2c6e8ad2-c2fc-4998-89d1-21341683a3c4"/>
+	<field name="l_code" class="java.lang.String"/>
+	<field name="l_name" class="java.lang.String"/>
+	<field name="day1d" class="java.lang.String"/>
+	<field name="day1n" class="java.lang.String"/>
+	<field name="day1h" class="java.lang.String"/>
+	<field name="day2d" class="java.lang.String"/>
+	<field name="day2n" class="java.lang.String"/>
+	<field name="day2h" class="java.lang.String"/>
+	<field name="day3d" class="java.lang.String"/>
+	<field name="day3n" class="java.lang.String"/>
+	<field name="day3h" class="java.lang.String"/>
+	<field name="day4d" class="java.lang.String"/>
+	<field name="day4n" class="java.lang.String"/>
+	<field name="day4h" class="java.lang.String"/>
+	<field name="day5d" class="java.lang.String"/>
+	<field name="day5n" class="java.lang.String"/>
+	<field name="day5h" class="java.lang.String"/>
+	<field name="day6d" class="java.lang.String"/>
+	<field name="day6n" class="java.lang.String"/>
+	<field name="day6h" class="java.lang.String"/>
+	<field name="day7d" class="java.lang.String"/>
+	<field name="day7n" class="java.lang.String"/>
+	<field name="day7h" class="java.lang.String"/>
+	<field name="day8d" class="java.lang.String"/>
+	<field name="day8n" class="java.lang.String"/>
+	<field name="day8h" class="java.lang.String"/>
+	<field name="day9d" class="java.lang.String"/>
+	<field name="day9n" class="java.lang.String"/>
+	<field name="day9h" class="java.lang.String"/>
+	<field name="day10d" class="java.lang.String"/>
+	<field name="day10n" class="java.lang.String"/>
+	<field name="day10h" class="java.lang.String"/>
+	<field name="day11d" class="java.lang.String"/>
+	<field name="day11n" class="java.lang.String"/>
+	<field name="day11h" class="java.lang.String"/>
+	<field name="day12d" class="java.lang.String"/>
+	<field name="day12n" class="java.lang.String"/>
+	<field name="day12h" class="java.lang.String"/>
+	<field name="day13d" class="java.lang.String"/>
+	<field name="day13n" class="java.lang.String"/>
+	<field name="day13h" class="java.lang.String"/>
+	<field name="day14d" class="java.lang.String"/>
+	<field name="day14n" class="java.lang.String"/>
+	<field name="day14h" class="java.lang.String"/>
+	<field name="day15d" class="java.lang.String"/>
+	<field name="day15n" class="java.lang.String"/>
+	<field name="day15h" class="java.lang.String"/>
+	<field name="day16d" class="java.lang.String"/>
+	<field name="day16n" class="java.lang.String"/>
+	<field name="day16h" class="java.lang.String"/>
+	<field name="day17d" class="java.lang.String"/>
+	<field name="day17n" class="java.lang.String"/>
+	<field name="day17h" class="java.lang.String"/>
+	<field name="day18d" class="java.lang.String"/>
+	<field name="day18n" class="java.lang.String"/>
+	<field name="day18h" class="java.lang.String"/>
+	<field name="day19d" class="java.lang.String"/>
+	<field name="day19n" class="java.lang.String"/>
+	<field name="day19h" class="java.lang.String"/>
+	<field name="day20d" class="java.lang.String"/>
+	<field name="day20n" class="java.lang.String"/>
+	<field name="day20h" class="java.lang.String"/>
+	<field name="day21d" class="java.lang.String"/>
+	<field name="day21n" class="java.lang.String"/>
+	<field name="day21h" class="java.lang.String"/>
+	<field name="day22d" class="java.lang.String"/>
+	<field name="day22n" class="java.lang.String"/>
+	<field name="day22h" class="java.lang.String"/>
+	<field name="day23d" class="java.lang.String"/>
+	<field name="day23n" class="java.lang.String"/>
+	<field name="day23h" class="java.lang.String"/>
+	<field name="day24d" class="java.lang.String"/>
+	<field name="day24n" class="java.lang.String"/>
+	<field name="day24h" class="java.lang.String"/>
+	<field name="day25d" class="java.lang.String"/>
+	<field name="day25n" class="java.lang.String"/>
+	<field name="day25h" class="java.lang.String"/>
+	<field name="day26d" class="java.lang.String"/>
+	<field name="day26n" class="java.lang.String"/>
+	<field name="day26h" class="java.lang.String"/>
+	<field name="day27d" class="java.lang.String"/>
+	<field name="day27n" class="java.lang.String"/>
+	<field name="day27h" class="java.lang.String"/>
+	<field name="day28d" class="java.lang.String"/>
+	<field name="day28n" class="java.lang.String"/>
+	<field name="day28h" class="java.lang.String"/>
+	<field name="day29d" class="java.lang.String"/>
+	<field name="day29n" class="java.lang.String"/>
+	<field name="day29h" class="java.lang.String"/>
+	<field name="day30d" class="java.lang.String"/>
+	<field name="day30n" class="java.lang.String"/>
+	<field name="day30h" class="java.lang.String"/>
+	<field name="day31d" class="java.lang.String"/>
+	<field name="day31n" class="java.lang.String"/>
+	<field name="day31h" class="java.lang.String"/>
+	<field name="day1dt" class="java.lang.String"/>
+	<field name="day2dt" class="java.lang.String"/>
+	<field name="day3dt" class="java.lang.String"/>
+	<field name="day4dt" class="java.lang.String"/>
+	<field name="day5dt" class="java.lang.String"/>
+	<field name="day6dt" class="java.lang.String"/>
+	<field name="day7dt" class="java.lang.String"/>
+	<field name="day8dt" class="java.lang.String"/>
+	<field name="day9dt" class="java.lang.String"/>
+	<field name="day10dt" class="java.lang.String"/>
+	<field name="day11dt" class="java.lang.String"/>
+	<field name="day12dt" class="java.lang.String"/>
+	<field name="day13dt" class="java.lang.String"/>
+	<field name="day14dt" class="java.lang.String"/>
+	<field name="day15dt" class="java.lang.String"/>
+	<field name="day16dt" class="java.lang.String"/>
+	<field name="day17dt" class="java.lang.String"/>
+	<field name="day18dt" class="java.lang.String"/>
+	<field name="day19dt" class="java.lang.String"/>
+	<field name="day20dt" class="java.lang.String"/>
+	<field name="day21dt" class="java.lang.String"/>
+	<field name="day22dt" class="java.lang.String"/>
+	<field name="day23dt" class="java.lang.String"/>
+	<field name="day24dt" class="java.lang.String"/>
+	<field name="day25dt" class="java.lang.String"/>
+	<field name="day26dt" class="java.lang.String"/>
+	<field name="day27dt" class="java.lang.String"/>
+	<field name="day28dt" class="java.lang.String"/>
+	<field name="day29dt" class="java.lang.String"/>
+	<field name="day30dt" class="java.lang.String"/>
+	<field name="day31dt" class="java.lang.String"/>
+	<field name="total_shifts" class="java.lang.String"/>
+	<field name="com_name" class="java.lang.String"/>
+	<field name="month" class="java.lang.String"/>
+	<field name="year" class="java.lang.String"/>
+	<field name="emp_name" class="java.lang.String"/>
+	<field name="emp_code" class="java.lang.String"/>
+	<variable name="TotalDayShifts" class="java.lang.Double" calculation="Sum"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="66" splitType="Stretch">
+			<textField>
+				<reportElement x="-1" y="35" width="217" height="20" uuid="24a31c72-44cd-431e-8d83-041573ab09c0"/>
+				<textElement>
+					<font fontName="Times New Roman" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{com_name}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="256" y="5" width="330" height="20" uuid="0bed452b-c521-4bb8-b9a7-24bba72334c2"/>
+				<textElement>
+					<font fontName="Times New Roman" size="16" isBold="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[Employee wise Monthly Attendance Summery]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="626" y="35" width="100" height="20" uuid="39fd14e2-967c-49af-9d33-e5a91800275a"/>
+				<textElement textAlignment="Right">
+					<font fontName="Times New Roman" size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{month}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="726" y="35" width="50" height="20" uuid="c3acea46-c4c3-428b-9c29-8154e15c7947"/>
+				<textElement textAlignment="Right">
+					<font fontName="Times New Roman" size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{year}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="0" y="60" width="787" height="1" uuid="36626c69-25a5-4cdd-926d-0b96e8432810"/>
+				<graphicElement>
+					<pen lineWidth="2.25" lineStyle="Double"/>
+				</graphicElement>
+			</line>
+			<textField>
+				<reportElement x="396" y="35" width="160" height="20" uuid="f81fd214-fbdc-4936-98bd-a1e33782e2e6"/>
+				<box leftPadding="10"/>
+				<textElement>
+					<font fontName="Times New Roman" size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{emp_name}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="307" y="35" width="89" height="20" uuid="705c0c02-1d5c-455c-b364-99af3bbd79c7"/>
+				<textElement textAlignment="Right">
+					<font fontName="Times New Roman" size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{emp_code}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="22" splitType="Stretch">
+			<staticText>
+				<reportElement x="1" y="2" width="98" height="20" uuid="87a4d568-9be5-43a7-87ba-383d80522aa7"/>
+				<box leftPadding="2">
+					<pen lineWidth="0.5" lineStyle="Solid"/>
+					<topPen lineWidth="0.5" lineStyle="Solid"/>
+					<leftPen lineWidth="0.5" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.5" lineStyle="Solid"/>
+					<rightPen lineWidth="0.5" lineStyle="Solid"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Location]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="136" y="2" width="20" height="20" uuid="dd963ccf-4d2a-401a-9438-1da854ff1df4"/>
+				<box leftPadding="2">
+					<pen lineWidth="0.5" lineStyle="Solid"/>
+					<topPen lineWidth="0.5" lineStyle="Solid"/>
+					<leftPen lineWidth="0.5" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.5" lineStyle="Solid"/>
+					<rightPen lineWidth="0.5" lineStyle="Solid"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[01]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="156" y="2" width="20" height="20" uuid="ff630906-9b14-41b7-8f94-b6f07812d126"/>
+				<box leftPadding="2">
+					<pen lineWidth="0.5" lineStyle="Solid"/>
+					<topPen lineWidth="0.5" lineStyle="Solid"/>
+					<leftPen lineWidth="0.5" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.5" lineStyle="Solid"/>
+					<rightPen lineWidth="0.5" lineStyle="Solid"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[02]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="99" y="2" width="37" height="20" uuid="8beb4541-a109-414d-96f7-216bc8ba4584"/>
+				<box leftPadding="2">
+					<pen lineWidth="0.5" lineStyle="Solid"/>
+					<topPen lineWidth="0.5" lineStyle="Solid"/>
+					<leftPen lineWidth="0.5" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.5" lineStyle="Solid"/>
+					<rightPen lineWidth="0.5" lineStyle="Solid"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Shift]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="176" y="2" width="20" height="20" uuid="1978c661-ad61-4eed-a5cc-b9a8deef940c"/>
+				<box leftPadding="2">
+					<pen lineWidth="0.5" lineStyle="Solid"/>
+					<topPen lineWidth="0.5" lineStyle="Solid"/>
+					<leftPen lineWidth="0.5" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.5" lineStyle="Solid"/>
+					<rightPen lineWidth="0.5" lineStyle="Solid"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[03]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="196" y="2" width="20" height="20" uuid="5ef5109a-a98d-414b-b30b-393e0c22d0f0"/>
+				<box leftPadding="2">
+					<pen lineWidth="0.5" lineStyle="Solid"/>
+					<topPen lineWidth="0.5" lineStyle="Solid"/>
+					<leftPen lineWidth="0.5" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.5" lineStyle="Solid"/>
+					<rightPen lineWidth="0.5" lineStyle="Solid"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[04]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="216" y="2" width="20" height="20" uuid="f99e37ed-51df-4946-9e82-28b77a3e7d25"/>
+				<box leftPadding="2">
+					<pen lineWidth="0.5" lineStyle="Solid"/>
+					<topPen lineWidth="0.5" lineStyle="Solid"/>
+					<leftPen lineWidth="0.5" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.5" lineStyle="Solid"/>
+					<rightPen lineWidth="0.5" lineStyle="Solid"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[05]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="236" y="2" width="20" height="20" uuid="70765750-613e-4f22-8362-c1ba83346f12"/>
+				<box leftPadding="2">
+					<pen lineWidth="0.5" lineStyle="Solid"/>
+					<topPen lineWidth="0.5" lineStyle="Solid"/>
+					<leftPen lineWidth="0.5" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.5" lineStyle="Solid"/>
+					<rightPen lineWidth="0.5" lineStyle="Solid"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[06]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="256" y="2" width="20" height="20" uuid="66e41da7-d5d2-43ef-b3fe-4b7422e16cc1"/>
+				<box leftPadding="2">
+					<pen lineWidth="0.5" lineStyle="Solid"/>
+					<topPen lineWidth="0.5" lineStyle="Solid"/>
+					<leftPen lineWidth="0.5" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.5" lineStyle="Solid"/>
+					<rightPen lineWidth="0.5" lineStyle="Solid"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[07]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="276" y="2" width="20" height="20" uuid="6aaffa32-1a9b-477a-a324-227cb7175871"/>
+				<box leftPadding="2">
+					<pen lineWidth="0.5" lineStyle="Solid"/>
+					<topPen lineWidth="0.5" lineStyle="Solid"/>
+					<leftPen lineWidth="0.5" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.5" lineStyle="Solid"/>
+					<rightPen lineWidth="0.5" lineStyle="Solid"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[08]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="296" y="2" width="20" height="20" uuid="3893c1fc-90e1-4e85-8b42-0321ff13b1d1"/>
+				<box leftPadding="2">
+					<pen lineWidth="0.5" lineStyle="Solid"/>
+					<topPen lineWidth="0.5" lineStyle="Solid"/>
+					<leftPen lineWidth="0.5" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.5" lineStyle="Solid"/>
+					<rightPen lineWidth="0.5" lineStyle="Solid"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[09]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="316" y="2" width="20" height="20" uuid="70e6ae86-10e3-4f19-aaec-859cf48be6b0"/>
+				<box leftPadding="2">
+					<pen lineWidth="0.5" lineStyle="Solid"/>
+					<topPen lineWidth="0.5" lineStyle="Solid"/>
+					<leftPen lineWidth="0.5" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.5" lineStyle="Solid"/>
+					<rightPen lineWidth="0.5" lineStyle="Solid"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[10]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="336" y="2" width="20" height="20" uuid="def819ec-342d-42b5-b380-722774026e55"/>
+				<box leftPadding="2">
+					<pen lineWidth="0.5" lineStyle="Solid"/>
+					<topPen lineWidth="0.5" lineStyle="Solid"/>
+					<leftPen lineWidth="0.5" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.5" lineStyle="Solid"/>
+					<rightPen lineWidth="0.5" lineStyle="Solid"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[11]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="356" y="2" width="20" height="20" uuid="0dc3be63-7213-4735-b6bf-6880a6f730b2"/>
+				<box leftPadding="2">
+					<pen lineWidth="0.5" lineStyle="Solid"/>
+					<topPen lineWidth="0.5" lineStyle="Solid"/>
+					<leftPen lineWidth="0.5" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.5" lineStyle="Solid"/>
+					<rightPen lineWidth="0.5" lineStyle="Solid"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[12]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="436" y="2" width="20" height="20" uuid="2ac19dc8-dd6e-4eb9-86ab-8fd060c92160"/>
+				<box leftPadding="2">
+					<pen lineWidth="0.5" lineStyle="Solid"/>
+					<topPen lineWidth="0.5" lineStyle="Solid"/>
+					<leftPen lineWidth="0.5" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.5" lineStyle="Solid"/>
+					<rightPen lineWidth="0.5" lineStyle="Solid"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[16]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="496" y="2" width="20" height="20" uuid="86e943ec-518f-456b-82ff-297e77cc146c"/>
+				<box leftPadding="2">
+					<pen lineWidth="0.5" lineStyle="Solid"/>
+					<topPen lineWidth="0.5" lineStyle="Solid"/>
+					<leftPen lineWidth="0.5" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.5" lineStyle="Solid"/>
+					<rightPen lineWidth="0.5" lineStyle="Solid"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[19]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="416" y="2" width="20" height="20" uuid="c1b526e4-9dd7-4637-a143-f582cd3cd659"/>
+				<box leftPadding="2">
+					<pen lineWidth="0.5" lineStyle="Solid"/>
+					<topPen lineWidth="0.5" lineStyle="Solid"/>
+					<leftPen lineWidth="0.5" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.5" lineStyle="Solid"/>
+					<rightPen lineWidth="0.5" lineStyle="Solid"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[15]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="456" y="2" width="20" height="20" uuid="eb58c4fb-5479-47c5-8c93-7177c57f5488"/>
+				<box leftPadding="2">
+					<pen lineWidth="0.5" lineStyle="Solid"/>
+					<topPen lineWidth="0.5" lineStyle="Solid"/>
+					<leftPen lineWidth="0.5" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.5" lineStyle="Solid"/>
+					<rightPen lineWidth="0.5" lineStyle="Solid"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[17]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="476" y="2" width="20" height="20" uuid="1b8dc207-37f6-49c0-b167-b5a965c52424"/>
+				<box leftPadding="2">
+					<pen lineWidth="0.5" lineStyle="Solid"/>
+					<topPen lineWidth="0.5" lineStyle="Solid"/>
+					<leftPen lineWidth="0.5" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.5" lineStyle="Solid"/>
+					<rightPen lineWidth="0.5" lineStyle="Solid"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[18]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="376" y="2" width="20" height="20" uuid="48e34c8f-4df2-4500-bea3-413b4cf7e838"/>
+				<box leftPadding="2">
+					<pen lineWidth="0.5" lineStyle="Solid"/>
+					<topPen lineWidth="0.5" lineStyle="Solid"/>
+					<leftPen lineWidth="0.5" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.5" lineStyle="Solid"/>
+					<rightPen lineWidth="0.5" lineStyle="Solid"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[13]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="516" y="2" width="20" height="20" uuid="ec41e075-5c9c-43ff-aae1-d346edb38c51"/>
+				<box leftPadding="2">
+					<pen lineWidth="0.5" lineStyle="Solid"/>
+					<topPen lineWidth="0.5" lineStyle="Solid"/>
+					<leftPen lineWidth="0.5" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.5" lineStyle="Solid"/>
+					<rightPen lineWidth="0.5" lineStyle="Solid"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[20]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="396" y="2" width="20" height="20" uuid="8959b0a6-7f99-4df2-a2c8-75d1d7f692ba"/>
+				<box leftPadding="2">
+					<pen lineWidth="0.5" lineStyle="Solid"/>
+					<topPen lineWidth="0.5" lineStyle="Solid"/>
+					<leftPen lineWidth="0.5" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.5" lineStyle="Solid"/>
+					<rightPen lineWidth="0.5" lineStyle="Solid"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[14]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="716" y="2" width="20" height="20" uuid="371d2642-1ebf-47d5-9875-25e62f4854a8"/>
+				<box leftPadding="2">
+					<pen lineWidth="0.5" lineStyle="Solid"/>
+					<topPen lineWidth="0.5" lineStyle="Solid"/>
+					<leftPen lineWidth="0.5" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.5" lineStyle="Solid"/>
+					<rightPen lineWidth="0.5" lineStyle="Solid"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[30]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="596" y="2" width="20" height="20" uuid="1a01ecc7-6a82-4585-a1fd-cbd78108a2ca"/>
+				<box leftPadding="2">
+					<pen lineWidth="0.5" lineStyle="Solid"/>
+					<topPen lineWidth="0.5" lineStyle="Solid"/>
+					<leftPen lineWidth="0.5" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.5" lineStyle="Solid"/>
+					<rightPen lineWidth="0.5" lineStyle="Solid"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[24]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="656" y="2" width="20" height="20" uuid="28284a15-9d76-4eee-b836-569dc0db9f7d"/>
+				<box leftPadding="2">
+					<pen lineWidth="0.5" lineStyle="Solid"/>
+					<topPen lineWidth="0.5" lineStyle="Solid"/>
+					<leftPen lineWidth="0.5" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.5" lineStyle="Solid"/>
+					<rightPen lineWidth="0.5" lineStyle="Solid"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[27]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="556" y="2" width="20" height="20" uuid="82aecfef-ba13-4670-8c52-2fb9f17755f3"/>
+				<box leftPadding="2">
+					<pen lineWidth="0.5" lineStyle="Solid"/>
+					<topPen lineWidth="0.5" lineStyle="Solid"/>
+					<leftPen lineWidth="0.5" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.5" lineStyle="Solid"/>
+					<rightPen lineWidth="0.5" lineStyle="Solid"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[22]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="536" y="2" width="20" height="20" uuid="857d8f51-331c-4637-899a-7349174f61cf"/>
+				<box leftPadding="2">
+					<pen lineWidth="0.5" lineStyle="Solid"/>
+					<topPen lineWidth="0.5" lineStyle="Solid"/>
+					<leftPen lineWidth="0.5" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.5" lineStyle="Solid"/>
+					<rightPen lineWidth="0.5" lineStyle="Solid"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[21]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="676" y="2" width="20" height="20" uuid="351577f3-a7f4-4fbb-a952-eb2b59706b49"/>
+				<box leftPadding="2">
+					<pen lineWidth="0.5" lineStyle="Solid"/>
+					<topPen lineWidth="0.5" lineStyle="Solid"/>
+					<leftPen lineWidth="0.5" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.5" lineStyle="Solid"/>
+					<rightPen lineWidth="0.5" lineStyle="Solid"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[28]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="636" y="2" width="20" height="20" uuid="b46e780e-f75d-4fdc-89d2-8fc4fdaac2c3"/>
+				<box leftPadding="2">
+					<pen lineWidth="0.5" lineStyle="Solid"/>
+					<topPen lineWidth="0.5" lineStyle="Solid"/>
+					<leftPen lineWidth="0.5" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.5" lineStyle="Solid"/>
+					<rightPen lineWidth="0.5" lineStyle="Solid"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[26]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="696" y="2" width="20" height="20" uuid="ce11925c-09ce-4994-837e-45a1236015b5"/>
+				<box leftPadding="2">
+					<pen lineWidth="0.5" lineStyle="Solid"/>
+					<topPen lineWidth="0.5" lineStyle="Solid"/>
+					<leftPen lineWidth="0.5" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.5" lineStyle="Solid"/>
+					<rightPen lineWidth="0.5" lineStyle="Solid"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[29]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="616" y="2" width="20" height="20" uuid="fec4a9e4-5eeb-4104-b98f-7680d53eb2ff"/>
+				<box leftPadding="2">
+					<pen lineWidth="0.5" lineStyle="Solid"/>
+					<topPen lineWidth="0.5" lineStyle="Solid"/>
+					<leftPen lineWidth="0.5" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.5" lineStyle="Solid"/>
+					<rightPen lineWidth="0.5" lineStyle="Solid"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[25]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="576" y="2" width="20" height="20" uuid="98fc745d-c7b0-4ef7-8983-cf292b94d661"/>
+				<box leftPadding="2">
+					<pen lineWidth="0.5" lineStyle="Solid"/>
+					<topPen lineWidth="0.5" lineStyle="Solid"/>
+					<leftPen lineWidth="0.5" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.5" lineStyle="Solid"/>
+					<rightPen lineWidth="0.5" lineStyle="Solid"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[23]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="736" y="2" width="20" height="20" uuid="eaeaca40-bcd8-4e02-9b2e-0e4927a34cb3"/>
+				<box leftPadding="2">
+					<pen lineWidth="0.5" lineStyle="Solid"/>
+					<topPen lineWidth="0.5" lineStyle="Solid"/>
+					<leftPen lineWidth="0.5" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.5" lineStyle="Solid"/>
+					<rightPen lineWidth="0.5" lineStyle="Solid"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[31]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="756" y="2" width="31" height="20" uuid="176ff07f-759c-48cf-a0da-f034c0a32004"/>
+				<box leftPadding="2">
+					<pen lineWidth="0.5" lineStyle="Solid"/>
+					<topPen lineWidth="0.5" lineStyle="Solid"/>
+					<leftPen lineWidth="0.5" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.5" lineStyle="Solid"/>
+					<rightPen lineWidth="0.5" lineStyle="Solid"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Total]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="99" splitType="Stretch">
+			<textField>
+				<reportElement x="1" y="0" width="98" height="20" uuid="b0180b21-ee5a-4255-b5d5-08e5e2ee2e5a"/>
+				<box leftPadding="2"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{l_code}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="1" y="20" width="98" height="60" uuid="8bc03553-8bb0-47af-8404-36c85fa647a1"/>
+				<box leftPadding="2"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{l_name}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="136" y="0" width="20" height="20" uuid="df2cc3ad-b90b-4ce4-9ac6-8581c3d5d024">
+					<printWhenExpression><![CDATA[$F{day1d}!='0']]></printWhenExpression>
+				</reportElement>
+				<box leftPadding="2"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{day1d}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="136" y="20" width="20" height="20" uuid="32e27bc2-b323-4c1b-ab74-0376137a71b2">
+					<printWhenExpression><![CDATA[$F{day1n}!='0']]></printWhenExpression>
+				</reportElement>
+				<box leftPadding="2"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{day1n}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="136" y="40" width="20" height="20" uuid="aa19183e-e871-4734-b7c6-ebcc039ea0b9"/>
+				<box leftPadding="2"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{day1h}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="156" y="0" width="20" height="20" uuid="4f490574-1c97-477c-9078-5d0a91cad833"/>
+				<box leftPadding="2"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{day2d}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="156" y="20" width="20" height="20" uuid="5fbdd29d-170e-4996-aca3-7a94efaefb26"/>
+				<box leftPadding="2"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{day2n}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="156" y="40" width="20" height="20" uuid="682c8f1b-3895-482b-8ef5-c159f3f3a647"/>
+				<box leftPadding="2"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{day2h}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="99" y="0" width="37" height="20" uuid="e662598c-37cc-4887-9fa6-234cdfad8bd4"/>
+				<box leftPadding="2"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<text><![CDATA[Day]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="99" y="20" width="37" height="20" uuid="7281bebf-248c-4e69-b79e-233f186d47af"/>
+				<box leftPadding="2"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<text><![CDATA[Night]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="99" y="40" width="37" height="20" uuid="4666d709-b6af-43a2-be33-245895cc3156"/>
+				<box leftPadding="2"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<text><![CDATA[HalfDay]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="176" y="0" width="20" height="20" uuid="c73c3a62-19df-4633-96f6-3cdaac04126d"/>
+				<box leftPadding="2"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{day3d}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="176" y="20" width="20" height="20" uuid="f08549b6-fa84-44dd-a67b-7b59be9b8070"/>
+				<box leftPadding="2"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{day3n}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="176" y="40" width="20" height="20" uuid="d59d7a75-3060-4bec-8c1d-3843c21defb0"/>
+				<box leftPadding="2"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{day3h}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="196" y="0" width="20" height="20" uuid="507bfefb-e961-4331-b818-21ec401229c5"/>
+				<box leftPadding="2"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{day4d}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="196" y="20" width="20" height="20" uuid="4fe5843f-cf69-438f-afc9-d2ddf2c2623a"/>
+				<box leftPadding="2"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{day4n}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="196" y="40" width="20" height="20" uuid="b997ba35-9196-4767-83bc-a8f91127a60c">
+					<printWhenExpression><![CDATA[$F{day4h}!='0.0']]></printWhenExpression>
+				</reportElement>
+				<box leftPadding="2"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{day4h}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="216" y="0" width="20" height="20" uuid="aea3c651-fbaf-493b-9e65-e27666c29189"/>
+				<box leftPadding="2"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{day5d}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="216" y="20" width="20" height="20" uuid="cbab15cd-7b11-4197-9b6b-936d056bcccb"/>
+				<box leftPadding="2"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{day5n}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="216" y="40" width="20" height="20" uuid="7ce025e6-abf5-4cb4-90e2-762d23565881"/>
+				<box leftPadding="2"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{day5h}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="236" y="0" width="20" height="20" uuid="bc90eb1c-71dd-4341-89f6-1347f2603226"/>
+				<box leftPadding="2"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{day6d}]]></textFieldExpression>
+			</textField>
+			<textField pattern="">
+				<reportElement x="236" y="20" width="20" height="20" uuid="c1ca95f3-bfd2-4f93-9459-3c52fc6f9071"/>
+				<box leftPadding="2"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{day6n}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="236" y="40" width="20" height="20" uuid="03e8cfeb-3beb-4847-9f62-0872df0e1ecf"/>
+				<box leftPadding="2"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{day6h}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="256" y="0" width="20" height="20" uuid="73c0559d-941b-42d5-8deb-5a492d26d461"/>
+				<box leftPadding="2"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{day7d}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="256" y="20" width="20" height="20" uuid="c9286243-e926-4da4-9a12-e188bb32f604"/>
+				<box leftPadding="2"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{day7n}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="256" y="40" width="20" height="20" uuid="39af36c2-69ee-4003-bb0a-b071c2182ac3"/>
+				<box leftPadding="2"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{day7h}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="276" y="0" width="20" height="20" uuid="90312212-2753-4e94-8e06-dbfba27f9a7b"/>
+				<box leftPadding="2"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{day8d}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="276" y="20" width="20" height="20" uuid="030a2d94-f569-47a0-a1da-efa1bb6006ae"/>
+				<box leftPadding="2"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{day8n}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="276" y="40" width="20" height="20" uuid="ae6271bd-6cf1-4e91-9875-172c2c514445"/>
+				<box leftPadding="2"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{day8h}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="296" y="0" width="20" height="20" uuid="0afb2b9a-40a2-41a9-a6cc-55d7a03ca6dd"/>
+				<box leftPadding="2"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{day9d}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="296" y="20" width="20" height="20" uuid="d2ca347e-d138-4842-90c2-69c06d1dcf70"/>
+				<box leftPadding="2"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{day9n}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="296" y="40" width="20" height="20" uuid="1c7a5897-5eab-4534-89d3-a07923a2185d"/>
+				<box leftPadding="2"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{day9h}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="316" y="0" width="20" height="20" uuid="01b3c299-925f-4c7f-9be1-4b9631102d4e"/>
+				<box leftPadding="2"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{day10d}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="316" y="20" width="20" height="20" uuid="8b4b6210-fa7f-4d2c-a4e8-6486080a97fb">
+					<printWhenExpression><![CDATA[$F{day10n}!='0']]></printWhenExpression>
+				</reportElement>
+				<box leftPadding="2"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{day10n}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="316" y="40" width="20" height="20" uuid="e27e06b2-ab9f-4143-a517-86ff5eb813c1"/>
+				<box leftPadding="2"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{day10h}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="336" y="40" width="20" height="20" uuid="35742a08-5cd4-4700-9396-a677bdb461cd"/>
+				<box leftPadding="2"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{day11h}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="336" y="20" width="20" height="20" uuid="c92e49d9-88fe-4f2d-8ca3-595232ccb3fa"/>
+				<box leftPadding="2"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{day11n}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="336" y="0" width="20" height="20" uuid="a5d95fd9-6f14-4c53-ba28-1dd1b6d18a5d"/>
+				<box leftPadding="2"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{day11d}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="416" y="20" width="20" height="20" uuid="3be1e63d-e3e3-42e1-b0ed-288aa95fb79a"/>
+				<box leftPadding="2"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{day15n}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="356" y="40" width="20" height="20" uuid="e2167c32-5d05-4a82-b1f7-1c3b58e35f40"/>
+				<box leftPadding="2"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{day12h}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="376" y="0" width="20" height="20" uuid="a864907a-f022-4f1f-81ea-1c1d81a1f421"/>
+				<box leftPadding="2"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{day13d}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="536" y="0" width="20" height="20" uuid="038f1849-5741-464a-aa91-8c9db106a19e"/>
+				<box leftPadding="2"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{day21d}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="416" y="40" width="20" height="20" uuid="4a88220b-70c8-4ad4-9773-12ed306463be"/>
+				<box leftPadding="2"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{day15h}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="476" y="0" width="20" height="20" uuid="84d44a8e-1831-43aa-b817-edd48228a9ec"/>
+				<box leftPadding="2"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{day18d}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="376" y="20" width="20" height="20" uuid="36495fcc-c81f-4da2-a0bc-0eca08c592b4"/>
+				<box leftPadding="2"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{day13n}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="496" y="40" width="20" height="20" uuid="202ebc3b-4c9d-4deb-9830-517e19411567"/>
+				<box leftPadding="2"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{day19h}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="456" y="20" width="20" height="20" uuid="b958251a-8a21-4501-a84f-d69197a04d9f"/>
+				<box leftPadding="2"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{day17n}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="396" y="20" width="20" height="20" uuid="2670f36f-efe2-4f9c-8981-fe066934e5dc"/>
+				<box leftPadding="2"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{day14n}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="516" y="20" width="20" height="20" uuid="aad97e11-96fa-428c-a811-cb9585647d80"/>
+				<box leftPadding="2"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{day20n}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="416" y="0" width="20" height="20" uuid="57bc6b0d-8fb8-4352-807e-7c99998407da"/>
+				<box leftPadding="2"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{day15d}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="516" y="0" width="20" height="20" uuid="70376960-aaf2-4901-a8f2-fccf3e211448"/>
+				<box leftPadding="2"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{day20d}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="456" y="0" width="20" height="20" uuid="1cb30fc3-99d4-48bf-a97e-74ac497a6e1a"/>
+				<box leftPadding="2"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{day17d}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="436" y="0" width="20" height="20" uuid="5d6fa9a2-8824-4fc8-87cd-07f8928f9d03"/>
+				<box leftPadding="2"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{day16d}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="476" y="20" width="20" height="20" uuid="88afeae3-917e-49ec-9dcc-18aad2d340ac"/>
+				<box leftPadding="2"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{day18n}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="456" y="40" width="20" height="20" uuid="f2cbead7-7c28-4303-9164-2b6edfda2fe2"/>
+				<box leftPadding="2"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{day17h}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="436" y="20" width="20" height="20" uuid="f5adc5c6-dfb1-49e7-9b52-7a7562fa37a5"/>
+				<box leftPadding="2"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{day16n}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="496" y="0" width="20" height="20" uuid="ae86f121-1410-4fe9-a371-5bdbea6bd21a"/>
+				<box leftPadding="2"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{day19d}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="496" y="20" width="20" height="20" uuid="b62b8bd2-d173-48a9-a19a-d139b22f965d"/>
+				<box leftPadding="2"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{day19n}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="356" y="20" width="20" height="20" uuid="46a548b4-a291-41e2-8916-1900e541ba0a"/>
+				<box leftPadding="2"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{day12n}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="516" y="40" width="20" height="20" uuid="b88a2c19-79c1-4c79-a73d-c0cacb12e1f1"/>
+				<box leftPadding="2"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{day20h}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="376" y="40" width="20" height="20" uuid="41284d5f-69a5-48b9-9351-b80692cbf14b"/>
+				<box leftPadding="2"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{day13h}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="356" y="0" width="20" height="20" uuid="80759429-a201-4272-89b8-fb5121218534"/>
+				<box leftPadding="2"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{day12d}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="536" y="40" width="20" height="20" uuid="c9cda7b7-c784-4caa-ac03-71ee58460e0f"/>
+				<box leftPadding="2"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{day21h}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="396" y="0" width="20" height="20" uuid="483851fa-fd63-47fd-83c9-e118989deef6"/>
+				<box leftPadding="2"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{day14d}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="436" y="40" width="20" height="20" uuid="27180288-5b0b-483f-808a-70a5d269cff4"/>
+				<box leftPadding="2"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{day16h}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="476" y="40" width="20" height="20" uuid="ca29b34f-4cf8-4a17-9028-fc9ad139ead5"/>
+				<box leftPadding="2"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{day18h}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="536" y="20" width="20" height="20" uuid="d3ab1e70-3e49-45dc-90e3-d4e4d26f8da1"/>
+				<box leftPadding="2"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{day21n}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="396" y="40" width="20" height="20" uuid="53ceb2d4-32d1-4814-91ac-5439e2e6459d"/>
+				<box leftPadding="2"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{day14h}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="556" y="40" width="20" height="20" uuid="aa8537b8-0bc6-46bf-b856-fb22c0390e9a"/>
+				<box leftPadding="2"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{day22h}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="596" y="0" width="20" height="20" uuid="65cd35dc-9f52-45cd-9d3a-a8019f69738f"/>
+				<box leftPadding="2"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{day24d}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="636" y="40" width="20" height="20" uuid="fcd6d943-d49d-4bd7-bced-e8d0fc1bdc58"/>
+				<box leftPadding="2"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{day26h}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="576" y="20" width="20" height="20" uuid="95a0fb3c-822d-4640-aa80-e208632cf96d"/>
+				<box leftPadding="2"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{day23n}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="696" y="0" width="20" height="20" uuid="734083e3-1d35-4005-a722-cd6a9e1a11bd"/>
+				<box leftPadding="2"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{day29d}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="596" y="20" width="20" height="20" uuid="5335adc3-77bf-4a83-9485-824c9dd0ee17"/>
+				<box leftPadding="2"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{day24n}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="716" y="40" width="20" height="20" uuid="8b3edc93-633a-4480-9b48-5526267f6e8e"/>
+				<box leftPadding="2"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{day30h}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="616" y="20" width="20" height="20" uuid="0cc79bc6-b665-47ba-98e9-bd64d4694761"/>
+				<box leftPadding="2"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{day25n}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="736" y="0" width="20" height="20" uuid="bf2f6b03-05ad-47c5-8e06-3bc40c9daf74"/>
+				<box leftPadding="2"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{day31d}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="696" y="20" width="20" height="20" uuid="8558e3d3-46c7-4658-8213-6b25970caa30"/>
+				<box leftPadding="2"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{day29n}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="656" y="20" width="20" height="20" uuid="ac022b59-7ba0-4b34-b3f8-96eb2bf26084"/>
+				<box leftPadding="2"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{day27n}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="736" y="40" width="20" height="20" uuid="6fb09898-5364-4190-821d-72035add6106"/>
+				<box leftPadding="2"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{day31h}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="636" y="20" width="20" height="20" uuid="d4643037-f303-4dac-9165-852267e8c97c"/>
+				<box leftPadding="2"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{day26n}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="676" y="20" width="20" height="20" uuid="2281fd12-9c5c-4e54-bf31-6d20c0cc70e3"/>
+				<box leftPadding="2"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{day28n}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="736" y="20" width="20" height="20" uuid="0e7e66b4-39bb-49d7-bd75-b3607d44fc03"/>
+				<box leftPadding="2"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{day31n}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="576" y="0" width="20" height="20" uuid="a2564cb0-468a-4be5-a664-61563f72c61c"/>
+				<box leftPadding="2"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{day23d}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="636" y="0" width="20" height="20" uuid="df49d3a8-7dfb-4240-a61f-76b04304a06b"/>
+				<box leftPadding="2"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{day26d}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="676" y="0" width="20" height="20" uuid="daf86bc0-f86e-417a-a688-9587aa5f6ddb"/>
+				<box leftPadding="2"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{day28d}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="656" y="0" width="20" height="20" uuid="6a652937-8374-4d69-ab3c-c6fad4d18013"/>
+				<box leftPadding="2"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{day27d}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="676" y="40" width="20" height="20" uuid="33171141-a0f8-467f-9701-bd56e7a55db9"/>
+				<box leftPadding="2"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{day28h}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="716" y="0" width="20" height="20" uuid="ae0961cf-8810-4cad-a551-622b1d4c3b40"/>
+				<box leftPadding="2"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{day30d}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="716" y="20" width="20" height="20" uuid="f11ad7c0-40d7-4715-b8e7-7487a65762e5"/>
+				<box leftPadding="2"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{day30n}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="556" y="20" width="20" height="20" uuid="314561db-b33e-4c9a-852c-c44c2286231a"/>
+				<box leftPadding="2"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{day22n}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="596" y="40" width="20" height="20" uuid="a8f4b27d-d703-41df-a974-c727df305bf4"/>
+				<box leftPadding="2"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{day24h}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="576" y="40" width="20" height="20" uuid="7e76d677-a5de-4370-a94c-2b5d6595c44a"/>
+				<box leftPadding="2"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{day23h}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="556" y="0" width="20" height="20" uuid="c3394390-e50a-4454-8f2b-3f6d653cedfa"/>
+				<box leftPadding="2"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{day22d}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="616" y="0" width="20" height="20" uuid="615f0a1d-b82b-46d2-be9c-11b4a4d5f6c2"/>
+				<box leftPadding="2"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{day25d}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="696" y="40" width="20" height="20" uuid="4b8cbba4-9ac8-4b0b-897e-14a8a7129f51"/>
+				<box leftPadding="2"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{day29h}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="656" y="40" width="20" height="20" uuid="2fcae429-2d43-4e89-a725-1d6830d3780c"/>
+				<box leftPadding="2"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{day27h}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="616" y="40" width="20" height="20" uuid="74b919d1-cf77-4a54-b36a-27c807e8b247"/>
+				<box leftPadding="2"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{day25h}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="756" y="0" width="31" height="78" uuid="d3b56c33-9b61-48f8-af93-fcb8d0e848fc"/>
+				<box leftPadding="2">
+					<pen lineWidth="0.5" lineStyle="Solid"/>
+					<topPen lineWidth="0.5" lineStyle="Solid"/>
+					<leftPen lineWidth="0.5" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.5" lineStyle="Solid"/>
+					<rightPen lineWidth="0.5" lineStyle="Solid"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="11" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{total_shifts}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="1" y="79" width="786" height="1" uuid="814d55f5-9985-48c2-8596-74102271490f"/>
+			</line>
+			<line>
+				<reportElement x="99" y="20" width="657" height="1" uuid="3e8c46a5-0cfc-40c5-b53f-3efda4cd5f85"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineStyle="Dotted"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="99" y="40" width="657" height="1" uuid="5b10f108-45c7-4c48-b75c-a4fd1e5cbb7c"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineStyle="Dotted"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="136" y="0" width="1" height="78" uuid="5bfefdd9-9b21-485a-a95c-bf764da588ee"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineStyle="Dotted"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="99" y="-1" width="1" height="79" uuid="018f5c0a-50bf-4b7a-b06f-1cd5de670c7d"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineStyle="Dotted"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="156" y="0" width="1" height="80" uuid="1fd8c070-f0cf-490f-ac51-983121d5c538"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineStyle="Dotted"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="176" y="0" width="1" height="80" uuid="d5ebcdcc-41da-4061-bd7e-bf9c328eedcf"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineStyle="Dotted"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="196" y="-1" width="1" height="81" uuid="a742183c-5b36-4fab-b5d0-b726fd1b84f0"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineStyle="Dotted"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="216" y="-1" width="1" height="80" uuid="594a0701-259f-48f6-839f-985b70464e02"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineStyle="Dotted"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="236" y="-1" width="1" height="80" uuid="f0640330-abae-4a8a-9620-9578b98a704c"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineStyle="Dotted"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="256" y="-2" width="1" height="80" uuid="37906cee-95e0-419c-8f29-e591dcdae4a2"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineStyle="Dotted"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="276" y="-2" width="1" height="80" uuid="673bcfd7-33db-4535-8dc2-04bd2ba0981d"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineStyle="Dotted"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="296" y="-1" width="1" height="80" uuid="d9e5921a-338b-4a7a-a930-7905c3259c5b"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineStyle="Dotted"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="316" y="-1" width="1" height="80" uuid="d2002080-fac8-4b49-89ca-861c33f6914d"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineStyle="Dotted"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="336" y="0" width="1" height="80" uuid="5c950e76-e73b-4574-9901-2b9c4c26040c"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineStyle="Dotted"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="356" y="0" width="1" height="80" uuid="9762ece3-b2a3-4750-b84b-022fddeb99c8"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineStyle="Dotted"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="376" y="0" width="1" height="80" uuid="849b701d-7172-4d68-8b9c-91cc09246a14"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineStyle="Dotted"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="396" y="0" width="1" height="80" uuid="4b19a1bc-1ad9-47a6-b3a0-2947d5c0dbf4"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineStyle="Dotted"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="416" y="0" width="1" height="80" uuid="67cf756d-782e-4e95-888b-f9661315a87c"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineStyle="Dotted"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="436" y="-1" width="1" height="80" uuid="4ef4f66d-692d-491a-94fb-2684ff29273e"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineStyle="Dotted"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="456" y="0" width="1" height="80" uuid="87de6dd5-5a22-4ea4-b5bf-d8c986e3b808"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineStyle="Dotted"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="476" y="0" width="1" height="80" uuid="c6003ea2-9870-40e4-9bad-6e477eae12fa"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineStyle="Dotted"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="496" y="0" width="1" height="80" uuid="44ae4292-d6c8-4521-ab18-518a0bd7b745"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineStyle="Dotted"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="516" y="0" width="1" height="80" uuid="aca05c55-c305-462e-b4c1-4af704610f4d"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineStyle="Dotted"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="536" y="0" width="1" height="80" uuid="c78de9d3-bb95-4894-973f-e2afae5d2a4d"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineStyle="Dotted"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="556" y="0" width="1" height="80" uuid="62cdc783-2f91-4a29-83b8-07505ff5513e"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineStyle="Dotted"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="576" y="0" width="1" height="80" uuid="8e2a3609-b707-4109-8440-4f17c1bdffac"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineStyle="Dotted"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="596" y="0" width="1" height="80" uuid="55c6fe8d-3b9a-4b04-875e-12dda17242dd"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineStyle="Dotted"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="0" y="0" width="1" height="80" uuid="1b0f6426-84d1-43d2-8dc2-b6ced01a86f9"/>
+				<graphicElement>
+					<pen lineWidth="1.0" lineStyle="Solid"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="616" y="0" width="1" height="80" uuid="f6c25137-c01a-484e-b87d-824c0e9e2182"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineStyle="Dotted"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="636" y="0" width="1" height="80" uuid="6b4cf17a-a36b-4d19-9518-d79110e0c6f0"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineStyle="Dotted"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="656" y="0" width="1" height="80" uuid="a21500b0-f1aa-48e4-b9aa-5ca01feb2fc9"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineStyle="Dotted"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="676" y="0" width="1" height="80" uuid="4397e2c5-72a1-4e8f-894d-8beeecd2930e"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineStyle="Dotted"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="696" y="0" width="1" height="80" uuid="7ad567ab-2d38-4ce6-8d6f-9c9217a4cbaf"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineStyle="Dotted"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="716" y="0" width="1" height="80" uuid="e597a851-dd16-4559-b180-29cabcf5b7f5"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineStyle="Dotted"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="736" y="0" width="1" height="80" uuid="9d5b91e3-36ad-45ab-9f3d-6258ebc7e7d2"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineStyle="Dotted"/>
+				</graphicElement>
+			</line>
+			<textField>
+				<reportElement x="676" y="60" width="20" height="20" uuid="ec8033a3-44aa-44ab-b137-c7c1595d9052"/>
+				<box leftPadding="2">
+					<pen lineWidth="0.0"/>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{day28dt}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="536" y="60" width="20" height="20" uuid="6f5dcf55-290f-4332-b450-2c513565d66f"/>
+				<box leftPadding="2">
+					<pen lineWidth="0.0"/>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{day21dt}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="516" y="60" width="20" height="20" uuid="d7342ddd-b77c-493a-880b-1ceddb5338a4"/>
+				<box leftPadding="2">
+					<pen lineWidth="0.0"/>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{day20dt}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="596" y="60" width="20" height="20" uuid="91695fbd-ac09-477c-b27d-2dfb2c3b9c4e"/>
+				<box leftPadding="2">
+					<pen lineWidth="0.0"/>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{day24dt}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="736" y="60" width="20" height="20" uuid="e3097f34-da5f-46f6-8d5c-55a6bd23415a"/>
+				<box leftPadding="2">
+					<pen lineWidth="0.0"/>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{day31dt}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="256" y="60" width="20" height="20" uuid="a8e1dd4e-73f1-44a7-9174-d56669bc8ce9"/>
+				<box leftPadding="2">
+					<pen lineWidth="0.0"/>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{day7dt}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="576" y="60" width="20" height="20" uuid="25ec11f8-1f95-4bed-a255-ef55c2966344"/>
+				<box leftPadding="2">
+					<pen lineWidth="0.0"/>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{day23dt}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="416" y="60" width="20" height="20" uuid="1b188794-7e03-4c23-8526-623a53ef8d65"/>
+				<box leftPadding="2">
+					<pen lineWidth="0.0"/>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{day15dt}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="356" y="60" width="20" height="20" uuid="c7b95824-1291-4a2e-b1bc-2e17dcdcbcad"/>
+				<box leftPadding="2">
+					<pen lineWidth="0.0"/>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{day12dt}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="276" y="60" width="20" height="20" uuid="bac76d70-4686-48d0-afb6-2022705f9714"/>
+				<box leftPadding="2">
+					<pen lineWidth="0.0"/>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{day8dt}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="216" y="60" width="20" height="20" uuid="8b4c857f-fe87-4dba-a302-da9aa7898b64"/>
+				<box leftPadding="2">
+					<pen lineWidth="0.0"/>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{day5dt}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="296" y="60" width="20" height="20" uuid="246100a3-91ff-4b84-b11f-cd6532397619"/>
+				<box leftPadding="2">
+					<pen lineWidth="0.0"/>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{day9dt}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="656" y="60" width="20" height="20" uuid="2efc74c5-b37f-4ab2-ba79-f6f4039911cc"/>
+				<box leftPadding="2">
+					<pen lineWidth="0.0"/>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{day27dt}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="376" y="60" width="20" height="20" uuid="2393dcc5-9fa6-4e80-ac50-728e2b65e6b4"/>
+				<box leftPadding="2">
+					<pen lineWidth="0.0"/>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{day13dt}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="556" y="60" width="20" height="20" uuid="cf00164b-fa74-4572-8190-0e582eebf721"/>
+				<box leftPadding="2">
+					<pen lineWidth="0.0"/>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{day22dt}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="636" y="60" width="20" height="20" uuid="a1c6c854-a396-4c49-bbe6-13aa019b440e"/>
+				<box leftPadding="2">
+					<pen lineWidth="0.0"/>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{day26dt}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="476" y="60" width="20" height="20" uuid="d4bdb6fa-3723-41fc-9b2b-8ab813249d14"/>
+				<box leftPadding="2">
+					<pen lineWidth="0.0"/>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{day18dt}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="396" y="60" width="20" height="20" uuid="fb399ff2-f4dd-412f-a157-e374dfd5cbe6"/>
+				<box leftPadding="2">
+					<pen lineWidth="0.0"/>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{day14dt}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="716" y="60" width="20" height="20" uuid="cdc2ceb1-4647-4bb4-94d6-cec20625470c"/>
+				<box leftPadding="2">
+					<pen lineWidth="0.0"/>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{day30dt}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="456" y="60" width="20" height="20" uuid="20468aae-038f-4d64-aa5f-da12eca1962c"/>
+				<box leftPadding="2">
+					<pen lineWidth="0.0"/>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{day17dt}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="99" y="60" width="37" height="20" uuid="b1820a60-b1da-4d50-9c86-805b07663705"/>
+				<box leftPadding="2">
+					<pen lineWidth="0.0"/>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<text><![CDATA[Day 2]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="616" y="60" width="20" height="20" uuid="083a286b-d48e-4aa2-9819-f82fc23b4f2a"/>
+				<box leftPadding="2">
+					<pen lineWidth="0.0"/>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{day25dt}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="316" y="60" width="20" height="20" uuid="afae2b4c-28df-453a-a11a-8a773c294239"/>
+				<box leftPadding="2">
+					<pen lineWidth="0.0"/>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{day10dt}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="436" y="60" width="20" height="20" uuid="c0b5795b-c794-43e6-a49b-547cce8a71d5"/>
+				<box leftPadding="2">
+					<pen lineWidth="0.0"/>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{day16dt}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="176" y="60" width="20" height="20" uuid="cffdd504-4546-4301-ac69-b0a6b6baf656"/>
+				<box leftPadding="2">
+					<pen lineWidth="0.0"/>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{day3dt}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="156" y="60" width="20" height="20" uuid="1171afaf-e319-4949-b68b-a8e139b06c6b"/>
+				<box leftPadding="2">
+					<pen lineWidth="0.0"/>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{day2dt}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="136" y="60" width="20" height="20" uuid="ee82580a-641d-472b-be5b-8c716e84cc0b">
+					<printWhenExpression><![CDATA[$F{day1d}!='0']]></printWhenExpression>
+				</reportElement>
+				<box leftPadding="2">
+					<pen lineWidth="0.0"/>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{day1dt}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="336" y="60" width="20" height="20" uuid="aa1b5986-5711-499b-8129-9bf925f3381e"/>
+				<box leftPadding="2">
+					<pen lineWidth="0.0"/>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{day11dt}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="236" y="60" width="20" height="20" uuid="dceef50e-2431-481d-8f0a-74fc8407e9f4"/>
+				<box leftPadding="2">
+					<pen lineWidth="0.0"/>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{day6dt}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="696" y="60" width="20" height="20" uuid="44ce8604-6f8a-4966-a50a-535d3cfd2d4d"/>
+				<box leftPadding="2">
+					<pen lineWidth="0.0"/>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{day29dt}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="196" y="60" width="20" height="20" uuid="9da21f3d-5176-4169-80ad-e00217b657c8"/>
+				<box leftPadding="2">
+					<pen lineWidth="0.0"/>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{day4dt}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="496" y="60" width="20" height="20" uuid="bf9efd41-3589-4ff2-8fe1-d6db5bc15ecb"/>
+				<box leftPadding="2">
+					<pen lineWidth="0.0"/>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{day19dt}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="100" y="58" width="657" height="1" uuid="1ef76bf7-6e9a-4bd1-b39b-c4e8ed443a7a"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineStyle="Dotted"/>
+				</graphicElement>
+			</line>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="23" splitType="Stretch">
+			<textField>
+				<reportElement x="656" y="3" width="80" height="20" uuid="46ad6754-6d64-4f00-8264-b9dcdaadc314"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="736" y="3" width="40" height="20" uuid="0764083d-928d-4fdb-8086-ba6f20c13df6"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="6" y="3" width="190" height="20" uuid="06a42134-cc82-4a7d-a5d7-1b38fe988e79"/>
+				<textElement verticalAlignment="Bottom">
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<text><![CDATA[TechSeedPayRoll:www.techseedlk.com]]></text>
+			</staticText>
+			<textField pattern="dd MMMMM yyyy">
+				<reportElement x="320" y="3" width="136" height="20" uuid="f5084a3c-8d20-4c90-8072-76f7218709c5"/>
+				<textElement verticalAlignment="Bottom">
+					<font fontName="Times New Roman" size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="1" y="5" width="786" height="1" uuid="b9df1522-f7ab-41ed-b642-b9c05caed0c2"/>
+			</line>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

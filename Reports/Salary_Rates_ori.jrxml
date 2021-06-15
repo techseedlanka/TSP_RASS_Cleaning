@@ -1,0 +1,414 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Salary_Rates" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="0fe4e1c8-6173-4af0-b27e-fe23dbdc2f93">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[SELECT
+*
+FROM
+     `salary_rates` join location_reg on salary_rates.LocCode=location_reg.LocCode join location_shift_rates on salary_rates.LocCode=location_shift_rates.LocCode and salary_rates.RankCode = location_shift_rates.Rank]]>
+	</queryString>
+	<field name="RankCode" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Rank" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="MinDayRate" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="MaxShiftsPerMonth" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="BRAPerDay" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="MaxShiftsForBRA" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Sunday" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Poyaday" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="OTRate" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Advance" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="LocCode" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="ActualBasic" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="LocName" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="LocAddress" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Tel1" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Tel2" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Tel3" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="City" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="District" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="LocInchargeID" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="LocInchargeName" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="LocOwnerName" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="LocOwnerTel" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="LocOwnerMobile" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="LocType" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="LocStatus" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="DayRate" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="NightRate" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="40" splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="39" splitType="Stretch">
+			<staticText>
+				<reportElement x="15" y="2" width="100" height="25" uuid="4616bd79-808a-4629-921c-65980f3ca176"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12" isBold="true"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<text><![CDATA[Location]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="186" y="0" width="45" height="38" uuid="1a78ae84-1172-42ab-ac80-3e72cb16f12b"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Min Day Rate For Basic]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="234" y="0" width="50" height="38" uuid="6d4022e6-e17f-4924-952e-f97e84f243b2"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Max Shifts Per Month for Basic]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="285" y="2" width="52" height="36" uuid="da8f4755-0d30-4c20-bfdb-4c20f6fcbc04"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Actual Basic]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="337" y="2" width="48" height="36" uuid="0fe30bb4-e1f2-46a7-87bb-e6a83bb59aa0"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" isBold="true"/>
+				</textElement>
+				<text><![CDATA[BRA Per Day]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="385" y="2" width="52" height="36" uuid="54e27806-a41b-42bc-89fa-5587a0c9d5cb"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Max Shifts For BRA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="436" y="2" width="56" height="36" uuid="483b85af-6be7-44ad-abb1-33f0b4d05fcc"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Sunday]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="492" y="2" width="61" height="36" uuid="743b5fe7-3201-46e7-b279-8e107b324078"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Poyaday]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="553" y="2" width="54" height="36" uuid="2106d192-9c5a-49ac-a555-7ac08f3c9dc3"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" isBold="true"/>
+				</textElement>
+				<text><![CDATA[OT Rate]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="607" y="2" width="59" height="36" uuid="fd796c0a-f09a-4d2b-8da6-d7cbe98719c4"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Advance]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="666" y="2" width="57" height="36" uuid="a597ab63-5894-4879-9166-064ba605515a"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Day Rate]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="723" y="2" width="57" height="36" uuid="49ce716b-9f1d-40c1-8145-275da6c69569"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Night Rate]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="47" y="23" width="100" height="15" uuid="926a1230-7342-4fda-ab03-50c7572bffb8"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Rank]]></text>
+			</staticText>
+			<line>
+				<reportElement x="15" y="37" width="766" height="1" uuid="9e6244ca-d11c-4a6f-be99-9dcba8fd552d"/>
+			</line>
+			<line>
+				<reportElement x="15" y="1" width="766" height="1" uuid="f86b10d1-0fb6-461c-82a0-539c64f68f4d"/>
+			</line>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="47" splitType="Stretch">
+			<line>
+				<reportElement x="185" y="-38" width="1" height="35" uuid="6194b852-05f4-4f1f-84fe-1e3b016b5c11"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineStyle="Dashed"/>
+				</graphicElement>
+			</line>
+			<textField isBlankWhenNull="true">
+				<reportElement positionType="Float" isPrintRepeatedValues="false" x="15" y="2" width="32" height="20" isRemoveLineWhenBlank="true" uuid="99115db9-b7ec-4bcf-b3bc-86ddbccb413a"/>
+				<textElement>
+					<font fontName="Times New Roman" size="12" isBold="true" isItalic="false" isUnderline="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{LocCode}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="186" y="26" width="45" height="20" uuid="94bfb5ec-558e-466c-b54d-1eae27371aa9"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="11"/>
+					<paragraph rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{MinDayRate}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="234" y="26" width="50" height="20" uuid="7c2a113a-a1cf-4dd0-a01c-7025ddbbd193"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="11"/>
+					<paragraph rightIndent="3"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{MaxShiftsPerMonth}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="285" y="26" width="52" height="20" uuid="54dca0f3-ff7d-4fa1-b430-fc16c62dd761"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="11"/>
+					<paragraph rightIndent="3"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{ActualBasic}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="337" y="26" width="48" height="20" uuid="e60ab3df-5329-4274-9f20-7f92ae164766"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="11"/>
+					<paragraph rightIndent="3"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{BRAPerDay}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="385" y="26" width="52" height="20" uuid="4483f3ea-83d6-486a-98b6-0d9c39be2976"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="11"/>
+					<paragraph rightIndent="3"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{MaxShiftsForBRA}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="436" y="26" width="56" height="20" uuid="876fcc55-af6a-45a6-a0e7-a23062da4b85"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="11"/>
+					<paragraph rightIndent="3"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Sunday}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="492" y="26" width="61" height="20" uuid="1d3e8b5c-7071-4930-89a5-8ba1bd671d96"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="11"/>
+					<paragraph rightIndent="3"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Poyaday}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="553" y="26" width="54" height="20" uuid="efa0343e-5c6a-409e-95f6-15ae5c9bfb3f"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="11"/>
+					<paragraph rightIndent="3"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{OTRate}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="607" y="26" width="59" height="20" uuid="02effa9c-88f6-4dd7-ba02-383a85ec0830"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="11"/>
+					<paragraph rightIndent="3"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Advance}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="666" y="26" width="57" height="20" uuid="5f0300dd-03bb-43a0-95ff-272f1e38f9e1"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="11"/>
+					<paragraph rightIndent="3"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{DayRate}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="723" y="26" width="57" height="20" uuid="0c191613-e08d-440d-b70b-5fac432702da"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="11"/>
+					<paragraph rightIndent="3"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{NightRate}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="15" y="26" width="32" height="20" uuid="64ed89b1-5148-4186-ab90-837316655e15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{RankCode}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="47" y="26" width="136" height="20" uuid="1456c116-f7c1-4195-b8b4-c5a791b82ce9"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Rank}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement positionType="Float" isPrintRepeatedValues="false" x="47" y="2" width="413" height="20" isRemoveLineWhenBlank="true" uuid="786db9fb-344b-4963-b59f-469f098ba2fd"/>
+				<textElement>
+					<font fontName="Times New Roman" size="12" isBold="true" isItalic="false" isUnderline="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{LocName}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="233" y="-38" width="1" height="35" uuid="5b25013d-bb97-43dc-95ff-7523c01fb073"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineStyle="Dashed"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="284" y="-38" width="1" height="35" uuid="bb3cbfb3-b030-440c-ba90-4af31f08906d"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineStyle="Dashed"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="337" y="-38" width="1" height="35" uuid="d3079cb6-4e0f-487d-819e-9bd1ff821df2"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineStyle="Dashed"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="384" y="-38" width="1" height="35" uuid="3c4cf6af-3669-4471-972e-c56ccf5606f1"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineStyle="Dashed"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="437" y="-38" width="1" height="35" uuid="b02f4499-611d-4776-8782-3be07163130e"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineStyle="Dashed"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="492" y="-38" width="1" height="35" uuid="eef15212-2065-497d-80a6-7063cfcb623a"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineStyle="Dashed"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="553" y="-38" width="1" height="35" uuid="a084adcd-2842-4a54-8552-39e08bcc62e6"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineStyle="Dashed"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="606" y="-38" width="1" height="35" uuid="9feec5e2-995a-4dc1-b720-a93eb5dba74f"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineStyle="Dashed"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="666" y="-38" width="1" height="35" uuid="67471798-b036-4051-9781-059eb8c3374f"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineStyle="Dashed"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="723" y="-38" width="1" height="35" uuid="701cffe7-5b6b-4a7e-8058-7f4d72d66887"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineStyle="Dashed"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="780" y="-38" width="1" height="35" uuid="7516ba1c-4960-4be8-8fe1-00b35aa42e91"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineStyle="Dashed"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="14" y="-38" width="1" height="35" uuid="99541b70-aab6-4328-b806-db0a23640a8e"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineStyle="Dashed"/>
+				</graphicElement>
+			</line>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="7" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="8" splitType="Stretch"/>
+	</summary>
+</jasperReport>

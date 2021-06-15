@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Emp_Festival_Advance" language="groovy" pageWidth="612" pageHeight="1008" columnWidth="571" leftMargin="29" rightMargin="12" topMargin="20" bottomMargin="20" uuid="8e0be224-582d-4779-be56-64d2f82ee9da">
+	<property name="ireport.zoom" value="1.2418426461183114"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<field name="fes_epf" class="java.lang.String"/>
+	<field name="fes_name" class="java.lang.String"/>
+	<field name="fes_rank" class="java.lang.String"/>
+	<field name="fes_install" class="java.lang.String"/>
+	<field name="fes_first" class="java.lang.String"/>
+	<field name="fes_last" class="java.lang.String"/>
+	<field name="fes_amount" class="java.lang.Double"/>
+	<field name="fes_rent" class="java.lang.Double"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="48" splitType="Stretch">
+			<staticText>
+				<reportElement x="204" y="20" width="159" height="20" uuid="feb5c9f8-a88e-44a7-98ab-5716c22d17fe"/>
+				<textElement>
+					<font fontName="Times New Roman" size="14" isBold="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[Festival Advance Report]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="47" width="563" height="1" uuid="71b798b5-c36d-4160-846c-6759d258c066"/>
+				<graphicElement>
+					<pen lineWidth="1.5"/>
+				</graphicElement>
+			</line>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="15" splitType="Stretch">
+			<staticText>
+				<reportElement x="19" y="0" width="31" height="13" uuid="914a25d6-c2a8-481c-89ac-1ade8e6c5b99"/>
+				<textElement verticalAlignment="Bottom">
+					<font fontName="Times New Roman" size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Rank]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="54" y="0" width="42" height="13" uuid="d5f1b284-306d-4b4e-a6ef-a4d84e902736"/>
+				<textElement textAlignment="Center" verticalAlignment="Bottom">
+					<font fontName="Times New Roman" size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[EMP no.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="101" y="0" width="179" height="13" uuid="af315774-087b-41d6-a5cc-f6580fe8115f"/>
+				<textElement verticalAlignment="Bottom">
+					<font fontName="Times New Roman" size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Employee Name]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="280" y="0" width="59" height="13" uuid="ce0aab76-c1a7-4526-a399-dd6b674f9954"/>
+				<textElement textAlignment="Center" verticalAlignment="Bottom">
+					<font fontName="Times New Roman" size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Rental]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="339" y="0" width="65" height="13" uuid="a9e247f0-625b-4149-834e-b5f66ca5c72d"/>
+				<textElement textAlignment="Center" verticalAlignment="Bottom">
+					<font fontName="Times New Roman" size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Installments]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="404" y="0" width="81" height="13" uuid="04298e4c-0185-4322-abee-cd94d6cca82e"/>
+				<textElement textAlignment="Center" verticalAlignment="Bottom">
+					<font fontName="Times New Roman" size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[1st Installment]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="485" y="0" width="85" height="13" uuid="44740386-f0b2-4a80-a18d-ee5498a3007c"/>
+				<textElement verticalAlignment="Bottom">
+					<font fontName="Times New Roman" size="11" isBold="true"/>
+					<paragraph leftIndent="2"/>
+				</textElement>
+				<text><![CDATA[Last Installment]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="13" width="563" height="1" uuid="7ab2ff00-d2ad-435a-82f5-1b94a7011439"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="37" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="18" height="27" uuid="2f2cc77b-8787-439d-9923-5539e0ddf059"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{REPORT_COUNT}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="0" y="30" width="563" height="1" uuid="105ade37-f17d-4fc7-91de-9deee9d42712"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineStyle="Dashed"/>
+				</graphicElement>
+			</line>
+			<textField>
+				<reportElement x="20" y="0" width="30" height="27" uuid="db8746c4-285e-44c6-867f-a9a0b5577bb3"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{fes_rank}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="101" y="1" width="179" height="27" uuid="c38074e5-4271-4109-9b8e-bd917ca9fec5"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{fes_name}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="54" y="0" width="42" height="27" uuid="ecb24935-0403-41a5-9e65-1d903e5f2db4"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{fes_epf}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00">
+				<reportElement x="280" y="0" width="59" height="27" uuid="7cec2c88-4f52-4199-8ec0-5b66291fe865"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="11"/>
+					<paragraph rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{fes_rent}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="404" y="0" width="81" height="27" uuid="56870c92-5216-4ef3-a3ff-8fab8d5c0b26"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{fes_first}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="485" y="0" width="85" height="27" uuid="5e87c8c6-76c5-4f03-b381-26702223f2c1"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{fes_last}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="339" y="0" width="65" height="27" uuid="892a5d69-661a-4e98-b58e-90d3543809c2"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{fes_install}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="17" splitType="Stretch">
+			<line>
+				<reportElement x="0" y="2" width="563" height="1" uuid="4a50d069-39cc-4dc8-8a04-cde042db1a52"/>
+				<graphicElement>
+					<pen lineWidth="1.5"/>
+				</graphicElement>
+			</line>
+			<textField pattern="dd MMMMM yyyy">
+				<reportElement x="204" y="5" width="100" height="12" uuid="0e368cc4-a12b-4245-880f-73b494877f02"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="442" y="5" width="80" height="12" uuid="380b02c9-c2d9-4095-a703-8cc9e35c9d06"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="522" y="5" width="40" height="12" uuid="f6563229-a64b-4cfd-b238-571a3abc3468"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="6" splitType="Stretch"/>
+	</summary>
+</jasperReport>

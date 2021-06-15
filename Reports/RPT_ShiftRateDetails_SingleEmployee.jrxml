@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="RPT_ShiftRateDetails_SingleEmployee" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="cdb61a54-517e-4006-9f79-0042b1c1622a">
+	<property name="ireport.zoom" value="1.771561000000003"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[SELECT MAX(DATE) AS max_date ,MIN(DATE) AS min_date , emp_atten_main.*, emp_atten_main.EPFno,SUM(DayShift+NightShift+HalfDayShift/2) ,  NameWithInitials
+FROM `emp_atten_main` ,`employee_reg`
+WHERE
+
+DATE BETWEEN '2018-04-01' AND '2018-04-30'
+AND
+emp_atten_main.EPFno = employee_reg.`EPFno`
+GROUP BY EPFno
+HAVING
+SUM(DayShift+NightShift+HalfDayShift/2) BETWEEN '3' AND '20'
+;]]>
+	</queryString>
+	<field name="max_date" class="java.lang.String"/>
+	<field name="min_date" class="java.lang.String"/>
+	<field name="EPFno" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Location" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Date" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="DayShift" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="NightShift" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="HalfDayShift" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="LeaveShift" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Month" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Year" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Status" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="SalaryStatus" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="EffectiveRank" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="EffectiveRate" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Company" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="SUM(DayShift+NightShift+HalfDayShift/2)" class="java.lang.Double"/>
+	<field name="NameWithInitials" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<variable name="MAxDate" class="java.lang.String" calculation="Highest">
+		<variableExpression><![CDATA[$F{Date}]]></variableExpression>
+		<initialValueExpression><![CDATA[$F{Date}]]></initialValueExpression>
+	</variable>
+	<variable name="MinDate" class="java.lang.String" incrementType="Report" calculation="Lowest">
+		<variableExpression><![CDATA[$F{Date}]]></variableExpression>
+		<initialValueExpression><![CDATA[$F{Date}]]></initialValueExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="7" splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="23" splitType="Stretch">
+			<staticText>
+				<reportElement x="142" y="0" width="299" height="20" uuid="e79e9c78-352e-4696-bf2d-156be527e4fc"/>
+				<textElement>
+					<font fontName="Times New Roman" size="13" isBold="false" isItalic="false" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[Employee wise Total Shifts in Selected Date Range]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="20" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="62" height="15" uuid="e3fa96f3-2dcf-46ad-b0bf-d9b9dd1461fd"/>
+				<textElement>
+					<font fontName="Times New Roman" size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[EPF No]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="72" y="0" width="100" height="15" uuid="741ff7e9-5e97-46e9-a6eb-c05b42bf178e"/>
+				<textElement>
+					<font fontName="Times New Roman" size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Employee Name]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="321" y="0" width="68" height="15" uuid="c22aea35-343c-4ef0-b29f-4100615aca0f"/>
+				<textElement>
+					<font fontName="Times New Roman" size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Total Shifts]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="390" y="0" width="69" height="15" uuid="fa85de98-d35f-45b8-9dcb-9eb125ff51fc"/>
+				<textElement>
+					<font fontName="Times New Roman" size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[From:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="468" y="2" width="72" height="15" uuid="8c8e9acf-2eb8-4554-8041-50721477a802"/>
+				<textElement>
+					<font fontName="Times New Roman" size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[To:]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="16" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="62" height="15" uuid="9c4bfc3d-2017-4603-b3a8-63f836fda309"/>
+				<textElement>
+					<font fontName="Times New Roman" size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{EPFno}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="72" y="0" width="238" height="15" uuid="62f7babc-aa26-4457-a7cf-218f4cd75be7"/>
+				<textElement>
+					<font fontName="Times New Roman" size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{NameWithInitials}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="321" y="0" width="68" height="15" uuid="08e55bd8-ae0a-4293-b89e-938d26ede1b7"/>
+				<textElement textAlignment="Center">
+					<font fontName="Times New Roman" size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{SUM(DayShift+NightShift+HalfDayShift/2)}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="390" y="0" width="69" height="15" uuid="eca5960c-9665-443f-a5bc-d519b932bbcc"/>
+				<textElement>
+					<font fontName="Times New Roman" size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{min_date}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="468" y="0" width="72" height="15" uuid="7529c1a8-2632-49c6-9d9b-fcff61f7d494"/>
+				<textElement>
+					<font fontName="Times New Roman" size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{max_date}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="19" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="4" width="184" height="13" uuid="ddf53cf0-e2b0-4536-8110-673fcccc2bb3"/>
+				<textElement verticalAlignment="Bottom">
+					<font fontName="Times New Roman" size="9" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[TechSeedPayRoll:www.techseedlk.com]]></text>
+			</staticText>
+			<line>
+				<reportElement x="1" y="2" width="554" height="1" uuid="1d9d1fd3-c152-4206-bcc7-93d774100c33"/>
+			</line>
+			<textField pattern="dd/MM/yyyy h.mm a">
+				<reportElement x="441" y="4" width="114" height="15" uuid="e84f12fc-fd6f-4dd3-9d44-13ebca8f582d"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="241" y="3" width="80" height="14" uuid="0b944881-80a7-4d35-9a58-3096e21913fb"/>
+				<textElement textAlignment="Right">
+					<font isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="321" y="3" width="40" height="14" uuid="0d74bd9a-aa87-4667-aaca-2adb6c5c88ec"/>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

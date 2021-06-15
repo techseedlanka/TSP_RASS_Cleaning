@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report1" language="groovy" pageWidth="595" pageHeight="842" columnWidth="541" leftMargin="34" rightMargin="20" topMargin="22" bottomMargin="20" uuid="c347c2a5-8d55-428f-8c29-f83b5f6cedcd">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<field name="loc_code" class="java.lang.String"/>
+	<field name="loc_name" class="java.lang.String"/>
+	<field name="loc_type" class="java.lang.String"/>
+	<field name="no_of_guards" class="java.lang.Integer"/>
+	<field name="agreed_shifts" class="java.lang.Integer"/>
+	<field name="worked_shifts" class="java.lang.Double"/>
+	<field name="variance" class="java.lang.Double"/>
+	<field name="month" class="java.lang.String"/>
+	<field name="year" class="java.lang.String"/>
+	<variable name="agreed_tot" class="java.lang.Integer" calculation="Sum">
+		<variableExpression><![CDATA[$F{agreed_shifts}]]></variableExpression>
+	</variable>
+	<variable name="worked_total" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[$F{worked_shifts}]]></variableExpression>
+	</variable>
+	<variable name="variance_total" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[$F{variance}]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="48" splitType="Stretch">
+			<textField>
+				<reportElement x="26" y="26" width="100" height="20" uuid="bd3767c0-996e-4577-b1d6-8cd5046b34ac"/>
+				<textElement>
+					<font fontName="Times New Roman" size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{month}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="126" y="26" width="100" height="20" uuid="958cf48d-e3bf-4c84-b4c0-8c4263aee889"/>
+				<textElement>
+					<font fontName="Times New Roman" size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{year}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="384" y="26" width="100" height="20" uuid="1b325d34-7d01-4263-a5da-81c50b56b545"/>
+				<textElement>
+					<font fontName="Times New Roman" size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{loc_type}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="197" y="0" width="209" height="20" uuid="789bab36-5364-471e-b5b8-eaaf15c72bd4"/>
+				<textElement>
+					<font fontName="Times New Roman" size="14" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[Total Shift Summery - location wise]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="46" width="539" height="1" uuid="2cbc4a11-1655-4dca-ad24-2c3942e34a65"/>
+			</line>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="42" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="2" width="100" height="20" uuid="5bafd0a7-1cd5-4c9f-a3c5-dae6a93c28f9"/>
+				<box leftPadding="5"/>
+				<textElement textAlignment="Justified" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12"/>
+				</textElement>
+				<text><![CDATA[Location]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="116" y="2" width="81" height="20" uuid="53dd95d1-7f73-41f5-b097-c3b06c755191"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12"/>
+				</textElement>
+				<text><![CDATA[No. of Guards]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="331" y="2" width="100" height="20" uuid="ddecd863-5817-47d9-af4e-b69fd06eef4f"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12"/>
+				</textElement>
+				<text><![CDATA[Worked Shifts]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="442" y="2" width="80" height="20" uuid="3dfa6a62-c8df-4775-a2a8-06d7866539b9"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12"/>
+				</textElement>
+				<text><![CDATA[Variance]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="216" y="2" width="100" height="20" uuid="4b179c55-f98c-436c-bb7b-416d0fe83878"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12"/>
+				</textElement>
+				<text><![CDATA[Contracted Shifts]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="419" y="22" width="122" height="20" uuid="64b64b3b-e9c9-4eb7-aa73-463fd6b8c7f3"/>
+				<textElement>
+					<font fontName="Times New Roman" size="12"/>
+				</textElement>
+				<text><![CDATA[(Contracted - Worked)]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="40" width="539" height="1" uuid="96b4c81f-d503-43cb-8497-f517c809a427"/>
+				<graphicElement>
+					<pen lineWidth="2.25" lineStyle="Double"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="41" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="1" width="100" height="20" uuid="393b2e4c-4ea1-48f9-b163-df8be266dc7e"/>
+				<box leftPadding="5"/>
+				<textElement>
+					<font fontName="Times New Roman" size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{loc_code}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="21" width="522" height="20" uuid="e68947ac-7ba4-4186-8bfd-fd51217cb95b"/>
+				<box leftPadding="5"/>
+				<textElement>
+					<font fontName="Times New Roman" size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{loc_name}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="116" y="1" width="81" height="20" uuid="b56f192e-b830-48c4-93ad-78d92876bbc0"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{no_of_guards}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="331" y="2" width="100" height="20" uuid="12743937-5d07-4567-9f7b-9679f817dc55"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{worked_shifts}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="442" y="1" width="80" height="20" uuid="d4e3c151-1464-4fdf-9f0a-adeaab47dad3"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{variance}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="216" y="1" width="100" height="20" uuid="5970363e-ad17-42cf-844b-e18a65d719ab"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{agreed_shifts}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="0" y="40" width="539" height="1" uuid="1ff3bab8-6c7a-4eda-9dc0-4608026491b9"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineStyle="Dashed"/>
+				</graphicElement>
+			</line>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="21" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="1" width="184" height="20" uuid="e840a351-9673-4488-9c3e-d596c012b63c"/>
+				<textElement verticalAlignment="Bottom">
+					<font fontName="Times New Roman" size="9"/>
+				</textElement>
+				<text><![CDATA[TechSeedPayRoll:www.techseedlk.com]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="419" y="1" width="80" height="20" uuid="5e9d2419-99a1-401f-bdfb-319787a1436f"/>
+				<textElement textAlignment="Right">
+					<font fontName="Times New Roman" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="499" y="1" width="40" height="20" uuid="47dfb205-7df0-453b-b50b-516d1fd2f407"/>
+				<textElement>
+					<font fontName="Times New Roman" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="MMMMM dd, yyyy">
+				<reportElement x="241" y="1" width="133" height="20" uuid="5b7068d7-1437-4a67-8731-dcb712ef5722"/>
+				<textElement verticalAlignment="Bottom">
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="61" splitType="Stretch">
+			<textField pattern="#,##0.00;(#,##0.00)">
+				<reportElement x="464" y="1" width="77" height="20" uuid="0c26af23-9845-46db-a00d-e2d86d0434fa"/>
+				<box rightPadding="10"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="11" isBold="true" isUnderline="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{agreed_tot}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="330" y="1" width="135" height="20" uuid="e0f6e8e2-786f-45de-b079-31ec6f48a19c"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Total  Contracted  Shifts =]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="330" y="20" width="135" height="20" uuid="41c202f9-e913-4332-b1e6-f10547b2245e"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Total  Worked  Shifts      =]]></text>
+			</staticText>
+			<textField pattern="#,##0.00;(#,##0.00)">
+				<reportElement x="464" y="20" width="77" height="20" uuid="36193c73-7fd5-4c6f-a261-00a69786f44f"/>
+				<box rightPadding="10"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="11" isBold="true" isUnderline="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{worked_total}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="330" y="40" width="135" height="20" uuid="6307e1a0-893f-4a75-9dce-393051d8ee30"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Total  Variance                =]]></text>
+			</staticText>
+			<textField pattern="###0.00;(###0.00)">
+				<reportElement x="464" y="40" width="78" height="20" uuid="4d8b582c-3417-41c6-a872-701ca52e99cb"/>
+				<box rightPadding="10"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="11" isBold="true" isUnderline="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{variance_total}]]></textFieldExpression>
+			</textField>
+		</band>
+	</summary>
+</jasperReport>

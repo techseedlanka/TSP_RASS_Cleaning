@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="location_carder_rpt" language="groovy" pageWidth="595" pageHeight="842" columnWidth="541" leftMargin="34" rightMargin="20" topMargin="20" bottomMargin="20" uuid="7111bb39-9eda-457a-bcd2-460b0b1e275f">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<field name="locCode" class="java.lang.String"/>
+	<field name="locName" class="java.lang.String"/>
+	<field name="rank" class="java.lang.String"/>
+	<field name="shiftType" class="java.lang.String"/>
+	<field name="guards" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="54" splitType="Stretch">
+			<staticText>
+				<reportElement x="209" y="32" width="180" height="20" uuid="d3bdd480-1931-4868-b86d-4cb9bbe72962"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="14" isBold="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[Location Carder Details]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="30" width="541" height="1" uuid="c45f6860-f409-48a9-abce-6313b20b81f8"/>
+				<graphicElement>
+					<pen lineWidth="2.25" lineStyle="Double"/>
+				</graphicElement>
+			</line>
+			<image>
+				<reportElement x="0" y="-14" width="184" height="43" uuid="ff81205e-9fbb-412a-84be-3eb1afaa62f8"/>
+				<imageExpression><![CDATA["C:\\TechSeed_Images\\logo.png"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="24" splitType="Stretch">
+			<staticText>
+				<reportElement x="4" y="2" width="180" height="20" uuid="dd47f905-a829-45ab-abc5-4b1451f3a4df"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12"/>
+				</textElement>
+				<text><![CDATA[Location]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="305" y="2" width="100" height="20" uuid="ee760a83-12c8-4483-836f-0c3a27ea365c"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12"/>
+				</textElement>
+				<text><![CDATA[Rank]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="209" y="2" width="86" height="20" uuid="58624379-ab49-4381-af7b-4946d2efdd29"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12"/>
+				</textElement>
+				<text><![CDATA[Shift Type]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="407" y="2" width="99" height="20" uuid="365c62d9-798f-4895-bfbc-9cb7c59180ff"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12"/>
+				</textElement>
+				<text><![CDATA[No. of Guards]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="40" splitType="Stretch">
+			<textField isBlankWhenNull="true">
+				<reportElement isPrintRepeatedValues="false" x="42" y="2" width="62" height="20" isRemoveLineWhenBlank="true" uuid="642c9faa-0ebb-40cb-85a8-cfd736e7f4f9"/>
+				<textElement>
+					<font fontName="Times New Roman" size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{locCode}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement isPrintRepeatedValues="false" x="105" y="3" width="254" height="20" isRemoveLineWhenBlank="true" uuid="d28d57a1-a21c-49e1-b27b-ed738ede53ae"/>
+				<textElement>
+					<font fontName="Times New Roman" size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{locName}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="305" y="20" width="100" height="20" uuid="2f59233a-43a8-4311-a690-9be46289dd71"/>
+				<textElement>
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{rank}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="205" y="20" width="86" height="20" uuid="9a721de0-6b35-4fa2-93c1-cea9278f5dc0"/>
+				<textElement>
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{shiftType}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="407" y="20" width="68" height="20" uuid="853d8077-0159-4d88-8bf9-3bffeb243070"/>
+				<textElement>
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{guards}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="24" splitType="Stretch">
+			<textField>
+				<reportElement x="421" y="3" width="80" height="20" uuid="bb4aaac5-fda1-44fc-9324-94ef11addc71"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="501" y="3" width="40" height="20" uuid="5473151a-323e-4937-8d1d-51b312858a9d"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

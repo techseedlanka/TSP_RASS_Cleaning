@@ -1,0 +1,472 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Salary_Summery" language="groovy" pageWidth="595" pageHeight="842" columnWidth="539" leftMargin="36" rightMargin="20" topMargin="26" bottomMargin="20" uuid="18ff8651-698f-4450-8637-5e33c9567f5f">
+	<property name="ireport.zoom" value="2.0"/>
+	<property name="ireport.x" value="114"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[select SUM(Basic),SUM(BRAllowance),SUM(TaxEarn),SUM(OThrsAmt),
+SUM(AttendanceIntensive),SUM(GrossEarning),SUM(Welfare),SUM(Advance01+Advance02),
+SUM(FestivalAdvance),SUM(Meal),SUM(Fines),SUM(Rental),SUM(OtherDeductions),
+SUM(ShoeDeductions),SUM(UniformDeductions),SUM(DistressLoan),SUM(Employee_EPF_8),SUM(TotalDeductions),
+SUM(NetSalary),SUM(Employer_EPF_12),SUM(Employer_ETF_3),SUM(TotalShifts),SUM(DistressLoan02),SUM(LessShift),
+Month,Year
+
+ from salary_final]]>
+	</queryString>
+	<field name="SUM(Basic)" class="java.lang.Double"/>
+	<field name="SUM(BRAllowance)" class="java.lang.Double"/>
+	<field name="SUM(TaxEarn)" class="java.lang.Double"/>
+	<field name="SUM(OThrsAmt)" class="java.lang.Double"/>
+	<field name="SUM(AttendanceIntensive)" class="java.lang.Double"/>
+	<field name="SUM(GrossEarning)" class="java.lang.Double"/>
+	<field name="SUM(Welfare)" class="java.lang.Double"/>
+	<field name="SUM(Advance01+Advance02)" class="java.lang.Double"/>
+	<field name="SUM(FestivalAdvance)" class="java.lang.Double"/>
+	<field name="SUM(Meal)" class="java.lang.Double"/>
+	<field name="SUM(Fines)" class="java.lang.Double"/>
+	<field name="SUM(Rental)" class="java.lang.Double"/>
+	<field name="SUM(OtherDeductions)" class="java.lang.Double"/>
+	<field name="SUM(ShoeDeductions)" class="java.lang.Double"/>
+	<field name="SUM(UniformDeductions)" class="java.lang.Double"/>
+	<field name="SUM(DistressLoan)" class="java.lang.Double"/>
+	<field name="SUM(Employee_EPF_8)" class="java.lang.Double"/>
+	<field name="SUM(TotalDeductions)" class="java.lang.Double"/>
+	<field name="SUM(NetSalary)" class="java.lang.Double"/>
+	<field name="SUM(Employer_EPF_12)" class="java.lang.Double"/>
+	<field name="SUM(Employer_ETF_3)" class="java.lang.Double"/>
+	<field name="SUM(TotalShifts)" class="java.lang.Double"/>
+	<field name="SUM(DistressLoan02)" class="java.lang.Double"/>
+	<field name="SUM(LessShift)" class="java.lang.Double"/>
+	<field name="Month" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Year" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="52" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="31" width="200" height="20" uuid="c1ee05db-ca95-43c6-923f-e296dd6c7881"/>
+				<textElement>
+					<font fontName="Times New Roman" size="13"/>
+				</textElement>
+				<text><![CDATA[Seleena Security Service(Pvt.)Ltd.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="222" y="0" width="108" height="20" uuid="6a821092-7837-4ac3-9887-55a63f9b6525"/>
+				<textElement>
+					<font fontName="Times New Roman" size="15" isBold="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[Salary Summery]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="339" y="29" width="200" height="20" uuid="44495636-1168-4dff-94df-5bb560dcd7e1"/>
+				<textElement>
+					<font fontName="Times New Roman" size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Month : February        Year: 2017]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="50" width="539" height="1" uuid="745d94fe-ad3a-487e-bf44-56730a284364"/>
+				<graphicElement>
+					<pen lineWidth="2.5" lineStyle="Double"/>
+				</graphicElement>
+			</line>
+			<textField>
+				<reportElement x="40" y="12" width="100" height="20" uuid="5d6017b1-b9b3-4a79-9f4c-e5db140ef968"/>
+				<textFieldExpression><![CDATA[$F{Month}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="144" y="17" width="100" height="20" uuid="bf6d335e-63ba-4e9a-8e6f-aaa78b91882b"/>
+				<textFieldExpression><![CDATA[$F{Year}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="374" splitType="Stretch">
+			<textField pattern="#,##0.00;(#,##0.00)">
+				<reportElement x="145" y="42" width="100" height="20" uuid="d3d73dac-f647-428a-922c-43791e57488c"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{SUM(TaxEarn)}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="42" width="145" height="20" uuid="eb31696a-30fc-422a-aa5b-14485aec965b"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="11"/>
+				</textElement>
+				<text><![CDATA[Tax Earn Basic]]></text>
+			</staticText>
+			<textField pattern="#,##0.00;(#,##0.00)">
+				<reportElement x="145" y="62" width="100" height="20" uuid="565037be-aec5-4e15-b418-6401e3b770d3"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{SUM(BRAllowance)}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="62" width="145" height="20" uuid="a6308aa0-1da3-4947-8cd4-94bc0c8fafbd"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="11"/>
+				</textElement>
+				<text><![CDATA[BR. Allowance]]></text>
+			</staticText>
+			<textField pattern="#,##0.00;(#,##0.00)">
+				<reportElement x="145" y="82" width="100" height="20" uuid="db17035f-d504-4557-b537-338057267eab"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{SUM(OThrsAmt)}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="82" width="145" height="20" uuid="aae7f569-cab9-4da6-9200-cf3245767144"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="11"/>
+				</textElement>
+				<text><![CDATA[OT Hours Amount]]></text>
+			</staticText>
+			<textField pattern="#,##0.00;(#,##0.00)">
+				<reportElement x="145" y="102" width="100" height="20" uuid="c1a035f8-459c-496c-8534-4f96180fa229"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{SUM(AttendanceIntensive)}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="102" width="145" height="20" uuid="9d981bc4-c848-444b-9c60-26bd0410508d"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="11"/>
+				</textElement>
+				<text><![CDATA[Attendance Incentive]]></text>
+			</staticText>
+			<textField pattern="#,##0.00;(#,##0.00)">
+				<reportElement x="145" y="182" width="100" height="20" uuid="6e5a8745-2b00-4aa0-a766-5ed7d67daabb"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="13" isBold="true" isUnderline="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{SUM(GrossEarning)}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="45" y="182" width="100" height="20" uuid="2bc0a38c-aac3-4d3c-86f8-2e97973cb2e8"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="13" isBold="true" isUnderline="false"/>
+					<paragraph lineSpacing="Single" firstLineIndent="2"/>
+				</textElement>
+				<text><![CDATA[ Gross Earning ]]></text>
+			</staticText>
+			<textField pattern="#,##0.00;(#,##0.00)">
+				<reportElement x="421" y="42" width="100" height="20" uuid="72ee9a4e-58bc-4a9a-91ef-f56da1155119"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{SUM(Welfare)}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="321" y="42" width="100" height="20" uuid="50335cc2-9a58-47a4-bfe3-e092397fc370"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="11"/>
+				</textElement>
+				<text><![CDATA[Welfare]]></text>
+			</staticText>
+			<textField pattern="#,##0.00;(#,##0.00)">
+				<reportElement x="421" y="62" width="100" height="20" uuid="98c013c0-7d7f-4e8d-8fe0-26c77d38e65d"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{SUM(Advance01+Advance02)}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="321" y="62" width="100" height="20" uuid="888f9424-2de0-42db-b3be-504c606b5477"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="11"/>
+				</textElement>
+				<text><![CDATA[Advance]]></text>
+			</staticText>
+			<textField pattern="#,##0.00;(#,##0.00)">
+				<reportElement x="421" y="82" width="100" height="20" uuid="0723c605-6e09-4235-aada-04d797c06674"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{SUM(FestivalAdvance)}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="321" y="82" width="100" height="20" uuid="3a83c57c-ea12-45a8-8788-b98131c76cc5"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="11"/>
+				</textElement>
+				<text><![CDATA[Festival Advance]]></text>
+			</staticText>
+			<textField pattern="#,##0.00;(#,##0.00)">
+				<reportElement x="421" y="142" width="100" height="20" uuid="51d90780-0025-47c9-bbc5-5edbb29217ce"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{SUM(Meal)}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="321" y="142" width="100" height="20" uuid="0dba7f94-78f9-4eee-847b-a6f40d05c791"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="11"/>
+				</textElement>
+				<text><![CDATA[Meal]]></text>
+			</staticText>
+			<textField pattern="#,##0.00;(#,##0.00)">
+				<reportElement x="421" y="162" width="100" height="20" uuid="a0a64133-c843-408b-b560-bf7520c6d0f9"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{SUM(Fines)}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="321" y="162" width="100" height="20" uuid="c2ca4291-a154-4b70-b643-3a7b44e434e2"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="11"/>
+				</textElement>
+				<text><![CDATA[Fines]]></text>
+			</staticText>
+			<textField pattern="#,##0.00;(#,##0.00)">
+				<reportElement x="421" y="182" width="100" height="20" uuid="79bc98b1-a4ad-4eec-a17d-c3f16ba97884"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{SUM(Rental)}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="321" y="182" width="100" height="20" uuid="432b06fe-1a25-46c6-b496-1ad2dcbedc91"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="11"/>
+				</textElement>
+				<text><![CDATA[Rental]]></text>
+			</staticText>
+			<textField pattern="#,##0.00;(#,##0.00)">
+				<reportElement x="421" y="202" width="100" height="20" uuid="c1ebd697-9fa2-499b-bb63-0037ede12334"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{SUM(OtherDeductions)}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="321" y="202" width="100" height="20" uuid="63fa01e1-c4ae-4c4e-8c24-5bbb386928b1"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="11"/>
+				</textElement>
+				<text><![CDATA[Other Deductions]]></text>
+			</staticText>
+			<textField pattern="#,##0.00;(#,##0.00)">
+				<reportElement x="421" y="222" width="100" height="20" uuid="2d6303a8-2f21-4d2b-807b-0168c60b3cdf"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{SUM(ShoeDeductions)}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="317" y="222" width="104" height="20" uuid="61347eca-400c-4675-aaea-85ed0c0bf432"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="11"/>
+				</textElement>
+				<text><![CDATA[ Shoe Deductions ]]></text>
+			</staticText>
+			<textField pattern="#,##0.00;(#,##0.00)">
+				<reportElement x="421" y="242" width="100" height="20" uuid="e240baca-d519-4562-8649-f53032c9210c"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{SUM(UniformDeductions)}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="317" y="242" width="104" height="20" uuid="2c977cb2-579f-4471-bdd4-f150c566b9e8"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="11"/>
+				</textElement>
+				<text><![CDATA[ Uniform Deductions ]]></text>
+			</staticText>
+			<textField pattern="#,##0.00;(#,##0.00)">
+				<reportElement x="421" y="102" width="100" height="20" uuid="f4e59e7e-a7ee-4ca5-a09e-df84470a2421"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{SUM(DistressLoan)}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="321" y="102" width="100" height="20" uuid="fcd75ba1-1230-467f-b794-a15036b6c7dc"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="11"/>
+				</textElement>
+				<text><![CDATA[ Distress Loan ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="321" y="262" width="101" height="20" uuid="0d8d2a94-297a-4ac2-b203-77e4a32db03f"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="11"/>
+				</textElement>
+				<text><![CDATA[Employee EPF 8%]]></text>
+			</staticText>
+			<textField pattern="#,##0.00;(#,##0.00)">
+				<reportElement x="421" y="262" width="100" height="20" uuid="63e6cb2d-7c33-4330-99e6-f81b9f53e256"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{SUM(Employee_EPF_8)}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="317" y="306" width="104" height="20" uuid="75e5e9c9-8875-4e35-9ec5-d0a1d1a933ec"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="13" isBold="true" isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[Total Deductions]]></text>
+			</staticText>
+			<textField pattern="#,##0.00;(#,##0.00)">
+				<reportElement x="421" y="306" width="100" height="20" uuid="d1a00fff-a818-4d78-bfd6-48e8248beff0"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="13" isBold="true" isUnderline="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{SUM(TotalDeductions)}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="321" y="346" width="100" height="20" uuid="0716daaf-2527-4a95-a67e-b3859cc5fe87"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="13" isBold="true" isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[Net Salary]]></text>
+			</staticText>
+			<textField pattern="#,##0.00;(#,##0.00)">
+				<reportElement x="421" y="346" width="100" height="20" uuid="fad8e04a-7823-45f0-a9b6-92f94cdc973c"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="13" isBold="true" isUnderline="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{SUM(NetSalary)}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="25" y="319" width="133" height="20" uuid="bd1f62df-9d75-4830-9ff0-0b098ed436fd"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12"/>
+				</textElement>
+				<text><![CDATA[Employer EPF 12%]]></text>
+			</staticText>
+			<textField pattern="#,##0.00;(#,##0.00)">
+				<reportElement x="158" y="319" width="100" height="20" uuid="3319e966-30f9-41ae-ba64-130a7d58ddb0"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{SUM(Employer_EPF_12)}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="25" y="344" width="133" height="20" uuid="e3c4949a-03af-40c4-ac91-b87b31316294"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12"/>
+				</textElement>
+				<text><![CDATA[ Employer ETF 3%]]></text>
+			</staticText>
+			<textField pattern="#,##0.00;(#,##0.00)">
+				<reportElement x="158" y="344" width="100" height="20" uuid="3b2cc594-b4ca-4b13-a6e4-7ef9b410688f"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{SUM(Employer_ETF_3)}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="58" y="286" width="100" height="20" uuid="d6d74742-1c9b-4401-92f0-e8af0e382a56"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12"/>
+				</textElement>
+				<text><![CDATA[Total Shifts]]></text>
+			</staticText>
+			<textField pattern="#,##0.00;(#,##0.00)">
+				<reportElement x="158" y="286" width="67" height="20" uuid="b0d84546-de67-4a22-b10e-79e001ac46fb"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{SUM(TotalShifts)}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="321" y="122" width="100" height="20" uuid="318acb21-79a7-46d3-b1b2-88c07cf766cf"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="11"/>
+				</textElement>
+				<text><![CDATA[ Distress Loan 02 ]]></text>
+			</staticText>
+			<textField pattern="#,##0.00;(#,##0.00)">
+				<reportElement x="421" y="122" width="100" height="20" uuid="66794677-e4a2-4fb6-a673-50af580b0997"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{SUM(DistressLoan02)}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="122" y="3" width="52" height="20" uuid="9668be9b-d6e2-4920-9500-4361522be121"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12" isBold="false" isUnderline="true" isStrikeThrough="false"/>
+				</textElement>
+				<text><![CDATA[Earnings]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="388" y="3" width="59" height="20" uuid="61ff9770-30b2-4140-ac2b-e8c025e7f83e"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12" isBold="false" isUnderline="true" isStrikeThrough="false"/>
+				</textElement>
+				<text><![CDATA[Deductions]]></text>
+			</staticText>
+			<line>
+				<reportElement x="278" y="0" width="1" height="306" uuid="948f1faa-8d3e-4f28-923c-1653502e0216"/>
+				<graphicElement>
+					<pen lineWidth="1.0"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="56" y="202" width="89" height="1" uuid="0b878810-ad99-432b-a6a7-b48079a3bee9"/>
+				<graphicElement>
+					<pen lineWidth="2.0" lineStyle="Double"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="156" y="203" width="89" height="1" uuid="97ba7b2e-9317-4480-bb83-fc85fef51c14"/>
+				<graphicElement>
+					<pen lineWidth="2.0" lineStyle="Double"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="321" y="325" width="100" height="1" uuid="7373fea9-0047-45ed-98b3-cc890eff0fc4"/>
+				<graphicElement>
+					<pen lineWidth="2.0" lineStyle="Double"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="433" y="325" width="88" height="1" uuid="52be61ea-378c-49d8-803f-041b35f3a138"/>
+				<graphicElement>
+					<pen lineWidth="2.0" lineStyle="Double"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="433" y="365" width="88" height="1" uuid="f9a52cf2-bfe8-49c9-94b1-06271de50227"/>
+				<graphicElement>
+					<pen lineWidth="3.0" lineStyle="Double"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="361" y="365" width="60" height="1" uuid="02744840-6b3a-4a74-b90d-ef7a1b3ae8de"/>
+				<graphicElement>
+					<pen lineWidth="3.0" lineStyle="Double"/>
+				</graphicElement>
+			</line>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

@@ -1,0 +1,467 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Cash_Denomination" language="groovy" pageWidth="595" pageHeight="842" columnWidth="550" leftMargin="25" rightMargin="20" topMargin="20" bottomMargin="20" uuid="1b04d98f-d631-4eab-a522-cbeebbd9943d">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<field name="five_thousand" class="java.lang.Integer"/>
+	<field name="one_thousand" class="java.lang.Integer"/>
+	<field name="five_hundred" class="java.lang.Integer"/>
+	<field name="one_hundred" class="java.lang.Integer"/>
+	<field name="fifty" class="java.lang.Integer"/>
+	<field name="twenty" class="java.lang.Integer"/>
+	<field name="ten" class="java.lang.Integer"/>
+	<field name="five" class="java.lang.Integer"/>
+	<field name="two" class="java.lang.Integer"/>
+	<field name="one" class="java.lang.Integer"/>
+	<field name="cents" class="java.lang.Double"/>
+	<field name="month" class="java.lang.String"/>
+	<field name="year" class="java.lang.String"/>
+	<field name="emp_cat" class="java.lang.String"/>
+	<field name="centsamount" class="java.lang.Integer"/>
+	<variable name="five_thousand_total" class="java.lang.Integer">
+		<variableExpression><![CDATA[$F{five_thousand}*5000]]></variableExpression>
+	</variable>
+	<variable name="one_thousand_total" class="java.lang.Integer">
+		<variableExpression><![CDATA[$F{one_thousand}*1000]]></variableExpression>
+	</variable>
+	<variable name="500" class="java.lang.Integer">
+		<variableExpression><![CDATA[$F{five_hundred}*500]]></variableExpression>
+	</variable>
+	<variable name="100" class="java.lang.Integer">
+		<variableExpression><![CDATA[$F{one_hundred}*100]]></variableExpression>
+	</variable>
+	<variable name="50" class="java.lang.Integer">
+		<variableExpression><![CDATA[$F{fifty}*50]]></variableExpression>
+	</variable>
+	<variable name="20" class="java.lang.Integer">
+		<variableExpression><![CDATA[$F{twenty}*20]]></variableExpression>
+	</variable>
+	<variable name="10" class="java.lang.Integer">
+		<variableExpression><![CDATA[$F{ten}*10]]></variableExpression>
+	</variable>
+	<variable name="5" class="java.lang.Integer">
+		<variableExpression><![CDATA[$F{five}*5]]></variableExpression>
+	</variable>
+	<variable name="2" class="java.lang.Integer">
+		<variableExpression><![CDATA[$F{two}*2]]></variableExpression>
+	</variable>
+	<variable name="1" class="java.lang.Integer">
+		<variableExpression><![CDATA[$F{one}*1]]></variableExpression>
+	</variable>
+	<variable name="variable1" class="java.lang.Integer" calculation="Sum">
+		<variableExpression><![CDATA[$V{five_thousand_total}+$V{one_thousand_total}+$V{500}+$V{100}+$V{50}+$V{20}+$V{10}+$V{5}+$V{2}+$V{1}+$F{centsamount}]]></variableExpression>
+	</variable>
+	<variable name="Salary_Total" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[$V{variable1}+$F{cents}-$F{centsamount}]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="67" splitType="Stretch">
+			<staticText>
+				<reportElement x="196" y="12" width="167" height="20" uuid="e2d4563c-e112-41af-83aa-8ec8d9e04360"/>
+				<textElement>
+					<font fontName="Times New Roman" size="14" isBold="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[Salary Cash Denomination]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="5" y="35" width="88" height="20" uuid="bae57d83-8b0d-4e48-aa74-0681b63efa0a"/>
+				<textElement>
+					<font fontName="Times New Roman" size="12" isBold="false" isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[Employee Type :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="269" y="35" width="109" height="20" uuid="37ded0f3-afb8-409f-885a-7a49bf91b475"/>
+				<textElement>
+					<font fontName="Times New Roman" size="12" isBold="false" isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[Salary Month / Year :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="96" y="35" width="142" height="20" uuid="65066193-f8dd-43a1-93f6-257b711e634b"/>
+				<textElement>
+					<font fontName="Times New Roman" size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{emp_cat}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="378" y="35" width="63" height="20" uuid="1e26c9b1-5f44-42c1-98ca-88828838a478"/>
+				<textElement textAlignment="Center">
+					<font fontName="Times New Roman" size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{month}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="441" y="35" width="59" height="20" uuid="e688823b-f815-43ed-84f2-86c0e68aa082"/>
+				<textElement>
+					<font fontName="Times New Roman" size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{year}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="0" y="60" width="550" height="1" uuid="28d51b75-db60-47c2-aa61-da837574d1db"/>
+			</line>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="623" splitType="Stretch">
+			<staticText>
+				<reportElement x="35" y="59" width="133" height="20" uuid="2f38c306-8ca6-476a-bb1b-2fb91ce50fd2"/>
+				<textElement>
+					<font fontName="Times New Roman" size="11"/>
+				</textElement>
+				<text><![CDATA[Five Thousand Rupee notes]]></text>
+			</staticText>
+			<textField pattern="###0">
+				<reportElement x="238" y="59" width="100" height="20" uuid="dbe362da-14b5-4453-890b-0780bee4895f"/>
+				<textElement textAlignment="Right">
+					<font fontName="Times New Roman" size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{five_thousand}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="35" y="91" width="133" height="20" uuid="d7051ac5-0fd5-4d1f-8ebc-db8fd2aaab6b"/>
+				<textElement>
+					<font fontName="Times New Roman" size="11"/>
+				</textElement>
+				<text><![CDATA[One Thousand Rupee notes]]></text>
+			</staticText>
+			<textField pattern="###0">
+				<reportElement x="238" y="91" width="100" height="20" uuid="31f6b53c-c467-4776-ad47-e41dc76532b8"/>
+				<textElement textAlignment="Right">
+					<font fontName="Times New Roman" size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{one_thousand}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="35" y="123" width="133" height="20" uuid="dc8433b5-b275-4216-bf8a-fedd4b3aab9b"/>
+				<textElement>
+					<font fontName="Times New Roman" size="11"/>
+				</textElement>
+				<text><![CDATA[Five Hundred Rupee notes]]></text>
+			</staticText>
+			<textField pattern="###0">
+				<reportElement x="238" y="123" width="100" height="20" uuid="198a90f8-c30f-4ae6-b634-54eb71f6a552"/>
+				<textElement textAlignment="Right">
+					<font fontName="Times New Roman" size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{five_hundred}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="35" y="156" width="133" height="20" uuid="6ecdc29f-9d7b-45da-bc3a-d241a0bb9973"/>
+				<textElement>
+					<font fontName="Times New Roman" size="11"/>
+				</textElement>
+				<text><![CDATA[One Hundred Rupee notes]]></text>
+			</staticText>
+			<textField pattern="###0">
+				<reportElement x="238" y="156" width="100" height="20" uuid="b44054e6-49c1-441e-88aa-a75e2cee9e3a"/>
+				<textElement textAlignment="Right">
+					<font fontName="Times New Roman" size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{one_hundred}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="35" y="187" width="133" height="20" uuid="ab959c13-345e-49db-aa00-ed9a19193c18"/>
+				<textElement>
+					<font fontName="Times New Roman" size="11"/>
+				</textElement>
+				<text><![CDATA[Fifty Rupee notes]]></text>
+			</staticText>
+			<textField pattern="###0">
+				<reportElement x="238" y="187" width="100" height="20" uuid="a76da618-f375-45b9-a00e-8075c1466425"/>
+				<textElement textAlignment="Right">
+					<font fontName="Times New Roman" size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{fifty}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="35" y="219" width="133" height="20" uuid="208b41db-5583-4076-8ab3-95eda8f941e9"/>
+				<textElement>
+					<font fontName="Times New Roman" size="11"/>
+				</textElement>
+				<text><![CDATA[Twenty Rupee notes]]></text>
+			</staticText>
+			<textField pattern="###0">
+				<reportElement x="238" y="219" width="100" height="20" uuid="701da61c-ced1-4bad-9961-29d975cef0cd"/>
+				<textElement textAlignment="Right">
+					<font fontName="Times New Roman" size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{twenty}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="35" y="251" width="133" height="20" uuid="f7476cfd-7da8-47b5-b126-b26836eb80fc"/>
+				<textElement>
+					<font fontName="Times New Roman" size="11"/>
+				</textElement>
+				<text><![CDATA[Ten Rupee notes / coins]]></text>
+			</staticText>
+			<textField pattern="###0">
+				<reportElement x="238" y="251" width="100" height="20" uuid="a4a982b2-0b50-4fd1-a7a9-94ec8c0b27c5"/>
+				<textElement textAlignment="Right">
+					<font fontName="Times New Roman" size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{ten}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="35" y="284" width="133" height="20" uuid="2801bd61-2c88-4325-80a3-857c489880d7"/>
+				<textElement>
+					<font fontName="Times New Roman" size="11"/>
+				</textElement>
+				<text><![CDATA[Five Rupee coins]]></text>
+			</staticText>
+			<textField pattern="###0">
+				<reportElement x="238" y="284" width="100" height="20" uuid="2680bdeb-079c-4571-bbd5-0641a3d5e0be"/>
+				<textElement textAlignment="Right">
+					<font fontName="Times New Roman" size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{five}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="35" y="317" width="133" height="20" uuid="e7e25cad-599d-48bb-b455-b4efa6bf251c"/>
+				<textElement>
+					<font fontName="Times New Roman" size="11"/>
+				</textElement>
+				<text><![CDATA[Two Rupee coins]]></text>
+			</staticText>
+			<textField pattern="###0">
+				<reportElement x="238" y="317" width="100" height="20" uuid="0a8bf7cd-e441-433e-8f8f-090d78b0d1b2"/>
+				<textElement textAlignment="Right">
+					<font fontName="Times New Roman" size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{two}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="35" y="350" width="133" height="20" uuid="4bce45a5-b00e-4185-bfc4-399b05695a51"/>
+				<textElement>
+					<font fontName="Times New Roman" size="11"/>
+				</textElement>
+				<text><![CDATA[One Rupee coins]]></text>
+			</staticText>
+			<textField pattern="###0">
+				<reportElement x="238" y="350" width="100" height="20" uuid="1c4d0c80-0372-4e10-8c76-0725a807aa13"/>
+				<textElement textAlignment="Right">
+					<font fontName="Times New Roman" size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{one}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00;(#,##0.00)">
+				<reportElement x="421" y="59" width="100" height="20" uuid="f78fac2e-9599-4fe8-830c-2e4562bbaf45"/>
+				<textElement textAlignment="Right">
+					<font fontName="Times New Roman" size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{five_thousand_total}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="62" y="20" width="69" height="23" uuid="81c583f9-46c7-440f-8498-c1c0c8424aea"/>
+				<textElement>
+					<font fontName="Times New Roman" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Description]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="238" y="20" width="100" height="23" uuid="d32dd29e-62d9-4b24-9476-8682815d4aa4"/>
+				<textElement textAlignment="Right">
+					<font fontName="Times New Roman" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Quantity]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="421" y="20" width="100" height="23" uuid="026469de-2308-4e67-9ab9-b0c7b939eb3c"/>
+				<textElement textAlignment="Right">
+					<font fontName="Times New Roman" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Amount]]></text>
+			</staticText>
+			<textField pattern="#,##0.00;(#,##0.00)">
+				<reportElement x="421" y="91" width="100" height="20" uuid="7c7a1012-4fee-495f-939d-bd2fb89fcead"/>
+				<textElement textAlignment="Right">
+					<font fontName="Times New Roman" size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{one_thousand_total}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00;(#,##0.00)">
+				<reportElement x="421" y="123" width="100" height="20" uuid="5c2c0bd5-87e9-4a7c-b563-0f8c597f36e8"/>
+				<textElement textAlignment="Right">
+					<font fontName="Times New Roman" size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{500}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00;(#,##0.00)">
+				<reportElement x="421" y="156" width="100" height="20" uuid="731fc574-82fc-4cc4-b31f-9912693af528"/>
+				<textElement textAlignment="Right">
+					<font fontName="Times New Roman" size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{100}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00;(#,##0.00)">
+				<reportElement x="421" y="187" width="100" height="20" uuid="6c4d9c1b-68f9-4d75-afb4-d27f5e78386a"/>
+				<textElement textAlignment="Right">
+					<font fontName="Times New Roman" size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{50}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00;(#,##0.00)">
+				<reportElement x="421" y="219" width="100" height="20" uuid="c8f755f3-77f9-4065-a749-bed777aa0da9"/>
+				<textElement textAlignment="Right">
+					<font fontName="Times New Roman" size="11" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{20}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00;(#,##0.00)">
+				<reportElement x="421" y="251" width="100" height="20" uuid="24ed690e-495c-41b3-96cf-fefc871c96e1"/>
+				<textElement textAlignment="Right">
+					<font fontName="Times New Roman" size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{10}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00;(#,##0.00)">
+				<reportElement x="421" y="284" width="100" height="20" uuid="c8ffdb75-9a01-4e87-ac8e-8ed0e71e48b1"/>
+				<textElement textAlignment="Right">
+					<font fontName="Times New Roman" size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{5}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00;(#,##0.00)">
+				<reportElement x="421" y="317" width="100" height="20" uuid="397718b8-fbbf-45ca-83bc-b8f972c76f52"/>
+				<textElement textAlignment="Right">
+					<font fontName="Times New Roman" size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{2}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00;(#,##0.00)">
+				<reportElement x="421" y="350" width="100" height="20" uuid="4f246485-d3db-4f95-9c0f-c6f8d42fce33"/>
+				<textElement textAlignment="Right">
+					<font fontName="Times New Roman" size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{1}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00;(#,##0.00)">
+				<reportElement x="402" y="432" width="123" height="20" uuid="30d4d6c4-777f-4b25-9ca2-af2c3eb1f931"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{variable1}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="341" y="432" width="61" height="20" uuid="a94ee122-9add-4c4c-8255-2488588a0fd8"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="14" isBold="true" isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[Total ]]></text>
+			</staticText>
+			<line>
+				<reportElement x="406" y="452" width="119" height="1" uuid="e9a59660-98cb-43c9-b67c-23e8927617ea"/>
+			</line>
+			<line>
+				<reportElement x="406" y="455" width="119" height="1" uuid="87927ec5-fcaf-497f-abb8-2f452459369a"/>
+			</line>
+			<staticText>
+				<reportElement x="32" y="546" width="217" height="20" uuid="a60bb7c4-db58-4010-a048-4658f87440b6"/>
+				<textElement>
+					<font fontName="Times New Roman" size="12"/>
+				</textElement>
+				<text><![CDATA[Actual Total Cents Amount (in Rupees) =]]></text>
+			</staticText>
+			<textField pattern="#,##0.00;-#,##0.00">
+				<reportElement x="242" y="546" width="58" height="20" uuid="3dff19e2-eb73-461d-a28d-93980e351dde"/>
+				<textElement>
+					<font fontName="Times New Roman" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{cents}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="117" y="570" width="163" height="20" uuid="935346a0-543c-40d2-9ffa-ba88f72af07c"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="13" isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[Salary Total for the Month  =]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" pattern="#,##0.00;-#,##0.00">
+				<reportElement x="286" y="570" width="96" height="20" uuid="67b1fed5-46e9-413d-9421-89e5e6f5540f"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="13"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{Salary_Total}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="35" y="384" width="306" height="20" uuid="7eae2986-83f2-43e9-9b0a-bf1ca6532b8e"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="11"/>
+				</textElement>
+				<text><![CDATA[Additional One Rupee Coins to Balance the Total Cents Amount]]></text>
+			</staticText>
+			<textField pattern="#,##0.00;-#,##0.00">
+				<reportElement x="425" y="384" width="100" height="20" uuid="1be076ba-bbb0-4e00-aecc-294bc61a3779"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{centsamount}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="8" y="515" width="88" height="20" uuid="fe7bd23e-85ca-476a-a5f7-3be4986d22e7"/>
+				<textElement>
+					<font fontName="Times New Roman" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Note :-]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="32" y="570" width="88" height="20" uuid="daf12ab0-251f-4259-98d2-c88260cfd164"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{emp_cat}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="12" y="546" width="20" height="20" uuid="cd99a580-2ab1-4a8b-8453-a528908a1080"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[*]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="12" y="569" width="20" height="20" uuid="4d552ba2-53df-4e14-9b59-3cd75820b27f"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[*]]></text>
+			</staticText>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="36" splitType="Stretch">
+			<staticText>
+				<reportElement x="8" y="16" width="230" height="20" uuid="fb789e7d-a809-41eb-9bf4-0e864cc996b1"/>
+				<textElement verticalAlignment="Bottom">
+					<font fontName="Times New Roman" size="9"/>
+				</textElement>
+				<text><![CDATA[TechSeed Payroll System : www.techseedlk.com]]></text>
+			</staticText>
+			<textField pattern="MMMMM dd, yyyy">
+				<reportElement x="402" y="16" width="135" height="20" uuid="70ed7c24-5c7c-4c1c-b016-70a4f49df1a8"/>
+				<textElement textAlignment="Right" verticalAlignment="Bottom">
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="0" y="7" width="550" height="1" uuid="fef24b0a-f49e-4bcb-9caa-a0571e1f43f6"/>
+			</line>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

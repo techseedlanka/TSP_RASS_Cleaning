@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="bean" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="47b8e3b1-7501-477e-adfa-7b7fa4f7752f">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<field name="bean_Name" class="java.lang.String"/>
+	<field name="bean_date" class="java.lang.String"/>
+	<field name="bean_incident" class="java.lang.String"/>
+	<field name="bean_epf" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="63" y="15" width="419" height="64" uuid="dc580677-cbc1-4bcf-b6ac-094884a9c030"/>
+				<textElement>
+					<font size="36"/>
+				</textElement>
+				<text><![CDATA[yfuhjhhgk]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="61" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="2" width="100" height="20" uuid="f87a70c9-2099-418a-8abc-7839241b6242"/>
+				<text><![CDATA[EPF No]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="159" y="2" width="100" height="20" uuid="0ca8e770-4aac-4dee-9c2d-aaa7712077f9"/>
+				<text><![CDATA[bean_incident]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="399" y="2" width="100" height="20" uuid="102f244a-8cd3-4194-9946-1b3600cb3063"/>
+				<text><![CDATA[bean_date]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="41" width="100" height="20" uuid="7e44f0a7-a480-42d5-9809-685f57bdf449"/>
+				<text><![CDATA[bean_Name]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="125" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="19" width="100" height="20" uuid="435d0086-83a6-45a6-a74d-c769d80d2771"/>
+				<textFieldExpression><![CDATA[$F{bean_epf}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="124" y="19" width="256" height="49" uuid="46a5ce65-e37e-4b03-b29b-366e40cb2549"/>
+				<textFieldExpression><![CDATA[$F{bean_incident}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="399" y="20" width="100" height="20" uuid="e7a22932-2c60-41c4-b1bd-d329db03c8b7"/>
+				<textFieldExpression><![CDATA[$F{bean_date}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="48" width="100" height="20" uuid="3ba93cd8-04b6-4e4f-adda-1c6e9b93d31f"/>
+				<textFieldExpression><![CDATA[$F{bean_Name}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

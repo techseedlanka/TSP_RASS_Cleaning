@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Estimated_invoice_amount" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="6bd81da7-6345-4950-a9de-60a7322ccfc2">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<field name="loc_code" class="java.lang.String"/>
+	<field name="loc_name" class="java.lang.String"/>
+	<field name="rate" class="java.lang.String"/>
+	<field name="amount" class="java.lang.String"/>
+	<field name="contracted_shift" class="java.lang.Integer"/>
+	<field name="rank" class="java.lang.String"/>
+	<field name="worked_shift" class="java.lang.Integer"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="51" splitType="Stretch">
+			<staticText>
+				<reportElement x="180" y="16" width="211" height="20" uuid="2fbfb44b-9c08-4228-b414-b118f0b646ad"/>
+				<textElement>
+					<font fontName="Times New Roman" size="14" isBold="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[Invoice Estimated Income Details]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="23" splitType="Stretch">
+			<staticText>
+				<reportElement x="223" y="0" width="43" height="20" uuid="0b9bebcc-e2de-4acd-a31e-affb703feef3"/>
+				<textElement>
+					<font fontName="Times New Roman" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Rank]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="0" width="66" height="20" uuid="90ef9808-126d-4151-9707-8780279c338c"/>
+				<textElement>
+					<font fontName="Times New Roman" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Location]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="266" y="1" width="77" height="20" uuid="bb71cbfc-e2e0-49b1-8d49-7f926497b1b4"/>
+				<textElement>
+					<font fontName="Times New Roman" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Contracted Shifts]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="350" y="1" width="45" height="20" uuid="2dbfb0f1-38ea-4cf5-a0cb-01ec0d0af9aa"/>
+				<textElement>
+					<font fontName="Times New Roman" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Rate]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="402" y="1" width="70" height="20" uuid="3920d22f-dbb8-4b23-8a43-22f72c6b45a2"/>
+				<textElement>
+					<font fontName="Times New Roman" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Amount]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="477" y="3" width="78" height="20" uuid="02e4c106-f605-4448-ace9-267bb0d7af79"/>
+				<textElement>
+					<font fontName="Times New Roman" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Worked shifts]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="24" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="2" width="43" height="20" uuid="e7ac4af9-aa06-4349-8613-0e9f3893c96d"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{loc_code}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="43" y="2" width="169" height="20" uuid="916d3945-8ab7-4cae-899e-0a1b80d252a3"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{loc_name}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="223" y="2" width="43" height="20" uuid="7b8db6d3-74fd-4a71-b178-aa5af8083b0b"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{rank}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="266" y="2" width="77" height="20" uuid="4cf206c3-b5cd-465d-9710-2b4f9e14c011"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{contracted_shift}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="350" y="2" width="45" height="20" uuid="5e65a236-23ec-42d8-bf2f-122b51b9d710"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{rate}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="402" y="1" width="70" height="20" uuid="c8b5adb9-8930-4312-a676-063b3594c3fa"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{amount}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="477" y="1" width="78" height="20" uuid="9a55ecf7-2c95-4b70-86e2-2549a96b79c2"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{worked_shift}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

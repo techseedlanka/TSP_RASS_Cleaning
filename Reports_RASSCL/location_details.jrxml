@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="location_details" language="groovy" pageWidth="595" pageHeight="842" columnWidth="546" leftMargin="29" rightMargin="20" topMargin="20" bottomMargin="20" uuid="144a1031-6aff-4c4d-85af-8bf6e56b039b">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[SELECT
+
+     location_reg.`LocCode` ,
+     location_reg.`LocName` ,
+     location_reg.`LocAddress` ,
+     location_reg.`Tel1` ,
+     location_reg.`Tel2`  ,
+     location_reg.`Tel3`  ,
+     location_reg.`City` ,
+     location_reg.`District` ,
+     location_reg.`LocInchargeID` ,
+     location_reg.`LocInchargeName`  ,
+     location_reg.`LocOwnerName` ,
+     location_reg.`LocOwnerTel`  ,
+     location_reg.`LocOwnerMobile`  ,
+     location_reg.`LocType` ,
+     company_reg.`ComName` ,
+     company_reg.`ComAddress`
+
+FROM
+     `location_reg` location_reg,
+     `company_reg` company_reg where company_reg.`isDefault`='1']]>
+	</queryString>
+	<field name="LocCode" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="LocName" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="LocAddress" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Tel1" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Tel2" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Tel3" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="City" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="District" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="LocInchargeID" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="LocInchargeName" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="LocOwnerName" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="LocOwnerTel" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="LocOwnerMobile" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="LocType" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="ComName" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="ComAddress" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<variable name="Tel3_1" class="java.lang.Integer" resetType="Column" calculation="Count">
+		<variableExpression><![CDATA[$F{Tel3}]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="81" splitType="Stretch">
+			<staticText>
+				<reportElement x="230" y="51" width="147" height="25" uuid="d3931b6d-1883-41a3-a9ca-d57df5a6c32a"/>
+				<textElement>
+					<font fontName="Times New Roman" size="14" isBold="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[Location Details]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="0" y="0" width="293" height="20" uuid="811e8e6c-db90-420d-a5ee-17922a4010c7"/>
+				<textElement>
+					<font fontName="Times New Roman" size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{ComName}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="20" width="230" height="20" uuid="1592a519-3082-4ed6-81d2-13646fc741e7"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{ComAddress}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="38" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="15" width="46" height="20" uuid="5c0a684c-3409-4ad6-914d-d3f199030694"/>
+				<textElement>
+					<font fontName="Times New Roman" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Code]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="75" y="15" width="119" height="20" uuid="daca76a1-0b45-4676-84da-b575289744a6"/>
+				<textElement>
+					<font fontName="Times New Roman" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Location Name]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="293" y="18" width="124" height="20" uuid="1c5c6142-391b-4973-bf5b-904455e498a5"/>
+				<textElement>
+					<font fontName="Times New Roman" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Location InCharge]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="497" y="18" width="49" height="20" uuid="1a607652-d9eb-4e7d-a42b-3a012091a202"/>
+				<textElement>
+					<font fontName="Times New Roman" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Type]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="55" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="58" height="20" uuid="69946331-5ef3-4ce5-8a91-3b9251b5920b"/>
+				<box leftPadding="5"/>
+				<textElement>
+					<font fontName="Times New Roman" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{LocCode}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="75" y="0" width="195" height="20" uuid="483bf2c3-0439-4760-a885-2672b1a2d1ae"/>
+				<textElement>
+					<font fontName="Times New Roman" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{LocName}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="293" y="0" width="186" height="20" uuid="6f1aa53b-0b52-49b0-a32d-448b63fccdd0"/>
+				<textElement>
+					<font fontName="Times New Roman" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{LocInchargeName}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="5" y="50" width="533" height="1" forecolor="#666666" uuid="8816cdae-e099-46a8-9420-b722fdb1bc80"/>
+			</line>
+			<textField>
+				<reportElement x="497" y="0" width="49" height="20" uuid="37c8bb5a-ba0a-40ad-b09c-f32a43468c24"/>
+				<textElement>
+					<font fontName="Times New Roman" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{LocType}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="25" width="270" height="20" uuid="d954d417-3a81-47cf-ab3b-b81e283e5cc3"/>
+				<textElement>
+					<font fontName="Times New Roman" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{LocAddress}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="277" y="25" width="78" height="20" uuid="639626ea-6a68-4803-aeec-d197c3e42c43"/>
+				<textElement>
+					<font fontName="Times New Roman" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Tel1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="365" y="25" width="77" height="20" uuid="460bb0ac-cec1-47e2-b56f-c823643c7afc"/>
+				<textElement>
+					<font fontName="Times New Roman" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Tel2}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="462" y="25" width="78" height="20" uuid="5a0d5fb1-8ba0-4141-b94c-e5da90a96a5d"/>
+				<textElement>
+					<font fontName="Times New Roman" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Tel3}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="24" splitType="Stretch">
+			<textField>
+				<reportElement x="426" y="4" width="53" height="20" uuid="45dc4225-7111-4060-80a0-d24836ff4e00"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="479" y="4" width="59" height="20" uuid="fbf1b344-37ef-4fcf-a5e9-c48a7dcd51c0"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[+ $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy h.mm a">
+				<reportElement x="255" y="4" width="100" height="20" uuid="95d61334-71e9-4967-99dd-35566e3d4849"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="4" width="226" height="20" uuid="d192873c-f54c-455b-aa67-9b703fbf1100"/>
+				<textElement verticalAlignment="Bottom">
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<text><![CDATA[TechSeed PayRoll System : www.techseedlk.com]]></text>
+			</staticText>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

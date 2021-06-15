@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report1" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="c347c2a5-8d55-428f-8c29-f83b5f6cedcd">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<field name="loc_code" class="java.lang.String"/>
+	<field name="loc_name" class="java.lang.String"/>
+	<field name="loc_type" class="java.lang.String"/>
+	<field name="no_of_guards" class="java.lang.String"/>
+	<field name="agreed_shifts" class="java.lang.Integer"/>
+	<field name="worked_shifts" class="java.lang.String"/>
+	<field name="variance" class="java.lang.String"/>
+	<field name="month" class="java.lang.String"/>
+	<field name="year" class="java.lang.String"/>
+	<variable name="agreed_tot" class="java.lang.Integer" calculation="Sum">
+		<variableExpression><![CDATA[$F{agreed_shifts}]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<textField>
+				<reportElement x="98" y="59" width="100" height="20" uuid="bd3767c0-996e-4577-b1d6-8cd5046b34ac"/>
+				<textFieldExpression><![CDATA[$F{month}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="227" y="59" width="100" height="20" uuid="958cf48d-e3bf-4c84-b4c0-8c4263aee889"/>
+				<textFieldExpression><![CDATA[$F{year}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="345" y="53" width="100" height="20" uuid="1b325d34-7d01-4263-a5da-81c50b56b545"/>
+				<textFieldExpression><![CDATA[$F{loc_type}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="61" splitType="Stretch">
+			<staticText>
+				<reportElement x="18" y="2" width="100" height="20" uuid="5bafd0a7-1cd5-4c9f-a3c5-dae6a93c28f9"/>
+				<text><![CDATA[loc_code]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="24" y="2" width="100" height="20" uuid="6827d4c6-5b69-4e05-b613-e349698a286e"/>
+				<text><![CDATA[loc_name]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="138" y="2" width="100" height="20" uuid="53dd95d1-7f73-41f5-b097-c3b06c755191"/>
+				<text><![CDATA[no_of_guards]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="343" y="2" width="100" height="20" uuid="ddecd863-5817-47d9-af4e-b69fd06eef4f"/>
+				<text><![CDATA[worked_shifts]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="456" y="2" width="100" height="20" uuid="3dfa6a62-c8df-4775-a2a8-06d7866539b9"/>
+				<text><![CDATA[variance]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="242" y="2" width="100" height="20" uuid="4b179c55-f98c-436c-bb7b-416d0fe83878"/>
+				<text><![CDATA[agreed_shifts]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="125" splitType="Stretch">
+			<textField>
+				<reportElement x="18" y="18" width="100" height="20" uuid="393b2e4c-4ea1-48f9-b163-df8be266dc7e"/>
+				<textFieldExpression><![CDATA[$F{loc_code}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="24" y="41" width="100" height="20" uuid="e68947ac-7ba4-4186-8bfd-fd51217cb95b"/>
+				<textFieldExpression><![CDATA[$F{loc_name}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="138" y="18" width="100" height="20" uuid="b56f192e-b830-48c4-93ad-78d92876bbc0"/>
+				<textFieldExpression><![CDATA[$F{no_of_guards}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="343" y="21" width="100" height="20" uuid="12743937-5d07-4567-9f7b-9679f817dc55"/>
+				<textFieldExpression><![CDATA[$F{worked_shifts}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="456" y="25" width="100" height="20" uuid="d4e3c151-1464-4fdf-9f0a-adeaab47dad3"/>
+				<textFieldExpression><![CDATA[$F{variance}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="242" y="19" width="100" height="20" uuid="5970363e-ad17-42cf-844b-e18a65d719ab"/>
+				<textFieldExpression><![CDATA[$F{agreed_shifts}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="25" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch">
+			<textField>
+				<reportElement x="197" y="20" width="100" height="20" uuid="0c26af23-9845-46db-a00d-e2d86d0434fa"/>
+				<textFieldExpression><![CDATA[$V{agreed_tot}]]></textFieldExpression>
+			</textField>
+		</band>
+	</summary>
+</jasperReport>

@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Advance" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="9350a1ad-aa98-48c8-89d8-7eb4cde088a4">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[SELECT
+     salary_advance_1.`EPFno` ,
+     salary_advance_1.`Name` ,
+     salary_advance_1.`Rank`   ,
+     salary_advance_1.`IssueDate`  ,
+     salary_advance_1.`Amount`  ,
+     salary_advance_1.`Status` ,
+     salary_advance_2.`EPFno`  ,
+     salary_advance_2.`Name` ,
+     salary_advance_2.`Rank`  ,
+     salary_advance_2.`IssueDate`  ,
+     salary_advance_2.`Amount`  ,
+     salary_advance_2.`Status`
+FROM
+     `salary_advance_1` salary_advance_1,
+     `salary_advance_2` salary_advance_2]]>
+	</queryString>
+	<field name="EPFno" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Name" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Rank" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="IssueDate" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Amount" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Status" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="58" splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="33" splitType="Stretch">
+			<staticText>
+				<reportElement x="15" y="2" width="100" height="20" uuid="05d0cd22-17a4-49aa-aa96-97d4f34e19a2"/>
+				<text><![CDATA[EPFno]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="132" y="2" width="100" height="20" uuid="55bae80f-2d7c-41aa-9850-d1395eca4666"/>
+				<text><![CDATA[Name]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="250" y="2" width="100" height="20" uuid="5c994d90-0f7a-410a-8da9-67c8264b265d"/>
+				<text><![CDATA[Amount]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="374" y="2" width="100" height="20" uuid="c04d2ab3-58d2-4175-bc82-bdc758776e6c"/>
+				<text><![CDATA[IssueDate]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="68" splitType="Stretch">
+			<textField>
+				<reportElement x="15" y="34" width="100" height="20" uuid="c238a1fb-3fc5-4e99-ac72-d0cc90122e2b"/>
+				<textFieldExpression><![CDATA[$F{EPFno}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="132" y="34" width="100" height="20" uuid="27aa88f9-d33a-451d-a5d0-23f0c7a14a4c"/>
+				<textFieldExpression><![CDATA[$F{Name}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="250" y="34" width="100" height="20" uuid="5dc1e171-63ee-49a2-8f7e-d0ac08b80f16"/>
+				<textFieldExpression><![CDATA[$F{Amount}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="374" y="34" width="100" height="20" uuid="1854acb1-98d8-45fb-8af7-054e9de44bf7"/>
+				<textFieldExpression><![CDATA[$F{IssueDate}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

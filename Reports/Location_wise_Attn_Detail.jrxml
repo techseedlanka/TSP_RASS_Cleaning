@@ -1,0 +1,837 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Location_wise_Attn_Detail" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" isSummaryWithPageHeaderAndFooter="true" uuid="6a4fe814-3c0b-4461-b534-c3fe19fbc406">
+	<property name="ireport.zoom" value="1.3636363636363642"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Crosstab Data Text" hAlign="Center"/>
+	<queryString>
+		<![CDATA[select  emp_atten_main.EPFno,Date,Location,Month,Year,EffectiveRank,SUM(DayShift),SUM(NightShift),SUM(DayTwoShift),SUM(OTShift),SUM(OTHours),SUM(HalfDayShift),NameWithinitials,Designation,LocCode,LocName
+from `emp_atten_main` join employee_reg join location_reg
+where Month='January' and Location='E001' and emp_atten_main.EPFno = EmployeeNo and Location = LocCode
+group by Date,emp_atten_main.EPFno
+Order by emp_atten_main.EPFno]]>
+	</queryString>
+	<field name="EPFno" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Date" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Location" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Month" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Year" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="EffectiveRank" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="SUM(DayShift)" class="java.lang.Double"/>
+	<field name="SUM(NightShift)" class="java.lang.Double"/>
+	<field name="SUM(DayTwoShift)" class="java.lang.Double"/>
+	<field name="SUM(OTShift)" class="java.lang.Double"/>
+	<field name="SUM(OTHours)" class="java.lang.Double"/>
+	<field name="SUM(HalfDayShift)" class="java.lang.Double"/>
+	<field name="NameWithinitials" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Designation" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="LocCode" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="LocName" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<title>
+		<band height="49" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="6" width="802" height="20" uuid="6a0574fd-8fca-4673-888d-de323148c0ae"/>
+				<textElement textAlignment="Center">
+					<font fontName="Times New Roman" size="14" isBold="true" isUnderline="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Unit's Attendance Report  -  " + $F{Month} +" " + $F{Year}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="18" y="26" width="558" height="20" uuid="24ff0695-73e1-4f32-bf29-d427f4db2ea0"/>
+				<textElement verticalAlignment="Bottom">
+					<font fontName="Times New Roman" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Location}+" " +$F{LocName}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="0" y="48" width="802" height="1" uuid="e3ff580d-a4f8-4894-8cb3-0a8140ef3f13"/>
+			</line>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="17">
+			<textField>
+				<reportElement x="672" y="0" width="80" height="14" uuid="59c7d76e-198e-4601-a38c-65162b7f2ad9"/>
+				<textElement textAlignment="Right" verticalAlignment="Top">
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="1" y="14" width="802" height="1" uuid="853f5e4f-7606-4a69-83e8-97c968ce9f0f"/>
+			</line>
+			<textField evaluationTime="Report">
+				<reportElement x="752" y="0" width="40" height="14" uuid="ff5a054a-8018-4b9f-9d10-b5a2cbe4f23c"/>
+				<textElement verticalAlignment="Top">
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="1" y="0" width="498" height="14" uuid="ab3a20fb-6299-4ce8-99de-906f9944409a"/>
+				<textElement verticalAlignment="Top">
+					<font fontName="Times New Roman" size="10" isBold="false" isItalic="true" isUnderline="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Location}+" " +$F{LocName}+" --- Attendance Report  ----  "+ $F{Month}+"  " +$F{Year}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy h.mm a">
+				<reportElement x="506" y="0" width="166" height="14" uuid="4f9dc34d-3c6e-4913-9011-a79fead13714"/>
+				<box rightPadding="3"/>
+				<textElement verticalAlignment="Top">
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<detail>
+		<band/>
+	</detail>
+	<pageFooter>
+		<band/>
+	</pageFooter>
+	<lastPageFooter>
+		<band/>
+	</lastPageFooter>
+	<summary>
+		<band height="172" splitType="Stretch">
+			<crosstab>
+				<reportElement x="18" y="0" width="774" height="172" uuid="d7241626-fbf8-4b89-811d-32a39dcdaccf"/>
+				<rowGroup name="EPFno" width="84" totalPosition="End">
+					<bucket class="java.lang.String">
+						<bucketExpression><![CDATA[$F{EPFno}]]></bucketExpression>
+					</bucket>
+					<crosstabRowHeader>
+						<cellContents backcolor="#F0F8FF" mode="Opaque">
+							<box>
+								<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+							</box>
+							<textField>
+								<reportElement style="Crosstab Data Text" x="0" y="10" width="59" height="12" uuid="1836f888-32cf-491d-acef-306dfb8a474c"/>
+								<textElement>
+									<font size="8" isBold="true"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$V{EPFno}]]></textFieldExpression>
+							</textField>
+							<staticText>
+								<reportElement style="Crosstab Data Text" x="59" y="0" width="25" height="12" uuid="c9ea8316-9b4f-4cc2-a2fc-f7c2008b4c00"/>
+								<box leftPadding="1">
+									<pen lineWidth="0.5"/>
+									<topPen lineWidth="0.5"/>
+									<leftPen lineWidth="0.5"/>
+									<bottomPen lineWidth="0.5"/>
+									<rightPen lineWidth="0.5"/>
+								</box>
+								<textElement textAlignment="Left" verticalAlignment="Middle">
+									<font size="6"/>
+								</textElement>
+								<text><![CDATA[Day]]></text>
+							</staticText>
+							<staticText>
+								<reportElement style="Crosstab Data Text" x="59" y="12" width="25" height="12" uuid="95af51b1-070b-4657-99dc-d69829b346b3"/>
+								<box leftPadding="1">
+									<pen lineWidth="0.5"/>
+									<topPen lineWidth="0.5"/>
+									<leftPen lineWidth="0.5"/>
+									<bottomPen lineWidth="0.5"/>
+									<rightPen lineWidth="0.5"/>
+								</box>
+								<textElement textAlignment="Left" verticalAlignment="Middle">
+									<font size="6"/>
+								</textElement>
+								<text><![CDATA[Night]]></text>
+							</staticText>
+							<staticText>
+								<reportElement style="Crosstab Data Text" x="59" y="24" width="25" height="12" uuid="5ab4057b-5819-4566-b1c8-cd685de10ba5"/>
+								<box leftPadding="1">
+									<pen lineWidth="0.5"/>
+									<topPen lineWidth="0.5"/>
+									<leftPen lineWidth="0.5"/>
+									<bottomPen lineWidth="0.5"/>
+									<rightPen lineWidth="0.5"/>
+								</box>
+								<textElement textAlignment="Left" verticalAlignment="Middle">
+									<font size="6"/>
+								</textElement>
+								<text><![CDATA[Half Day]]></text>
+							</staticText>
+							<staticText>
+								<reportElement style="Crosstab Data Text" x="59" y="36" width="25" height="12" uuid="fad64bb1-7a3e-47e0-8976-0680a7a358c6"/>
+								<box leftPadding="1">
+									<pen lineWidth="0.5"/>
+									<topPen lineWidth="0.5"/>
+									<leftPen lineWidth="0.5"/>
+									<bottomPen lineWidth="0.5"/>
+									<rightPen lineWidth="0.5"/>
+								</box>
+								<textElement textAlignment="Left" verticalAlignment="Middle">
+									<font size="6"/>
+								</textElement>
+								<text><![CDATA[OT Shift]]></text>
+							</staticText>
+							<staticText>
+								<reportElement style="Crosstab Data Text" x="59" y="48" width="25" height="12" uuid="b42d4ee7-5e66-4d59-ae08-7877dec1f9d5"/>
+								<box leftPadding="1">
+									<pen lineWidth="0.5"/>
+									<topPen lineWidth="0.5"/>
+									<leftPen lineWidth="0.5"/>
+									<bottomPen lineWidth="0.5"/>
+									<rightPen lineWidth="0.5"/>
+								</box>
+								<textElement textAlignment="Left" verticalAlignment="Middle">
+									<font size="6"/>
+								</textElement>
+								<text><![CDATA[OT Hrs.]]></text>
+							</staticText>
+							<staticText>
+								<reportElement style="Crosstab Data Text" x="59" y="60" width="25" height="12" uuid="c7ae5181-8c9d-4b86-aef2-6a5f098a7c57"/>
+								<box leftPadding="1">
+									<pen lineWidth="0.5"/>
+									<topPen lineWidth="0.5"/>
+									<leftPen lineWidth="0.5"/>
+									<bottomPen lineWidth="0.5"/>
+									<rightPen lineWidth="0.5"/>
+								</box>
+								<textElement textAlignment="Left" verticalAlignment="Middle">
+									<font size="6"/>
+								</textElement>
+								<text><![CDATA[Day 2]]></text>
+							</staticText>
+							<textField>
+								<reportElement style="Crosstab Data Text" x="0" y="33" width="59" height="31" uuid="bdd29753-487c-4275-aeff-61745a1ba8f7"/>
+								<box leftPadding="1" rightPadding="1"/>
+								<textElement>
+									<font size="7"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$V{name}]]></textFieldExpression>
+							</textField>
+							<textField>
+								<reportElement style="Crosstab Data Text" x="0" y="23" width="59" height="10" uuid="4ce5b894-19f0-44fd-8d47-698c7de97d76"/>
+								<textElement verticalAlignment="Top">
+									<font size="7"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$V{rank}]]></textFieldExpression>
+							</textField>
+							<textField>
+								<reportElement style="Crosstab Data Text" x="0" y="64" width="57" height="8" uuid="00afe7e0-edba-435c-a161-e67312da1ba2"/>
+								<box leftPadding="2"/>
+								<textElement textAlignment="Left">
+									<font size="6" isBold="false" isItalic="true"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$V{location}]]></textFieldExpression>
+							</textField>
+							<textField>
+								<reportElement style="Crosstab Data Text" x="0" y="0" width="15" height="8" uuid="0d30bb9d-3edf-4047-9dca-8da869ed1f4c"/>
+								<box>
+									<pen lineWidth="0.5"/>
+									<topPen lineWidth="0.5"/>
+									<leftPen lineWidth="0.5"/>
+									<bottomPen lineWidth="0.5"/>
+									<rightPen lineWidth="0.5"/>
+								</box>
+								<textElement>
+									<font size="6"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$V{ROW_COUNT}]]></textFieldExpression>
+							</textField>
+						</cellContents>
+					</crosstabRowHeader>
+					<crosstabTotalRowHeader>
+						<cellContents backcolor="#BFE1FF" mode="Opaque">
+							<box>
+								<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+							</box>
+							<staticText>
+								<reportElement x="0" y="0" width="57" height="27" uuid="8f890dcc-fc0b-4a2e-9c69-d6a4595f998a"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="7" isBold="true"/>
+								</textElement>
+								<text><![CDATA[Summery]]></text>
+							</staticText>
+							<staticText>
+								<reportElement style="Crosstab Data Text" x="59" y="36" width="25" height="12" uuid="0036ae45-5199-4f06-9d5e-09399d97d72a"/>
+								<box leftPadding="1">
+									<pen lineWidth="0.5"/>
+									<topPen lineWidth="0.5"/>
+									<leftPen lineWidth="0.5"/>
+									<bottomPen lineWidth="0.5"/>
+									<rightPen lineWidth="0.5"/>
+								</box>
+								<textElement textAlignment="Left">
+									<font size="6" isBold="true"/>
+								</textElement>
+								<text><![CDATA[OT Shift]]></text>
+							</staticText>
+							<staticText>
+								<reportElement style="Crosstab Data Text" x="59" y="24" width="25" height="12" uuid="8a94a515-a665-4141-85b4-c781b10ca0a7"/>
+								<box leftPadding="1">
+									<pen lineWidth="0.5"/>
+									<topPen lineWidth="0.5"/>
+									<leftPen lineWidth="0.5"/>
+									<bottomPen lineWidth="0.5"/>
+									<rightPen lineWidth="0.5"/>
+								</box>
+								<textElement textAlignment="Left" verticalAlignment="Middle">
+									<font size="6" isBold="true"/>
+								</textElement>
+								<text><![CDATA[Half Day]]></text>
+							</staticText>
+							<staticText>
+								<reportElement style="Crosstab Data Text" x="59" y="12" width="25" height="12" uuid="03594fa0-63d2-4b99-b6ef-002dc6d4508f"/>
+								<box leftPadding="1">
+									<pen lineWidth="0.5"/>
+									<topPen lineWidth="0.5"/>
+									<leftPen lineWidth="0.5"/>
+									<bottomPen lineWidth="0.5"/>
+									<rightPen lineWidth="0.5"/>
+								</box>
+								<textElement textAlignment="Left" verticalAlignment="Middle">
+									<font size="6" isBold="true"/>
+								</textElement>
+								<text><![CDATA[Night]]></text>
+							</staticText>
+							<staticText>
+								<reportElement style="Crosstab Data Text" x="59" y="0" width="25" height="12" uuid="e002a552-8ab1-4909-9dd0-cf02542569c3"/>
+								<box leftPadding="1">
+									<pen lineWidth="0.5"/>
+									<topPen lineWidth="0.5"/>
+									<leftPen lineWidth="0.5"/>
+									<bottomPen lineWidth="0.5"/>
+									<rightPen lineWidth="0.5"/>
+								</box>
+								<textElement textAlignment="Left" verticalAlignment="Middle">
+									<font size="6" isBold="true"/>
+								</textElement>
+								<text><![CDATA[Day]]></text>
+							</staticText>
+							<staticText>
+								<reportElement style="Crosstab Data Text" x="59" y="60" width="25" height="12" uuid="eadf19b3-62c9-453e-873f-8c4e60a24d11"/>
+								<box leftPadding="1">
+									<pen lineWidth="0.5"/>
+									<topPen lineWidth="0.5"/>
+									<leftPen lineWidth="0.5"/>
+									<bottomPen lineWidth="0.5"/>
+									<rightPen lineWidth="0.5"/>
+								</box>
+								<textElement textAlignment="Left" verticalAlignment="Middle">
+									<font size="6" isBold="true"/>
+								</textElement>
+								<text><![CDATA[Day 2]]></text>
+							</staticText>
+							<staticText>
+								<reportElement style="Crosstab Data Text" x="59" y="48" width="25" height="12" uuid="eadb54a9-83a9-417b-abd4-b99c8412dbef"/>
+								<box leftPadding="1">
+									<pen lineWidth="0.5"/>
+									<topPen lineWidth="0.5"/>
+									<leftPen lineWidth="0.5"/>
+									<bottomPen lineWidth="0.5"/>
+									<rightPen lineWidth="0.5"/>
+								</box>
+								<textElement textAlignment="Left" verticalAlignment="Middle">
+									<font size="6" isBold="true"/>
+								</textElement>
+								<text><![CDATA[OT Hrs.]]></text>
+							</staticText>
+							<textField>
+								<reportElement style="Crosstab Data Text" x="0" y="27" width="57" height="45" uuid="cb06ee50-59fa-4fc9-a3de-6346814c80d6"/>
+								<box leftPadding="1"/>
+								<textElement textAlignment="Left" verticalAlignment="Bottom">
+									<font size="7" isItalic="true"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$V{Loc_Name_and_code}]]></textFieldExpression>
+							</textField>
+						</cellContents>
+					</crosstabTotalRowHeader>
+				</rowGroup>
+				<rowGroup name="group1" width="0" totalPosition="End">
+					<bucket class="java.lang.Integer">
+						<bucketExpression><![CDATA[0]]></bucketExpression>
+					</bucket>
+					<crosstabRowHeader>
+						<cellContents/>
+					</crosstabRowHeader>
+					<crosstabTotalRowHeader>
+						<cellContents/>
+					</crosstabTotalRowHeader>
+				</rowGroup>
+				<columnGroup name="Date" height="21" totalPosition="End">
+					<bucket class="java.lang.String">
+						<bucketExpression><![CDATA[$F{Date}]]></bucketExpression>
+					</bucket>
+					<crosstabColumnHeader>
+						<cellContents backcolor="#F0F8FF" mode="Opaque">
+							<box>
+								<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+							</box>
+							<textField pattern="dd">
+								<reportElement style="Crosstab Data Text" x="0" y="0" width="21" height="21" uuid="f83e9fe9-be52-4d6c-8728-18150e0c4d01"/>
+								<textElement verticalAlignment="Middle">
+									<font isBold="true"/>
+								</textElement>
+								<textFieldExpression><![CDATA[new java.text.SimpleDateFormat("yyyy-mm-dd").parse($V{Date})]]></textFieldExpression>
+							</textField>
+						</cellContents>
+					</crosstabColumnHeader>
+					<crosstabTotalColumnHeader>
+						<cellContents backcolor="#BFE1FF" mode="Opaque">
+							<box>
+								<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+							</box>
+							<staticText>
+								<reportElement x="0" y="0" width="31" height="21" uuid="8403be92-bbeb-4887-a88c-226ba60c6293"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font isBold="true"/>
+								</textElement>
+								<text><![CDATA[Total]]></text>
+							</staticText>
+						</cellContents>
+					</crosstabTotalColumnHeader>
+				</columnGroup>
+				<measure name="SUM(DayShift)Measure" class="java.lang.Integer" calculation="First">
+					<measureExpression><![CDATA[$F{SUM(DayShift)}]]></measureExpression>
+				</measure>
+				<measure name="name" class="java.lang.String" calculation="First">
+					<measureExpression><![CDATA[$F{NameWithinitials}]]></measureExpression>
+				</measure>
+				<measure name="rank" class="java.lang.String" calculation="Count">
+					<measureExpression><![CDATA[$F{Designation}]]></measureExpression>
+				</measure>
+				<measure name="night" class="java.lang.Integer" calculation="First">
+					<measureExpression><![CDATA[$F{SUM(NightShift)}]]></measureExpression>
+				</measure>
+				<measure name="half" class="java.lang.Integer" calculation="First">
+					<measureExpression><![CDATA[$F{SUM(HalfDayShift)}]]></measureExpression>
+				</measure>
+				<measure name="ot_shift" class="java.lang.Integer" calculation="First">
+					<measureExpression><![CDATA[$F{SUM(OTShift)}]]></measureExpression>
+				</measure>
+				<measure name="ot_hrs" class="java.lang.Double" calculation="First">
+					<measureExpression><![CDATA[$F{SUM(OTHours)}]]></measureExpression>
+				</measure>
+				<measure name="day_two" class="java.lang.Integer" calculation="First">
+					<measureExpression><![CDATA[$F{SUM(DayTwoShift)}]]></measureExpression>
+				</measure>
+				<measure name="date" class="java.util.Date" calculation="First">
+					<measureExpression><![CDATA[$F{Date}]]></measureExpression>
+				</measure>
+				<measure name="emp_day_count" class="java.lang.Integer" calculation="Sum">
+					<measureExpression><![CDATA[$F{SUM(DayShift)}]]></measureExpression>
+				</measure>
+				<measure name="emp_night_count" class="java.lang.Integer" calculation="Sum">
+					<measureExpression><![CDATA[$F{SUM(NightShift)}]]></measureExpression>
+				</measure>
+				<measure name="emp_otshift_count" class="java.lang.Integer" calculation="Sum">
+					<measureExpression><![CDATA[$F{SUM(OTShift)}]]></measureExpression>
+				</measure>
+				<measure name="emp_half_count" class="java.lang.Integer" calculation="Sum">
+					<measureExpression><![CDATA[$F{SUM(HalfDayShift)}]]></measureExpression>
+				</measure>
+				<measure name="emp_oth_count" class="java.lang.Double" calculation="Sum">
+					<measureExpression><![CDATA[$F{SUM(OTHours)}]]></measureExpression>
+				</measure>
+				<measure name="emp_day2_count" class="java.lang.Integer" calculation="Sum">
+					<measureExpression><![CDATA[$F{SUM(DayTwoShift)}]]></measureExpression>
+				</measure>
+				<measure name="emp_count" class="java.lang.Integer" calculation="Count">
+					<measureExpression><![CDATA[$F{NameWithinitials}]]></measureExpression>
+				</measure>
+				<measure name="location" class="java.lang.String" calculation="First">
+					<measureExpression><![CDATA[$F{Location}]]></measureExpression>
+				</measure>
+				<measure name="Loc_Name_and_code" class="java.lang.String" calculation="First">
+					<measureExpression><![CDATA[$F{Location}+"  "+$F{LocName}]]></measureExpression>
+				</measure>
+				<crosstabCell width="21" height="72">
+					<cellContents>
+						<box>
+							<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+						</box>
+						<textField>
+							<reportElement style="Crosstab Data Text" x="0" y="0" width="21" height="12" uuid="7d3b4ffc-ff90-48ef-be54-32eba450b7c4"/>
+							<box rightPadding="0">
+								<pen lineWidth="0.5"/>
+								<topPen lineWidth="0.5"/>
+								<leftPen lineWidth="0.5"/>
+								<bottomPen lineWidth="0.5"/>
+								<rightPen lineWidth="0.5"/>
+							</box>
+							<textElement verticalAlignment="Middle">
+								<font size="8"/>
+							</textElement>
+							<textFieldExpression><![CDATA[$V{SUM(DayShift)Measure}==null  || $V{SUM(DayShift)Measure}== 0 ? "" : $V{SUM(DayShift)Measure}]]></textFieldExpression>
+						</textField>
+						<textField>
+							<reportElement style="Crosstab Data Text" x="0" y="12" width="21" height="12" uuid="bf53cbf8-ee20-4d27-b941-50a84aab828b"/>
+							<box rightPadding="0">
+								<pen lineWidth="0.5"/>
+								<topPen lineWidth="0.5"/>
+								<leftPen lineWidth="0.5"/>
+								<bottomPen lineWidth="0.5"/>
+								<rightPen lineWidth="0.5"/>
+							</box>
+							<textElement verticalAlignment="Middle">
+								<font size="8"/>
+							</textElement>
+							<textFieldExpression><![CDATA[$V{night}==null || $V{night}==0 ? "" : $V{night}]]></textFieldExpression>
+						</textField>
+						<textField>
+							<reportElement style="Crosstab Data Text" x="0" y="24" width="21" height="12" uuid="24aabc56-8268-4661-976a-4d80b93927e9"/>
+							<box rightPadding="0">
+								<pen lineWidth="0.5"/>
+								<topPen lineWidth="0.5"/>
+								<leftPen lineWidth="0.5"/>
+								<bottomPen lineWidth="0.5"/>
+								<rightPen lineWidth="0.5"/>
+							</box>
+							<textElement verticalAlignment="Middle">
+								<font size="8"/>
+							</textElement>
+							<textFieldExpression><![CDATA[$V{half}==null || $V{half}==0 ? "" : $V{half}]]></textFieldExpression>
+						</textField>
+						<textField>
+							<reportElement style="Crosstab Data Text" x="0" y="36" width="21" height="12" uuid="15cd684a-fd38-49a0-be67-6460ba58086a"/>
+							<box rightPadding="0">
+								<pen lineWidth="0.5"/>
+								<topPen lineWidth="0.5"/>
+								<leftPen lineWidth="0.5"/>
+								<bottomPen lineWidth="0.5"/>
+								<rightPen lineWidth="0.5"/>
+							</box>
+							<textElement verticalAlignment="Middle">
+								<font size="8"/>
+							</textElement>
+							<textFieldExpression><![CDATA[$V{ot_shift}==null || $V{ot_shift}==0 ? "" : $V{ot_shift}]]></textFieldExpression>
+						</textField>
+						<textField>
+							<reportElement style="Crosstab Data Text" x="0" y="48" width="21" height="12" uuid="6995bf99-c16c-4535-8b61-e536445caee1"/>
+							<box rightPadding="0">
+								<pen lineWidth="0.5"/>
+								<topPen lineWidth="0.5"/>
+								<leftPen lineWidth="0.5"/>
+								<bottomPen lineWidth="0.5"/>
+								<rightPen lineWidth="0.5"/>
+							</box>
+							<textElement verticalAlignment="Middle">
+								<font size="8"/>
+							</textElement>
+							<textFieldExpression><![CDATA[$V{ot_hrs}==null || $V{ot_hrs}==0.0 ? "" : $V{ot_hrs}]]></textFieldExpression>
+						</textField>
+						<textField>
+							<reportElement style="Crosstab Data Text" x="0" y="60" width="21" height="12" uuid="76de0361-871f-42f0-b185-502eece7845a"/>
+							<box rightPadding="0">
+								<pen lineWidth="0.5"/>
+								<topPen lineWidth="0.5"/>
+								<leftPen lineWidth="0.5"/>
+								<bottomPen lineWidth="0.5"/>
+								<rightPen lineWidth="0.5"/>
+							</box>
+							<textElement verticalAlignment="Middle">
+								<font size="8"/>
+							</textElement>
+							<textFieldExpression><![CDATA[$V{day_two}==null || $V{day_two}==0  ? "" : $V{day_two}]]></textFieldExpression>
+						</textField>
+					</cellContents>
+				</crosstabCell>
+				<crosstabCell width="21" height="72" rowTotalGroup="EPFno">
+					<cellContents backcolor="#BFE1FF" mode="Opaque">
+						<box>
+							<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+						</box>
+						<textField>
+							<reportElement style="Crosstab Data Text" x="0" y="0" width="21" height="12" uuid="aa098252-5b48-4509-bc49-bcd1eb042fb9"/>
+							<box rightPadding="0">
+								<pen lineWidth="0.5"/>
+								<topPen lineWidth="0.5"/>
+								<leftPen lineWidth="0.5"/>
+								<bottomPen lineWidth="0.5"/>
+								<rightPen lineWidth="0.5"/>
+							</box>
+							<textElement verticalAlignment="Middle">
+								<font size="8" isBold="true"/>
+							</textElement>
+							<textFieldExpression><![CDATA[$V{emp_day_count} == 0.0 || $V{emp_day_count} == 0 ? "" : $V{emp_day_count}]]></textFieldExpression>
+						</textField>
+						<textField>
+							<reportElement style="Crosstab Data Text" x="0" y="12" width="21" height="12" uuid="24b3bc20-ca69-4aed-b12e-172d4ab53df2"/>
+							<box rightPadding="0">
+								<pen lineWidth="0.5"/>
+								<topPen lineWidth="0.5"/>
+								<leftPen lineWidth="0.5"/>
+								<bottomPen lineWidth="0.5"/>
+								<rightPen lineWidth="0.5"/>
+							</box>
+							<textElement verticalAlignment="Middle">
+								<font size="8" isBold="true"/>
+							</textElement>
+							<textFieldExpression><![CDATA[$V{emp_night_count} == 0.0 || $V{emp_night_count} == 0 ? "" : $V{emp_night_count}]]></textFieldExpression>
+						</textField>
+						<textField>
+							<reportElement style="Crosstab Data Text" x="0" y="24" width="21" height="12" uuid="e66ef210-a66e-4ba1-b692-6ee604256f13"/>
+							<box rightPadding="0">
+								<pen lineWidth="0.5"/>
+								<topPen lineWidth="0.5"/>
+								<leftPen lineWidth="0.5"/>
+								<bottomPen lineWidth="0.5"/>
+								<rightPen lineWidth="0.5"/>
+							</box>
+							<textElement verticalAlignment="Middle">
+								<font size="8" isBold="true"/>
+							</textElement>
+							<textFieldExpression><![CDATA[$V{emp_half_count} == 0.0 || $V{emp_half_count}==0 ? "" : $V{emp_half_count}]]></textFieldExpression>
+						</textField>
+						<textField>
+							<reportElement style="Crosstab Data Text" x="0" y="36" width="21" height="12" uuid="f667dc9f-7891-4a1d-ad52-5a95fc7d1034"/>
+							<box rightPadding="0">
+								<pen lineWidth="0.5"/>
+								<topPen lineWidth="0.5"/>
+								<leftPen lineWidth="0.5"/>
+								<bottomPen lineWidth="0.5"/>
+								<rightPen lineWidth="0.5"/>
+							</box>
+							<textElement verticalAlignment="Middle">
+								<font size="8" isBold="true"/>
+							</textElement>
+							<textFieldExpression><![CDATA[$V{emp_otshift_count} == 0.0 || $V{emp_otshift_count} == 0 ? "" : $V{emp_otshift_count}]]></textFieldExpression>
+						</textField>
+						<textField>
+							<reportElement style="Crosstab Data Text" x="0" y="48" width="21" height="12" uuid="355a5b85-a593-465e-bb61-aef9cfd66645"/>
+							<box rightPadding="0">
+								<pen lineWidth="0.5"/>
+								<topPen lineWidth="0.5"/>
+								<leftPen lineWidth="0.5"/>
+								<bottomPen lineWidth="0.5"/>
+								<rightPen lineWidth="0.5"/>
+							</box>
+							<textElement verticalAlignment="Middle">
+								<font size="7" isBold="true"/>
+							</textElement>
+							<textFieldExpression><![CDATA[$V{emp_oth_count} == 0.0 || $V{emp_oth_count} == 0 ? "" : $V{emp_oth_count}]]></textFieldExpression>
+						</textField>
+						<textField>
+							<reportElement style="Crosstab Data Text" x="0" y="60" width="21" height="12" uuid="0b002377-95fb-4abd-b902-ef3687950ae5"/>
+							<box rightPadding="0">
+								<pen lineWidth="0.5"/>
+								<topPen lineWidth="0.5"/>
+								<leftPen lineWidth="0.5"/>
+								<bottomPen lineWidth="0.5"/>
+								<rightPen lineWidth="0.5"/>
+							</box>
+							<textElement verticalAlignment="Middle">
+								<font size="8" isBold="true"/>
+							</textElement>
+							<textFieldExpression><![CDATA[$V{emp_day2_count} == 0.0 || $V{emp_day2_count} == 0 ? "" : $V{emp_day2_count}]]></textFieldExpression>
+						</textField>
+					</cellContents>
+				</crosstabCell>
+				<crosstabCell width="31" height="72" columnTotalGroup="Date">
+					<cellContents backcolor="#BFE1FF" mode="Opaque">
+						<box>
+							<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+						</box>
+						<textField>
+							<reportElement style="Crosstab Data Text" x="0" y="0" width="31" height="12" uuid="88a75a7d-2c6a-40ba-8178-22eae92980fa"/>
+							<box rightPadding="1">
+								<pen lineWidth="0.5"/>
+								<topPen lineWidth="0.5"/>
+								<leftPen lineWidth="0.5"/>
+								<bottomPen lineWidth="0.5"/>
+								<rightPen lineWidth="0.5"/>
+							</box>
+							<textElement textAlignment="Right" verticalAlignment="Middle">
+								<font size="8" isBold="false"/>
+							</textElement>
+							<textFieldExpression><![CDATA[$V{emp_day_count} == 0.0 || $V{emp_day_count} == 0 ? "" : $V{emp_day_count}]]></textFieldExpression>
+						</textField>
+						<textField>
+							<reportElement style="Crosstab Data Text" x="0" y="12" width="31" height="12" uuid="7ece385c-948d-4bac-b0e7-9e6b45e3d4d4"/>
+							<box rightPadding="1">
+								<pen lineWidth="0.5"/>
+								<topPen lineWidth="0.5"/>
+								<leftPen lineWidth="0.5"/>
+								<bottomPen lineWidth="0.5"/>
+								<rightPen lineWidth="0.5"/>
+							</box>
+							<textElement textAlignment="Right" verticalAlignment="Middle">
+								<font size="8"/>
+							</textElement>
+							<textFieldExpression><![CDATA[$V{emp_night_count} == 0.0 || $V{emp_night_count} == 0 ? "" : $V{emp_night_count}]]></textFieldExpression>
+						</textField>
+						<textField>
+							<reportElement style="Crosstab Data Text" x="0" y="24" width="31" height="12" uuid="c45d88e2-6990-43f2-9b31-47a1a7176242"/>
+							<box rightPadding="1">
+								<pen lineWidth="0.5"/>
+								<topPen lineWidth="0.5"/>
+								<leftPen lineWidth="0.5"/>
+								<bottomPen lineWidth="0.5"/>
+								<rightPen lineWidth="0.5"/>
+							</box>
+							<textElement textAlignment="Right" verticalAlignment="Middle">
+								<font size="8"/>
+							</textElement>
+							<textFieldExpression><![CDATA[$V{emp_half_count} == 0.0 || $V{emp_half_count}==0 ? "" : $V{emp_half_count}]]></textFieldExpression>
+						</textField>
+						<textField>
+							<reportElement style="Crosstab Data Text" x="0" y="36" width="31" height="12" uuid="1b48383e-2d96-4549-b749-a17fd5d92506"/>
+							<box rightPadding="1">
+								<pen lineWidth="0.5"/>
+								<topPen lineWidth="0.5"/>
+								<leftPen lineWidth="0.5"/>
+								<bottomPen lineWidth="0.5"/>
+								<rightPen lineWidth="0.5"/>
+							</box>
+							<textElement textAlignment="Right" verticalAlignment="Middle">
+								<font size="8"/>
+							</textElement>
+							<textFieldExpression><![CDATA[$V{emp_otshift_count} == 0.0 || $V{emp_otshift_count} == 0 ? "" : $V{emp_otshift_count}]]></textFieldExpression>
+						</textField>
+						<textField>
+							<reportElement style="Crosstab Data Text" x="0" y="48" width="31" height="12" uuid="05ced4a9-cfe8-4d87-b1ea-ece9cd1d51f6"/>
+							<box rightPadding="1">
+								<pen lineWidth="0.5"/>
+								<topPen lineWidth="0.5"/>
+								<leftPen lineWidth="0.5"/>
+								<bottomPen lineWidth="0.5"/>
+								<rightPen lineWidth="0.5"/>
+							</box>
+							<textElement textAlignment="Right" verticalAlignment="Middle">
+								<font size="8"/>
+							</textElement>
+							<textFieldExpression><![CDATA[$V{emp_oth_count} == 0.0 || $V{emp_oth_count} == 0 ? "" : $V{emp_oth_count}]]></textFieldExpression>
+						</textField>
+						<textField>
+							<reportElement style="Crosstab Data Text" x="0" y="60" width="31" height="12" uuid="a2083daa-af2e-436e-a4cd-498cd9598168"/>
+							<box rightPadding="1">
+								<pen lineWidth="0.5"/>
+								<topPen lineWidth="0.5"/>
+								<leftPen lineWidth="0.5"/>
+								<bottomPen lineWidth="0.5"/>
+								<rightPen lineWidth="0.5"/>
+							</box>
+							<textElement textAlignment="Right" verticalAlignment="Middle">
+								<font size="8"/>
+							</textElement>
+							<textFieldExpression><![CDATA[$V{emp_day2_count} == 0.0 || $V{emp_day2_count} == 0 ? "" : $V{emp_day2_count}]]></textFieldExpression>
+						</textField>
+					</cellContents>
+				</crosstabCell>
+				<crosstabCell width="31" height="72" rowTotalGroup="EPFno" columnTotalGroup="Date">
+					<cellContents backcolor="#BFE1FF" mode="Opaque">
+						<box>
+							<pen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+						</box>
+						<textField>
+							<reportElement style="Crosstab Data Text" x="0" y="0" width="31" height="12" uuid="f5cdf82f-63c7-4601-92a6-b73d4d67d2e3"/>
+							<box rightPadding="1">
+								<pen lineWidth="0.5"/>
+								<topPen lineWidth="0.5"/>
+								<leftPen lineWidth="0.5"/>
+								<bottomPen lineWidth="0.5"/>
+								<rightPen lineWidth="0.5"/>
+							</box>
+							<textElement textAlignment="Right" verticalAlignment="Middle">
+								<font size="8" isBold="true" isUnderline="true"/>
+							</textElement>
+							<textFieldExpression><![CDATA[$V{emp_day_count} == 0.0 || $V{emp_day_count} == 0 ? "" : $V{emp_day_count}]]></textFieldExpression>
+						</textField>
+						<textField>
+							<reportElement style="Crosstab Data Text" x="0" y="12" width="31" height="12" uuid="61e11d54-d8e2-46b5-b67f-d2c27beb9220"/>
+							<box rightPadding="1">
+								<pen lineWidth="0.5"/>
+								<topPen lineWidth="0.5"/>
+								<leftPen lineWidth="0.5"/>
+								<bottomPen lineWidth="0.5"/>
+								<rightPen lineWidth="0.5"/>
+							</box>
+							<textElement textAlignment="Right" verticalAlignment="Middle">
+								<font size="8" isBold="true" isUnderline="true"/>
+							</textElement>
+							<textFieldExpression><![CDATA[$V{emp_night_count} == 0.0 || $V{emp_night_count} == 0 ? "" : $V{emp_night_count}]]></textFieldExpression>
+						</textField>
+						<textField>
+							<reportElement style="Crosstab Data Text" x="0" y="24" width="31" height="12" uuid="188a8228-2780-4728-8474-fcf3d0bd807f"/>
+							<box rightPadding="1">
+								<pen lineWidth="0.5"/>
+								<topPen lineWidth="0.5"/>
+								<leftPen lineWidth="0.5"/>
+								<bottomPen lineWidth="0.5"/>
+								<rightPen lineWidth="0.5"/>
+							</box>
+							<textElement textAlignment="Right" verticalAlignment="Middle">
+								<font size="8" isBold="true" isUnderline="true"/>
+							</textElement>
+							<textFieldExpression><![CDATA[$V{emp_half_count} == 0.0 || $V{emp_half_count}==0 ? "" : $V{emp_half_count}]]></textFieldExpression>
+						</textField>
+						<textField>
+							<reportElement style="Crosstab Data Text" x="0" y="36" width="31" height="12" uuid="59b9b229-dd6e-4cdf-91c7-da0e74dd8167"/>
+							<box rightPadding="1">
+								<pen lineWidth="0.5"/>
+								<topPen lineWidth="0.5"/>
+								<leftPen lineWidth="0.5"/>
+								<bottomPen lineWidth="0.5"/>
+								<rightPen lineWidth="0.5"/>
+							</box>
+							<textElement textAlignment="Right" verticalAlignment="Middle">
+								<font size="8" isBold="true" isUnderline="true"/>
+							</textElement>
+							<textFieldExpression><![CDATA[$V{emp_otshift_count} == 0.0 || $V{emp_otshift_count} == 0 ? "" : $V{emp_otshift_count}]]></textFieldExpression>
+						</textField>
+						<textField>
+							<reportElement style="Crosstab Data Text" x="0" y="48" width="31" height="12" uuid="47ee417e-7071-4438-bbfd-04424c6f9042"/>
+							<box rightPadding="1">
+								<pen lineWidth="0.5"/>
+								<topPen lineWidth="0.5"/>
+								<leftPen lineWidth="0.5"/>
+								<bottomPen lineWidth="0.5"/>
+								<rightPen lineWidth="0.5"/>
+							</box>
+							<textElement textAlignment="Right" verticalAlignment="Middle">
+								<font size="7" isBold="true" isUnderline="true"/>
+							</textElement>
+							<textFieldExpression><![CDATA[$V{emp_oth_count} == 0.0 || $V{emp_oth_count} == 0 ? "" : $V{emp_oth_count}]]></textFieldExpression>
+						</textField>
+						<textField>
+							<reportElement style="Crosstab Data Text" x="0" y="60" width="31" height="12" uuid="6515b9e5-1b89-4484-a78e-639cf270557f"/>
+							<box rightPadding="1">
+								<pen lineWidth="0.5"/>
+								<topPen lineWidth="0.5"/>
+								<leftPen lineWidth="0.5"/>
+								<bottomPen lineWidth="0.5"/>
+								<rightPen lineWidth="0.5"/>
+							</box>
+							<textElement textAlignment="Right" verticalAlignment="Middle">
+								<font size="8" isBold="true" isUnderline="true"/>
+							</textElement>
+							<textFieldExpression><![CDATA[$V{emp_day2_count} == 0.0 || $V{emp_day2_count} == 0 ? "" : $V{emp_day2_count}]]></textFieldExpression>
+						</textField>
+					</cellContents>
+				</crosstabCell>
+				<crosstabCell width="21" height="0" rowTotalGroup="group1">
+					<cellContents/>
+				</crosstabCell>
+				<crosstabCell height="0" rowTotalGroup="group1" columnTotalGroup="Date">
+					<cellContents/>
+				</crosstabCell>
+			</crosstab>
+		</band>
+	</summary>
+</jasperReport>
