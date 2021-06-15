@@ -1017,8 +1017,12 @@ public class SAMPATH_Bank_PayMasterFile extends javax.swing.JFrame {
         getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 60, 70, 20));
 
         cmb_month2.setFont(new java.awt.Font("Georgia", 0, 15)); // NOI18N
-        cmb_month2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Bank" }));
-        cmb_month2.setEnabled(false);
+        cmb_month2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Sampath Bank, NDB" }));
+        cmb_month2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmb_month2ActionPerformed(evt);
+            }
+        });
         getContentPane().add(cmb_month2, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 60, 70, -1));
 
         lbl_emp_without_Bank.setBackground(new java.awt.Color(204, 204, 204));
@@ -1274,6 +1278,10 @@ public class SAMPATH_Bank_PayMasterFile extends javax.swing.JFrame {
 
 
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void cmb_month2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmb_month2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmb_month2ActionPerformed
 
     /**
      * @param args the command line arguments
