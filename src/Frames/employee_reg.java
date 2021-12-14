@@ -101,6 +101,9 @@ public class employee_reg extends javax.swing.JFrame {
         get_Rank_Details();
         TitleBar();
         get_EMP_Details();
+
+        jCheckBox1.setSelected(true);
+        jCheckBox2.setSelected(true);
         // jPanel1.setVisible(false);
         // jButton3.setVisible(false);
 //        cb_salary_cat.setVisible(false);
@@ -1413,6 +1416,11 @@ public class employee_reg extends javax.swing.JFrame {
         jCheckBox1.setFont(new java.awt.Font("Georgia", 0, 12)); // NOI18N
         jCheckBox1.setForeground(new java.awt.Color(153, 0, 0));
         jCheckBox1.setText("AUTO EPF No.");
+        jCheckBox1.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                jCheckBox1StateChanged(evt);
+            }
+        });
         jCheckBox1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jCheckBox1ActionPerformed(evt);
@@ -1459,6 +1467,11 @@ public class employee_reg extends javax.swing.JFrame {
         jCheckBox2.setFont(new java.awt.Font("Georgia", 0, 12)); // NOI18N
         jCheckBox2.setForeground(new java.awt.Color(153, 0, 0));
         jCheckBox2.setText("AUTO EMP No.");
+        jCheckBox2.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                jCheckBox2StateChanged(evt);
+            }
+        });
         jCheckBox2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jCheckBox2ActionPerformed(evt);
@@ -1698,7 +1711,7 @@ public class employee_reg extends javax.swing.JFrame {
 
 //Personal Details
             String nic = txt_nic.getText();
-            String empid = txt_EPFno.getText();
+
             String fullName = txt_fullName.getText();
             String initials = txt_NameWithInitials.getText();
             String address = txt_address.getText();
@@ -1728,7 +1741,6 @@ public class employee_reg extends javax.swing.JFrame {
             String inCaseTel = txt_inCaseTel.getText();
             String inCaseMob = txt_inCaseMobile.getText();
             String inCaseRel = txt_inCaseRelation.getText();
-            String employee_no = txt_EmployeeNo.getText();
 
             Double str_basic = Double.parseDouble(txt_basicSalary.getText());
             String basic = String.format("%.2f", str_basic);
@@ -1748,13 +1760,13 @@ public class employee_reg extends javax.swing.JFrame {
             Double MCAllo = Double.parseDouble(txt_MCAllowance.getText());
             String MCAllowance = String.format("%.2f", MCAllo);
 
-            if (initials.isEmpty() || employee_no.isEmpty() || DateChooser_joinedDate == null || location.isEmpty() || company.isEmpty() || designation.equals("=Select Designation=")) {
+            if (initials.isEmpty() || txt_EmployeeNo.getText().isEmpty() || DateChooser_joinedDate == null || location.isEmpty() || company.isEmpty() || designation.equals("=Select Designation=")) {
                 Color c1 = new Color(255, 161, 161);
 
                 if (initials.isEmpty()) {
                     txt_NameWithInitials.setBackground(c1);
                 }
-                if (employee_no.isEmpty()) {
+                if (txt_EmployeeNo.getText().isEmpty()) {
                     txt_EmployeeNo.setBackground(c1);
                 }
 //                if (address.isEmpty()) {
@@ -1813,11 +1825,22 @@ public class employee_reg extends javax.swing.JFrame {
                         Active_EPF = "0";
                     }
 //
-//                    if (cb_salary_cat.isSelected()) {
-//                        SikuraEmpShiftrateBasisSalary = "1";
-//                    } else {
-//                        SikuraEmpShiftrateBasisSalary = "0";
-//                    }
+                    //Prevent duplicating different employees in same EPF number  when save concurrently
+                    if (jCheckBox1.isSelected()) {
+                        get_latest_EPFno();
+                    } else {
+
+                    }
+
+                    //Prevent duplicating different employees in same EMP number  when save concurrently
+                    if (jCheckBox2.isSelected()) {
+                        get_latest_EMPno();
+                    } else {
+
+                    }
+
+                    String employee_no = txt_EmployeeNo.getText();
+                    String empid = txt_EPFno.getText();
 
                     String sql = "INSERT INTO employee_reg (NIC,EPFno,FullName,NameWithInitials,Address,DOB,Gender,CivilStatus,Tel,Mob1,Mob2,Email,PoliceArea,GramaDivision,InCaseName,InCaseRel,IncaseTel,IncaseMob,IncaseAddress,DefCompany,DefLocation,Designation,JoinedDate,ShiftRate,BirthCert,GramaCert,PoliceCert,CharacterCert,NICcopy,ServiceCert,EduQuali,EduQualiDetails,EMPImage,IsResigned,WorkP1,emp1,WorkP2,emp2,BasicSalary,BRAllowance,GrossSalary,RankCategory,PostingDate,Welfare,ActiveEPF,Surname,MCAllowance,PayType,EmployeeNo) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 
@@ -4100,6 +4123,30 @@ public class employee_reg extends javax.swing.JFrame {
 
         }        // TODO add your handling code here:
     }//GEN-LAST:event_jButton10ActionPerformed
+
+    private void jCheckBox1StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jCheckBox1StateChanged
+        if (jCheckBox1.isSelected()) {
+            get_latest_EPFno();
+            txt_EPFno.setEditable(false);
+        } else {
+
+            txt_EPFno.setText("");
+            txt_EPFno.setEditable(true);
+
+        }        // TODO add your handling code here:
+    }//GEN-LAST:event_jCheckBox1StateChanged
+
+    private void jCheckBox2StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jCheckBox2StateChanged
+        if (jCheckBox2.isSelected()) {
+            get_latest_EMPno();
+            txt_EmployeeNo.setEditable(false);
+        } else {
+
+            txt_EmployeeNo.setText("");
+            txt_EmployeeNo.setEditable(true);
+
+        }         // TODO add your handling code here:
+    }//GEN-LAST:event_jCheckBox2StateChanged
 
     /**
      * @param args the command line arguments
