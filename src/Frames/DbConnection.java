@@ -25,7 +25,7 @@ public class DbConnection {
         String url = "jdbc:mysql://localhost:3306/techseed_payroll_rass_target?useUnicode=true&characterEncoding=UTF-8";
         Connection c = DriverManager.getConnection(url, "root", "123");
         return c;
-
+ 
         //*******************************************************************************************
         // #To connect to DB within Server (another PC) Use following code line
         //("jdbc:mysql://192.168.1.10:3306/pos", "user", "123")
