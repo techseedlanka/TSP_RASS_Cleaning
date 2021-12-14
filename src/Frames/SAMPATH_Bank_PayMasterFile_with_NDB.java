@@ -9,6 +9,7 @@ import java.awt.Color;
 import java.awt.Toolkit;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -29,8 +30,16 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
+import org.apache.poi.hssf.usermodel.HSSFFormulaEvaluator;
+import org.apache.poi.hssf.usermodel.HSSFSheet;
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.xssf.usermodel.XSSFFormulaEvaluator;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 
@@ -38,24 +47,26 @@ import org.apache.poi.xssf.usermodel.XSSFSheet;
  *
  * @author Sapu
  */
-public class SAMPATH_Bank_PayMasterFile extends javax.swing.JFrame {
+public class SAMPATH_Bank_PayMasterFile_with_NDB extends javax.swing.JFrame {
 
     /**
      * Creates new form RPT_Advance
      */
     static ArrayList adv;
 
-    public SAMPATH_Bank_PayMasterFile() {
+    public SAMPATH_Bank_PayMasterFile_with_NDB() {
         initComponents();
 
         adv = new ArrayList();
         seticon();
         get_Location_Details();
-
+        get_Company_Details();
+        jButton3.setVisible(false);
+        txt_path.setVisible(false);
     }
 
     private void seticon() {
-        this.setTitle("Advance Report");
+        this.setTitle("Bank File Generate");
         setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("techseed.png")));
     }
 
@@ -74,6 +85,28 @@ public class SAMPATH_Bank_PayMasterFile extends javax.swing.JFrame {
             }
 
             AutoCompleteDecorator.decorate(cmb_defLocation);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    private void get_Company_Details() {
+        try {
+
+            Statement st = DbConnection.getconnection().createStatement();
+            ResultSet rs = st.executeQuery("SELECT * from company_reg  ");
+            while (rs.next()) {
+
+                Object name = rs.getString("ComName");
+                //Object code = rs.getString("LocCode");
+
+                //cmb_defLocation.addItem(code);
+                cmb_Company.addItem(name);
+            }
+
+            AutoCompleteDecorator.decorate(cmb_Company);
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -115,11 +148,35 @@ public class SAMPATH_Bank_PayMasterFile extends javax.swing.JFrame {
                 Connection con = DbConnection.getconnection();
                 String sql = null;
 
-                if (jCheckBox1.isSelected()) {
-                    sql = "SELECT * from salary_advance_1  WHERE    PayMonth='" + cmb_month.getSelectedItem().toString() + "' and  PayYear='" + cmb_year.getSelectedItem().toString() + "' and Note='Bank'";
+//                if (jCheckBox1.isSelected()) {
+//                    sql = "SELECT * from salary_advance_1  WHERE    PayMonth='" + cmb_month.getSelectedItem().toString() + "' and  PayYear='" + cmb_year.getSelectedItem().toString() + "' and Note='Bank'";
+//
+//                } else {
+//                    sql = "SELECT * from salary_advance_1  WHERE    PayMonth='" + cmb_month.getSelectedItem().toString() + "' and  PayYear='" + cmb_year.getSelectedItem().toString() + "' and Note='Bank' and Location='" + txt_locCode.getText() + "' ";
+//
+//                }
+//                
+                if (cmb_Company.getSelectedIndex() == 0) {
+                    //employees of both companies
+
+                    if (jCheckBox1.isSelected()) {
+                        sql = "SELECT * from salary_advance_1  WHERE    PayMonth='" + cmb_month.getSelectedItem().toString() + "' and  PayYear='" + cmb_year.getSelectedItem().toString() + "' and Note='Bank'";
+
+                    } else {
+                        sql = "SELECT * from salary_advance_1  WHERE    PayMonth='" + cmb_month.getSelectedItem().toString() + "' and  PayYear='" + cmb_year.getSelectedItem().toString() + "' and Note='Bank' and Location='" + txt_locCode.getText() + "' ";
+
+                    }
 
                 } else {
-                    sql = "SELECT * from salary_advance_1  WHERE    PayMonth='" + cmb_month.getSelectedItem().toString() + "' and  PayYear='" + cmb_year.getSelectedItem().toString() + "' and Note='Bank' and Location='" + txt_locCode.getText() + "' ";
+                    String beginLetter = companyName.substring(0, 1);
+
+                    if (jCheckBox1.isSelected()) {
+                        sql = "SELECT * from salary_advance_1  WHERE  Location Like '" + beginLetter + "%' And  PayMonth='" + cmb_month.getSelectedItem().toString() + "' and  PayYear='" + cmb_year.getSelectedItem().toString() + "' and Note='Bank'";
+
+                    } else {
+                        sql = "SELECT * from salary_advance_1  WHERE  Location Like '" + beginLetter + "%' And  PayMonth='" + cmb_month.getSelectedItem().toString() + "' and  PayYear='" + cmb_year.getSelectedItem().toString() + "' and Note='Bank' and Location='" + txt_locCode.getText() + "' ";
+
+                    }
 
                 }
 
@@ -292,13 +349,30 @@ public class SAMPATH_Bank_PayMasterFile extends javax.swing.JFrame {
                 dtm.setRowCount(0);
 
                 Connection con = DbConnection.getconnection();
-                String sql = "SELECT * from salary_final_site_employees  WHERE      Month='" + cmb_month.getSelectedItem().toString() + "' and   Year='" + cmb_year.getSelectedItem().toString() + "' and PayType='Bank' and SalaryType='FINAL' ORDER BY loc";
 
-                if (jCheckBox1.isSelected()) {
-                    sql = "SELECT * from salary_final_site_employees  WHERE      Month='" + cmb_month.getSelectedItem().toString() + "' and   Year='" + cmb_year.getSelectedItem().toString() + "' and PayType='Bank' and SalaryType='FINAL' ORDER BY loc ";
+                String sql = "SELECT * from salary_final_site_employees  WHERE Month='" + cmb_month.getSelectedItem().toString() + "' and   Year='" + cmb_year.getSelectedItem().toString() + "' and PayType='Bank' and SalaryType='FINAL' ORDER BY loc";
+
+                if (cmb_Company.getSelectedIndex() == 0) {
+                    //employees of both companies
+
+                    if (jCheckBox1.isSelected()) {
+                        sql = "SELECT * from salary_final_site_employees  WHERE Month='" + cmb_month.getSelectedItem().toString() + "' and   Year='" + cmb_year.getSelectedItem().toString() + "' and PayType='Bank' and SalaryType='FINAL' ORDER BY loc ";
+
+                    } else {
+                        sql = "SELECT * from salary_final_site_employees  WHERE Month='" + cmb_month.getSelectedItem().toString() + "' and   Year='" + cmb_year.getSelectedItem().toString() + "' and PayType='Bank' and SalaryType='FINAL' and loc='" + txt_locCode.getText() + "' ORDER BY loc";
+
+                    }
 
                 } else {
-                    sql = "SELECT * from salary_final_site_employees  WHERE      Month='" + cmb_month.getSelectedItem().toString() + "' and   Year='" + cmb_year.getSelectedItem().toString() + "' and PayType='Bank' and SalaryType='FINAL' and loc='" + txt_locCode.getText() + "' ORDER BY loc";
+                    String beginLetter = companyName.substring(0, 1);
+
+                    if (jCheckBox1.isSelected()) {
+                        sql = "SELECT * from salary_final_site_employees  WHERE Loc Like '" + beginLetter + "%' And Month='" + cmb_month.getSelectedItem().toString() + "' and   Year='" + cmb_year.getSelectedItem().toString() + "' and PayType='Bank' and SalaryType='FINAL' ORDER BY loc ";
+
+                    } else {
+                        sql = "SELECT * from salary_final_site_employees  WHERE Loc Like '" + beginLetter + "%' And Month='" + cmb_month.getSelectedItem().toString() + "' and   Year='" + cmb_year.getSelectedItem().toString() + "' and PayType='Bank' and SalaryType='FINAL' and loc='" + txt_locCode.getText() + "' ORDER BY loc";
+
+                    }
 
                 }
 
@@ -456,7 +530,7 @@ public class SAMPATH_Bank_PayMasterFile extends javax.swing.JFrame {
         String EmpNo = "";
         String EmpName = "";
         String AdvAmount = "";
-        String PayType = "";
+        String Unit = "";
         String Rank = "";
         try {
 
@@ -464,8 +538,32 @@ public class SAMPATH_Bank_PayMasterFile extends javax.swing.JFrame {
             dtm.setRowCount(0);
 
             Connection con = DbConnection.getconnection();
-            String sql = "SELECT * from salary_festival_deductions_summery  WHERE   Status='on-going' and PayType='Bank' and FestivMonth='"+cmb_month.getSelectedItem().toString()+"' "
-                    + "and FestivYear='"+cmb_year.getSelectedItem().toString()+"'";
+            String sql = "SELECT * from salary_festival_deductions_summery  WHERE  PayStatus='PENDING' and PayType='Bank' ORDER BY Unit,EMPno";
+
+            if (cmb_Company.getSelectedIndex() == 0) {
+                //employees of both companies
+
+                if (jCheckBox1.isSelected()) {
+                    sql = "SELECT * from salary_festival_deductions_summery  WHERE  PayStatus='PENDING' and PayType='Bank' and PayType='Bank' ORDER BY Unit,EMPno ";
+
+                } else {
+                    sql = "SELECT * from salary_festival_deductions_summery  WHERE  PayStatus='PENDING' and PayType='Bank' and Unit='" + txt_locCode.getText() + "' ORDER BY Unit,EMPno";
+
+                }
+
+            } else {
+                String beginLetter = companyName.substring(0, 1);
+                
+                 if (jCheckBox1.isSelected()) {
+                    sql = "SELECT * from salary_festival_deductions_summery  WHERE Unit Like '" + beginLetter + "%' And  PayStatus='PENDING' and PayType='Bank' and PayType='Bank' ORDER BY Unit,EMPno ";
+
+                } else {
+                    sql = "SELECT * from salary_festival_deductions_summery  WHERE Unit Like '" + beginLetter + "%' And  PayStatus='PENDING' and PayType='Bank' and Unit='" + txt_locCode.getText() + "' ORDER BY Unit,EMPno";
+
+                }
+
+              
+            }
 
             PreparedStatement pst = con.prepareStatement(sql);
             ResultSet rs = pst.executeQuery();
@@ -475,6 +573,7 @@ public class SAMPATH_Bank_PayMasterFile extends javax.swing.JFrame {
                 EmpNo = rs.getString("EMPno");
                 // EmpName = rs.getString("Name");
                 AdvAmount = rs.getString("LoanAmount");
+                Unit = rs.getString("Unit");
                 // PayType = rs.getString("Note");
 
                 Vector v = new Vector();
@@ -488,7 +587,7 @@ public class SAMPATH_Bank_PayMasterFile extends javax.swing.JFrame {
                 v.add("");
                 v.add("");
                 v.add("");
-                v.add("");
+                v.add(Unit);
                 v.add("");
 
                 dtm.addRow(v);
@@ -518,7 +617,6 @@ public class SAMPATH_Bank_PayMasterFile extends javax.swing.JFrame {
 
                         EmpName = rs1.getString("NameWithInitials");
                         loc = rs1.getString("DefLocation");
-                        jTable1.getModel().setValueAt(loc, i, 10);
                         Rank = rs1.getString("Designation");
                         jTable1.getModel().setValueAt(EmpName, i, 2);
                         jTable1.getModel().setValueAt(Rank, i, 1);
@@ -750,13 +848,310 @@ public class SAMPATH_Bank_PayMasterFile extends javax.swing.JFrame {
 //        }
 //
 //    }
+    private String sendNameToSampathBankFile(String name) {
+
+        //String new_name = "Guards_Salary";
+        String name1 = cmb_trans_type.getSelectedItem().toString().replaceAll("\\s", "");
+
+        String filename = name1 + "_" + cmb_PayType.getSelectedItem().toString() + "_" + cmb_month.getSelectedItem().toString() + cmb_year.getSelectedItem().toString();
+        SimpleDateFormat df = new SimpleDateFormat("yyy-MM-dd_HH-mm-ss-a");
+        Date date = new Date();
+        String v = df.format(date);
+        return name + "\\" + filename + "_" + v + ".xls";
+    }
+
     private void Update_Excell_xsls_EPF() {
+
+        JFileChooser fc = new JFileChooser();
+        fc.setSelectedFile(new File(sendNameToSampathBankFile("")));
+        int click = fc.showSaveDialog(this);
+        if (click == JFileChooser.APPROVE_OPTION) {
+            File file = fc.getSelectedFile();
+            String path = file.getParent();
+            path = sendNameToSampathBankFile(path);
+            txt_path.setText(path);
+
+        }
+
+        if (txt_path.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(rootPane, "Please select the Save Location for Excel file.");
+
+        } else {
+
+            try {
+                lbl_lbl.setForeground(Color.BLACK);
+                lbl_lbl.setText("Uploading Data into Excel File...");
+                jProgressBar1.setValue(0);
+
+                try {
+
+                    File originalWb = new File("Sampath_Bank_System_Excel.xls");
+                    File clonedWb = new File(txt_path.getText());
+                    Files.copy(originalWb.toPath(), clonedWb.toPath());
+                } catch (FileNotFoundException ex) {
+                    Logger.getLogger(SAMPATH_Bank_PayMasterFile_with_NDB.class.getName()).log(Level.SEVERE, null, ex);
+                }
+
+                String path = txt_path.getText();
+
+                FileInputStream fsIP = new FileInputStream(new File(path));
+                // FileInputStream fsIP2= new FileInputStream(new File("E:\\01. Sampath Bank System Excel.xls"));
+                //Access the workbook
+                HSSFWorkbook wb = new HSSFWorkbook(fsIP);
+
+                //Access the worksheet, so that we can update / modify it.
+                HSSFSheet worksheet = wb.getSheetAt(0);
+
+                // declare a Cell object
+                Cell cell = null;
+
+                // Access the second cell in second row to update the value
+//            cell = worksheet.getRow(8).getCell(1);//A/C
+//            cell = worksheet.getRow(8).getCell(2);//Bank
+//            cell = worksheet.getRow(8).getCell(3);//Branch
+//            
+//            cell = worksheet.getRow(8).getCell(5);//BankName
+//            cell = worksheet.getRow(8).getCell(6);//TorE
+//            cell = worksheet.getRow(8).getCell(7);//Unit
+                //update multiple names from Jtable
+                int nrow = jTable1.getRowCount();
+                jProgressBar1.setMaximum(nrow);
+                int start_row = 8;
+                jProgressBar1.setValue(1);
+//            cell = worksheet.getRow(4).getCell(6);//Name
+//            String month = cmb_month.getSelectedItem().toString() + " " + cmb_year.getSelectedItem().toString();
+//            cell.setCellValue(month);
+                for (int i = 0; i < nrow; i++) {
+
+                    String name = jTable1.getModel().getValueAt(i, 2).toString();
+                    System.out.println("Name: " + name);
+                    cell = worksheet.getRow(i + start_row).getCell(0);//Name
+                    System.out.println("cell:" + cell);
+                    cell.setCellValue(name);
+
+                    String acc = jTable1.getModel().getValueAt(i, 3).toString();
+                    cell = worksheet.getRow(i + start_row).getCell(1);//ACC
+                    cell.setCellValue(acc);
+
+                    String bank = jTable1.getModel().getValueAt(i, 4).toString();
+                    cell = worksheet.getRow(i + start_row).getCell(2);//Bank
+                    cell.setCellValue(bank);
+
+                    String branch = jTable1.getModel().getValueAt(i, 5).toString();
+                    cell = worksheet.getRow(i + start_row).getCell(3);//Branch
+                    cell.setCellValue(branch);
+
+                    String amount = jTable1.getModel().getValueAt(i, 6).toString();
+                    Double d1 = Double.parseDouble(amount);
+                    cell = worksheet.getRow(i + start_row).getCell(4);//Amount
+                    cell.setCellValue(d1);
+
+                    String bank_name = "";
+                    if (jTable1.getModel().getValueAt(i, 11) == null) {
+                        bank_name = "";
+                    } else {
+                        bank_name = jTable1.getModel().getValueAt(i, 11).toString();
+                    }
+                    cell = worksheet.getRow(i + start_row).getCell(5);//Bank Name
+                    cell.setCellValue(bank_name);
+
+                    String company = jTable1.getModel().getValueAt(i, 8).toString();
+                    cell = worksheet.getRow(i + start_row).getCell(6);//Company 
+                    cell.setCellValue(company);
+
+                    String location = jTable1.getModel().getValueAt(i, 9).toString();
+                    cell = worksheet.getRow(i + start_row).getCell(7);//location 
+                    cell.setCellValue(location);
+
+                    jProgressBar1.setValue(jProgressBar1.getValue() + 1);
+                }
+
+                HSSFFormulaEvaluator.evaluateAllFormulaCells(wb);
+                fsIP.close();
+
+                FileOutputStream output_file = new FileOutputStream(new File(path));
+
+                wb.write(output_file);
+
+                output_file.close();
+
+                lbl_lbl.setText("Excel File Updated Succesfully...!");
+                lbl_lbl.setForeground(Color.WHITE);
+                System.out.println("done");
+
+            } catch (IOException e) {
+                e.printStackTrace();
+                JOptionPane.showMessageDialog(rootPane, "ERROR: Please Close the Excel File");
+            }
+        }
+    }
+
+    private String sendNameDB(String name) {
+
+        //String new_name = "Guards_Salary";
+        String name1 = cmb_trans_type.getSelectedItem().toString().replaceAll("\\s", "");
+
+        String filename = name1 + cmb_PayType.getSelectedItem().toString() + cmb_month.getSelectedItem().toString() + cmb_year.getSelectedItem().toString();
+        SimpleDateFormat df = new SimpleDateFormat("yyy-MM-dd_HH-mm-ss-a");
+        Date date = new Date();
+        String v = df.format(date);
+        return name + "\\" + filename + "_" + v + ".xlsx";
+    }
+
+    private void Update_NDB_Excell_xsls() {
+
+        JFileChooser fc = new JFileChooser();
+        fc.setSelectedFile(new File(sendNameDB("")));
+        int click = fc.showSaveDialog(this);
+        if (click == JFileChooser.APPROVE_OPTION) {
+            File file = fc.getSelectedFile();
+            String path = file.getParent();
+            path = sendNameDB(path);
+            txt_path.setText(path);
+
+        }
+
+        if (txt_path.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(rootPane, "Please select the Save Location for Excel file.");
+
+        } else {
+
+            try {
+                lbl_lbl.setForeground(Color.BLACK);
+                lbl_lbl.setText("Uploading Data into Excel File...");
+                jProgressBar1.setValue(0);
+
+                try {
+
+                    File originalWb = new File("NDB_BANK_FILE.xlsx");
+                    File clonedWb = new File(txt_path.getText());
+                    Files.copy(originalWb.toPath(), clonedWb.toPath());
+                } catch (FileNotFoundException ex) {
+                    Logger.getLogger(SAMPATH_Bank_PayMasterFile_with_NDB.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                String path = txt_path.getText();
+
+                //Read the spreadsheet that needs to be updated
+                FileInputStream fsIP = new FileInputStream(new File(path));
+                // FileInputStream fsIP2= new FileInputStream(new File("E:\\01. Sampath Bank System Excel.xls"));
+                //Access the workbook
+                XSSFWorkbook wb = new XSSFWorkbook(fsIP);
+
+                //Access the worksheet, so that we can update / modify it.
+                XSSFSheet worksheet = wb.getSheetAt(0);
+
+                // declare a Cell object
+                Cell cell = null;
+
+                // Access the second cell in second row to update the value
+//            cell = worksheet.getRow(8).getCell(1);//A/C
+//            cell = worksheet.getRow(8).getCell(2);//Bank
+//            cell = worksheet.getRow(8).getCell(3);//Branch
+//            
+//            cell = worksheet.getRow(8).getCell(5);//BankName
+//            cell = worksheet.getRow(8).getCell(6);//TorE
+//            cell = worksheet.getRow(8).getCell(7);//Unit
+                //update multiple names from Jtable
+                int nrow = jTable1.getRowCount();
+                jProgressBar1.setMaximum(nrow);
+                int start_row = 6;
+                jProgressBar1.setValue(1);
+//            cell = worksheet.getRow(4).getCell(6);//Name
+//            String month = cmb_month.getSelectedItem().toString() + " " + cmb_year.getSelectedItem().toString();
+//            cell.setCellValue(month);
+
+                for (int i = 0; i < nrow; i++) {
+
+                    /*
+                    1. Dest. Bank No
+                    2. Dest Branch No
+                    3. Dest. Acc. No
+                    4. Dest. Acc. Name
+                    5. Amount
+                    6. Ref
+                                                        
+                     */
+                    //Dest. Bank No
+                    String BanckCode = jTable1.getModel().getValueAt(i, 4).toString();
+                    cell = worksheet.getRow(i + start_row).getCell(1);
+                    System.out.println("bank code " + cell);
+                    int code_01 = Integer.parseInt(BanckCode);
+                    cell.setCellValue(code_01);
+
+                    //Dest Branch No
+                    String BranchCode = jTable1.getModel().getValueAt(i, 5).toString();
+                    cell = worksheet.getRow(i + start_row).getCell(2);
+                    System.out.println("branch code " + cell);
+                    int code_2 = Integer.parseInt(BranchCode);
+                    cell.setCellValue(code_2);
+
+                    //Dest. Acc. No
+                    String Acc = jTable1.getModel().getValueAt(i, 3).toString();
+                    cell = worksheet.getRow(i + start_row).getCell(3);
+                    long code_3 = Long.valueOf(Acc);
+                    cell.setCellValue(code_3);
+
+                    //Dest. Acc. Name
+                    String Name = jTable1.getModel().getValueAt(i, 2).toString();
+                    cell = worksheet.getRow(i + start_row).getCell(4);//name
+                    cell.setCellValue(Name);
+                    System.out.println(Name);
+
+                    // Amount
+                    String amount = jTable1.getModel().getValueAt(i, 6).toString();
+                    Double d1 = Double.parseDouble(amount);
+                    cell = worksheet.getRow(i + start_row).getCell(5);//Amount
+                    cell.setCellValue(d1);
+
+                    //Ref
+//                    String narration = jTable1.getModel().getValueAt(i, 7).toString();
+//                    cell = worksheet.getRow(i + start_row).getCell(14);//narration
+//                    cell.setCellValue(narration);
+                    jProgressBar1.setValue(jProgressBar1.getValue() + 1);
+
+                }
+
+                fsIP.close();
+
+                FileOutputStream output_file = new FileOutputStream(new File(path));
+
+                wb.write(output_file);
+
+                output_file.close();
+
+                lbl_lbl.setText("Excel File Saved Succesfully...!");
+                lbl_lbl.setForeground(Color.WHITE);
+
+                JOptionPane.showMessageDialog(rootPane, "Excel File Saved Succesfully...!");
+                System.out.println("done");
+
+            } catch (IOException e) {
+                e.printStackTrace();
+                JOptionPane.showMessageDialog(rootPane, "ERROR: Please Close the Excel File");
+            }
+
+        }
+    }
+
+    private void Update_Excell_xsls_EPF_NEW() {
         try {
+
+            JFileChooser fc = new JFileChooser();
+            fc.setSelectedFile(new File(sendNameDB("")));
+            int click = fc.showSaveDialog(this);
+            if (click == JFileChooser.APPROVE_OPTION) {
+                File file = fc.getSelectedFile();
+                String path = file.getParent();
+                path = sendNameDB(path);
+                txt_path.setText(path);
+
+            }
+
             lbl_lbl.setForeground(Color.BLACK);
             lbl_lbl.setText("Uploading Data into Excel File...");
             jProgressBar1.setValue(0);
             //Read the spreadsheet that needs to be updated
-            String path = txt_path.getText();
+            String path = "Reports/Sampath_Bank_System_Excel.xls";
             FileInputStream fsIP = new FileInputStream(new File(path));
             // FileInputStream fsIP2= new FileInputStream(new File("E:\\01. Sampath Bank System Excel.xls"));
             //Access the workbook
@@ -860,7 +1255,6 @@ public class SAMPATH_Bank_PayMasterFile extends javax.swing.JFrame {
         jButton5 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
-        jSeparator12 = new javax.swing.JSeparator();
         cmb_month = new javax.swing.JComboBox();
         cmb_year = new javax.swing.JComboBox();
         lbl_emp_count = new javax.swing.JLabel();
@@ -876,7 +1270,7 @@ public class SAMPATH_Bank_PayMasterFile extends javax.swing.JFrame {
         cmb_trans_type = new javax.swing.JComboBox();
         jLabel10 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        cmb_month2 = new javax.swing.JComboBox();
+        cmb_PayType = new javax.swing.JComboBox();
         lbl_emp_without_Bank = new javax.swing.JLabel();
         jButton3 = new javax.swing.JButton();
         txt_path = new javax.swing.JTextField();
@@ -886,6 +1280,12 @@ public class SAMPATH_Bank_PayMasterFile extends javax.swing.JFrame {
         txt_locCode = new javax.swing.JTextField();
         jCheckBox1 = new javax.swing.JCheckBox();
         jButton1 = new javax.swing.JButton();
+        jLabel8 = new javax.swing.JLabel();
+        cmb_Company = new javax.swing.JComboBox();
+        txt_ComCode = new javax.swing.JTextField();
+        jSeparator14 = new javax.swing.JSeparator();
+        jLabel13 = new javax.swing.JLabel();
+        cmb_bank = new javax.swing.JComboBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -898,7 +1298,7 @@ public class SAMPATH_Bank_PayMasterFile extends javax.swing.JFrame {
                 jButton5ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 50, 210, 90));
+        getContentPane().add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 50, 200, 110));
 
         jButton4.setFont(new java.awt.Font("Georgia", 0, 14)); // NOI18N
         jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Fine Print.png"))); // NOI18N
@@ -908,12 +1308,11 @@ public class SAMPATH_Bank_PayMasterFile extends javax.swing.JFrame {
                 jButton4ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 620, 180, 50));
+        getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 600, 210, 50));
 
         jLabel2.setFont(new java.awt.Font("Georgia", 0, 16)); // NOI18N
         jLabel2.setText("Salary & Advance Export  - Sampath Corporate Payment System (SCPS)");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 530, 40));
-        getContentPane().add(jSeparator12, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 1020, 10));
 
         cmb_month.setFont(new java.awt.Font("Georgia", 0, 15)); // NOI18N
         cmb_month.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" }));
@@ -937,7 +1336,7 @@ public class SAMPATH_Bank_PayMasterFile extends javax.swing.JFrame {
         lbl_emp_count.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         lbl_emp_count.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbl_emp_count.setOpaque(true);
-        getContentPane().add(lbl_emp_count, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 590, 60, 20));
+        getContentPane().add(lbl_emp_count, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 570, 60, 20));
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -978,14 +1377,14 @@ public class SAMPATH_Bank_PayMasterFile extends javax.swing.JFrame {
             jTable1.getColumnModel().getColumn(11).setPreferredWidth(120);
         }
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 150, 1000, 420));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 180, 1000, 370));
 
         lbl_total.setBackground(new java.awt.Color(204, 204, 204));
         lbl_total.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         lbl_total.setText("0.00");
         lbl_total.setOpaque(true);
-        getContentPane().add(lbl_total, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 590, 130, 20));
-        getContentPane().add(jSeparator13, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 690, 1020, 10));
+        getContentPane().add(lbl_total, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 570, 130, 20));
+        getContentPane().add(jSeparator13, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 670, 1020, 10));
 
         jLabel5.setFont(new java.awt.Font("Georgia", 0, 12)); // NOI18N
         jLabel5.setText("Pay Month :");
@@ -993,18 +1392,18 @@ public class SAMPATH_Bank_PayMasterFile extends javax.swing.JFrame {
 
         jLabel7.setFont(new java.awt.Font("Georgia", 0, 12)); // NOI18N
         jLabel7.setText("Employee Count:");
-        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 590, -1, 20));
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 570, -1, 20));
 
         jLabel9.setFont(new java.awt.Font("Georgia", 0, 12)); // NOI18N
         jLabel9.setText("Bank Amount :");
-        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 590, -1, 20));
+        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 570, -1, 20));
 
         lbl_lbl.setFont(new java.awt.Font("Georgia", 0, 12)); // NOI18N
-        getContentPane().add(lbl_lbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 590, 330, 20));
+        getContentPane().add(lbl_lbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 570, 330, 20));
 
         jProgressBar1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jProgressBar1.setStringPainted(true);
-        getContentPane().add(jProgressBar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 590, 330, 80));
+        getContentPane().add(jProgressBar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 570, 330, 80));
 
         cmb_trans_type.setFont(new java.awt.Font("Georgia", 0, 15)); // NOI18N
         cmb_trans_type.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Advance", "Monthly Salary", "Festival Advance" }));
@@ -1015,20 +1414,19 @@ public class SAMPATH_Bank_PayMasterFile extends javax.swing.JFrame {
         getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 60, -1, 20));
 
         jLabel6.setFont(new java.awt.Font("Georgia", 0, 12)); // NOI18N
-        jLabel6.setText("Pay Type :");
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 60, 70, 20));
+        jLabel6.setText("Type :");
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 60, 40, 20));
 
-        cmb_month2.setFont(new java.awt.Font("Georgia", 0, 15)); // NOI18N
-        cmb_month2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Bank" }));
-        cmb_month2.setEnabled(false);
-        getContentPane().add(cmb_month2, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 60, 70, -1));
+        cmb_PayType.setFont(new java.awt.Font("Georgia", 0, 15)); // NOI18N
+        cmb_PayType.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Bank", "Hand", "Slip" }));
+        getContentPane().add(cmb_PayType, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 60, 140, -1));
 
         lbl_emp_without_Bank.setBackground(new java.awt.Color(204, 204, 204));
         lbl_emp_without_Bank.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         lbl_emp_without_Bank.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbl_emp_without_Bank.setText("0");
         lbl_emp_without_Bank.setOpaque(true);
-        getContentPane().add(lbl_emp_without_Bank, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 590, 40, 20));
+        getContentPane().add(lbl_emp_without_Bank, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 570, 40, 20));
 
         jButton3.setFont(new java.awt.Font("Georgia", 0, 12)); // NOI18N
         jButton3.setText("Browse Excel File");
@@ -1037,19 +1435,19 @@ public class SAMPATH_Bank_PayMasterFile extends javax.swing.JFrame {
                 jButton3ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 620, -1, 30));
+        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 0, 50, 30));
 
         txt_path.setEditable(false);
         txt_path.setFont(new java.awt.Font("Cambria", 0, 14)); // NOI18N
-        getContentPane().add(txt_path, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 620, 320, 23));
+        getContentPane().add(txt_path, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 10, 40, 23));
 
         jLabel11.setFont(new java.awt.Font("Georgia", 0, 12)); // NOI18N
         jLabel11.setText("Emps Without Bank Details :");
-        getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 590, 170, 20));
+        getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 570, 170, 20));
 
         jLabel12.setFont(new java.awt.Font("Georgia", 0, 12)); // NOI18N
         jLabel12.setText("Location     :");
-        getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 80, 40));
+        getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, 80, 40));
 
         cmb_defLocation.setEditable(true);
         cmb_defLocation.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
@@ -1069,7 +1467,7 @@ public class SAMPATH_Bank_PayMasterFile extends javax.swing.JFrame {
             public void popupMenuWillBecomeVisible(javax.swing.event.PopupMenuEvent evt) {
             }
         });
-        getContentPane().add(cmb_defLocation, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 100, 430, -1));
+        getContentPane().add(cmb_defLocation, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 140, 430, -1));
 
         txt_locCode.setEditable(false);
         txt_locCode.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
@@ -1081,16 +1479,16 @@ public class SAMPATH_Bank_PayMasterFile extends javax.swing.JFrame {
                 txt_locCodeFocusLost(evt);
             }
         });
-        getContentPane().add(txt_locCode, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 100, 60, 23));
+        getContentPane().add(txt_locCode, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 140, 60, 23));
 
         jCheckBox1.setFont(new java.awt.Font("Georgia", 0, 12)); // NOI18N
-        jCheckBox1.setText("All Locations");
+        jCheckBox1.setText("  All Locations");
         jCheckBox1.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
             public void propertyChange(java.beans.PropertyChangeEvent evt) {
                 jCheckBox1PropertyChange(evt);
             }
         });
-        getContentPane().add(jCheckBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 100, -1, -1));
+        getContentPane().add(jCheckBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 140, -1, -1));
 
         jButton1.setFont(new java.awt.Font("Georgia", 0, 14)); // NOI18N
         jButton1.setForeground(new java.awt.Color(255, 0, 0));
@@ -1100,7 +1498,45 @@ public class SAMPATH_Bank_PayMasterFile extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 660, 470, -1));
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 600, 280, 50));
+
+        jLabel8.setFont(new java.awt.Font("Georgia", 0, 12)); // NOI18N
+        jLabel8.setText("Company   :");
+        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, 70, 20));
+
+        cmb_Company.setFont(new java.awt.Font("Georgia", 0, 15)); // NOI18N
+        cmb_Company.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "=ALL=" }));
+        cmb_Company.addPopupMenuListener(new javax.swing.event.PopupMenuListener() {
+            public void popupMenuCanceled(javax.swing.event.PopupMenuEvent evt) {
+            }
+            public void popupMenuWillBecomeInvisible(javax.swing.event.PopupMenuEvent evt) {
+                cmb_CompanyPopupMenuWillBecomeInvisible(evt);
+            }
+            public void popupMenuWillBecomeVisible(javax.swing.event.PopupMenuEvent evt) {
+            }
+        });
+        getContentPane().add(cmb_Company, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 100, 430, -1));
+
+        txt_ComCode.setEditable(false);
+        txt_ComCode.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        txt_ComCode.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txt_ComCodeFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txt_ComCodeFocusLost(evt);
+            }
+        });
+        getContentPane().add(txt_ComCode, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 100, 60, 23));
+        getContentPane().add(jSeparator14, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 1020, 10));
+
+        jLabel13.setFont(new java.awt.Font("Georgia", 0, 12)); // NOI18N
+        jLabel13.setText("Bank :");
+        getContentPane().add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 100, 40, 20));
+
+        cmb_bank.setFont(new java.awt.Font("Georgia", 0, 15)); // NOI18N
+        cmb_bank.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Sampath", "NDB" }));
+        getContentPane().add(cmb_bank, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 100, 140, -1));
 
         pack();
         setLocationRelativeTo(null);
@@ -1112,11 +1548,16 @@ public class SAMPATH_Bank_PayMasterFile extends javax.swing.JFrame {
             @Override
             public void run() {
 
-                if (txt_path.getText().isEmpty()) {
-                    JOptionPane.showMessageDialog(rootPane, "Please select the excel file.");
-                } else {
+//                if (txt_path.getText().isEmpty()) {
+//                    JOptionPane.showMessageDialog(rootPane, "Please select the excel file.");
+//                } else {
+                if (cmb_bank.getSelectedIndex() == 0) {
                     Update_Excell_xsls_EPF();
+                } else {
+                    Update_NDB_Excell_xsls();
                 }
+//
+//                }
 
             }
         });
@@ -1277,6 +1718,52 @@ public class SAMPATH_Bank_PayMasterFile extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void txt_ComCodeFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txt_ComCodeFocusGained
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_ComCodeFocusGained
+
+    private void txt_ComCodeFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txt_ComCodeFocusLost
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_ComCodeFocusLost
+    String companyName = "";
+    private void cmb_CompanyPopupMenuWillBecomeInvisible(javax.swing.event.PopupMenuEvent evt) {//GEN-FIRST:event_cmb_CompanyPopupMenuWillBecomeInvisible
+        if (cmb_Company.getSelectedItem().equals("=ALL=")) {
+
+            txt_ComCode.setText("N/A");
+            txt_ComCode.setForeground(Color.red);
+
+        } else {
+            txt_ComCode.setForeground(Color.black);
+            try {
+
+                Statement st = DbConnection.getconnection().createStatement();
+                ResultSet rs = st.executeQuery("SELECT * from company_reg where  ComCode= '" + cmb_Company.getSelectedItem().toString() + "' OR ComName= '" + cmb_Company.getSelectedItem().toString() + "' ");
+                while (rs.next()) {
+
+                    String code = rs.getString("ComCode");
+                    String name = rs.getString("ComName");
+
+                    cmb_Company.setSelectedItem(name);
+                    txt_ComCode.setText(code);
+                    companyName = code;
+                }
+
+                //                ResultSet rs1 = st.executeQuery("select * from location_shift_rates where LocCode= '" + txt_locCode.getText() + "' ");
+                //
+                //                while (rs1.next()) {
+                //
+                //                    String rank = rs1.getString("Rank");
+                //
+                //                }
+                //cmb_defLocation.setEditable(false);
+                //cmb_defLocation.setEnabled(false);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+        }        // TODO add your handling code here:
+    }//GEN-LAST:event_cmb_CompanyPopupMenuWillBecomeInvisible
+
     /**
      * @param args the command line arguments
      */
@@ -1295,21 +1782,25 @@ public class SAMPATH_Bank_PayMasterFile extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(SAMPATH_Bank_PayMasterFile.class
+            java.util.logging.Logger.getLogger(SAMPATH_Bank_PayMasterFile_with_NDB.class
                     .getName()).log(java.util.logging.Level.SEVERE, null, ex);
 
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(SAMPATH_Bank_PayMasterFile.class
+            java.util.logging.Logger.getLogger(SAMPATH_Bank_PayMasterFile_with_NDB.class
                     .getName()).log(java.util.logging.Level.SEVERE, null, ex);
 
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(SAMPATH_Bank_PayMasterFile.class
+            java.util.logging.Logger.getLogger(SAMPATH_Bank_PayMasterFile_with_NDB.class
                     .getName()).log(java.util.logging.Level.SEVERE, null, ex);
 
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(SAMPATH_Bank_PayMasterFile.class
+            java.util.logging.Logger.getLogger(SAMPATH_Bank_PayMasterFile_with_NDB.class
                     .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -1318,15 +1809,17 @@ public class SAMPATH_Bank_PayMasterFile extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new SAMPATH_Bank_PayMasterFile().setVisible(true);
+                new SAMPATH_Bank_PayMasterFile_with_NDB().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public static javax.swing.JComboBox cmb_Company;
+    public static javax.swing.JComboBox cmb_PayType;
+    public static javax.swing.JComboBox cmb_bank;
     private javax.swing.JComboBox cmb_defLocation;
     public static javax.swing.JComboBox cmb_month;
-    public static javax.swing.JComboBox cmb_month2;
     public static javax.swing.JComboBox cmb_trans_type;
     public static javax.swing.JComboBox cmb_year;
     private javax.swing.JButton jButton1;
@@ -1337,20 +1830,23 @@ public class SAMPATH_Bank_PayMasterFile extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JProgressBar jProgressBar1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JSeparator jSeparator12;
     private javax.swing.JSeparator jSeparator13;
+    private javax.swing.JSeparator jSeparator14;
     private javax.swing.JTable jTable1;
     private javax.swing.JLabel lbl_emp_count;
     private javax.swing.JLabel lbl_emp_without_Bank;
     private javax.swing.JLabel lbl_lbl;
     private javax.swing.JLabel lbl_total;
+    private javax.swing.JTextField txt_ComCode;
     private javax.swing.JTextField txt_locCode;
     private javax.swing.JTextField txt_path;
     // End of variables declaration//GEN-END:variables

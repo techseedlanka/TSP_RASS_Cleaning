@@ -6,6 +6,7 @@
 package Frames;
 
 //import com.mysql.jdbc.Connection;
+import backup.DBBackupFrame;
 import java.awt.Toolkit;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -360,6 +361,8 @@ public class MAIN extends javax.swing.JFrame implements Runnable {
         Menu_user_all_view3 = new javax.swing.JMenuItem();
         Menu_user_all_view4 = new javax.swing.JMenuItem();
         Menu_user_all_view5 = new javax.swing.JMenuItem();
+        jSeparator36 = new javax.swing.JPopupMenu.Separator();
+        Menu_user_all_view10 = new javax.swing.JMenuItem();
         menu_settings1 = new javax.swing.JMenu();
         Menu_user_all_view6 = new javax.swing.JMenuItem();
         Menu_user_all_view7 = new javax.swing.JMenuItem();
@@ -1175,6 +1178,16 @@ public class MAIN extends javax.swing.JFrame implements Runnable {
             }
         });
         menu_settings.add(Menu_user_all_view5);
+        menu_settings.add(jSeparator36);
+
+        Menu_user_all_view10.setFont(new java.awt.Font("Georgia", 0, 12)); // NOI18N
+        Menu_user_all_view10.setText("Day End Process");
+        Menu_user_all_view10.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Menu_user_all_view10ActionPerformed(evt);
+            }
+        });
+        menu_settings.add(Menu_user_all_view10);
 
         jMenuBar1.add(menu_settings);
 
@@ -1789,7 +1802,7 @@ public class MAIN extends javax.swing.JFrame implements Runnable {
     }//GEN-LAST:event_Menu_user_all_view6ActionPerformed
 
     private void jMenuItem17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem17ActionPerformed
-        SAMPATH_Bank_PayMasterFile ur = new SAMPATH_Bank_PayMasterFile();
+        SAMPATH_Bank_PayMasterFile_with_NDB ur = new SAMPATH_Bank_PayMasterFile_with_NDB();
         ur.setVisible(true);
     }//GEN-LAST:event_jMenuItem17ActionPerformed
 
@@ -1903,6 +1916,15 @@ public class MAIN extends javax.swing.JFrame implements Runnable {
         cm.setVisible(true);
     }//GEN-LAST:event_jMenuItem59ActionPerformed
 
+    private void Menu_user_all_view10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Menu_user_all_view10ActionPerformed
+    try {
+            DBBackupFrame em = new DBBackupFrame();
+            em.setVisible(true);
+        } catch (Exception ex) {
+            Logger.getLogger(MAIN.class.getName()).log(Level.SEVERE, null, ex);
+        }        
+    }//GEN-LAST:event_Menu_user_all_view10ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1941,6 +1963,7 @@ public class MAIN extends javax.swing.JFrame implements Runnable {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem Menu_user_all_view;
     private javax.swing.JMenuItem Menu_user_all_view1;
+    private javax.swing.JMenuItem Menu_user_all_view10;
     private javax.swing.JMenuItem Menu_user_all_view2;
     private javax.swing.JMenuItem Menu_user_all_view3;
     private javax.swing.JMenuItem Menu_user_all_view4;
@@ -2050,6 +2073,7 @@ public class MAIN extends javax.swing.JFrame implements Runnable {
     private javax.swing.JPopupMenu.Separator jSeparator33;
     private javax.swing.JPopupMenu.Separator jSeparator34;
     private javax.swing.JPopupMenu.Separator jSeparator35;
+    private javax.swing.JPopupMenu.Separator jSeparator36;
     private javax.swing.JPopupMenu.Separator jSeparator4;
     private javax.swing.JPopupMenu.Separator jSeparator5;
     private javax.swing.JPopupMenu.Separator jSeparator6;
