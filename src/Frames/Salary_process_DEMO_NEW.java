@@ -5706,6 +5706,7 @@ public class Salary_process_DEMO_NEW extends javax.swing.JFrame {
                 while (rs_days.next()) {
 
                     working_days_for_month = Double.parseDouble(rs_days.getString("Days"));
+                    System.out.println("emp  working_days_for_month " + working_days_for_month + "  " + Empno);
                 }
 
                 //get total duty amount from emp_atten_summery Table
@@ -5786,6 +5787,9 @@ public class Salary_process_DEMO_NEW extends javax.swing.JFrame {
                     }
 
                 }
+
+                System.out.println("total_duty " + total_duty);
+                System.out.println("days_for_basic " + days_for_basic);
 
                 if (total_duty >= days_for_basic) {
                     basic_salary = basic_per_day * days_for_basic;
@@ -6025,10 +6029,19 @@ public class Salary_process_DEMO_NEW extends javax.swing.JFrame {
 
                 }
 
-                if (LocType.equals("Type01") | LocType.equals("Type02")) {
+                if (LocType.equals("Type01")) {
+
+                    inc = total_duty_amount - (basic_salary + bra);
+                }
+
+                if (LocType.equals("Type02")) {
 
                     inc = total_duty_amount - (basic_salary);
+                }
 
+                if (LocType.equals("Type01") | LocType.equals("Type02")) {
+
+                    // inc = total_duty_amount - (basic_salary + bra);
                     PreparedStatement pst_sun = con.prepareStatement("select *,SUM(Sunday) from special_holiday_earnings where EMPno='" + Empno + "' and Month='" + month + "' and Year='" + year + "'");
                     ResultSet rs_sun = pst_sun.executeQuery();
                     while (rs_sun.next()) {
@@ -6111,6 +6124,9 @@ public class Salary_process_DEMO_NEW extends javax.swing.JFrame {
 
                 System.out.println(Empno + ": basic= " + basic_salary);
 
+                gross_salary = 0.00;
+                FinalGross = "0";
+
                 if (LocType.equals("Type02")) {
 // 
 
@@ -6149,6 +6165,12 @@ public class Salary_process_DEMO_NEW extends javax.swing.JFrame {
 //type 01
                     salary_for_epf = basic_salary + bra;
                     gross_salary = total_duty_amount + Site_Incentive + Sunday_Poya_Total + total_ot_amount;
+
+                    System.out.println("TYPE 01=================================================================================================================================================================");
+                    System.out.println("Loc " + Loc);
+                    System.out.println("gross_salary = " + "total_duty_amount " + total_duty_amount + "Site_Incentive:" + Site_Incentive + "Sunday_Poya_Total:" + Sunday_Poya_Total + "total_ot_amount:" + total_ot_amount);
+                    System.out.println("salary_for_epf :" + basic_salary + "  " + bra);
+                    System.out.println("TYPE 01=================================================================================================================================================================");
 
                 }
 
