@@ -1357,7 +1357,7 @@ public class FestivalAdvance extends javax.swing.JFrame {
     }//GEN-LAST:event_txt_empnoPropertyChange
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        /**
+         /**
          * need to save into two tables. 1. loan summery table 2. salary
          * deduction table
          */
@@ -1413,7 +1413,8 @@ public class FestivalAdvance extends javax.swing.JFrame {
 
                 pst.executeBatch();
 
-                PreparedStatement pst2 = con.prepareStatement("insert into salary_festival_deductions_summery (EMPno,LoanAmount,Installments,InstallAmount,IssueDate,Status,RefNo,PayType,1stInstallment,Unit,FestivYear,FestivMonth) values(?,?,?,?,?,?,?,?,?,?,?,?)");
+                PreparedStatement pst2 = con.prepareStatement("insert into salary_festival_deductions_summery (EMPno,LoanAmount,Installments,InstallAmount,IssueDate,Status,"
+                        + "RefNo,PayType,1stInstallment,Unit,FestivYear,FestivMonth) values(?,?,?,?,?,?,?,?,?,?,?,?)");
 
                 for (int r = 0; tbl_Advance_summery.getRowCount() > r; r++) {
 
@@ -1426,6 +1427,7 @@ public class FestivalAdvance extends javax.swing.JFrame {
                     String firststInstallment = tbl_Advance_summery.getValueAt(r, 5).toString();
                     String RefNo = paydate + emp + amt;
                     String unit = tbl_Advance_summery.getValueAt(r, 8).toString();
+                    
                     pst2.setString(1, emp);
                     pst2.setDouble(2, Double.parseDouble(amt));
                     pst2.setString(3, Installments);

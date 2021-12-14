@@ -85,7 +85,7 @@ public class Total_Working_Days extends javax.swing.JFrame {
 
         jButton10.setFont(new java.awt.Font("Georgia", 0, 12)); // NOI18N
         jButton10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Available Updates.png"))); // NOI18N
-        jButton10.setText(" New Locations");
+        jButton10.setText("Create New");
         jButton10.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton10ActionPerformed(evt);
@@ -135,13 +135,13 @@ public class Total_Working_Days extends javax.swing.JFrame {
 
         jButton11.setFont(new java.awt.Font("Georgia", 0, 12)); // NOI18N
         jButton11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Available Updates.png"))); // NOI18N
-        jButton11.setText("Saved Locations");
+        jButton11.setText("Load Saved Details");
         jButton11.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton11ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton11, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 10, 160, 40));
+        getContentPane().add(jButton11, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 10, -1, 40));
 
         jButton17.setFont(new java.awt.Font("Georgia", 0, 12)); // NOI18N
         jButton17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Refresh.png"))); // NOI18N
@@ -203,7 +203,7 @@ public class Total_Working_Days extends javax.swing.JFrame {
             
             Connection con = DbConnection.getconnection();
             
-            PreparedStatement pst = con.prepareStatement("select * from location_reg");
+            PreparedStatement pst = con.prepareStatement("select * from location_reg where LocStatus='1' ");
             ResultSet rs = pst.executeQuery();
             DefaultTableModel dtm = (DefaultTableModel) jTable1.getModel();
             dtm.setRowCount(0);
