@@ -532,37 +532,39 @@ public class SAMPATH_Bank_PayMasterFile_with_NDB extends javax.swing.JFrame {
         String AdvAmount = "";
         String Unit = "";
         String Rank = "";
+
+        String month = cmb_month.getSelectedItem().toString();
+        String year = cmb_year.getSelectedItem().toString();
         try {
 
             DefaultTableModel dtm = (DefaultTableModel) jTable1.getModel();
             dtm.setRowCount(0);
 
             Connection con = DbConnection.getconnection();
-            String sql = "SELECT * from salary_festival_deductions_summery  WHERE  PayStatus='PENDING' and PayType='Bank' ORDER BY Unit,EMPno";
+            String sql = "SELECT * from salary_festival_deductions_summery  WHERE  PayStatus='PENDING' and PayType='Bank' and FestivYear='" + year + "' and FestivMonth='" + month + "' ORDER BY Unit,EMPno";
 
             if (cmb_Company.getSelectedIndex() == 0) {
                 //employees of both companies
 
                 if (jCheckBox1.isSelected()) {
-                    sql = "SELECT * from salary_festival_deductions_summery  WHERE  PayStatus='PENDING' and PayType='Bank' and PayType='Bank' ORDER BY Unit,EMPno ";
+                    sql = "SELECT * from salary_festival_deductions_summery  WHERE  PayStatus='PENDING' and PayType='Bank' and PayType='Bank' and FestivYear='" + year + "' and FestivMonth='" + month + "' ORDER BY Unit,EMPno ";
 
                 } else {
-                    sql = "SELECT * from salary_festival_deductions_summery  WHERE  PayStatus='PENDING' and PayType='Bank' and Unit='" + txt_locCode.getText() + "' ORDER BY Unit,EMPno";
+                    sql = "SELECT * from salary_festival_deductions_summery  WHERE  PayStatus='PENDING' and PayType='Bank' and FestivYear='" + year + "' and FestivMonth='" + month + "' and Unit='" + txt_locCode.getText() + "' ORDER BY Unit,EMPno";
 
                 }
 
             } else {
                 String beginLetter = companyName.substring(0, 1);
-                
-                 if (jCheckBox1.isSelected()) {
-                    sql = "SELECT * from salary_festival_deductions_summery  WHERE Unit Like '" + beginLetter + "%' And  PayStatus='PENDING' and PayType='Bank' and PayType='Bank' ORDER BY Unit,EMPno ";
+
+                if (jCheckBox1.isSelected()) {
+                    sql = "SELECT * from salary_festival_deductions_summery  WHERE Unit Like '" + beginLetter + "%' And  PayStatus='PENDING' and PayType='Bank' and PayType='Bank' and FestivYear='" + year + "' and FestivMonth='" + month + "' ORDER BY Unit,EMPno ";
 
                 } else {
-                    sql = "SELECT * from salary_festival_deductions_summery  WHERE Unit Like '" + beginLetter + "%' And  PayStatus='PENDING' and PayType='Bank' and Unit='" + txt_locCode.getText() + "' ORDER BY Unit,EMPno";
+                    sql = "SELECT * from salary_festival_deductions_summery  WHERE Unit Like '" + beginLetter + "%' And  PayStatus='PENDING' and PayType='Bank' and Unit='" + txt_locCode.getText() + "' and FestivYear='" + year + "' and FestivMonth='" + month + "' ORDER BY Unit,EMPno";
 
                 }
 
-              
             }
 
             PreparedStatement pst = con.prepareStatement(sql);
