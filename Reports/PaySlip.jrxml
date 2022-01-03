@@ -2,12 +2,12 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="PaySlip" language="groovy" columnCount="5" pageWidth="1008" pageHeight="612" orientation="Landscape" columnWidth="193" columnSpacing="5" leftMargin="11" rightMargin="11" topMargin="11" bottomMargin="11" uuid="2d4a3c35-23a8-49cc-8179-f329a36a80ea">
 	<property name="ireport.zoom" value="6.265872254123492"/>
 	<property name="ireport.x" value="310"/>
-	<property name="ireport.y" value="1102"/>
+	<property name="ireport.y" value="478"/>
 	<queryString>
 		<![CDATA[SELECT
    *
 FROM
-     salary_final_site_employees where Month='October' and Year='2019']]>
+     salary_final_site_employees where Month='October' and Year='2021']]>
 	</queryString>
 	<field name="EMPno" class="java.lang.String">
 		<fieldDescription><![CDATA[]]></fieldDescription>
@@ -329,7 +329,7 @@ FROM
 				<reportElement x="121" y="404" width="64" height="1" uuid="7d79993c-a536-4b29-91ca-575d3d1addc5"/>
 			</line>
 			<staticText>
-				<reportElement x="75" y="71" width="31" height="13" uuid="af0a0b64-8ec1-44ec-9d7b-1789e9584fe6"/>
+				<reportElement x="72" y="71" width="31" height="13" uuid="af0a0b64-8ec1-44ec-9d7b-1789e9584fe6"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Times New Roman" size="10" isBold="true"/>
 				</textElement>
@@ -378,7 +378,7 @@ FROM
 				<textFieldExpression><![CDATA[$F{Name}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="132" y="71" width="30" height="13" uuid="79b22ea2-329f-4820-bd34-63fab36488f7"/>
+				<reportElement x="138" y="71" width="25" height="13" uuid="79b22ea2-329f-4820-bd34-63fab36488f7"/>
 				<textElement textAlignment="Right" verticalAlignment="Middle">
 					<font fontName="Times New Roman" isBold="true"/>
 				</textElement>
@@ -831,7 +831,7 @@ FROM
 				<text><![CDATA[:]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="105" y="71" width="27" height="13" uuid="68e7d567-ead6-41e5-bd29-7688a2791673"/>
+				<reportElement x="103" y="71" width="35" height="13" uuid="68e7d567-ead6-41e5-bd29-7688a2791673"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Times New Roman"/>
 				</textElement>
