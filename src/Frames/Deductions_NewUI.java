@@ -257,9 +257,8 @@ public class Deductions_NewUI extends javax.swing.JFrame {
         getContentPane().add(cmb_month, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 60, 120, -1));
 
         cmb_year.setFont(new java.awt.Font("Times New Roman", 0, 15)); // NOI18N
-        cmb_year.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "2018", "2019", "2020", "2021", " " }));
-        cmb_year.setSelectedIndex(3);
-        cmb_year.setSelectedItem("2017");
+        cmb_year.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "2018", "2019", "2020", "2021", "2022" }));
+        cmb_year.setSelectedIndex(4);
         cmb_year.setBorder(javax.swing.BorderFactory.createMatteBorder(2, 2, 2, 2, new java.awt.Color(0, 102, 204)));
         cmb_year.addPopupMenuListener(new javax.swing.event.PopupMenuListener() {
             public void popupMenuCanceled(javax.swing.event.PopupMenuEvent evt) {

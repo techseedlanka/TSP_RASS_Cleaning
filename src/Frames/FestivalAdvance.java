@@ -1005,8 +1005,8 @@ public class FestivalAdvance extends javax.swing.JFrame {
         getContentPane().add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 130, 100, 20));
 
         cmb_year.setFont(new java.awt.Font("Times New Roman", 0, 15)); // NOI18N
-        cmb_year.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "2019", "2020", "2021" }));
-        cmb_year.setSelectedIndex(2);
+        cmb_year.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "2019", "2020", "2021", "2022" }));
+        cmb_year.setSelectedIndex(3);
         cmb_year.addPopupMenuListener(new javax.swing.event.PopupMenuListener() {
             public void popupMenuCanceled(javax.swing.event.PopupMenuEvent evt) {
             }

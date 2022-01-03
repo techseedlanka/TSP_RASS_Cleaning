@@ -346,8 +346,7 @@ public class Attn_Rank_Changing_UI extends javax.swing.JFrame {
 
         cmb_year.setFont(new java.awt.Font("Times New Roman", 0, 15)); // NOI18N
         cmb_year.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "2019", "2020", "2021", "2022" }));
-        cmb_year.setSelectedIndex(2);
-        cmb_year.setSelectedItem("2017");
+        cmb_year.setSelectedIndex(3);
         cmb_year.setBorder(javax.swing.BorderFactory.createMatteBorder(2, 2, 2, 2, new java.awt.Color(0, 102, 204)));
         cmb_year.addPopupMenuListener(new javax.swing.event.PopupMenuListener() {
             public void popupMenuCanceled(javax.swing.event.PopupMenuEvent evt) {

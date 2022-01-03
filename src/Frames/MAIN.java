@@ -244,8 +244,6 @@ public class MAIN extends javax.swing.JFrame implements Runnable {
         jLabel2 = new javax.swing.JLabel();
         lbl_userCat = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
         jButton2 = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         menu_registrations = new javax.swing.JMenu();
@@ -437,17 +435,6 @@ public class MAIN extends javax.swing.JFrame implements Runnable {
             }
         });
         getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 520, 290, 50));
-
-        jTextArea1.setEditable(false);
-        jTextArea1.setBackground(new java.awt.Color(204, 204, 255));
-        jTextArea1.setColumns(20);
-        jTextArea1.setFont(new java.awt.Font("Monospaced", 1, 14)); // NOI18N
-        jTextArea1.setRows(5);
-        jTextArea1.setText("Updates - till 02nd Dec 2019;\n===============================\n* Machine Allowance & Attendance \nAllowance Entry UI & Salary Calc.\n\n* Remove Attn. Allow. from \nSalary Rates UI\n* Salary Stop Payment\n* Adavance Reconciliation (UI & Report)\n* Discrepancy payledger\n* Final & Temporary Payledgers\n* Standard & Signing Payledgers\n* Print all option for payledgers\n* Rank changing for entered \nattendance records (New UI)\n* Duplicate Attendance Records Checker\n* Final salary Process lock\n* Salary Export to Sampath Cooperate \nExcel file \n\n\n\nLatest Update - 10th Sept 2019;\n===============================\n* New Attendance UI - as Requested\n   => Cadre Control is Deactivated.\n\n* Salary Rates UI Updated with\n   \"Day & Night Shift Rate\" Column\n\n");
-        jTextArea1.setEnabled(false);
-        jScrollPane1.setViewportView(jTextArea1);
-
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 20, 340, 480));
 
         jButton2.setText("Attn Rank ReSet");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -2043,7 +2030,6 @@ public class MAIN extends javax.swing.JFrame implements Runnable {
     private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JMenuItem jMenuItem9;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JPopupMenu.Separator jSeparator10;
     private javax.swing.JPopupMenu.Separator jSeparator11;
@@ -2080,7 +2066,6 @@ public class MAIN extends javax.swing.JFrame implements Runnable {
     private javax.swing.JPopupMenu.Separator jSeparator7;
     private javax.swing.JPopupMenu.Separator jSeparator8;
     private javax.swing.JPopupMenu.Separator jSeparator9;
-    private javax.swing.JTextArea jTextArea1;
     public static javax.swing.JLabel lbl_current_date;
     private javax.swing.JLabel lbl_current_time;
     private javax.swing.JLabel lbl_logged_time;

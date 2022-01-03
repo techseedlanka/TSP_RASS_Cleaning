@@ -276,8 +276,8 @@ public class RPT_Emp_wise_atten_summery extends javax.swing.JFrame {
         getContentPane().add(cmb_month, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 50, -1, -1));
 
         cmb_year.setFont(new java.awt.Font("Times New Roman", 0, 15)); // NOI18N
-        cmb_year.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "2015", "2016", "2017", "2018", "2019", "2020", "2021" }));
-        cmb_year.setSelectedIndex(6);
+        cmb_year.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022" }));
+        cmb_year.setSelectedIndex(7);
         cmb_year.addPopupMenuListener(new javax.swing.event.PopupMenuListener() {
             public void popupMenuCanceled(javax.swing.event.PopupMenuEvent evt) {
             }

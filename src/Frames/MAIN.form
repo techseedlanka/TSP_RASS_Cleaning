@@ -1291,35 +1291,6 @@
         </Constraint>
       </Constraints>
     </Component>
-    <Container class="javax.swing.JScrollPane" name="jScrollPane1">
-      <AuxValues>
-        <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
-      </AuxValues>
-      <Constraints>
-        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="850" y="20" width="340" height="480"/>
-        </Constraint>
-      </Constraints>
-
-      <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
-      <SubComponents>
-        <Component class="javax.swing.JTextArea" name="jTextArea1">
-          <Properties>
-            <Property name="editable" type="boolean" value="false"/>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ff" green="cc" red="cc" type="rgb"/>
-            </Property>
-            <Property name="columns" type="int" value="20"/>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Monospaced" size="14" style="1"/>
-            </Property>
-            <Property name="rows" type="int" value="5"/>
-            <Property name="text" type="java.lang.String" value="Updates - till 02nd Dec 2019;&#xa;===============================&#xa;* Machine Allowance &amp; Attendance &#xa;Allowance Entry UI &amp; Salary Calc.&#xa;&#xa;* Remove Attn. Allow. from &#xa;Salary Rates UI&#xa;* Salary Stop Payment&#xa;* Adavance Reconciliation (UI &amp; Report)&#xa;* Discrepancy payledger&#xa;* Final &amp; Temporary Payledgers&#xa;* Standard &amp; Signing Payledgers&#xa;* Print all option for payledgers&#xa;* Rank changing for entered &#xa;attendance records (New UI)&#xa;* Duplicate Attendance Records Checker&#xa;* Final salary Process lock&#xa;* Salary Export to Sampath Cooperate &#xa;Excel file &#xa;&#xa;&#xa;&#xa;Latest Update - 10th Sept 2019;&#xa;===============================&#xa;* New Attendance UI - as Requested&#xa;   =&gt; Cadre Control is Deactivated.&#xa;&#xa;* Salary Rates UI Updated with&#xa;   &quot;Day &amp; Night Shift Rate&quot; Column&#xa;&#xa;"/>
-            <Property name="enabled" type="boolean" value="false"/>
-          </Properties>
-        </Component>
-      </SubComponents>
-    </Container>
     <Component class="javax.swing.JButton" name="jButton2">
       <Properties>
         <Property name="text" type="java.lang.String" value="Attn Rank ReSet"/>
