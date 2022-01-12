@@ -242,7 +242,7 @@ public class SAMPATH_Bank_PayMasterFile_with_NDB extends javax.swing.JFrame {
 
                             String bankCode = rs3.getString("Bank");
                             String branchCode = rs3.getString("Branch");
-                            String account = rs3.getString("AccName");
+                            String account = rs3.getString("AccName").trim();
                             System.out.println(epf + " bank code:" + bankCode);
                             String bankname = "";
                             if (bankCode == null | bankCode.equals("N/A") | bankCode.equals("") | account.equals("")) {
@@ -1088,10 +1088,13 @@ public class SAMPATH_Bank_PayMasterFile_with_NDB extends javax.swing.JFrame {
                     cell.setCellValue(code_2);
 
                     //Dest. Acc. No
-                    String Acc = jTable1.getModel().getValueAt(i, 3).toString();
+                    String Acc = jTable1.getModel().getValueAt(i, 3).toString().trim();
                     cell = worksheet.getRow(i + start_row).getCell(3);
                     long code_3 = Long.valueOf(Acc);
                     cell.setCellValue(code_3);
+                    
+                   // JOptionPane.showMessageDialog(rootPane, "Error in: "+Acc+"  "+jTable1.getModel().getValueAt(i, 2).toString());
+                    System.out.println("Checking :"+Acc+"  "+jTable1.getModel().getValueAt(i, 2).toString()+"  "+jTable1.getModel().getValueAt(i, 0).toString());
 
                     //Dest. Acc. Name
                     String Name = jTable1.getModel().getValueAt(i, 2).toString();

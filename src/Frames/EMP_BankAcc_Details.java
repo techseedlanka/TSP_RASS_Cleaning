@@ -792,13 +792,13 @@ public class EMP_BankAcc_Details extends javax.swing.JFrame {
 
                 String sql = "insert into emp_bank_acc (EMPno,PayType,Bank,Branch,AccName,AccNIC,AccAddress) values (?,?,?,?,?,?,?)";
                 pst = con.prepareStatement(sql);
-                pst.setString(1, txt_empCode.getText());
+                pst.setString(1, txt_empCode.getText().trim());
                 pst.setString(2, cmb_payType.getSelectedItem().toString());
-                pst.setString(3, txt_bankCode.getText());
-                pst.setString(4, txt_branchCode.getText());
-                pst.setString(5, txt_AccName.getText());
-                pst.setString(6, txt_nic.getText());
-                pst.setString(7, txt_address.getText());
+                pst.setString(3, txt_bankCode.getText().trim());
+                pst.setString(4, txt_branchCode.getText().trim());
+                pst.setString(5, txt_AccName.getText().trim());
+                pst.setString(6, txt_nic.getText().trim());
+                pst.setString(7, txt_address.getText().trim());
 
                 pst.executeUpdate();
                 
