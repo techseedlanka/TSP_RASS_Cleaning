@@ -22,7 +22,7 @@ public class DbConnection {
         //Connection c = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/techseed_payroll", "root", "123");
         //("jdbc:mysql://localhost:3306/techseed_payroll", "root", "123")
         //JOptionPane.showMessageDialog(null,"DB Connectted");
-        String url = "jdbc:mysql://localhost:3306/techseed_payroll_rass_target?useUnicode=true&characterEncoding=UTF-8";
+        String url = "jdbc:mysql://192.168.1.200:3306/techseed_payroll_rass_target?useUnicode=true&characterEncoding=UTF-8";
         Connection c = DriverManager.getConnection(url, "root", "123");
         return c;
  

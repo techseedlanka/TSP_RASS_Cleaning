@@ -47,7 +47,7 @@ public class User_Loging extends javax.swing.JFrame {
         try {
 
             Date date_today = new SimpleDateFormat("yyyy-MM-dd").parse(to_date);
-            Date date = new SimpleDateFormat("yyyy-MM-dd").parse("2022-01-01");
+            Date date = new SimpleDateFormat("yyyy-MM-dd").parse("2023-01-01");
             if (date_today.after(date)) {
                 jLabel9.setVisible(true);
             } else {
@@ -209,7 +209,7 @@ public class User_Loging extends javax.swing.JFrame {
         try {
             date_today = new SimpleDateFormat("yyyy-MM-dd").parse(to_date);
             Statement st = DbConnection.getconnection().createStatement();
-            ResultSet rs = st.executeQuery("select * from test_print    ");
+            ResultSet rs = st.executeQuery("select * from test_print where col2='43eQ33FKGNnBkdNRvsz5hAuWNWPPEEB7ZwR36PMC'   ");
             while (rs.next()) {
 
                 String strd = rs.getString(1);
