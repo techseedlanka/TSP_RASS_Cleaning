@@ -20,6 +20,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -31,7 +32,11 @@ import javax.swing.JOptionPane;
 
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
+import javax.swing.RowSorter;
+import javax.swing.SortOrder;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
+import javax.swing.table.TableRowSorter;
 import org.jdesktop.swingx.autocomplete.AutoCompleteDecorator;
 
 /**
@@ -157,7 +162,7 @@ public class EMP_Atten_NEW extends javax.swing.JFrame {
     private void TitleBar() {
 
         this.setTitle("Attendance Entry");
-        this.setResizable(false);
+        //this.setResizable(false);
 
         setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("techseed.png")));
 
@@ -278,7 +283,7 @@ public class EMP_Atten_NEW extends javax.swing.JFrame {
                                 otshift = "0";
                                 DNshift = "0";
                                 dayshift2 = "0";
-                                 
+
                             }
 
                             if (type.equals("Night")) {
@@ -288,7 +293,7 @@ public class EMP_Atten_NEW extends javax.swing.JFrame {
                                 otshift = "0";
                                 DNshift = "0";
                                 dayshift2 = "0";
-                                 
+
                             }
                             if (type.equals("Day/Night")) {
                                 dayshift = "1";
@@ -297,7 +302,7 @@ public class EMP_Atten_NEW extends javax.swing.JFrame {
                                 otshift = "0";
                                 DNshift = "0";
                                 dayshift2 = "0";
-                                 
+
                             }
                             if (type.equals("OTShift")) {
                                 dayshift = "0";
@@ -306,7 +311,7 @@ public class EMP_Atten_NEW extends javax.swing.JFrame {
                                 otshift = "1";
                                 DNshift = "0";
                                 dayshift2 = "0";
-                                 
+
                             }
                             if (type.equals("Halfday")) {
                                 dayshift = "0";
@@ -315,7 +320,7 @@ public class EMP_Atten_NEW extends javax.swing.JFrame {
                                 otshift = "0";
                                 DNshift = "0";
                                 dayshift2 = "0";
-                                 
+
                             }
                             if (type.equals("D&N_ANCI:")) {
                                 dayshift = "0";
@@ -324,7 +329,7 @@ public class EMP_Atten_NEW extends javax.swing.JFrame {
                                 otshift = "0";
                                 DNshift = "1";
                                 dayshift2 = "0";
-                                 
+
                             }
                             if (type.equals("OFF")) {
                                 dayshift = "0";
@@ -333,7 +338,7 @@ public class EMP_Atten_NEW extends javax.swing.JFrame {
                                 otshift = "0";
                                 DNshift = "0";
                                 dayshift2 = "0";
-                                
+
                             }
 
                             if (type.equals("Day2")) {
@@ -343,9 +348,9 @@ public class EMP_Atten_NEW extends javax.swing.JFrame {
                                 otshift = "0";
                                 DNshift = "0";
                                 dayshift2 = "1";
-                                 
+
                             }
-                            
+
                             if (type.equals("Day2/Night")) {
                                 dayshift = "0";
                                 nightshift = "1";
@@ -353,9 +358,8 @@ public class EMP_Atten_NEW extends javax.swing.JFrame {
                                 otshift = "0";
                                 DNshift = "0";
                                 dayshift2 = "1";
-                                 
+
                             }
-                             
 
                             if (type.equals("")) {
                                 dayshift = "0";
@@ -366,7 +370,7 @@ public class EMP_Atten_NEW extends javax.swing.JFrame {
                                 dayshift2 = "0";
                             }
 
-                            if (dayshift2.equals("0") &&dayshift.equals("0") && nightshift.equals("0") && halfshift.equals("0") && otshift.equals("0") && DNshift.equals("0") && otHrs.equals("0")) { //| otHrs.contains("[a-zA-Z]+") == false
+                            if (dayshift2.equals("0") && dayshift.equals("0") && nightshift.equals("0") && halfshift.equals("0") && otshift.equals("0") && DNshift.equals("0") && otHrs.equals("0")) { //| otHrs.contains("[a-zA-Z]+") == false
                                 // JOptionPane.showMessageDialog(rootPane, "Enter Numbers Only as OT Value ");
                                 //lbl_warn.setText("Enter Numbers Only as OT Value");
 
@@ -393,7 +397,7 @@ public class EMP_Atten_NEW extends javax.swing.JFrame {
                                 otshift = "0";
                                 DNshift = "0";
                                 otHrs = "0";
-                                dayshift2="0";
+                                dayshift2 = "0";
                                 pst.addBatch();
                             }
                         }//relevent cell null or not
@@ -650,6 +654,12 @@ public class EMP_Atten_NEW extends javax.swing.JFrame {
         jTable2 = new javax.swing.JTable();
         buttonGroup1 = new javax.swing.ButtonGroup();
         jSeparator1 = new javax.swing.JSeparator();
+        lbl_day_2 = new javax.swing.JLabel();
+        lbl_day_3 = new javax.swing.JLabel();
+        lbl_day_4 = new javax.swing.JLabel();
+        lbl_day_5 = new javax.swing.JLabel();
+        lbl_day_6 = new javax.swing.JLabel();
+        lbl_day_7 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jdate_from_date = new com.toedter.calendar.JDateChooser();
         jLabel2 = new javax.swing.JLabel();
@@ -691,12 +701,6 @@ public class EMP_Atten_NEW extends javax.swing.JFrame {
         txt_def_loc_name = new javax.swing.JTextField();
         jLabel13 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
-        lbl_day_2 = new javax.swing.JLabel();
-        lbl_day_3 = new javax.swing.JLabel();
-        lbl_day_4 = new javax.swing.JLabel();
-        lbl_day_5 = new javax.swing.JLabel();
-        lbl_day_6 = new javax.swing.JLabel();
-        lbl_day_7 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
@@ -708,6 +712,8 @@ public class EMP_Atten_NEW extends javax.swing.JFrame {
         txt_month = new javax.swing.JTextField();
         txt_def_loc = new javax.swing.JTextField();
         jButton12 = new javax.swing.JButton();
+        jButton6 = new javax.swing.JButton();
+        jComboBox1 = new javax.swing.JComboBox<>();
 
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -723,6 +729,7 @@ public class EMP_Atten_NEW extends javax.swing.JFrame {
         jScrollPane2.setViewportView(jTable2);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosing(java.awt.event.WindowEvent evt) {
                 formWindowClosing(evt);
@@ -733,6 +740,36 @@ public class EMP_Atten_NEW extends javax.swing.JFrame {
         });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         getContentPane().add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 1240, 10));
+
+        lbl_day_2.setFont(new java.awt.Font("Cambria Math", 0, 16)); // NOI18N
+        lbl_day_2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbl_day_2.setText("D2");
+        getContentPane().add(lbl_day_2, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 105, 110, 30));
+
+        lbl_day_3.setFont(new java.awt.Font("Cambria Math", 0, 16)); // NOI18N
+        lbl_day_3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbl_day_3.setText("D3");
+        getContentPane().add(lbl_day_3, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 105, 110, 30));
+
+        lbl_day_4.setFont(new java.awt.Font("Cambria Math", 0, 16)); // NOI18N
+        lbl_day_4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbl_day_4.setText("D4");
+        getContentPane().add(lbl_day_4, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 105, 110, 30));
+
+        lbl_day_5.setFont(new java.awt.Font("Cambria Math", 0, 16)); // NOI18N
+        lbl_day_5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbl_day_5.setText("D5");
+        getContentPane().add(lbl_day_5, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 105, 110, 30));
+
+        lbl_day_6.setFont(new java.awt.Font("Cambria Math", 0, 16)); // NOI18N
+        lbl_day_6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbl_day_6.setText("D6");
+        getContentPane().add(lbl_day_6, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 105, 110, 30));
+
+        lbl_day_7.setFont(new java.awt.Font("Cambria Math", 0, 16)); // NOI18N
+        lbl_day_7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbl_day_7.setText("D7");
+        getContentPane().add(lbl_day_7, new org.netbeans.lib.awtextra.AbsoluteConstraints(1090, 105, 110, 30));
 
         jLabel1.setFont(new java.awt.Font("Georgia", 0, 18)); // NOI18N
         jLabel1.setText("Employee Attendence Entry");
@@ -1108,36 +1145,6 @@ public class EMP_Atten_NEW extends javax.swing.JFrame {
         jLabel11.setOpaque(true);
         getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 135, 860, 20));
 
-        lbl_day_2.setFont(new java.awt.Font("Cambria Math", 0, 16)); // NOI18N
-        lbl_day_2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbl_day_2.setText("D2");
-        getContentPane().add(lbl_day_2, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 105, 110, 30));
-
-        lbl_day_3.setFont(new java.awt.Font("Cambria Math", 0, 16)); // NOI18N
-        lbl_day_3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbl_day_3.setText("D3");
-        getContentPane().add(lbl_day_3, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 105, 110, 30));
-
-        lbl_day_4.setFont(new java.awt.Font("Cambria Math", 0, 16)); // NOI18N
-        lbl_day_4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbl_day_4.setText("D4");
-        getContentPane().add(lbl_day_4, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 105, 110, 30));
-
-        lbl_day_5.setFont(new java.awt.Font("Cambria Math", 0, 16)); // NOI18N
-        lbl_day_5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbl_day_5.setText("D5");
-        getContentPane().add(lbl_day_5, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 105, 110, 30));
-
-        lbl_day_6.setFont(new java.awt.Font("Cambria Math", 0, 16)); // NOI18N
-        lbl_day_6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbl_day_6.setText("D6");
-        getContentPane().add(lbl_day_6, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 105, 110, 30));
-
-        lbl_day_7.setFont(new java.awt.Font("Cambria Math", 0, 16)); // NOI18N
-        lbl_day_7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbl_day_7.setText("D7");
-        getContentPane().add(lbl_day_7, new org.netbeans.lib.awtextra.AbsoluteConstraints(1090, 105, 110, 30));
-
         jLabel4.setBackground(new java.awt.Color(51, 204, 255));
         jLabel4.setFont(new java.awt.Font("Georgia", 0, 14)); // NOI18N
         jLabel4.setText("|EMP No.|                          Name                                      |  Rank    ");
@@ -1204,6 +1211,19 @@ public class EMP_Atten_NEW extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton12, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 480, -1, 27));
+
+        jButton6.setFont(new java.awt.Font("Georgia", 0, 14)); // NOI18N
+        jButton6.setText("Sort");
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 10, 70, -1));
+
+        jComboBox1.setFont(new java.awt.Font("Georgia", 0, 14)); // NOI18N
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "==Sort By...", "EMPno", "Name", "Rank" }));
+        getContentPane().add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 10, 130, -1));
 
         pack();
         setLocationRelativeTo(null);
@@ -2248,6 +2268,28 @@ public class EMP_Atten_NEW extends javax.swing.JFrame {
 
     }//GEN-LAST:event_txt_otMouseClicked
 
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+
+        if (jComboBox1.getSelectedIndex() == 0) {
+
+        } else {
+
+            TableRowSorter<TableModel> sorter = new TableRowSorter<>(tbl_atten.getModel());
+            tbl_atten.setRowSorter(sorter);
+            List<RowSorter.SortKey> sortKeys = new ArrayList<>();
+
+            int columnIndexToSort = 1;
+            columnIndexToSort = jComboBox1.getSelectedIndex() - 1;
+
+            sortKeys.add(new RowSorter.SortKey(columnIndexToSort, SortOrder.ASCENDING));
+
+            sorter.setSortKeys(sortKeys);
+            sorter.sort();
+        }
+
+
+    }//GEN-LAST:event_jButton6ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -2749,6 +2791,8 @@ public class EMP_Atten_NEW extends javax.swing.JFrame {
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton6;
+    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
