@@ -462,7 +462,7 @@ public class RPT_Attendance_History extends javax.swing.JFrame {
                         PreparedStatement pst;
                         ResultSet rs;
 
-                        String sql = "select * from emp_atten_main att where  att.Location = '" + txt_locName.getText() + "' and att.Date between '" + FromDate + "' and '" + ToDate + "' ";
+                        String sql = "select * from emp_atten_main  where  Location = '" + txt_locName.getText() + "' and Date between '" + FromDate + "' and '" + ToDate + "' ";
                         pst = con.prepareStatement(sql);
                         rs = pst.executeQuery();
 
@@ -472,19 +472,19 @@ public class RPT_Attendance_History extends javax.swing.JFrame {
                         while (rs.next()) {
                             System.out.println("in while");
                             Vector v = new Vector();
-                            String epf = rs.getString("att.EPFno");
+                            String epf = rs.getString("EPFno");
 
-                            v.add(rs.getString("att.EffectiveRank"));
+                            v.add(rs.getString("EffectiveRank"));
                             v.add(epf);
                             v.add("");
-                            v.add(rs.getString("att.Date"));
-                            v.add(rs.getString("att.DayShift"));
-                            v.add(rs.getString("att.NightShift"));
-                            v.add(rs.getString("att.HalfDayShift"));
-                            v.add(rs.getString("att.OTShift"));
-                            v.add(rs.getString("att.OTHours"));
-                            v.add(rs.getString("att.DNShift"));
-                            v.add(rs.getString("att.Line"));
+                            v.add(rs.getString("Date"));
+                            v.add(rs.getString("DayShift"));
+                            v.add(rs.getString("NightShift"));
+                            v.add(rs.getString("HalfDayShift"));
+                            v.add(rs.getString("OTShift"));
+                            v.add(rs.getString("OTHours"));
+                            v.add(rs.getString("DNShift"));
+                            v.add(rs.getString("Line"));
 
                             dtm.addRow(v);
 
