@@ -1219,11 +1219,11 @@ public class EMP_Atten_NEW extends javax.swing.JFrame {
                 jButton6ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 10, 70, -1));
+        getContentPane().add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(1160, 10, 70, -1));
 
         jComboBox1.setFont(new java.awt.Font("Georgia", 0, 14)); // NOI18N
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "==Sort By...", "EMPno", "Name", "Rank" }));
-        getContentPane().add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 10, 130, -1));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "==Sort Employees==", "by EMPno", "by Name", "by Rank" }));
+        getContentPane().add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(980, 10, 170, -1));
 
         pack();
         setLocationRelativeTo(null);
