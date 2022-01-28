@@ -43,7 +43,7 @@ public class RPT_Attendance_History extends javax.swing.JFrame {
     private void TitleBar() {
 
         this.setTitle("Attendance History");
-        this.setResizable(false);
+        //this.setResizable(false);
 
         setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("techseed.png")));
 
@@ -107,11 +107,9 @@ public class RPT_Attendance_History extends javax.swing.JFrame {
         });
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Georgia", 0, 18)); // NOI18N
         jLabel1.setText("Employee Attendence History");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, -1, 30));
 
         from_date.setDateFormatString("dd MMM yyyy");
         from_date.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
@@ -120,11 +118,9 @@ public class RPT_Attendance_History extends javax.swing.JFrame {
                 from_dateFocusLost(evt);
             }
         });
-        getContentPane().add(from_date, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 60, 120, 25));
 
         jLabel9.setFont(new java.awt.Font("Georgia", 0, 14)); // NOI18N
         jLabel9.setText("Location:-");
-        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 40, -1, 40));
 
         cmb_defLocation.setEditable(true);
         cmb_defLocation.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
@@ -143,7 +139,6 @@ public class RPT_Attendance_History extends javax.swing.JFrame {
             public void popupMenuWillBecomeVisible(javax.swing.event.PopupMenuEvent evt) {
             }
         });
-        getContentPane().add(cmb_defLocation, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 50, 390, -1));
 
         txt_locName.setEditable(false);
         txt_locName.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
@@ -155,8 +150,8 @@ public class RPT_Attendance_History extends javax.swing.JFrame {
                 txt_locNameFocusLost(evt);
             }
         });
-        getContentPane().add(txt_locName, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 50, 70, 23));
 
+        tbl_atten.setAutoCreateRowSorter(true);
         tbl_atten.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         tbl_atten.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -174,7 +169,7 @@ public class RPT_Attendance_History extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        tbl_atten.setRowHeight(20);
+        tbl_atten.setRowHeight(25);
         tbl_atten.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tbl_attenMouseClicked(evt);
@@ -186,9 +181,6 @@ public class RPT_Attendance_History extends javax.swing.JFrame {
             tbl_atten.getColumnModel().getColumn(3).setPreferredWidth(100);
         }
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, 770, 290));
-        getContentPane().add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 480, 780, 10));
-
         btn_RemoveRow2.setFont(new java.awt.Font("Georgia", 0, 16)); // NOI18N
         btn_RemoveRow2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Search.png"))); // NOI18N
         btn_RemoveRow2.setText("Search");
@@ -197,7 +189,6 @@ public class RPT_Attendance_History extends javax.swing.JFrame {
                 btn_RemoveRow2ActionPerformed(evt);
             }
         });
-        getContentPane().add(btn_RemoveRow2, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 80, 370, 40));
 
         btn_RemoveRow3.setFont(new java.awt.Font("Georgia", 0, 16)); // NOI18N
         btn_RemoveRow3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Refresh.png"))); // NOI18N
@@ -207,12 +198,9 @@ public class RPT_Attendance_History extends javax.swing.JFrame {
                 btn_RemoveRow3ActionPerformed(evt);
             }
         });
-        getContentPane().add(btn_RemoveRow3, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 80, 130, 40));
-        getContentPane().add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 790, 10));
 
         jLabel3.setFont(new java.awt.Font("Georgia", 0, 14)); // NOI18N
         jLabel3.setText("Date To     :- ");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, -1, 20));
 
         to_date.setDateFormatString("dd MMM yyyy");
         to_date.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
@@ -221,15 +209,12 @@ public class RPT_Attendance_History extends javax.swing.JFrame {
                 to_dateFocusLost(evt);
             }
         });
-        getContentPane().add(to_date, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 90, 120, 25));
 
         jLabel4.setFont(new java.awt.Font("Georgia", 0, 14)); // NOI18N
         jLabel4.setText("Date From:- ");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, -1, 20));
 
         jLabel2.setFont(new java.awt.Font("Georgia", 0, 14)); // NOI18N
         jLabel2.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Date Range", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Georgia", 0, 14))); // NOI18N
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 220, 90));
 
         btn_RemoveRow4.setFont(new java.awt.Font("Georgia", 0, 16)); // NOI18N
         btn_RemoveRow4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Delete.png"))); // NOI18N
@@ -239,7 +224,98 @@ public class RPT_Attendance_History extends javax.swing.JFrame {
                 btn_RemoveRow4ActionPerformed(evt);
             }
         });
-        getContentPane().add(btn_RemoveRow4, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 430, 190, 40));
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addComponent(jLabel1))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(100, 100, 100)
+                .addComponent(from_date, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(710, 710, 710)
+                .addComponent(txt_locName, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(jLabel4))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(410, 410, 410)
+                .addComponent(btn_RemoveRow2, javax.swing.GroupLayout.PREFERRED_SIZE, 370, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(jLabel3))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(100, 100, 100)
+                .addComponent(to_date, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(320, 320, 320)
+                .addComponent(cmb_defLocation, javax.swing.GroupLayout.PREFERRED_SIZE, 390, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addComponent(jSeparator2)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(250, 250, 250)
+                .addComponent(btn_RemoveRow3, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(250, 250, 250)
+                .addComponent(jLabel9))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addComponent(jSeparator1))
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 770, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btn_RemoveRow4, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(10, 10, 10))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(10, 10, 10)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addComponent(from_date, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(txt_locName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(40, 40, 40)
+                        .addComponent(btn_RemoveRow2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(50, 50, 50)
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(50, 50, 50)
+                        .addComponent(to_date, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(cmb_defLocation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(40, 40, 40)
+                        .addComponent(btn_RemoveRow3, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 290, Short.MAX_VALUE)
+                .addGap(10, 10, 10)
+                .addComponent(btn_RemoveRow4, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(10, 10, 10)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(5, 5, 5))
+        );
 
         pack();
         setLocationRelativeTo(null);
@@ -305,6 +381,65 @@ public class RPT_Attendance_History extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_RemoveRow1ActionPerformed
 
     private void btn_RemoveRow2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_RemoveRow2ActionPerformed
+//
+//        Thread hilo = new Thread(new Runnable() {
+//
+//            @Override
+//            public void run() {
+//
+//                btn_RemoveRow2.setEnabled(false);
+//
+//                if (from_date == null | to_date == null | txt_locName.getText().isEmpty()) {
+//
+//                } else {
+//
+//                    try {
+//                        System.out.println("start");
+//                        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+//                        String FromDate = sdf.format(from_date.getDate());
+//                        String ToDate = sdf.format(to_date.getDate());
+//
+//                        Connection con = DbConnection.getconnection();
+//                        PreparedStatement pst;
+//                        ResultSet rs;
+//
+//                        String sql = "select * from emp_atten_main att join employee_reg emp on att.EPFno=emp.EmployeeNo where  att.Location = '" + txt_locName.getText() + "' and att.Date between '" + FromDate + "' and '" + ToDate + "' ";
+//                        pst = con.prepareStatement(sql);
+//                        rs = pst.executeQuery();
+//
+//                        DefaultTableModel dtm = (DefaultTableModel) tbl_atten.getModel();
+//                        dtm.setRowCount(0);
+//System.out.println("before while");
+//                        while (rs.next()) {
+//System.out.println("in while");
+//                            Vector v = new Vector();
+//
+//                            v.add(rs.getString("att.EffectiveRank"));
+//                            v.add(rs.getString("att.EPFno"));
+//                            v.add(rs.getString("emp.NameWithInitials"));
+//                            v.add(rs.getString("att.Date"));
+//                            v.add(rs.getString("att.DayShift"));
+//                            v.add(rs.getString("att.NightShift"));
+//                            v.add(rs.getString("att.HalfDayShift"));
+//                            v.add(rs.getString("att.OTShift"));
+//                            v.add(rs.getString("att.OTHours"));
+//                            v.add(rs.getString("att.DNShift"));
+//                            v.add(rs.getString("att.Line"));
+//
+//                            dtm.addRow(v);
+//
+//                        }
+//                        btn_RemoveRow2.setEnabled(true);
+//                    } catch (Exception e) {
+//                        e.printStackTrace();
+//                        JOptionPane.showMessageDialog(rootPane, e);
+//                    }
+//
+//                }
+//
+//            }
+//        });
+//        hilo.start();
 
         Thread hilo = new Thread(new Runnable() {
 
@@ -318,7 +453,7 @@ public class RPT_Attendance_History extends javax.swing.JFrame {
                 } else {
 
                     try {
-
+                        System.out.println("start");
                         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
                         String FromDate = sdf.format(from_date.getDate());
                         String ToDate = sdf.format(to_date.getDate());
@@ -327,20 +462,21 @@ public class RPT_Attendance_History extends javax.swing.JFrame {
                         PreparedStatement pst;
                         ResultSet rs;
 
-                        String sql = "select * from emp_atten_main att join employee_reg emp on att.EPFno=emp.EmployeeNo where  att.Location = '" + txt_locName.getText() + "' and att.Date between '" + FromDate + "' and '" + ToDate + "' ";
+                        String sql = "select * from emp_atten_main att where  att.Location = '" + txt_locName.getText() + "' and att.Date between '" + FromDate + "' and '" + ToDate + "' ";
                         pst = con.prepareStatement(sql);
                         rs = pst.executeQuery();
 
                         DefaultTableModel dtm = (DefaultTableModel) tbl_atten.getModel();
                         dtm.setRowCount(0);
-
+                        System.out.println("before while");
                         while (rs.next()) {
-
+                            System.out.println("in while");
                             Vector v = new Vector();
+                            String epf = rs.getString("att.EPFno");
 
                             v.add(rs.getString("att.EffectiveRank"));
-                            v.add(rs.getString("att.EPFno"));
-                            v.add(rs.getString("emp.NameWithInitials"));
+                            v.add(epf);
+                            v.add("");
                             v.add(rs.getString("att.Date"));
                             v.add(rs.getString("att.DayShift"));
                             v.add(rs.getString("att.NightShift"));
@@ -352,7 +488,24 @@ public class RPT_Attendance_History extends javax.swing.JFrame {
 
                             dtm.addRow(v);
 
+                            
+
                         }
+                        
+                        int row_cont = tbl_atten.getRowCount();
+                        for (int i = 0; i < row_cont; i++) {
+                            
+                            String empno = tbl_atten.getValueAt(i, 1).toString();
+                            String sql2 = "select NameWithInitials from employee_reg where EmployeeNo='" + empno + "'";
+                            PreparedStatement pst2 = con.prepareStatement(sql2);
+                            ResultSet rs2 = pst2.executeQuery();
+                            while(rs2.next()){
+                            tbl_atten.setValueAt(rs2.getString(1), i, 2);
+                            }
+                            
+                        }
+                        
+                        
                         btn_RemoveRow2.setEnabled(true);
                     } catch (Exception e) {
                         e.printStackTrace();
