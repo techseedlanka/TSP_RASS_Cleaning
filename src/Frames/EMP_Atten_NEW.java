@@ -654,6 +654,7 @@ public class EMP_Atten_NEW extends javax.swing.JFrame {
         jTable2 = new javax.swing.JTable();
         buttonGroup1 = new javax.swing.ButtonGroup();
         jSeparator1 = new javax.swing.JSeparator();
+        lbl_day_1 = new javax.swing.JLabel();
         lbl_day_2 = new javax.swing.JLabel();
         lbl_day_3 = new javax.swing.JLabel();
         lbl_day_4 = new javax.swing.JLabel();
@@ -675,7 +676,6 @@ public class EMP_Atten_NEW extends javax.swing.JFrame {
         txt_locCode = new javax.swing.JTextField();
         jSeparator3 = new javax.swing.JSeparator();
         btn_RemoveRow = new javax.swing.JButton();
-        lbl_day_1 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         lbl_shifts_left = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
@@ -703,7 +703,6 @@ public class EMP_Atten_NEW extends javax.swing.JFrame {
         jLabel11 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
         jLabel34 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
@@ -714,6 +713,9 @@ public class EMP_Atten_NEW extends javax.swing.JFrame {
         jButton12 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
         jComboBox1 = new javax.swing.JComboBox<>();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        table_night_carder1 = new javax.swing.JTable();
+        jButton7 = new javax.swing.JButton();
 
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -729,7 +731,6 @@ public class EMP_Atten_NEW extends javax.swing.JFrame {
         jScrollPane2.setViewportView(jTable2);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosing(java.awt.event.WindowEvent evt) {
                 formWindowClosing(evt);
@@ -738,42 +739,58 @@ public class EMP_Atten_NEW extends javax.swing.JFrame {
                 formWindowOpened(evt);
             }
         });
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        getContentPane().add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 1240, 10));
 
+        lbl_day_1.setBackground(new java.awt.Color(51, 204, 255));
+        lbl_day_1.setFont(new java.awt.Font("Cambria Math", 0, 16)); // NOI18N
+        lbl_day_1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbl_day_1.setText("D1");
+        lbl_day_1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        lbl_day_1.setOpaque(true);
+
+        lbl_day_2.setBackground(new java.awt.Color(51, 204, 255));
         lbl_day_2.setFont(new java.awt.Font("Cambria Math", 0, 16)); // NOI18N
         lbl_day_2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbl_day_2.setText("D2");
-        getContentPane().add(lbl_day_2, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 105, 110, 30));
+        lbl_day_2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        lbl_day_2.setOpaque(true);
 
+        lbl_day_3.setBackground(new java.awt.Color(51, 204, 255));
         lbl_day_3.setFont(new java.awt.Font("Cambria Math", 0, 16)); // NOI18N
         lbl_day_3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbl_day_3.setText("D3");
-        getContentPane().add(lbl_day_3, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 105, 110, 30));
+        lbl_day_3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        lbl_day_3.setOpaque(true);
 
+        lbl_day_4.setBackground(new java.awt.Color(51, 204, 255));
         lbl_day_4.setFont(new java.awt.Font("Cambria Math", 0, 16)); // NOI18N
         lbl_day_4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbl_day_4.setText("D4");
-        getContentPane().add(lbl_day_4, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 105, 110, 30));
+        lbl_day_4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        lbl_day_4.setOpaque(true);
 
+        lbl_day_5.setBackground(new java.awt.Color(51, 204, 255));
         lbl_day_5.setFont(new java.awt.Font("Cambria Math", 0, 16)); // NOI18N
         lbl_day_5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbl_day_5.setText("D5");
-        getContentPane().add(lbl_day_5, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 105, 110, 30));
+        lbl_day_5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        lbl_day_5.setOpaque(true);
 
+        lbl_day_6.setBackground(new java.awt.Color(51, 204, 255));
         lbl_day_6.setFont(new java.awt.Font("Cambria Math", 0, 16)); // NOI18N
         lbl_day_6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbl_day_6.setText("D6");
-        getContentPane().add(lbl_day_6, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 105, 110, 30));
+        lbl_day_6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        lbl_day_6.setOpaque(true);
 
+        lbl_day_7.setBackground(new java.awt.Color(51, 204, 255));
         lbl_day_7.setFont(new java.awt.Font("Cambria Math", 0, 16)); // NOI18N
         lbl_day_7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbl_day_7.setText("D7");
-        getContentPane().add(lbl_day_7, new org.netbeans.lib.awtextra.AbsoluteConstraints(1090, 105, 110, 30));
+        lbl_day_7.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        lbl_day_7.setOpaque(true);
 
         jLabel1.setFont(new java.awt.Font("Georgia", 0, 18)); // NOI18N
         jLabel1.setText("Employee Attendence Entry");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 11, -1, -1));
 
         jdate_from_date.setDateFormatString("yyyy-MM-dd");
         jdate_from_date.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
@@ -782,17 +799,14 @@ public class EMP_Atten_NEW extends javax.swing.JFrame {
                 jdate_from_dateFocusLost(evt);
             }
         });
-        getContentPane().add(jdate_from_date, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 50, 110, 25));
 
         jLabel2.setFont(new java.awt.Font("Georgia", 0, 14)); // NOI18N
         jLabel2.setText("To :- ");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 50, -1, 20));
 
         lbl_total_shifts.setBackground(new java.awt.Color(51, 255, 151));
         lbl_total_shifts.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         lbl_total_shifts.setText("00.00");
         lbl_total_shifts.setToolTipText("");
-        getContentPane().add(lbl_total_shifts, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 550, 70, 20));
 
         cmb_defLocation.setEditable(true);
         cmb_defLocation.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
@@ -812,12 +826,9 @@ public class EMP_Atten_NEW extends javax.swing.JFrame {
                 cmb_defLocationPopupMenuWillBecomeVisible(evt);
             }
         });
-        getContentPane().add(cmb_defLocation, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 50, 340, -1));
-        getContentPane().add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 460, 1080, 0));
 
         jLabel3.setFont(new java.awt.Font("Georgia", 0, 14)); // NOI18N
         jLabel3.setText("Employee :-");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 480, -1, 20));
 
         tbl_atten.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         tbl_atten.setModel(new javax.swing.table.DefaultTableModel(
@@ -883,8 +894,6 @@ public class EMP_Atten_NEW extends javax.swing.JFrame {
             tbl_atten.getColumnModel().getColumn(16).setPreferredWidth(40);
         }
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 154, 1220, 320));
-
         jButton4.setFont(new java.awt.Font("Georgia", 0, 14)); // NOI18N
         jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Refresh.png"))); // NOI18N
         jButton4.setText("Clear All");
@@ -893,7 +902,6 @@ public class EMP_Atten_NEW extends javax.swing.JFrame {
                 jButton4ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 530, 130, 40));
 
         btn_Save.setFont(new java.awt.Font("Georgia", 0, 16)); // NOI18N
         btn_Save.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/save 1.png"))); // NOI18N
@@ -904,7 +912,6 @@ public class EMP_Atten_NEW extends javax.swing.JFrame {
                 btn_SaveActionPerformed(evt);
             }
         });
-        getContentPane().add(btn_Save, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 523, 170, 100));
 
         txt_search.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         txt_search.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -917,7 +924,6 @@ public class EMP_Atten_NEW extends javax.swing.JFrame {
                 txt_searchKeyPressed(evt);
             }
         });
-        getContentPane().add(txt_search, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 480, 200, 25));
 
         txt_locCode.setEditable(false);
         txt_locCode.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
@@ -929,8 +935,6 @@ public class EMP_Atten_NEW extends javax.swing.JFrame {
                 txt_locCodeFocusLost(evt);
             }
         });
-        getContentPane().add(txt_locCode, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 50, 60, 23));
-        getContentPane().add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 89, 1240, 10));
 
         btn_RemoveRow.setFont(new java.awt.Font("Georgia", 0, 14)); // NOI18N
         btn_RemoveRow.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Minus-30.png"))); // NOI18N
@@ -940,25 +944,16 @@ public class EMP_Atten_NEW extends javax.swing.JFrame {
                 btn_RemoveRowActionPerformed(evt);
             }
         });
-        getContentPane().add(btn_RemoveRow, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 530, 150, 40));
-
-        lbl_day_1.setFont(new java.awt.Font("Cambria Math", 0, 16)); // NOI18N
-        lbl_day_1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbl_day_1.setText("D1");
-        getContentPane().add(lbl_day_1, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 105, 110, 30));
 
         jLabel10.setFont(new java.awt.Font("Georgia", 0, 12)); // NOI18N
         jLabel10.setText("Balance Shifts");
-        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 580, 90, 20));
 
         lbl_shifts_left.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         lbl_shifts_left.setText("00.00");
         lbl_shifts_left.setToolTipText("");
-        getContentPane().add(lbl_shifts_left, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 600, 80, 20));
 
         jLabel12.setFont(new java.awt.Font("Georgia", 0, 12)); // NOI18N
         jLabel12.setText("Total Shifts");
-        getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 530, -1, 20));
 
         btn_extraShifts.setFont(new java.awt.Font("Georgia", 0, 14)); // NOI18N
         btn_extraShifts.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Plus-30.png"))); // NOI18N
@@ -968,7 +963,6 @@ public class EMP_Atten_NEW extends javax.swing.JFrame {
                 btn_extraShiftsActionPerformed(evt);
             }
         });
-        getContentPane().add(btn_extraShifts, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 580, 290, 40));
 
         table_night_carder.setFont(new java.awt.Font("Georgia", 0, 14)); // NOI18N
         table_night_carder.setModel(new javax.swing.table.DefaultTableModel(
@@ -993,8 +987,6 @@ public class EMP_Atten_NEW extends javax.swing.JFrame {
             table_night_carder.getColumnModel().getColumn(0).setResizable(false);
         }
 
-        getContentPane().add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 480, 90, 140));
-
         table_day_carder.setFont(new java.awt.Font("Georgia", 0, 14)); // NOI18N
         table_day_carder.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -1017,8 +1009,6 @@ public class EMP_Atten_NEW extends javax.swing.JFrame {
         if (table_day_carder.getColumnModel().getColumnCount() > 0) {
             table_day_carder.getColumnModel().getColumn(0).setResizable(false);
         }
-
-        getContentPane().add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 480, 90, 140));
 
         jPanel2.setBackground(new java.awt.Color(153, 255, 255));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -1094,82 +1084,61 @@ public class EMP_Atten_NEW extends javax.swing.JFrame {
         lbl_warn.setText("jLabel6");
         jPanel2.add(lbl_warn, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 10, 70, 20));
 
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 0, 190, 40));
-
         btn_RemoveRow1.setFont(new java.awt.Font("Georgia", 0, 12)); // NOI18N
         btn_RemoveRow1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/icons8-data-sheet-30.png"))); // NOI18N
-        btn_RemoveRow1.setText("Attendance History");
+        btn_RemoveRow1.setText("<html>Attendance <br> History </html>");
         btn_RemoveRow1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_RemoveRow1ActionPerformed(evt);
             }
         });
-        getContentPane().add(btn_RemoveRow1, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 530, 190, 90));
 
         txt_rank.setEditable(false);
         txt_rank.setFont(new java.awt.Font("Georgia", 0, 13)); // NOI18N
-        getContentPane().add(txt_rank, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 480, 40, 25));
 
         txt_empid.setEditable(false);
         txt_empid.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        getContentPane().add(txt_empid, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 480, 50, 25));
 
         jButton2.setFont(new java.awt.Font("Georgia", 0, 12)); // NOI18N
-        jButton2.setText("EMP Photo");
+        jButton2.setText("Photo");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 480, 100, 23));
 
         lbl_rowCount.setBackground(new java.awt.Color(153, 255, 204));
         lbl_rowCount.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
         lbl_rowCount.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbl_rowCount.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
         lbl_rowCount.setOpaque(true);
-        getContentPane().add(lbl_rowCount, new org.netbeans.lib.awtextra.AbsoluteConstraints(1170, 480, 60, 30));
 
         txt_def_loc_name.setEditable(false);
         txt_def_loc_name.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
-        getContentPane().add(txt_def_loc_name, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 480, 160, 25));
 
         jLabel13.setFont(new java.awt.Font("Georgia", 0, 14)); // NOI18N
         jLabel13.setText("Employee Count:");
-        getContentPane().add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(1060, 480, 110, 30));
 
         jLabel11.setBackground(new java.awt.Color(51, 204, 255));
         jLabel11.setFont(new java.awt.Font("Georgia", 0, 12)); // NOI18N
         jLabel11.setText("        Shift         |  OT  |          Shift        | OT  |          Shift       |  OT   |          Shift       |  OT   |        Shift        |  OT   |        Shift         |   OT   |         Shift       |    OT  |");
         jLabel11.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 102, 102)));
         jLabel11.setOpaque(true);
-        getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 135, 860, 20));
 
         jLabel4.setBackground(new java.awt.Color(51, 204, 255));
         jLabel4.setFont(new java.awt.Font("Georgia", 0, 14)); // NOI18N
         jLabel4.setText("|EMP No.|                          Name                                      |  Rank    ");
         jLabel4.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 102, 102), 1, true));
         jLabel4.setOpaque(true);
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 105, 360, 50));
 
         jLabel14.setFont(new java.awt.Font("Georgia", 0, 14)); // NOI18N
         jLabel14.setText("Location:-");
-        getContentPane().add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 40, -1, 40));
-
-        jLabel5.setBackground(new java.awt.Color(51, 204, 255));
-        jLabel5.setFont(new java.awt.Font("Georgia", 0, 14)); // NOI18N
-        jLabel5.setText("|EMP No.|                    Name                                          |  Rank    |                                        |                                       |                                     |                                        |                                     |                                        |                                       |");
-        jLabel5.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 102, 102), 1, true));
-        jLabel5.setOpaque(true);
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 105, 1220, 30));
 
         jLabel34.setFont(new java.awt.Font("Georgia", 0, 12)); // NOI18N
         jLabel34.setText(" Month  :-");
-        getContentPane().add(jLabel34, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, -1, 20));
 
         jLabel7.setFont(new java.awt.Font("Georgia", 0, 14)); // NOI18N
         jLabel7.setText("From :- ");
-        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 50, -1, 20));
 
         jButton1.setFont(new java.awt.Font("Georgia", 0, 14)); // NOI18N
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Available Updates.png"))); // NOI18N
@@ -1179,7 +1148,6 @@ public class EMP_Atten_NEW extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1050, 40, 180, 50));
 
         jdate_to_date.setDateFormatString("yyyy-MM-dd");
         jdate_to_date.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
@@ -1188,29 +1156,24 @@ public class EMP_Atten_NEW extends javax.swing.JFrame {
                 jdate_to_dateFocusLost(evt);
             }
         });
-        getContentPane().add(jdate_to_date, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 50, 110, 25));
 
         txt_Year.setEditable(false);
         txt_Year.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        getContentPane().add(txt_Year, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 50, 60, 23));
 
         txt_month.setEditable(false);
         txt_month.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        getContentPane().add(txt_month, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 50, 90, 23));
 
         txt_def_loc.setEditable(false);
         txt_def_loc.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        getContentPane().add(txt_def_loc, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 480, 40, 25));
 
         jButton12.setFont(new java.awt.Font("Georgia", 0, 12)); // NOI18N
         jButton12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/icons8-plus-20.png"))); // NOI18N
-        jButton12.setText("Add Emp.");
+        jButton12.setText("Add");
         jButton12.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton12ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton12, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 480, -1, 27));
 
         jButton6.setFont(new java.awt.Font("Georgia", 0, 14)); // NOI18N
         jButton6.setText("Sort");
@@ -1219,11 +1182,272 @@ public class EMP_Atten_NEW extends javax.swing.JFrame {
                 jButton6ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(1160, 10, 70, -1));
 
         jComboBox1.setFont(new java.awt.Font("Georgia", 0, 14)); // NOI18N
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "==Sort Employees==", "by EMPno", "by Name", "by Rank" }));
-        getContentPane().add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(980, 10, 170, -1));
+
+        table_night_carder1.setFont(new java.awt.Font("Georgia", 0, 14)); // NOI18N
+        table_night_carder1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Rank", "Count", "Duty #"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, true, true
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        table_night_carder1.setRowHeight(20);
+        jScrollPane5.setViewportView(table_night_carder1);
+        if (table_night_carder1.getColumnModel().getColumnCount() > 0) {
+            table_night_carder1.getColumnModel().getColumn(0).setResizable(false);
+        }
+
+        jButton7.setFont(new java.awt.Font("Georgia", 0, 12)); // NOI18N
+        jButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/icons8_refresh_15px.png"))); // NOI18N
+        jButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton7ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addComponent(jLabel1)
+                .addGap(46, 46, 46)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(1050, 1050, 1050)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(880, 880, 880)
+                .addComponent(jLabel2))
+            .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 1240, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(920, 920, 920)
+                .addComponent(jdate_to_date, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(130, 130, 130)
+                .addComponent(txt_month, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(760, 760, 760)
+                .addComponent(jdate_from_date, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(300, 300, 300)
+                .addComponent(cmb_defLocation, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addComponent(jLabel34))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(70, 70, 70)
+                .addComponent(txt_Year, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(230, 230, 230)
+                .addComponent(jLabel14))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(710, 710, 710)
+                .addComponent(jLabel7))
+            .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 1240, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(640, 640, 640)
+                .addComponent(txt_locCode, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(606, 606, 606)
+                .addComponent(lbl_day_3, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(965, 965, 965)
+                .addComponent(lbl_day_6, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(1087, 1087, 1087)
+                .addComponent(lbl_day_7, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(724, 724, 724)
+                .addComponent(lbl_day_4, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1220, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(370, 370, 370)
+                .addComponent(lbl_day_1, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(370, 370, 370)
+                .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 860, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 360, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(485, 485, 485)
+                .addComponent(lbl_day_2, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(847, 847, 847)
+                .addComponent(lbl_day_5, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 1080, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addComponent(jLabel3)
+                .addGap(5, 5, 5)
+                .addComponent(txt_search, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(txt_empid, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(txt_rank, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(txt_def_loc, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(txt_def_loc_name, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(jButton12, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(10, 10, 10)
+                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20)
+                .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(60, 60, 60)
+                .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(lbl_rowCount, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(btn_Save, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(10, 10, 10)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(10, 10, 10)
+                        .addComponent(btn_RemoveRow, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btn_extraShifts, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(10, 10, 10)
+                .addComponent(btn_RemoveRow1, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(10, 10, 10)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel12)
+                    .addComponent(lbl_total_shifts, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbl_shifts_left, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(10, 10, 10)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(70, 70, 70)
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(11, 11, 11)
+                        .addComponent(jLabel1))
+                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(jdate_to_date, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(txt_month, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(jdate_from_date, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(cmb_defLocation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(jLabel34, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(txt_Year, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(49, 49, 49)
+                        .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(txt_locCode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(6, 6, 6)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lbl_day_3, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbl_day_6, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbl_day_7, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbl_day_4, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(49, 49, 49)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 320, Short.MAX_VALUE))
+                    .addComponent(lbl_day_1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(30, 30, 30)
+                        .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbl_day_2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbl_day_5, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(355, 355, 355)
+                        .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(6, 6, 6)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txt_search, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txt_empid, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txt_rank, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txt_def_loc, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txt_def_loc_name, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton12, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton6)
+                    .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbl_rowCount, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(13, 13, 13)
+                        .addComponent(btn_Save, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btn_RemoveRow, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(10, 10, 10)
+                        .addComponent(btn_extraShifts, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addComponent(btn_RemoveRow1, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, 0)
+                        .addComponent(lbl_total_shifts, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(10, 10, 10)
+                        .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, 0)
+                        .addComponent(lbl_shifts_left, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(9, 9, 9))
+        );
 
         pack();
         setLocationRelativeTo(null);
@@ -2290,6 +2514,10 @@ public class EMP_Atten_NEW extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jButton6ActionPerformed
 
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton7ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -2792,6 +3020,7 @@ public class EMP_Atten_NEW extends javax.swing.JFrame {
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
+    private javax.swing.JButton jButton7;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -2803,13 +3032,13 @@ public class EMP_Atten_NEW extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel34;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
@@ -2831,6 +3060,7 @@ public class EMP_Atten_NEW extends javax.swing.JFrame {
     private javax.swing.JLabel lbl_warn;
     private javax.swing.JTable table_day_carder;
     private javax.swing.JTable table_night_carder;
+    private javax.swing.JTable table_night_carder1;
     private javax.swing.JTable tbl_atten;
     private javax.swing.JTextField txt_Year;
     private javax.swing.JTextField txt_def_loc;
