@@ -84,6 +84,8 @@ public class bean_data_salary {
     private Double festival;
     private Double epf_duty;
     private Double stamp;
+    
+      private String rpt_emp_bankName;
 
     /**
      * @return the rpt_epf
@@ -979,6 +981,20 @@ public class bean_data_salary {
      */
     public void setDay2_duty(Double day2_duty) {
         this.day2_duty = day2_duty;
+    }
+
+    /**
+     * @return the rpt_emp_bankName
+     */
+    public String getRpt_emp_bankName() {
+        return rpt_emp_bankName;
+    }
+
+    /**
+     * @param rpt_emp_bankName the rpt_emp_bankName to set
+     */
+    public void setRpt_emp_bankName(String rpt_emp_bankName) {
+        this.rpt_emp_bankName = rpt_emp_bankName;
     }
 
 }
