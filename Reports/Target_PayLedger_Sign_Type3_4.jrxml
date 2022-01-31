@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Embassy of Maldives_SQL" language="groovy" pageWidth="1008" pageHeight="612" orientation="Landscape" columnWidth="968" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="5ed56b25-badd-4765-97ae-238516938b78">
-	<property name="ireport.zoom" value="1.6934217901613322"/>
-	<property name="ireport.x" value="161"/>
+	<property name="ireport.zoom" value="1.1566298682885952"/>
+	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
 	<queryString>
 		<![CDATA[]]>
@@ -46,6 +46,7 @@
 	<field name="festival" class="java.lang.Double"/>
 	<field name="epf_duty" class="java.lang.Double"/>
 	<field name="stamp" class="java.lang.Double"/>
+	<field name="rpt_emp_bankName" class="java.lang.String"/>
 	<variable name="net_sum" class="java.lang.Double" calculation="Sum">
 		<variableExpression><![CDATA[$F{netpay}]]></variableExpression>
 	</variable>
@@ -259,10 +260,10 @@
 					<bottomPen lineWidth="0.5" lineStyle="Solid"/>
 					<rightPen lineWidth="0.5" lineStyle="Solid"/>
 				</box>
-				<textElement verticalAlignment="Middle">
+				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Times New Roman" size="10" isBold="false"/>
 				</textElement>
-				<text><![CDATA[EMPno]]></text>
+				<text><![CDATA[EMP No.]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="657" y="28" width="42" height="32" uuid="86e3f2d5-f07b-4aca-975a-16cc47438cff"/>
@@ -752,6 +753,20 @@
 					<paragraph rightIndent="2"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{stamp}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="865" y="0" width="62" height="30" uuid="92d005bb-edaa-456a-9201-5e0a1f8dab66"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{rpt_emp_bankName}]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>
