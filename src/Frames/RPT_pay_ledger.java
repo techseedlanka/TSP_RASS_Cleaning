@@ -129,7 +129,7 @@ public class RPT_pay_ledger extends javax.swing.JFrame {
 
     }
 
-      void print_Type5() {
+    void print_Type5() {
 
         if (CB_Signing.isSelected()) {
 
@@ -158,7 +158,7 @@ public class RPT_pay_ledger extends javax.swing.JFrame {
         }
 
     }
-    
+
     void print2() {
 
         if (CB_Signing.isSelected()) {
@@ -336,8 +336,8 @@ public class RPT_pay_ledger extends javax.swing.JFrame {
         getContentPane().add(cmb_month, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 50, 110, 30));
 
         cmb_year.setFont(new java.awt.Font("Times New Roman", 0, 15)); // NOI18N
-        cmb_year.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "2015", "2016", "2017", "2018", "2019", "2020", "2021" }));
-        cmb_year.setSelectedIndex(6);
+        cmb_year.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022" }));
+        cmb_year.setSelectedIndex(7);
         cmb_year.addPopupMenuListener(new javax.swing.event.PopupMenuListener() {
             public void popupMenuCanceled(javax.swing.event.PopupMenuEvent evt) {
             }
@@ -950,37 +950,64 @@ public class RPT_pay_ledger extends javax.swing.JFrame {
                 Connection con = DbConnection.getconnection();
                 PreparedStatement pst = con.prepareStatement(sql);
                 ResultSet rs = pst.executeQuery();
+
+                Double bank_net = 0.00;
+                Double hand_net = 0.00;
+                Double slip_net = 0.00;
+                PreparedStatement pst1 = con.prepareStatement(sql_bank);
+                ResultSet rs1 = pst1.executeQuery();
+                while (rs1.next()) {
+
+                    bank_net = rs1.getDouble("SUM(NetPay)");
+
+                }
+
+                PreparedStatement pst2 = con.prepareStatement(sql_hand);
+                ResultSet rs2 = pst2.executeQuery();
+                while (rs2.next()) {
+
+                    hand_net = rs2.getDouble("SUM(NetPay)");
+
+                }
+
+                PreparedStatement pst3 = con.prepareStatement(sql_slip);
+                ResultSet rs3 = pst3.executeQuery();
+                while (rs3.next()) {
+
+                    slip_net = rs3.getDouble("SUM(NetPay)");
+
+                }
+
                 while (rs.next()) {
 
                     String emp = rs.getString("EMPno");
 
-                    Double bank_net = 0.00;
-                    Double hand_net = 0.00;
-                    Double slip_net = 0.00;
-                    PreparedStatement pst1 = con.prepareStatement(sql_bank);
-                    ResultSet rs1 = pst1.executeQuery();
-                    while (rs1.next()) {
-
-                        bank_net = rs1.getDouble("SUM(NetPay)");
-
-                    }
-
-                    PreparedStatement pst2 = con.prepareStatement(sql_hand);
-                    ResultSet rs2 = pst2.executeQuery();
-                    while (rs2.next()) {
-
-                        hand_net = rs2.getDouble("SUM(NetPay)");
-
-                    }
-
-                    PreparedStatement pst3 = con.prepareStatement(sql_slip);
-                    ResultSet rs3 = pst3.executeQuery();
-                    while (rs3.next()) {
-
-                        slip_net = rs3.getDouble("SUM(NetPay)");
-
-                    }
-
+//                    Double bank_net = 0.00;
+//                    Double hand_net = 0.00;
+//                    Double slip_net = 0.00;
+//                    PreparedStatement pst1 = con.prepareStatement(sql_bank);
+//                    ResultSet rs1 = pst1.executeQuery();
+//                    while (rs1.next()) {
+//
+//                        bank_net = rs1.getDouble("SUM(NetPay)");
+//
+//                    }
+//
+//                    PreparedStatement pst2 = con.prepareStatement(sql_hand);
+//                    ResultSet rs2 = pst2.executeQuery();
+//                    while (rs2.next()) {
+//
+//                        hand_net = rs2.getDouble("SUM(NetPay)");
+//
+//                    }
+//
+//                    PreparedStatement pst3 = con.prepareStatement(sql_slip);
+//                    ResultSet rs3 = pst3.executeQuery();
+//                    while (rs3.next()) {
+//
+//                        slip_net = rs3.getDouble("SUM(NetPay)");
+//
+//                    }
                     //***
                     bean_data_salary bds = new bean_data_salary();
 
@@ -1020,6 +1047,8 @@ public class RPT_pay_ledger extends javax.swing.JFrame {
                     bds.setSlip(slip_net);
                     bds.setRpt_rank(rs.getString("Rank"));
                     bds.setRpt_name(rs.getString("Name"));
+                    bds.setRpt_emp_bankName(rs.getString("BankName"));
+                    System.out.println("BankName " + (rs.getString("BankName")));
 
                     bds.setDay_duty(Double.parseDouble(rs.getString("Day")));
                     bds.setDay2_duty(Double.parseDouble(rs.getString("DayTwoShifts")));
@@ -1032,6 +1061,7 @@ public class RPT_pay_ledger extends javax.swing.JFrame {
                     bds.setFestival(Double.parseDouble(rs.getString("Festival")));
                     bds.setEpf_duty(Double.parseDouble(rs.getString("EPFDuty")));
                     bds.setStamp(Double.parseDouble(rs.getString("Stamp")));
+
 //                    bds.setRpt_address(ComAdd);
 //                    bds.setRpt_tel(ComTel);
 //                    bds.setRpt_employee_type(Ledger_Type);
@@ -1042,9 +1072,9 @@ public class RPT_pay_ledger extends javax.swing.JFrame {
 
                 if (Loc_Type.equals("Type01") | Loc_Type.equals("Type02")) {
                     print2();
-                } else  if (Loc_Type.equals("Type03") | Loc_Type.equals("Type04")) {
+                } else if (Loc_Type.equals("Type03") | Loc_Type.equals("Type04")) {
                     print_Type3_and4();
-                }else{
+                } else {
                     print_Type5();
                 }
 
@@ -1794,11 +1824,11 @@ public class RPT_pay_ledger extends javax.swing.JFrame {
 
                 }
 
-               if (Loc_Type.equals("Type01") | Loc_Type.equals("Type02")) {
+                if (Loc_Type.equals("Type01") | Loc_Type.equals("Type02")) {
                     print2();
-                } else  if (Loc_Type.equals("Type03") | Loc_Type.equals("Type04")) {
+                } else if (Loc_Type.equals("Type03") | Loc_Type.equals("Type04")) {
                     print_Type3_and4();
-                }else{
+                } else {
                     print_Type5();
                 }
                 al.clear();
