@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Emp_Monthly_Advance" language="groovy" pageWidth="612" pageHeight="1008" columnWidth="563" leftMargin="29" rightMargin="20" topMargin="20" bottomMargin="20" uuid="8e0be224-582d-4779-be56-64d2f82ee9da">
-	<property name="ireport.zoom" value="1.2418426461183114"/>
-	<property name="ireport.x" value="0"/>
+	<property name="ireport.zoom" value="2.2000000000000033"/>
+	<property name="ireport.x" value="186"/>
 	<property name="ireport.y" value="0"/>
 	<field name="loc_code" class="java.lang.String"/>
 	<field name="loc_name" class="java.lang.String"/>
@@ -98,40 +98,32 @@
 				<text><![CDATA[EMP no.]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="101" y="0" width="179" height="13" uuid="af315774-087b-41d6-a5cc-f6580fe8115f"/>
+				<reportElement x="101" y="0" width="199" height="13" uuid="af315774-087b-41d6-a5cc-f6580fe8115f"/>
 				<textElement verticalAlignment="Bottom">
 					<font fontName="Times New Roman" size="11" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Employee Name]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="280" y="0" width="59" height="13" uuid="ce0aab76-c1a7-4526-a399-dd6b674f9954"/>
+				<reportElement x="300" y="0" width="72" height="13" uuid="ce0aab76-c1a7-4526-a399-dd6b674f9954"/>
 				<textElement verticalAlignment="Bottom">
 					<font fontName="Times New Roman" size="11" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Amount]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="339" y="0" width="65" height="13" uuid="a9e247f0-625b-4149-834e-b5f66ca5c72d"/>
+				<reportElement x="379" y="0" width="106" height="13" uuid="a9e247f0-625b-4149-834e-b5f66ca5c72d"/>
 				<textElement textAlignment="Center" verticalAlignment="Bottom">
 					<font fontName="Times New Roman" size="11" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Signature]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="404" y="0" width="52" height="13" uuid="04298e4c-0185-4322-abee-cd94d6cca82e"/>
+				<reportElement x="498" y="0" width="52" height="13" uuid="04298e4c-0185-4322-abee-cd94d6cca82e"/>
 				<textElement textAlignment="Center" verticalAlignment="Bottom">
 					<font fontName="Times New Roman" size="11" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Pay Type]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="457" y="0" width="106" height="13" uuid="44740386-f0b2-4a80-a18d-ee5498a3007c"/>
-				<textElement verticalAlignment="Bottom">
-					<font fontName="Times New Roman" size="11" isBold="true"/>
-					<paragraph leftIndent="2"/>
-				</textElement>
-				<text><![CDATA[Bank Name]]></text>
 			</staticText>
 			<line>
 				<reportElement x="0" y="13" width="563" height="1" uuid="7ab2ff00-d2ad-435a-82f5-1b94a7011439"/>
@@ -158,29 +150,29 @@
 				<textFieldExpression><![CDATA[$F{emp_code}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="101" y="3" width="179" height="27" isRemoveLineWhenBlank="true" uuid="bb18ba80-66cc-4508-a622-3607b44d92b1"/>
+				<reportElement x="101" y="3" width="199" height="27" isRemoveLineWhenBlank="true" uuid="bb18ba80-66cc-4508-a622-3607b44d92b1"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Times New Roman" size="11"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{emp_name}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="339" y="3" width="65" height="27" uuid="1dd4b08b-3dca-4d57-9e78-15f0abd7bafc"/>
-				<textElement verticalAlignment="Bottom">
+				<reportElement x="379" y="17" width="106" height="13" uuid="1dd4b08b-3dca-4d57-9e78-15f0abd7bafc"/>
+				<textElement textAlignment="Center" verticalAlignment="Bottom">
 					<font fontName="Times New Roman" size="11"/>
 				</textElement>
-				<text><![CDATA[....................]]></text>
+				<text><![CDATA[....................................]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="404" y="3" width="52" height="27" isRemoveLineWhenBlank="true" uuid="1cb28b98-d05e-4d6c-9d70-d6ecbd1bf806"/>
+				<reportElement x="498" y="3" width="52" height="27" isRemoveLineWhenBlank="true" uuid="1cb28b98-d05e-4d6c-9d70-d6ecbd1bf806"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Times New Roman" size="11"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{pay_Type}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
-				<reportElement x="457" y="3" width="106" height="27" isRemoveLineWhenBlank="true" uuid="4ecaf707-9f9d-4d93-bb67-ab429f533628"/>
-				<textElement textAlignment="Justified" verticalAlignment="Middle">
+				<reportElement x="379" y="3" width="106" height="27" isRemoveLineWhenBlank="true" uuid="4ecaf707-9f9d-4d93-bb67-ab429f533628"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Times New Roman" size="11"/>
 					<paragraph leftIndent="2"/>
 				</textElement>
@@ -194,7 +186,7 @@
 				<textFieldExpression><![CDATA[$V{REPORT_COUNT}]]></textFieldExpression>
 			</textField>
 			<textField pattern="#,##0.00;-#,##0.00">
-				<reportElement x="281" y="3" width="58" height="27" uuid="a9e2be7b-8793-43cc-a55e-48e98357dab0"/>
+				<reportElement x="301" y="3" width="71" height="27" uuid="a9e2be7b-8793-43cc-a55e-48e98357dab0"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Times New Roman" size="11"/>
 				</textElement>
