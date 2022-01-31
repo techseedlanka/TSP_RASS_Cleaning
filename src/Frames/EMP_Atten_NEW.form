@@ -59,92 +59,83 @@
               <Component id="jPanel2" min="-2" pref="190" max="-2" attributes="0"/>
           </Group>
           <Group type="102" attributes="0">
-              <EmptySpace min="1050" pref="1050" max="-2" attributes="0"/>
-              <Component id="jButton1" min="-2" pref="180" max="-2" attributes="0"/>
-          </Group>
-          <Group type="102" attributes="0">
-              <EmptySpace min="880" pref="880" max="-2" attributes="0"/>
-              <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
-          </Group>
-          <Component id="jSeparator1" min="-2" pref="1240" max="-2" attributes="0"/>
-          <Group type="102" attributes="0">
-              <EmptySpace min="920" pref="920" max="-2" attributes="0"/>
-              <Component id="jdate_to_date" min="-2" pref="110" max="-2" attributes="0"/>
-          </Group>
-          <Group type="102" attributes="0">
-              <EmptySpace min="130" pref="130" max="-2" attributes="0"/>
-              <Component id="txt_month" min="-2" pref="90" max="-2" attributes="0"/>
-          </Group>
-          <Group type="102" attributes="0">
-              <EmptySpace min="760" pref="760" max="-2" attributes="0"/>
-              <Component id="jdate_from_date" min="-2" pref="110" max="-2" attributes="0"/>
-          </Group>
-          <Group type="102" attributes="0">
-              <EmptySpace min="300" pref="300" max="-2" attributes="0"/>
-              <Component id="cmb_defLocation" min="-2" pref="340" max="-2" attributes="0"/>
-          </Group>
-          <Group type="102" attributes="0">
-              <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
-              <Component id="jLabel34" min="-2" max="-2" attributes="0"/>
-          </Group>
-          <Group type="102" attributes="0">
               <EmptySpace min="70" pref="70" max="-2" attributes="0"/>
               <Component id="txt_Year" min="-2" pref="60" max="-2" attributes="0"/>
+              <EmptySpace min="170" pref="170" max="-2" attributes="0"/>
+              <Component id="cmb_defLocation" min="-2" pref="340" max="-2" attributes="0"/>
+              <EmptySpace min="70" pref="70" max="-2" attributes="0"/>
+              <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="1" pref="1" max="-2" attributes="0"/>
+              <Component id="jdate_from_date" min="-2" pref="110" max="-2" attributes="0"/>
+              <EmptySpace min="50" pref="50" max="-2" attributes="0"/>
+              <Component id="jdate_to_date" min="-2" pref="110" max="-2" attributes="0"/>
           </Group>
           <Group type="102" attributes="0">
               <EmptySpace min="230" pref="230" max="-2" attributes="0"/>
               <Component id="jLabel14" min="-2" max="-2" attributes="0"/>
           </Group>
           <Group type="102" attributes="0">
-              <EmptySpace min="710" pref="710" max="-2" attributes="0"/>
-              <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="1050" pref="1050" max="-2" attributes="0"/>
+              <Component id="jButton1" min="-2" pref="180" max="-2" attributes="0"/>
           </Group>
-          <Component id="jSeparator3" min="-2" pref="1240" max="-2" attributes="0"/>
+          <Group type="102" attributes="0">
+              <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
+              <Component id="jLabel34" min="-2" max="-2" attributes="0"/>
+          </Group>
+          <Group type="102" attributes="0">
+              <EmptySpace min="880" pref="880" max="-2" attributes="0"/>
+              <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
+          </Group>
           <Group type="102" attributes="0">
               <EmptySpace min="640" pref="640" max="-2" attributes="0"/>
               <Component id="txt_locCode" min="-2" pref="60" max="-2" attributes="0"/>
+          </Group>
+          <Group type="102" attributes="0">
+              <EmptySpace min="130" pref="130" max="-2" attributes="0"/>
+              <Component id="txt_month" min="-2" pref="90" max="-2" attributes="0"/>
+          </Group>
+          <Component id="jSeparator3" min="-2" pref="1240" max="-2" attributes="0"/>
+          <Component id="jSeparator1" min="-2" pref="1240" max="-2" attributes="0"/>
+          <Group type="102" attributes="0">
+              <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
+              <Component id="jLabel4" min="-2" pref="360" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <EmptySpace min="115" pref="115" max="-2" attributes="0"/>
+                      <Component id="lbl_day_2" min="-2" pref="122" max="-2" attributes="0"/>
+                  </Group>
+                  <Component id="lbl_day_1" min="-2" pref="116" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="117" pref="117" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <EmptySpace min="363" pref="363" max="-2" attributes="0"/>
+                      <Component id="lbl_day_7" min="-2" pref="143" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" attributes="0">
+                      <EmptySpace min="241" pref="241" max="-2" attributes="0"/>
+                      <Component id="lbl_day_6" min="-2" pref="123" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" attributes="0">
+                      <EmptySpace min="123" pref="123" max="-2" attributes="0"/>
+                      <Component id="lbl_day_5" min="-2" pref="119" max="-2" attributes="0"/>
+                  </Group>
+                  <Component id="lbl_day_4" min="-2" pref="124" max="-2" attributes="0"/>
+              </Group>
+          </Group>
+          <Component id="jSeparator2" min="-2" pref="1080" max="-2" attributes="0"/>
+          <Group type="102" attributes="0">
+              <EmptySpace min="370" pref="370" max="-2" attributes="0"/>
+              <Component id="jLabel11" min="-2" pref="860" max="-2" attributes="0"/>
           </Group>
           <Group type="102" attributes="0">
               <EmptySpace min="606" pref="606" max="-2" attributes="0"/>
               <Component id="lbl_day_3" min="-2" pref="119" max="-2" attributes="0"/>
           </Group>
           <Group type="102" attributes="0">
-              <EmptySpace min="965" pref="965" max="-2" attributes="0"/>
-              <Component id="lbl_day_6" min="-2" pref="123" max="-2" attributes="0"/>
-          </Group>
-          <Group type="102" attributes="0">
-              <EmptySpace min="1087" pref="1087" max="-2" attributes="0"/>
-              <Component id="lbl_day_7" min="-2" pref="143" max="-2" attributes="0"/>
-          </Group>
-          <Group type="102" attributes="0">
-              <EmptySpace min="724" pref="724" max="-2" attributes="0"/>
-              <Component id="lbl_day_4" min="-2" pref="124" max="-2" attributes="0"/>
-          </Group>
-          <Group type="102" attributes="0">
               <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
               <Component id="jScrollPane1" min="-2" pref="1220" max="-2" attributes="0"/>
           </Group>
-          <Group type="102" attributes="0">
-              <EmptySpace min="370" pref="370" max="-2" attributes="0"/>
-              <Component id="lbl_day_1" min="-2" pref="116" max="-2" attributes="0"/>
-          </Group>
-          <Group type="102" attributes="0">
-              <EmptySpace min="370" pref="370" max="-2" attributes="0"/>
-              <Component id="jLabel11" min="-2" pref="860" max="-2" attributes="0"/>
-          </Group>
-          <Group type="102" attributes="0">
-              <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
-              <Component id="jLabel4" min="-2" pref="360" max="-2" attributes="0"/>
-          </Group>
-          <Group type="102" attributes="0">
-              <EmptySpace min="485" pref="485" max="-2" attributes="0"/>
-              <Component id="lbl_day_2" min="-2" pref="122" max="-2" attributes="0"/>
-          </Group>
-          <Group type="102" attributes="0">
-              <EmptySpace min="847" pref="847" max="-2" attributes="0"/>
-              <Component id="lbl_day_5" min="-2" pref="119" max="-2" attributes="0"/>
-          </Group>
-          <Component id="jSeparator2" min="-2" pref="1080" max="-2" attributes="0"/>
           <Group type="102" attributes="0">
               <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
               <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
@@ -166,9 +157,7 @@
               <Component id="jComboBox1" min="-2" pref="160" max="-2" attributes="0"/>
               <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
               <Component id="jButton6" min="-2" pref="70" max="-2" attributes="0"/>
-              <EmptySpace min="20" pref="20" max="-2" attributes="0"/>
-              <Component id="jButton7" min="-2" pref="50" max="-2" attributes="0"/>
-              <EmptySpace min="60" pref="60" max="-2" attributes="0"/>
+              <EmptySpace min="130" pref="130" max="-2" attributes="0"/>
               <Component id="jLabel13" min="-2" pref="110" max="-2" attributes="0"/>
               <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
               <Component id="lbl_rowCount" min="-2" pref="60" max="-2" attributes="0"/>
@@ -198,8 +187,6 @@
               <Component id="jScrollPane4" min="-2" pref="90" max="-2" attributes="0"/>
               <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
               <Component id="jScrollPane3" min="-2" pref="90" max="-2" attributes="0"/>
-              <EmptySpace min="70" pref="70" max="-2" attributes="0"/>
-              <Component id="jScrollPane5" min="-2" pref="280" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -214,23 +201,9 @@
                   <Component id="jPanel2" min="-2" pref="40" max="-2" attributes="0"/>
               </Group>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jButton1" min="-2" pref="50" max="-2" attributes="0"/>
                   <Group type="102" attributes="0">
                       <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
-                      <Component id="jLabel2" min="-2" pref="20" max="-2" attributes="0"/>
-                  </Group>
-                  <Component id="jSeparator1" min="-2" pref="10" max="-2" attributes="0"/>
-                  <Group type="102" attributes="0">
-                      <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
-                      <Component id="jdate_to_date" min="-2" pref="25" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" attributes="0">
-                      <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
-                      <Component id="txt_month" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" attributes="0">
-                      <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
-                      <Component id="jdate_from_date" min="-2" pref="25" max="-2" attributes="0"/>
+                      <Component id="txt_Year" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" attributes="0">
                       <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
@@ -238,47 +211,61 @@
                   </Group>
                   <Group type="102" attributes="0">
                       <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
+                      <Component id="jLabel7" min="-2" pref="20" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" attributes="0">
+                      <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
+                      <Component id="jdate_from_date" min="-2" pref="25" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" attributes="0">
+                      <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
+                      <Component id="jdate_to_date" min="-2" pref="25" max="-2" attributes="0"/>
+                  </Group>
+                  <Component id="jLabel14" min="-2" pref="40" max="-2" attributes="0"/>
+                  <Component id="jButton1" min="-2" pref="50" max="-2" attributes="0"/>
+                  <Group type="102" attributes="0">
+                      <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
                       <Component id="jLabel34" min="-2" pref="20" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" attributes="0">
                       <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
-                      <Component id="txt_Year" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <Component id="jLabel14" min="-2" pref="40" max="-2" attributes="0"/>
-                  <Group type="102" attributes="0">
-                      <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
-                      <Component id="jLabel7" min="-2" pref="20" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" attributes="0">
-                      <EmptySpace min="49" pref="49" max="-2" attributes="0"/>
-                      <Component id="jSeparator3" min="-2" pref="10" max="-2" attributes="0"/>
+                      <Component id="jLabel2" min="-2" pref="20" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" attributes="0">
                       <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
                       <Component id="txt_locCode" min="-2" max="-2" attributes="0"/>
                   </Group>
+                  <Group type="102" attributes="0">
+                      <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
+                      <Component id="txt_month" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" attributes="0">
+                      <EmptySpace min="49" pref="49" max="-2" attributes="0"/>
+                      <Component id="jSeparator3" min="-2" pref="10" max="-2" attributes="0"/>
+                  </Group>
+                  <Component id="jSeparator1" min="-2" pref="10" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="lbl_day_3" min="-2" pref="30" max="-2" attributes="0"/>
-                  <Component id="lbl_day_6" min="-2" pref="30" max="-2" attributes="0"/>
+                  <Component id="jLabel4" min="-2" pref="50" max="-2" attributes="0"/>
+                  <Component id="lbl_day_2" min="-2" pref="30" max="-2" attributes="0"/>
+                  <Component id="lbl_day_1" min="-2" pref="30" max="-2" attributes="0"/>
                   <Component id="lbl_day_7" min="-2" pref="30" max="-2" attributes="0"/>
+                  <Component id="lbl_day_6" min="-2" pref="30" max="-2" attributes="0"/>
+                  <Component id="lbl_day_5" min="-2" pref="30" max="-2" attributes="0"/>
                   <Component id="lbl_day_4" min="-2" pref="30" max="-2" attributes="0"/>
                   <Group type="102" attributes="0">
-                      <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
-                      <Component id="jScrollPane1" pref="320" max="32767" attributes="0"/>
+                      <EmptySpace min="355" pref="355" max="-2" attributes="0"/>
+                      <Component id="jSeparator2" min="-2" pref="0" max="-2" attributes="0"/>
                   </Group>
-                  <Component id="lbl_day_1" min="-2" pref="30" max="-2" attributes="0"/>
                   <Group type="102" attributes="0">
                       <EmptySpace min="30" pref="30" max="-2" attributes="0"/>
                       <Component id="jLabel11" min="-2" pref="20" max="-2" attributes="0"/>
                   </Group>
-                  <Component id="jLabel4" min="-2" pref="50" max="-2" attributes="0"/>
-                  <Component id="lbl_day_2" min="-2" pref="30" max="-2" attributes="0"/>
-                  <Component id="lbl_day_5" min="-2" pref="30" max="-2" attributes="0"/>
+                  <Component id="lbl_day_3" min="-2" pref="30" max="-2" attributes="0"/>
                   <Group type="102" attributes="0">
-                      <EmptySpace min="355" pref="355" max="-2" attributes="0"/>
-                      <Component id="jSeparator2" min="-2" pref="0" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
+                      <Component id="jScrollPane1" pref="320" max="32767" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
@@ -293,7 +280,6 @@
                   <Component id="jButton2" min="-2" pref="27" max="-2" attributes="0"/>
                   <Component id="jComboBox1" min="-2" max="-2" attributes="0"/>
                   <Component id="jButton6" min="-2" max="-2" attributes="0"/>
-                  <Component id="jButton7" min="-2" pref="27" max="-2" attributes="0"/>
                   <Component id="jLabel13" min="-2" pref="30" max="-2" attributes="0"/>
                   <Component id="lbl_rowCount" min="-2" pref="30" max="-2" attributes="0"/>
               </Group>
@@ -327,7 +313,6 @@
                   </Group>
                   <Component id="jScrollPane4" min="-2" pref="110" max="-2" attributes="0"/>
                   <Component id="jScrollPane3" min="-2" pref="110" max="-2" attributes="0"/>
-                  <Component id="jScrollPane5" min="-2" pref="110" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="9" pref="9" max="-2" attributes="0"/>
           </Group>
@@ -1210,65 +1195,6 @@
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
       </AuxValues>
-    </Component>
-    <Container class="javax.swing.JScrollPane" name="jScrollPane5">
-      <AuxValues>
-        <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
-      </AuxValues>
-
-      <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
-      <SubComponents>
-        <Component class="javax.swing.JTable" name="table_night_carder1">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Georgia" size="14" style="0"/>
-            </Property>
-            <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-              <Table columnCount="3" rowCount="0">
-                <Column editable="false" title="Rank" type="java.lang.Object"/>
-                <Column editable="true" title="Count" type="java.lang.Object"/>
-                <Column editable="true" title="Duty #" type="java.lang.Object"/>
-              </Table>
-            </Property>
-            <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
-              <TableColumnModel selectionModel="0">
-                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="false">
-                  <Title/>
-                  <Editor/>
-                  <Renderer/>
-                </Column>
-                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                  <Title/>
-                  <Editor/>
-                  <Renderer/>
-                </Column>
-                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                  <Title/>
-                  <Editor/>
-                  <Renderer/>
-                </Column>
-              </TableColumnModel>
-            </Property>
-            <Property name="rowHeight" type="int" value="20"/>
-            <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
-              <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
-            </Property>
-          </Properties>
-        </Component>
-      </SubComponents>
-    </Container>
-    <Component class="javax.swing.JButton" name="jButton7">
-      <Properties>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Georgia" size="12" style="0"/>
-        </Property>
-        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/Images/icons8_refresh_15px.png"/>
-        </Property>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton7ActionPerformed"/>
-      </Events>
     </Component>
   </SubComponents>
 </Form>
