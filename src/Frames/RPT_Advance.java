@@ -20,9 +20,6 @@ import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.JasperReport;
 import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
-import net.sf.jasperreports.engine.design.JRDesignQuery;
-import net.sf.jasperreports.engine.design.JasperDesign;
-import net.sf.jasperreports.engine.xml.JRXmlLoader;
 import net.sf.jasperreports.view.JasperViewer;
 import org.jdesktop.swingx.autocomplete.AutoCompleteDecorator;
 
@@ -56,6 +53,8 @@ public class RPT_Advance extends javax.swing.JFrame {
         lbl_UNPAID_cash.setVisible(false);
         lbl_UNPAID_slip.setVisible(false);
 
+        btn_festv_adv.setVisible(false);
+
         jScrollPane1.setVisible(false);
 
     }
@@ -86,8 +85,8 @@ public class RPT_Advance extends javax.swing.JFrame {
         }
 
     }
-    
-      void Festival_adv_print() {
+
+    void Festival_adv_print() {
         try {
             JRBeanCollectionDataSource bcds = new JRBeanCollectionDataSource(adv);
             String path = "Reports\\Emp_Festival_Advance.jrxml";
@@ -318,13 +317,13 @@ public class RPT_Advance extends javax.swing.JFrame {
                 } else {
                     bds.setBank_Name(jTable1.getModel().getValueAt(i, 7).toString());
                 }
- 
+
                 bds.setPay_Type(jTable1.getModel().getValueAt(i, 6).toString());
                 bds.setBank_total(Double.parseDouble(lbl_bank.getText()));
                 bds.setCash_total(Double.parseDouble(lbl_cash.getText()));
                 bds.setSlip_total(Double.parseDouble(lbl_slip.getText()));
                 adv.add(bds);
-
+//Emp_Monthly_Advance_StatusWise.jrxml
             }
 
             print();
@@ -395,6 +394,216 @@ public class RPT_Advance extends javax.swing.JFrame {
         }
     }
 
+    private void get_status_wise_data_to_table() {
+
+        String LocCode = null;
+        String EmpNo = null;
+        String EmpName = null;
+        String AdvAmount = null;
+        String PayType = null;
+        String Status = null;
+
+        if (cmb_reconStatus.getSelectedIndex() == 2) {
+            Status = "on-going";
+        } else {
+            Status = cmb_reconStatus.getSelectedItem().toString();
+        }
+
+        String Rank = null;
+        try {
+
+            DefaultTableModel dtm = (DefaultTableModel) jTable1.getModel();
+            dtm.setRowCount(0);
+
+            Connection con = DbConnection.getconnection();
+            String sql = null;
+
+            if (cb_all.isSelected()) {
+
+                sql = "SELECT * from salary_advance_1  WHERE   PayMonth='" + cmb_month.getSelectedItem().toString() + "' and  PayYear='" + cmb_year.getSelectedItem().toString() + "' and Status='" + Status + "'";
+            } else {
+                if (cmb_defLocation.getSelectedIndex() == 0) {
+                    JOptionPane.showMessageDialog(rootPane, "Please Select a Location!", "Empty Location", JOptionPane.WARNING_MESSAGE);
+
+                } else {
+                    sql = "SELECT * from salary_advance_1  WHERE  Location='" + txt_locCode.getText() + "' and  PayMonth='" + cmb_month.getSelectedItem().toString() + "' "
+                            + "and  PayYear='" + cmb_year.getSelectedItem().toString() + "' and Status='" + Status + "'";
+                }
+            }
+
+            if (sql != null) {
+
+                PreparedStatement pst = con.prepareStatement(sql);
+                ResultSet rs = pst.executeQuery();
+                while (rs.next()) {
+
+                    LocCode = rs.getString("Location");
+                    EmpNo = rs.getString("EPFno");
+                    EmpName = rs.getString("Name");
+                    AdvAmount = rs.getString("Amount");
+                    PayType = rs.getString("Note");
+                    Rank = rs.getString("Rank");
+                    Status = rs.getString("Status");
+
+                    Vector v = new Vector();
+                    v.add(EmpNo);
+                    v.add(EmpName);
+                    v.add(Rank);
+                    v.add(AdvAmount);
+                    v.add(LocCode);
+                    v.add("");
+                    v.add(PayType);
+                    v.add("");
+                    v.add(Status);
+
+                    dtm.addRow(v);
+
+                }
+            }
+
+            int nrow = jTable1.getModel().getRowCount();
+
+            if (nrow == 0) {
+
+            } else {
+                lbl_bank.setText("0.00");
+                lbl_cash.setText("0.00");
+                lbl_slip.setText("0.00");
+
+                for (int i = 0; nrow > i; i++) {
+
+                    String loc = jTable1.getModel().getValueAt(i, 4).toString();
+                    String epf = jTable1.getModel().getValueAt(i, 0).toString();
+                    String pay = jTable1.getModel().getValueAt(i, 6).toString();
+
+                    String sql2 = "SELECT * from location_reg  WHERE  LocCode='" + loc + "' ";
+                    PreparedStatement pst2 = con.prepareStatement(sql2);
+                    ResultSet rs2 = pst2.executeQuery();
+                    while (rs2.next()) {
+
+                        String loName = rs2.getString("LocName");
+
+                        jTable1.getModel().setValueAt(loName, i, 5);
+
+                    }
+
+                    if (pay.equals("Bank")) {
+
+                        String sql3 = "SELECT * from emp_bank_acc  WHERE  EMPno='" + epf + "' ";
+                        PreparedStatement pst3 = con.prepareStatement(sql3);
+                        ResultSet rs3 = pst3.executeQuery();
+                        while (rs3.next()) {
+
+                            String bankCode = rs3.getString("Bank");
+
+                            if (bankCode == null) {
+                                bankCode = "";
+                            } else {
+                                String sql4 = "SELECT * from bank_main  WHERE  BankCode='" + bankCode + "' ";
+                                PreparedStatement pst4 = con.prepareStatement(sql4);
+                                ResultSet rs4 = pst4.executeQuery();
+                                while (rs4.next()) {
+
+                                    String bankname = rs4.getString("BankName");
+                                    if (bankname == null) {
+                                        bankname = "";
+                                    } else {
+                                        jTable1.getModel().setValueAt(bankname, i, 7);
+                                    }
+
+                                }
+                            }
+
+                        }
+                    } else {
+
+                    }
+
+                    Double adv_amt = Double.parseDouble(jTable1.getModel().getValueAt(i, 3).toString());
+
+                    if (pay.equals("Bank")) {
+
+                        Double x = Double.parseDouble(lbl_bank.getText());
+                        //x += adv_amt;
+                        lbl_bank.setText(String.format("%.2f", x += adv_amt));
+
+                    }
+
+                    if (pay.equals("Hand")) {
+
+                        Double x = Double.parseDouble(lbl_cash.getText());
+                        //x += adv_amt;
+                        lbl_cash.setText(String.format("%.2f", x += adv_amt));
+
+                    }
+
+                    if (pay.equals("Slip")) {
+
+                        Double x = Double.parseDouble(lbl_slip.getText());
+                        //x += adv_amt;
+                        lbl_slip.setText(String.format("%.2f", x += adv_amt));
+
+                    }
+
+                }
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            if (e.getMessage().equals("SQL String can not be NULL")) {
+                System.out.println("Null SQL");
+            }
+        }
+
+    }
+
+    private void print_status_wise_report() {
+        int nrow = jTable1.getModel().getRowCount();
+        if (nrow == 0) {
+
+        } else {
+            for (int i = 0; nrow > i; i++) {
+                bean_EMP_Advance bds = new bean_EMP_Advance();
+
+                bds.setLoc_code(jTable1.getModel().getValueAt(i, 4).toString());
+                bds.setLoc_name(jTable1.getModel().getValueAt(i, 5).toString());
+                bds.setEmp_code(jTable1.getModel().getValueAt(i, 0).toString());
+                bds.setEmp_name(jTable1.getModel().getValueAt(i, 1).toString());
+                bds.setRank(jTable1.getModel().getValueAt(i, 2).toString());
+                bds.setAmount(Double.parseDouble(jTable1.getModel().getValueAt(i, 3).toString()));
+                bds.setMonth(cmb_month.getSelectedItem().toString());
+                bds.setYear(cmb_year.getSelectedItem().toString());
+
+                if (jTable1.getModel().getValueAt(i, 7) == null) {
+                    bds.setBank_Name("");
+                } else {
+                    bds.setBank_Name(jTable1.getModel().getValueAt(i, 7).toString());
+                }
+
+                bds.setStat(jTable1.getModel().getValueAt(i, 8).toString());
+
+                bds.setPay_Type(jTable1.getModel().getValueAt(i, 6).toString());
+                bds.setBank_total(Double.parseDouble(lbl_bank.getText()));
+                bds.setCash_total(Double.parseDouble(lbl_cash.getText()));
+                bds.setSlip_total(Double.parseDouble(lbl_slip.getText()));
+                adv.add(bds);
+//Emp_Monthly_Advance_StatusWise.jrxml
+            }
+
+            try {
+                JRBeanCollectionDataSource bcds = new JRBeanCollectionDataSource(adv);
+                String path = "Reports\\Emp_Monthly_Advance_StatusWise.jrxml";
+                JasperReport jr = JasperCompileManager.compileReport(path);
+                JasperPrint jp = JasperFillManager.fillReport(jr, null, bcds);
+                JasperViewer.viewReport(jp, false);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            adv.clear();
+
+        }
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -408,7 +617,6 @@ public class RPT_Advance extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         txt_locCode = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jSeparator11 = new javax.swing.JSeparator();
         jSeparator12 = new javax.swing.JSeparator();
         cmb_defLocation = new javax.swing.JComboBox();
         cmb_month = new javax.swing.JComboBox();
@@ -428,8 +636,13 @@ public class RPT_Advance extends javax.swing.JFrame {
         lbl_UNPAID_cash = new javax.swing.JLabel();
         lbl_UNPAID_bank = new javax.swing.JLabel();
         lbl_UNPAID_slip = new javax.swing.JLabel();
-        jButton7 = new javax.swing.JButton();
+        btn_festv_adv = new javax.swing.JButton();
         jSeparator14 = new javax.swing.JSeparator();
+        cmb_reconStatus = new javax.swing.JComboBox<>();
+        jLabel9 = new javax.swing.JLabel();
+        cb_all = new javax.swing.JCheckBox();
+        jButton7 = new javax.swing.JButton();
+        jSeparator15 = new javax.swing.JSeparator();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -456,7 +669,6 @@ public class RPT_Advance extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Georgia", 0, 16)); // NOI18N
         jLabel2.setText("Salary Advance Report");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 200, 40));
-        getContentPane().add(jSeparator11, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 350, 390, 10));
         getContentPane().add(jSeparator12, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 390, 10));
 
         cmb_defLocation.setEditable(true);
@@ -528,8 +740,8 @@ public class RPT_Advance extends javax.swing.JFrame {
         getContentPane().add(jSeparator13, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 210, 390, 10));
 
         jLabel8.setFont(new java.awt.Font("Georgia", 0, 12)); // NOI18N
-        jLabel8.setText("Pay Month :");
-        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, -1, 20));
+        jLabel8.setText("Status wise Report :");
+        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 290, -1, 20));
 
         jButton6.setFont(new java.awt.Font("Georgia", 0, 14)); // NOI18N
         jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Fine Print.png"))); // NOI18N
@@ -539,7 +751,7 @@ public class RPT_Advance extends javax.swing.JFrame {
                 jButton6ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 230, 220, -1));
+        getContentPane().add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 230, 370, -1));
 
         lbl_PAID_slip.setText("0.00");
         getContentPane().add(lbl_PAID_slip, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 10, 30, -1));
@@ -559,16 +771,39 @@ public class RPT_Advance extends javax.swing.JFrame {
         lbl_UNPAID_slip.setText("0.00");
         getContentPane().add(lbl_UNPAID_slip, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 90, 30, -1));
 
+        btn_festv_adv.setFont(new java.awt.Font("Georgia", 0, 14)); // NOI18N
+        btn_festv_adv.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Fine Print.png"))); // NOI18N
+        btn_festv_adv.setText("Festival Advance");
+        btn_festv_adv.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_festv_advActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btn_festv_adv, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 100, 20, -1));
+        getContentPane().add(jSeparator14, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 390, 390, 10));
+
+        cmb_reconStatus.setFont(new java.awt.Font("Georgia", 0, 14)); // NOI18N
+        cmb_reconStatus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "PAID", "UNPAID", "No Action" }));
+        getContentPane().add(cmb_reconStatus, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 320, 110, 30));
+
+        jLabel9.setFont(new java.awt.Font("Georgia", 0, 12)); // NOI18N
+        jLabel9.setText("Pay Month :");
+        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, -1, 20));
+
+        cb_all.setFont(new java.awt.Font("Georgia", 0, 14)); // NOI18N
+        cb_all.setText("All");
+        getContentPane().add(cb_all, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 320, -1, 30));
+
         jButton7.setFont(new java.awt.Font("Georgia", 0, 14)); // NOI18N
         jButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Fine Print.png"))); // NOI18N
-        jButton7.setText("Festival Advance");
+        jButton7.setText("Preview Report");
         jButton7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton7ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 300, 180, -1));
-        getContentPane().add(jSeparator14, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 290, 390, 10));
+        getContentPane().add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 310, 180, -1));
+        getContentPane().add(jSeparator15, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 290, 390, 10));
 
         pack();
         setLocationRelativeTo(null);
@@ -608,7 +843,7 @@ public class RPT_Advance extends javax.swing.JFrame {
                     txt_locCode.setText(code);
                 }
 
-                cmb_defLocation.setEditable(false);
+                //cmb_defLocation.setEditable(false);
                 //                cmb_defLocation.setEnabled(false);
             } catch (Exception e) {
                 e.printStackTrace();
@@ -824,7 +1059,7 @@ public class RPT_Advance extends javax.swing.JFrame {
         cmb_defLocation.setEditable(true);
     }//GEN-LAST:event_jButton6ActionPerformed
 
-    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+    private void btn_festv_advActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_festv_advActionPerformed
 
         try {
 
@@ -840,7 +1075,7 @@ public class RPT_Advance extends javax.swing.JFrame {
                 String install = rs.getString("Installments");
                 String rent = rs.getString("Rental");
                 String name = "";
-                 String rank = "";
+                String rank = "";
 
                 String sql = "select * from employee_reg where EmployeeNo='" + epf + "' ";
                 PreparedStatement pst2 = con.prepareStatement(sql);
@@ -866,13 +1101,17 @@ public class RPT_Advance extends javax.swing.JFrame {
             }
             Festival_adv_print();
             adv.clear();
-            
 
         } catch (Exception e) {
             e.printStackTrace();
         }
 
 
+    }//GEN-LAST:event_btn_festv_advActionPerformed
+
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+        get_status_wise_data_to_table();
+        print_status_wise_report();
     }//GEN-LAST:event_jButton7ActionPerformed
 
     /**
@@ -919,8 +1158,11 @@ public class RPT_Advance extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btn_festv_adv;
+    private javax.swing.JCheckBox cb_all;
     public static javax.swing.JComboBox cmb_defLocation;
     public static javax.swing.JComboBox cmb_month;
+    private javax.swing.JComboBox<String> cmb_reconStatus;
     public static javax.swing.JComboBox cmb_year;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
@@ -929,11 +1171,12 @@ public class RPT_Advance extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JSeparator jSeparator11;
     private javax.swing.JSeparator jSeparator12;
     private javax.swing.JSeparator jSeparator13;
     private javax.swing.JSeparator jSeparator14;
+    private javax.swing.JSeparator jSeparator15;
     private javax.swing.JTable jTable1;
     private javax.swing.JLabel lbl_PAID_bank;
     private javax.swing.JLabel lbl_PAID_cash;
