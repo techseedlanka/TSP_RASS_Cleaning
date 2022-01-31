@@ -10,37 +10,28 @@ import com.mxrck.autocompleter.TextAutoCompleter;
 import java.awt.Color;
 import java.awt.Image;
 import java.awt.Toolkit;
-//import java.awt.event.FocusEvent;
-//import java.awt.event.FocusListener;
 import java.awt.event.KeyEvent;
-//import java.awt.image.BufferedImage;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.sql.Connection;
-
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-//import java.sql.SQLException;
 import java.sql.Statement;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-//import java.util.logging.Level;
-//import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JLabel;
-//import javax.swing.JList;
 import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
-//import javax.swing.table.DefaultTableModel;
 import net.sf.jasperreports.engine.JasperCompileManager;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
@@ -50,9 +41,6 @@ import net.sf.jasperreports.engine.design.JasperDesign;
 import net.sf.jasperreports.engine.xml.JRXmlLoader;
 import net.sf.jasperreports.view.JasperViewer;
 import org.jdesktop.swingx.autocomplete.AutoCompleteDecorator;
-//import org.jfree.io.IOUtils;
-//import sun.awt.image.ImageAccessException;
-//import sun.awt.image.ToolkitImage;
 
 /**
  *
@@ -100,14 +88,13 @@ public class employee_reg extends javax.swing.JFrame {
         get_Location_Details();
         get_Rank_Details();
         TitleBar();
-        get_EMP_Details();
+        // get_EMP_Details();
 
         jCheckBox1.setSelected(true);
         jCheckBox2.setSelected(true);
-        // jPanel1.setVisible(false);
-        // jButton3.setVisible(false);
-//        cb_salary_cat.setVisible(false);
-        //jCheckBox1.setVisible(false);
+        jTable2.getTableHeader().setUI(null);
+        jTable2.setVisible(false);
+        jScrollPane4.setVisible(false);
     }
 
     private void seticon() {
@@ -263,6 +250,8 @@ public class employee_reg extends javax.swing.JFrame {
         jMenu4 = new javax.swing.JMenu();
         jButton1 = new javax.swing.JButton();
         buttonGroup1 = new javax.swing.ButtonGroup();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        jTable2 = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         txt_nic = new javax.swing.JTextField();
@@ -412,6 +401,43 @@ public class employee_reg extends javax.swing.JFrame {
             }
         });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jTable2.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "emp", "initials", "fullname", "rank", "epf"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jTable2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jTable2.setRowHeight(23);
+        jTable2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTable2KeyPressed(evt);
+            }
+        });
+        jScrollPane4.setViewportView(jTable2);
+        if (jTable2.getColumnModel().getColumnCount() > 0) {
+            jTable2.getColumnModel().getColumn(0).setPreferredWidth(100);
+            jTable2.getColumnModel().getColumn(1).setPreferredWidth(250);
+            jTable2.getColumnModel().getColumn(2).setPreferredWidth(350);
+            jTable2.getColumnModel().getColumn(3).setPreferredWidth(100);
+            jTable2.getColumnModel().getColumn(4).setMinWidth(0);
+            jTable2.getColumnModel().getColumn(4).setPreferredWidth(0);
+            jTable2.getColumnModel().getColumn(4).setMaxWidth(0);
+        }
+
+        getContentPane().add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 0, 140, 40));
 
         jLabel1.setFont(new java.awt.Font("Georgia", 0, 16)); // NOI18N
         jLabel1.setText("Employee Registration");
@@ -1144,7 +1170,12 @@ public class employee_reg extends javax.swing.JFrame {
 
         txt_search.setBackground(new java.awt.Color(204, 255, 204));
         txt_search.setFont(new java.awt.Font("Georgia", 2, 14)); // NOI18N
-        txt_search.setText("Search Here by \"Name with Initials\"");
+        txt_search.setText("Search Here");
+        txt_search.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txt_searchFocusGained(evt);
+            }
+        });
         txt_search.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 txt_searchMouseClicked(evt);
@@ -1161,6 +1192,9 @@ public class employee_reg extends javax.swing.JFrame {
         txt_search.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txt_searchKeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txt_searchKeyReleased(evt);
             }
         });
         getContentPane().add(txt_search, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 10, 460, 23));
@@ -3960,7 +3994,9 @@ public class employee_reg extends javax.swing.JFrame {
             txt_EmployeeNo.setText("");
             txt_EmployeeNo.setEditable(true);
 
-        }      // TODO add your handling code here:
+        }     
+        
+     
     }//GEN-LAST:event_jCheckBox2ActionPerformed
 
     private void txt_EPFnoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_EPFnoKeyTyped
@@ -4125,28 +4161,110 @@ public class employee_reg extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton10ActionPerformed
 
     private void jCheckBox1StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jCheckBox1StateChanged
-        if (jCheckBox1.isSelected()) {
-            get_latest_EPFno();
-            txt_EPFno.setEditable(false);
-        } else {
-
-            txt_EPFno.setText("");
-            txt_EPFno.setEditable(true);
-
-        }        // TODO add your handling code here:
+//        if (jCheckBox1.isSelected()) {
+//            get_latest_EPFno();
+//            txt_EPFno.setEditable(false);
+//        } else {
+//
+//            txt_EPFno.setText("");
+//            txt_EPFno.setEditable(true);
+//
+//        }        // TODO add your handling code here:
     }//GEN-LAST:event_jCheckBox1StateChanged
 
     private void jCheckBox2StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jCheckBox2StateChanged
-        if (jCheckBox2.isSelected()) {
-            get_latest_EMPno();
-            txt_EmployeeNo.setEditable(false);
-        } else {
-
-            txt_EmployeeNo.setText("");
-            txt_EmployeeNo.setEditable(true);
-
-        }         // TODO add your handling code here:
+//        if (jCheckBox2.isSelected()) {
+//            get_latest_EMPno();
+//            txt_EmployeeNo.setEditable(false);
+//        } else {
+//
+//            txt_EmployeeNo.setText("");
+//            txt_EmployeeNo.setEditable(true);
+//
+//        }         // TODO add your handling code here:
     }//GEN-LAST:event_jCheckBox2StateChanged
+
+    private void jTable2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTable2KeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            int row = jTable2.getSelectedRow();
+            String code = jTable2.getValueAt(row, 0).toString();
+//            String name = jTable2.getValueAt(row, 2).toString();
+//            String rank = jTable2.getValueAt(row, 3).toString();
+
+            txt_search.setText(code);
+
+            jTable2.setVisible(false);
+            jScrollPane4.setVisible(false);
+            txt_searchKeyPressed(evt);
+            txt_EPFno.grabFocus();
+
+        }
+
+        if (evt.getKeyCode() == KeyEvent.VK_ESCAPE) {
+
+            jTable2.setVisible(false);
+            jScrollPane4.setVisible(false);
+            txt_EPFno.grabFocus();
+
+        }
+    }//GEN-LAST:event_jTable2KeyPressed
+
+    private void txt_searchKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_searchKeyReleased
+        if (evt.getKeyCode() == KeyEvent.VK_DOWN) {
+
+            jTable2.grabFocus();
+
+        } else if (evt.getKeyCode() == KeyEvent.VK_ENTER | evt.getKeyCode() == KeyEvent.VK_ESCAPE) {
+
+            jTable2.setVisible(false);
+            jScrollPane4.setVisible(false);
+
+        } else {
+            try {
+
+                jTable2.setVisible(true);
+                jScrollPane4.setVisible(true);
+                jScrollPane4.setBounds(450, 33, 550, 200);
+
+                Connection con = DbConnection.getconnection();
+
+                String empno = txt_search.getText();
+
+                String sql = "SELECT * FROM employee_reg WHERE  FullName LIKE ? OR EmployeeNo Like? OR NameWithInitials Like?  ";
+                PreparedStatement pststmt = con.prepareStatement(sql);
+                pststmt.setString(1, empno + "%");
+                pststmt.setString(2, empno + "%");
+                pststmt.setString(3, empno + "%");
+                ResultSet resultset = pststmt.executeQuery();
+
+                DefaultTableModel dtm = (DefaultTableModel) jTable2.getModel();
+                dtm.setRowCount(0);
+
+                while (resultset.next()) {
+
+                    Vector v = new Vector();
+                    v.add(resultset.getString("EmployeeNo"));
+                    v.add(resultset.getString("NameWithInitials"));
+                    v.add(resultset.getString("FullName"));
+                    v.add(resultset.getString("Designation"));
+                    v.add(resultset.getString("EPFno"));
+
+                    dtm.addRow(v);
+                }
+
+            } catch (Exception e) {
+                e.printStackTrace();
+                JOptionPane.showMessageDialog(rootPane, e);
+            }
+
+        }        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_searchKeyReleased
+
+    private void txt_searchFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txt_searchFocusGained
+if(txt_search.getText().equals("Search Here")){
+txt_search.setText("");  
+}      // TODO add your handling code here:
+    }//GEN-LAST:event_txt_searchFocusGained
 
     /**
      * @param args the command line arguments
@@ -4414,7 +4532,9 @@ public class employee_reg extends javax.swing.JFrame {
     private javax.swing.JMenuBar jMenuBar2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JTable jTable2;
     private javax.swing.JLabel lbl_RankCat;
     private javax.swing.JLabel lbl_activeEMP;
     private javax.swing.JLabel lbl_photo;
