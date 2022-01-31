@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Emp_Monthly_Advance" language="groovy" pageWidth="612" pageHeight="1008" columnWidth="563" leftMargin="29" rightMargin="20" topMargin="20" bottomMargin="20" uuid="8e0be224-582d-4779-be56-64d2f82ee9da">
-	<property name="ireport.zoom" value="2.2000000000000033"/>
-	<property name="ireport.x" value="186"/>
+	<property name="ireport.zoom" value="1.5026296018031577"/>
+	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
 	<field name="loc_code" class="java.lang.String"/>
 	<field name="loc_name" class="java.lang.String"/>
@@ -35,7 +35,7 @@
 				<textFieldExpression><![CDATA[$F{loc_code}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement isPrintRepeatedValues="false" x="39" y="43" width="290" height="20" isRemoveLineWhenBlank="true" uuid="4796fb89-8dc6-47cd-8538-849d91140fa2"/>
+				<reportElement isPrintRepeatedValues="false" x="39" y="43" width="371" height="20" isRemoveLineWhenBlank="true" uuid="4796fb89-8dc6-47cd-8538-849d91140fa2"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Times New Roman" size="12" isBold="true"/>
 				</textElement>
@@ -55,27 +55,19 @@
 				</textElement>
 				<textFieldExpression><![CDATA[$V{Company}]]></textFieldExpression>
 			</textField>
-			<textField>
-				<reportElement x="362" y="43" width="100" height="20" uuid="36e8f241-82f1-4265-947e-6de787cf5fcd"/>
-				<textElement textAlignment="Right" verticalAlignment="Middle">
-					<font fontName="Times New Roman" size="12" isBold="true"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{month}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="462" y="43" width="100" height="20" uuid="a434b1d1-f261-4ac9-bc70-92ad3ae746aa"/>
-				<textElement verticalAlignment="Middle">
-					<font fontName="Times New Roman" size="12" isBold="true"/>
-					<paragraph leftIndent="5"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{year}]]></textFieldExpression>
-			</textField>
 			<line>
 				<reportElement x="0" y="63" width="563" height="1" uuid="71b798b5-c36d-4160-846c-6759d258c066"/>
 				<graphicElement>
 					<pen lineWidth="1.5"/>
 				</graphicElement>
 			</line>
+			<textField>
+				<reportElement x="429" y="43" width="133" height="20" uuid="ac79366e-deae-43e5-bfe3-df55d35b8a06"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{month}+" "+$F{year}]]></textFieldExpression>
+			</textField>
 		</band>
 	</title>
 	<pageHeader>
