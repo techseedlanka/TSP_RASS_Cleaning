@@ -4232,9 +4232,9 @@ public class employee_reg extends javax.swing.JFrame {
 
                 String sql = "SELECT * FROM employee_reg WHERE  FullName LIKE ? OR EmployeeNo Like? OR NameWithInitials Like?  ";
                 PreparedStatement pststmt = con.prepareStatement(sql);
-                pststmt.setString(1, empno + "%");
-                pststmt.setString(2, empno + "%");
-                pststmt.setString(3, empno + "%");
+                pststmt.setString(1, "%"+ empno + "%");
+                pststmt.setString(2, "%"+ empno + "%");
+                pststmt.setString(3, "%"+ empno + "%");
                 ResultSet resultset = pststmt.executeQuery();
 
                 DefaultTableModel dtm = (DefaultTableModel) jTable2.getModel();
