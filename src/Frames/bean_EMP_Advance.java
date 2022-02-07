@@ -44,8 +44,8 @@ public class bean_EMP_Advance {
     private String fes_install;
     private String fes_first;
     private String fes_last;
-     private String fes_rank;
-     
+    private String fes_rank;
+    private Double shift_count;
 
     /**
      * @return the loc_code
@@ -437,6 +437,20 @@ public class bean_EMP_Advance {
      */
     public void setFes_rank(String fes_rank) {
         this.fes_rank = fes_rank;
+    }
+
+    /**
+     * @return the shift_count
+     */
+    public Double getShift_count() {
+        return shift_count;
+    }
+
+    /**
+     * @param shift_count the shift_count to set
+     */
+    public void setShift_count(Double shift_count) {
+        this.shift_count = shift_count;
     }
 
 }
