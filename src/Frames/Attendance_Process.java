@@ -39,9 +39,15 @@ public class Attendance_Process extends javax.swing.JFrame {
     private void TitleBar() {
 
         this.setTitle("Attendance Process");
-        this.setResizable(false);
+
 
         setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("techseed.png")));
+
+        if (MAIN.lbl_logged_user.getText().equals("TS")) {
+            btn_getshiftcount.setVisible(true);
+        } else {
+            btn_getshiftcount.setVisible(false);
+        }
 
     }
 
@@ -386,6 +392,7 @@ public class Attendance_Process extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
+        btn_getshiftcount = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setAutoRequestFocus(false);
@@ -400,12 +407,9 @@ public class Attendance_Process extends javax.swing.JFrame {
                 formWindowOpened(evt);
             }
         });
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Georgia", 0, 16)); // NOI18N
         jLabel1.setText("Attendance Process - Ground Staff");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 320, 30));
-        getContentPane().add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 310, 1110, 10));
 
         cmb_year.setFont(new java.awt.Font("Times New Roman", 0, 15)); // NOI18N
         cmb_year.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022" }));
@@ -419,11 +423,9 @@ public class Attendance_Process extends javax.swing.JFrame {
             public void popupMenuWillBecomeVisible(javax.swing.event.PopupMenuEvent evt) {
             }
         });
-        getContentPane().add(cmb_year, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 60, -1, -1));
 
         cmb_month.setFont(new java.awt.Font("Georgia", 0, 15)); // NOI18N
         cmb_month.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" }));
-        getContentPane().add(cmb_month, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 60, 110, -1));
 
         btn_Process.setFont(new java.awt.Font("Georgia", 0, 18)); // NOI18N
         btn_Process.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Workflow-48.png"))); // NOI18N
@@ -449,26 +451,19 @@ public class Attendance_Process extends javax.swing.JFrame {
                 btn_ProcessActionPerformed(evt);
             }
         });
-        getContentPane().add(btn_Process, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, 330, 50));
 
         lbl_atten.setFont(new java.awt.Font("Georgia", 0, 18)); // NOI18N
         lbl_atten.setForeground(new java.awt.Color(0, 153, 51));
         lbl_atten.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbl_atten.setText("Attendance Processed Succesfully...!");
         lbl_atten.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        getContentPane().add(lbl_atten, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 260, 330, 40));
 
         lbl_runtime.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
         lbl_runtime.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        getContentPane().add(lbl_runtime, new org.netbeans.lib.awtextra.AbsoluteConstraints(648, 280, 450, 20));
-        getContentPane().add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 1110, 10));
-        getContentPane().add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 380, 10));
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, 130, 30));
 
         jProgressBar1.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jProgressBar1.setOpaque(true);
         jProgressBar1.setStringPainted(true);
-        getContentPane().add(jProgressBar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 210, 330, 30));
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -495,11 +490,8 @@ public class Attendance_Process extends javax.swing.JFrame {
             jTable1.getColumnModel().getColumn(11).setPreferredWidth(80);
         }
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 60, 700, 200));
-
         jLabel6.setFont(new java.awt.Font("Georgia", 0, 15)); // NOI18N
         jLabel6.setText("Effective Month / Year:-");
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, -1, 20));
 
         jButton1.setFont(new java.awt.Font("Georgia", 0, 12)); // NOI18N
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Cancel.png"))); // NOI18N
@@ -509,11 +501,98 @@ public class Attendance_Process extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 260, 130, 40));
 
         jLabel7.setFont(new java.awt.Font("Georgia", 0, 14)); // NOI18N
         jLabel7.setText("Duplicated Attendance Records");
-        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 40, -1, 20));
+
+        btn_getshiftcount.setText("get shift counts");
+        btn_getshiftcount.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_getshiftcountActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 650, Short.MAX_VALUE)
+                .addComponent(btn_getshiftcount)
+                .addGap(11, 11, 11))
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jSeparator5, javax.swing.GroupLayout.PREFERRED_SIZE, 380, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20)
+                .addComponent(jLabel7))
+            .addComponent(jSeparator4)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel6)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(20, 20, 20)
+                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(5, 5, 5)
+                        .addComponent(cmb_month, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(10, 10, 10)
+                        .addComponent(cmb_year, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btn_Process, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jProgressBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(43, 43, 43)
+                .addComponent(jScrollPane1)
+                .addGap(10, 10, 10))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(lbl_atten, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(120, 120, 120)
+                .addComponent(lbl_runtime, javax.swing.GroupLayout.PREFERRED_SIZE, 450, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(10, 10, 10))
+            .addComponent(jSeparator2)
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_getshiftcount))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jSeparator5, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, 0)
+                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(cmb_month, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cmb_year, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(20, 20, 20)
+                        .addComponent(btn_Process, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(30, 30, 30)
+                        .addComponent(jProgressBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lbl_atten, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addComponent(lbl_runtime, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(10, 10, 10)
+                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(3, 3, 3))
+        );
 
         pack();
         setLocationRelativeTo(null);
@@ -622,6 +701,108 @@ public class Attendance_Process extends javax.swing.JFrame {
         }
 
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void btn_getshiftcountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_getshiftcountActionPerformed
+
+        long start = System.currentTimeMillis();
+
+        try {
+            jProgressBar1.setValue(0);
+            Color cl = new Color(110, 110, 242);
+            lbl_atten.setForeground(cl);
+
+            Connection con = DbConnection.getconnection();
+
+            String month = cmb_month.getSelectedItem().toString();
+            String year = cmb_year.getSelectedItem().toString();
+
+            PreparedStatement pst_update_null = null;
+            String sql_update_null = "update emp_atten_main set DNShift='0' where DNShift=''  ";
+            pst_update_null = con.prepareStatement(sql_update_null);
+            pst_update_null.executeUpdate();
+
+            PreparedStatement pst_update_null2 = null;
+            String sql_update_null2 = "update emp_atten_main set OTHours='0' where OTHours=''  ";
+            pst_update_null2 = con.prepareStatement(sql_update_null2);
+            pst_update_null2.executeUpdate();
+
+            PreparedStatement pst_del2 = null;
+            String sql_del2 = "delete from emp_atten_shift_count_summery where   Month='" + month + "' and Year='" + year + "'  ";
+            pst_del2 = con.prepareStatement(sql_del2);
+            pst_del2.executeUpdate();
+
+            PreparedStatement pst = null;
+            String sql = "select *,SUM(DayShift),SUM(DayTwoShift),SUM(NightShift),SUM(HalfDayShift),SUM(OTShift),SUM(OTHours),SUM(DNShift) from emp_atten_main where Month='" + month + "' and Year='" + year + "'   group by EPFno,Location,EffectiveRank";
+            pst = con.prepareStatement(sql);
+            ResultSet rs = pst.executeQuery();
+
+            jProgressBar1.setValue(30);
+            lbl_atten.setText("Collecting Shift Rates...");
+
+            while (rs.next()) {
+                jProgressBar1.setValue(35);
+                String rank = rs.getString("EffectiveRank");
+                String loc = rs.getString("Location");
+                String EMPno = rs.getString("EPFno");
+
+                String ds = (rs.getString("SUM(DayShift)"));
+                String ns = (rs.getString("SUM(NightShift)"));
+                String hds = (rs.getString("SUM(HalfDayShift)"));
+                String ots = (rs.getString("SUM(OTShift)"));
+                String oth = (rs.getString("SUM(OTHours)"));
+                String dns = (rs.getString("SUM(DNShift)"));
+                String d2s = (rs.getString("SUM(DayTwoShift)"));
+
+                jProgressBar1.setValue(40);
+
+                jProgressBar1.setValue(45);
+
+                Double day = Double.parseDouble(ds);
+                Double night = Double.parseDouble(ns);
+                Double half = Double.parseDouble(hds) / 2;
+                Double dn = Double.parseDouble(dns);
+
+                Double day_two = Double.parseDouble(d2s);
+
+                Double TotalShifts = day + night + half + dn + day_two;
+
+                String sql_sum = "insert into emp_atten_shift_count_summery (EMPno,Rank,Loc,TotalShifts,Month,Year) values(?,?,?,?,?,?)  ";
+                PreparedStatement pst_sum = con.prepareStatement(sql_sum);
+                jProgressBar1.setValue(85);
+                pst_sum.setString(1, EMPno);
+                pst_sum.setString(2, rank);
+                pst_sum.setString(3, loc);
+                pst_sum.setDouble(4, TotalShifts);
+                pst_sum.setString(5, month);
+                pst_sum.setString(6, year);
+
+                pst_sum.execute();
+
+            }
+
+            jProgressBar1.setValue(95);
+            lbl_atten.setText("Completing...");
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        jProgressBar1.setValue(100);
+        lbl_atten.setText("Attendance Processed Succesfully...!");
+        Color cl = new Color(0, 153, 51);
+        lbl_atten.setForeground(cl);
+        btn_Process.setEnabled(true);
+
+        long duration = System.currentTimeMillis() - start;
+
+        DateFormat df = new SimpleDateFormat("HH'h' mm'm' ss's'");
+        df.setTimeZone(TimeZone.getTimeZone("GMT+0"));
+        System.out.println(df.format(new Date(duration)));
+        lbl_runtime.setText("Total Time for the Last Process: " + df.format(new Date(duration)));
+        //JOptionPane.showMessageDialog(rootPane, "Process Completed in " + df.format(new Date(duration)));
+
+
+    }//GEN-LAST:event_btn_getshiftcountActionPerformed
 
     /**
      * @param args the command line arguments
@@ -792,6 +973,7 @@ public class Attendance_Process extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_Process;
+    private javax.swing.JButton btn_getshiftcount;
     private javax.swing.JComboBox cmb_month;
     private javax.swing.JComboBox cmb_year;
     private javax.swing.JButton jButton1;
@@ -947,8 +1129,13 @@ public class Attendance_Process extends javax.swing.JFrame {
             pst_del = con.prepareStatement(sql_del);
             pst_del.executeUpdate();
 
+            PreparedStatement pst_del2 = null;
+            String sql_del2 = "delete from emp_atten_shift_count_summery where   Month='" + month + "' and Year='" + year + "'  ";
+            pst_del2 = con.prepareStatement(sql_del2);
+            pst_del2.executeUpdate();
+
             PreparedStatement pst = null;
-            String sql = "select *,SUM(DayShift),SUM(DayTwoShift),SUM(NightShift),SUM(HalfDayShift/2),SUM(OTShift),SUM(OTHours),SUM(DNShift) from emp_atten_main where Month='" + month + "' and Year='" + year + "' and Status='processing' group by EPFno,Location,EffectiveRank";
+            String sql = "select *,SUM(DayShift),SUM(DayTwoShift),SUM(NightShift),SUM(HalfDayShift),SUM(OTShift),SUM(OTHours),SUM(DNShift) from emp_atten_main where Month='" + month + "' and Year='" + year + "' and Status='processing' group by EPFno,Location,EffectiveRank";
             pst = con.prepareStatement(sql);
             ResultSet rs = pst.executeQuery();
 
@@ -977,7 +1164,7 @@ public class Attendance_Process extends javax.swing.JFrame {
 
                 String ds = (rs.getString("SUM(DayShift)"));
                 String ns = (rs.getString("SUM(NightShift)"));
-                String hds = (rs.getString("SUM(HalfDayShift/2)"));
+                String hds = (rs.getString("SUM(HalfDayShift)"));
                 String ots = (rs.getString("SUM(OTShift)"));
                 String oth = (rs.getString("SUM(OTHours)"));
                 String dns = (rs.getString("SUM(DNShift)"));
@@ -1027,7 +1214,7 @@ public class Attendance_Process extends javax.swing.JFrame {
 //                }
                 Double day = Double.parseDouble(ds);
                 Double night = Double.parseDouble(ns);
-                Double half = Double.parseDouble(hds);
+                Double half = Double.parseDouble(hds) / 2;
                 Double dn = Double.parseDouble(dns);
                 Double ot_hours = Double.parseDouble(oth);
                 Double day_two = Double.parseDouble(d2s);
@@ -1037,6 +1224,8 @@ public class Attendance_Process extends javax.swing.JFrame {
                 Double dn_r = Double.parseDouble(dn_rate);
                 Double ot_hours_r = Double.parseDouble(ot_rate);
                 Double day_2_r = Double.parseDouble(day2_rate);
+
+                Double TotalShifts = day + night + half + dn + day_two;
 
                 jProgressBar1.setValue(52);
                 lbl_atten.setText("Calculating OT & Duty Amounts...");
@@ -1075,6 +1264,18 @@ public class Attendance_Process extends javax.swing.JFrame {
                 jProgressBar1.setValue(85);
 
                 pst_save.execute();
+
+                String sql_sum = "insert into emp_atten_shift_count_summery (EMPno,Rank,Loc,TotalShifts,Month,Year) values(?,?,?,?,?,?)  ";
+                PreparedStatement pst_sum = con.prepareStatement(sql_sum);
+                jProgressBar1.setValue(85);
+                pst_sum.setString(1, EMPno);
+                pst_sum.setString(2, rank);
+                pst_sum.setString(3, loc);
+                pst_sum.setDouble(4, TotalShifts);
+                pst_sum.setString(5, month);
+                pst_sum.setString(6, year);
+
+                pst_sum.execute();
 
             }
 
