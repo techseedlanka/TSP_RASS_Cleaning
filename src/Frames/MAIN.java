@@ -317,6 +317,8 @@ public class MAIN extends javax.swing.JFrame implements Runnable {
         jMenuItem18 = new javax.swing.JMenuItem();
         jSeparator3 = new javax.swing.JPopupMenu.Separator();
         jMenuItem21 = new javax.swing.JMenuItem();
+        jSeparator37 = new javax.swing.JPopupMenu.Separator();
+        jMenuItem60 = new javax.swing.JMenuItem();
         jSeparator10 = new javax.swing.JPopupMenu.Separator();
         jMenu13 = new javax.swing.JMenu();
         jMenuItem35 = new javax.swing.JMenuItem();
@@ -897,6 +899,16 @@ public class MAIN extends javax.swing.JFrame implements Runnable {
             }
         });
         jMenu10.add(jMenuItem21);
+        jMenu10.add(jSeparator37);
+
+        jMenuItem60.setFont(new java.awt.Font("Georgia", 0, 12)); // NOI18N
+        jMenuItem60.setText("Payment Defaults");
+        jMenuItem60.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem60ActionPerformed(evt);
+            }
+        });
+        jMenu10.add(jMenuItem60);
 
         menu_reports.add(jMenu10);
         menu_reports.add(jSeparator10);
@@ -1899,18 +1911,23 @@ public class MAIN extends javax.swing.JFrame implements Runnable {
     }//GEN-LAST:event_jMenuItem58ActionPerformed
 
     private void jMenuItem59ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem59ActionPerformed
-       Festival_Advance_delete cm = new Festival_Advance_delete();
+        Festival_Advance_delete cm = new Festival_Advance_delete();
         cm.setVisible(true);
     }//GEN-LAST:event_jMenuItem59ActionPerformed
 
     private void Menu_user_all_view10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Menu_user_all_view10ActionPerformed
-    try {
+        try {
             DBBackupFrame em = new DBBackupFrame();
             em.setVisible(true);
         } catch (Exception ex) {
             Logger.getLogger(MAIN.class.getName()).log(Level.SEVERE, null, ex);
-        }        
+        }
     }//GEN-LAST:event_Menu_user_all_view10ActionPerformed
+
+    private void jMenuItem60ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem60ActionPerformed
+        Payment_Defaults em = new Payment_Defaults();
+        em.setVisible(true);
+    }//GEN-LAST:event_jMenuItem60ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -2028,6 +2045,7 @@ public class MAIN extends javax.swing.JFrame implements Runnable {
     private javax.swing.JMenuItem jMenuItem58;
     private javax.swing.JMenuItem jMenuItem59;
     private javax.swing.JMenuItem jMenuItem6;
+    private javax.swing.JMenuItem jMenuItem60;
     private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JMenuItem jMenuItem9;
     private javax.swing.JSeparator jSeparator1;
@@ -2060,6 +2078,7 @@ public class MAIN extends javax.swing.JFrame implements Runnable {
     private javax.swing.JPopupMenu.Separator jSeparator34;
     private javax.swing.JPopupMenu.Separator jSeparator35;
     private javax.swing.JPopupMenu.Separator jSeparator36;
+    private javax.swing.JPopupMenu.Separator jSeparator37;
     private javax.swing.JPopupMenu.Separator jSeparator4;
     private javax.swing.JPopupMenu.Separator jSeparator5;
     private javax.swing.JPopupMenu.Separator jSeparator6;
