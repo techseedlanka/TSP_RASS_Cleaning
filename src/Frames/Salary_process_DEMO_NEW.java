@@ -2769,6 +2769,7 @@ public class Salary_process_DEMO_NEW extends javax.swing.JFrame {
                                 }
 
                                 if (count < 1) {
+
                                     target();
                                 } else {
                                     int reply = JOptionPane.showConfirmDialog(rootPane, "Final Process was Created Already. Do yo want to Create Update the Final Process?", "Warning", JOptionPane.YES_NO_OPTION, 2);
@@ -5444,6 +5445,85 @@ public class Salary_process_DEMO_NEW extends javax.swing.JFrame {
 
     }
 
+    private void cal_shiftWiseAllowance() {
+        Connection con = null;
+        PreparedStatement pstMain = null;
+        PreparedStatement pst = null;
+        ResultSet rsMain = null;
+        ResultSet rs = null;
+        String month = cmb_month.getSelectedItem().toString();
+        String year = cmb_year.getSelectedItem().toString();
+
+        try {
+
+            con = DbConnection.getconnection();
+
+//          delete previously calc. allowances for same month
+            pst = con.prepareStatement("delete from shift_type_wise_allownace_calc where Month='" + month + "' and Year='" + year + "'");
+            pst.execute();
+
+//          get allowance formulas  
+            String sql = "select * from shift_type_wise_allowance ";
+            pstMain = con.prepareStatement(sql);
+            rsMain = pstMain.executeQuery();
+            while (rsMain.next()) {
+
+                String loc = rsMain.getString("LocCode");
+                String rank = rsMain.getString("Rank");
+                String shiftLimit = rsMain.getString("ShiftLimit");
+                String shiftType = rsMain.getString("Shift");
+                String amt = rsMain.getString("Amount");
+
+                System.out.println("loc: " + loc);
+                System.out.println("rank: " + rank);
+
+//              Calculate allowance for each relevant employee  
+                String sql2 = "select  SUM(" + shiftType + "),EMPno from emp_atten_summery where Loc='" + loc + "' and Rank='" + rank + "' and Month='" + month + "'"
+                        + "and Year='" + year + "' GROUP BY EMPno HAVING SUM(" + shiftType + ")>= '" + shiftLimit + "'   ";
+                pst = con.prepareStatement(sql2);
+                rs = pst.executeQuery();
+                while (rs.next()) {
+
+                    String emp = rs.getString("EMPno");
+                    String totalShifts = rs.getString(1);
+
+                    Double Amount = Double.parseDouble(amt);
+                    Double TotalShifts = Double.parseDouble(totalShifts);
+                    Double AllowanceAmt = Amount * TotalShifts;
+
+//                  Save calculated allowance amounts  
+                    pst = con.prepareStatement("insert into shift_type_wise_allownace_calc (EMPno,Loc,Rank,ShiftLimit,Addition,TotalWorkedShifts,AllownaceAmt,Month,Year) values (?,?,?,?,?,?,?,?,?)");
+                    pst.setString(1, emp);
+                    pst.setString(2, loc);
+                    pst.setString(3, rank);
+                    pst.setDouble(4, Double.parseDouble(shiftLimit));
+                    pst.setDouble(5, Amount);
+                    pst.setDouble(6, TotalShifts);
+                    pst.setDouble(7, AllowanceAmt);
+                    pst.setString(8, month);
+                    pst.setString(9, year);
+                    pst.execute();
+
+                }
+
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+
+            try {
+                rsMain.close();
+                rs.close();
+                pstMain.close();
+                pst.close();
+                con.close();
+            } catch (Exception e) {
+            }
+        }
+
+    }
+
     //Target & Express Salary Caalculations
     private void target() {
 
@@ -5452,7 +5532,9 @@ public class Salary_process_DEMO_NEW extends javax.swing.JFrame {
         lbl_atten.setVisible(true);
         salary_process.setEnabled(false);
         System.out.println("rest");
+        days_per_month();
         salary_ReSet_Target_Site_EMP();
+        cal_shiftWiseAllowance();
 
         try {
             Connection con = DbConnection.getconnection();
@@ -5577,16 +5659,15 @@ public class Salary_process_DEMO_NEW extends javax.swing.JFrame {
             } else {
                 SalaryType = "TEMP";
             }
-            System.out.println("sql_upd");
+
             String sql_upd = "update salary_final_site_employees set Status='OLD' where SalaryType='" + SalaryType + "' and Month='" + month + "' and Year='" + year + "' ";
             PreparedStatement pst_upd = con.prepareStatement(sql_upd);
             pst_upd.execute();
-            System.out.println("sql_upd");
 
             String sql = "select *,SUM(DayShift+NightShift+DayTwoShift+(HalfDayShift/2))  from emp_atten_main where  Month='" + month + "' and Year='" + year + "'   and Status='processed' group by EPFno    ";
             PreparedStatement pst = con.prepareStatement(sql);
             ResultSet rs = pst.executeQuery();
-            System.out.println("sql ");
+
             while (rs.next()) {
 
                 Empno = rs.getString("EPFno");
@@ -5712,7 +5793,7 @@ public class Salary_process_DEMO_NEW extends javax.swing.JFrame {
                 //get total duty amount from emp_atten_summery Table
                 Double shift_amount = 0.00;
                 String ot_hrs = "";
-                String sql1 = "select *,SUM(LineAmount),SUM(TotalOTAmount),SUM(OTHours)  from emp_atten_summery where EMPno='" + Empno + "' and Month='" + month + "' and Year='" + year + "'   ";
+                String sql1 = "select *,SUM(LineAmount),SUM(TotalOTAmount),SUM(OTHours) from emp_atten_summery where EMPno='" + Empno + "' and Month='" + month + "' and Year='" + year + "'   ";
                 PreparedStatement pst1 = con.prepareStatement(sql1);
                 ResultSet rs1 = pst1.executeQuery();
                 while (rs1.next()) {
@@ -6106,6 +6187,21 @@ public class Salary_process_DEMO_NEW extends javax.swing.JFrame {
                 } else {
                     Attn_Incentive = 0.00;
                 }
+
+                /*
+                get calculated Shift type wise allowance amount and Add it into Attn_Incentive
+                Add shiftTypeAllowance to gross salary where Attn_Incentive is not added (Attn_Incentive is not add to gross in some paytypes)
+                 */
+                Double shiftTypeAllowance = 0.00;
+                String sql_stAllow = "select EMPno,SUM(AllownaceAmt) from  shift_type_wise_allownace_calc where EMPno='" + Empno + "' and Month='" + month + "' and Year='" + year + "' GROUP BY EMPno";
+                PreparedStatement pst_stAllow = con.prepareStatement(sql_stAllow);
+                ResultSet rs_stAllow = pst_stAllow.executeQuery();
+                while (rs_stAllow.next()) {
+                    shiftTypeAllowance = rs_stAllow.getDouble("SUM(AllownaceAmt)");
+                }
+
+                Attn_Incentive = Attn_Incentive + shiftTypeAllowance;
+
                 FinalAttnIncentive = String.format("%.2f", Attn_Incentive);
 
                 Double MA = Double.parseDouble(MachineAllow);
@@ -6150,21 +6246,21 @@ public class Salary_process_DEMO_NEW extends javax.swing.JFrame {
                 }
                 if (LocType.equals("Type04")) {
 
-                    gross_salary = total_duty_amount + Site_Incentive;
+                    gross_salary = total_duty_amount + Site_Incentive + shiftTypeAllowance;
                     salary_for_epf = basic_salary + bra + Sunday_Poya_Total;
                     System.out.println("Type04 SUN= " + Sunday_Poya_Total);
 
                 }
                 if (LocType.equals("Type05")) {
 
-                    gross_salary = total_duty_amount + MA + SA + OA + AA;
+                    gross_salary = total_duty_amount + MA + SA + OA + AA + shiftTypeAllowance;
                     salary_for_epf = basic_salary + bra;
 
                 }
                 if (LocType.equals("Type01")) {
 //type 01
                     salary_for_epf = basic_salary + bra;
-                    gross_salary = total_duty_amount + Site_Incentive + Sunday_Poya_Total + total_ot_amount;
+                    gross_salary = total_duty_amount + Site_Incentive + Sunday_Poya_Total + total_ot_amount+shiftTypeAllowance;
 
                     System.out.println("TYPE 01=================================================================================================================================================================");
                     System.out.println("Loc " + Loc);
