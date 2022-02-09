@@ -321,14 +321,10 @@ public class MAIN extends javax.swing.JFrame implements Runnable {
         jMenuItem60 = new javax.swing.JMenuItem();
         jSeparator10 = new javax.swing.JPopupMenu.Separator();
         jMenu13 = new javax.swing.JMenu();
-        jMenuItem35 = new javax.swing.JMenuItem();
         jSeparator4 = new javax.swing.JPopupMenu.Separator();
         jMenuItem36 = new javax.swing.JMenuItem();
         jMenuItem38 = new javax.swing.JMenuItem();
-        jMenuItem44 = new javax.swing.JMenuItem();
         jSeparator5 = new javax.swing.JPopupMenu.Separator();
-        jMenuItem40 = new javax.swing.JMenuItem();
-        jMenuItem43 = new javax.swing.JMenuItem();
         jSeparator11 = new javax.swing.JPopupMenu.Separator();
         jMenu12 = new javax.swing.JMenu();
         jMenuItem22 = new javax.swing.JMenuItem();
@@ -340,6 +336,8 @@ public class MAIN extends javax.swing.JFrame implements Runnable {
         jMenuItem31 = new javax.swing.JMenuItem();
         jSeparator8 = new javax.swing.JPopupMenu.Separator();
         jMenuItem33 = new javax.swing.JMenuItem();
+        jSeparator38 = new javax.swing.JPopupMenu.Separator();
+        jMenuItem35 = new javax.swing.JMenuItem();
         menu_process = new javax.swing.JMenu();
         jMenuItem23 = new javax.swing.JMenuItem();
         jSeparator31 = new javax.swing.JPopupMenu.Separator();
@@ -920,16 +918,6 @@ public class MAIN extends javax.swing.JFrame implements Runnable {
                 jMenu13ActionPerformed(evt);
             }
         });
-
-        jMenuItem35.setFont(new java.awt.Font("Georgia", 0, 12)); // NOI18N
-        jMenuItem35.setText("All EMP. Attendance Details");
-        jMenuItem35.setEnabled(false);
-        jMenuItem35.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem35ActionPerformed(evt);
-            }
-        });
-        jMenu13.add(jMenuItem35);
         jMenu13.add(jSeparator4);
 
         jMenuItem36.setFont(new java.awt.Font("Georgia", 0, 12)); // NOI18N
@@ -949,37 +937,7 @@ public class MAIN extends javax.swing.JFrame implements Runnable {
             }
         });
         jMenu13.add(jMenuItem38);
-
-        jMenuItem44.setFont(new java.awt.Font("Georgia", 0, 12)); // NOI18N
-        jMenuItem44.setText("Date Range wise Total Shifts ");
-        jMenuItem44.setEnabled(false);
-        jMenuItem44.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem44ActionPerformed(evt);
-            }
-        });
-        jMenu13.add(jMenuItem44);
         jMenu13.add(jSeparator5);
-
-        jMenuItem40.setFont(new java.awt.Font("Georgia", 0, 12)); // NOI18N
-        jMenuItem40.setText("Shift Rate Summery - All Employee");
-        jMenuItem40.setEnabled(false);
-        jMenuItem40.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem40ActionPerformed(evt);
-            }
-        });
-        jMenu13.add(jMenuItem40);
-
-        jMenuItem43.setFont(new java.awt.Font("Georgia", 0, 12)); // NOI18N
-        jMenuItem43.setText("Shift Rate Details - Single Employee");
-        jMenuItem43.setEnabled(false);
-        jMenuItem43.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem43ActionPerformed(evt);
-            }
-        });
-        jMenu13.add(jMenuItem43);
 
         menu_reports.add(jMenu13);
         menu_reports.add(jSeparator11);
@@ -1056,6 +1014,16 @@ public class MAIN extends javax.swing.JFrame implements Runnable {
             }
         });
         jMenu12.add(jMenuItem33);
+        jMenu12.add(jSeparator38);
+
+        jMenuItem35.setFont(new java.awt.Font("Georgia", 0, 12)); // NOI18N
+        jMenuItem35.setText("Shift Type wise Attendance Allowance");
+        jMenuItem35.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem35ActionPerformed(evt);
+            }
+        });
+        jMenu12.add(jMenuItem35);
 
         menu_reports.add(jMenu12);
 
@@ -1452,13 +1420,6 @@ public class MAIN extends javax.swing.JFrame implements Runnable {
         }
     }//GEN-LAST:event_jMenuItem34ActionPerformed
 
-    private void jMenuItem35ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem35ActionPerformed
-
-        RPT_All_EMP_Atten ur = new RPT_All_EMP_Atten();
-        ur.setVisible(true);
-
-    }//GEN-LAST:event_jMenuItem35ActionPerformed
-
     private void jMenuItem36ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem36ActionPerformed
         RPT_atten_summery ur = new RPT_atten_summery();
         ur.setVisible(true);    // TODO add your handling code here:
@@ -1498,14 +1459,6 @@ public class MAIN extends javax.swing.JFrame implements Runnable {
         Distress_Loan em = new Distress_Loan();
         em.setVisible(true);        // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem11ActionPerformed
-
-    private void jMenuItem40ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem40ActionPerformed
-
-        RPT_rate_change_shifts_summery em = new RPT_rate_change_shifts_summery();
-        em.setVisible(true);
-
-
-    }//GEN-LAST:event_jMenuItem40ActionPerformed
 
     private void jMenuItem41ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem41ActionPerformed
 
@@ -1602,11 +1555,6 @@ public class MAIN extends javax.swing.JFrame implements Runnable {
         RPT_Cash_Denomination ap = new RPT_Cash_Denomination();
         ap.setVisible(true);  // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem33ActionPerformed
-
-    private void jMenuItem43ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem43ActionPerformed
-        RPT_ShiftRateDetails_SingleEmployee ap = new RPT_ShiftRateDetails_SingleEmployee();
-        ap.setVisible(true);
-    }//GEN-LAST:event_jMenuItem43ActionPerformed
 
     private void jMenuItem37ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem37ActionPerformed
         AdminStaff_Attendance ap = new AdminStaff_Attendance();
@@ -1722,11 +1670,6 @@ public class MAIN extends javax.swing.JFrame implements Runnable {
 
 
     }//GEN-LAST:event_Menu_user_all_view2ActionPerformed
-
-    private void jMenuItem44ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem44ActionPerformed
-        RPT_No_of_Shifts_in_Selected_DateRange ur = new RPT_No_of_Shifts_in_Selected_DateRange();
-        ur.setVisible(true);           // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem44ActionPerformed
 
     private void jMenuItem30ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem30ActionPerformed
         RPT_EPF_Deduction_List ur = new RPT_EPF_Deduction_List();
@@ -1929,6 +1872,10 @@ public class MAIN extends javax.swing.JFrame implements Runnable {
         em.setVisible(true);
     }//GEN-LAST:event_jMenuItem60ActionPerformed
 
+    private void jMenuItem35ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem35ActionPerformed
+         
+    }//GEN-LAST:event_jMenuItem35ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -2023,11 +1970,8 @@ public class MAIN extends javax.swing.JFrame implements Runnable {
     private javax.swing.JMenuItem jMenuItem38;
     private javax.swing.JMenuItem jMenuItem39;
     private javax.swing.JMenuItem jMenuItem4;
-    private javax.swing.JMenuItem jMenuItem40;
     private javax.swing.JMenuItem jMenuItem41;
     private javax.swing.JMenuItem jMenuItem42;
-    private javax.swing.JMenuItem jMenuItem43;
-    private javax.swing.JMenuItem jMenuItem44;
     private javax.swing.JMenuItem jMenuItem45;
     private javax.swing.JMenuItem jMenuItem46;
     private javax.swing.JMenuItem jMenuItem47;
@@ -2079,6 +2023,7 @@ public class MAIN extends javax.swing.JFrame implements Runnable {
     private javax.swing.JPopupMenu.Separator jSeparator35;
     private javax.swing.JPopupMenu.Separator jSeparator36;
     private javax.swing.JPopupMenu.Separator jSeparator37;
+    private javax.swing.JPopupMenu.Separator jSeparator38;
     private javax.swing.JPopupMenu.Separator jSeparator4;
     private javax.swing.JPopupMenu.Separator jSeparator5;
     private javax.swing.JPopupMenu.Separator jSeparator6;
