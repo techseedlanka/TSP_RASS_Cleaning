@@ -1,0 +1,307 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ShiftTypeWise_AttenAllow.jrxml" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="164ef82a-ca1a-4f9b-be7d-ace0bd2d5905">
+	<property name="ireport.zoom" value="1.9487171000000014"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["D:\\##Project Files - Clients\\RASS Cleaning\\TechSeed_PayRoll_RASS_Target\\Reports\\"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="location" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="month" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="year" class="java.lang.String" isForPrompting="false"/>
+	<queryString>
+		<![CDATA[SELECT EMPno,NameWithInitials,Loc,LocName,Rank,ShiftLimit,Addition,TotalWorkedShifts,AllownaceAmt,Month,Year
+FROM shift_type_wise_allownace_calc
+join employee_reg on employee_reg.EmployeeNo=EMPno
+join location_reg on LocCode=Loc Where Loc=$P{location} and Month=$P{month} and Year=$P{year}]]>
+	</queryString>
+	<field name="EMPno" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="NameWithInitials" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Loc" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="LocName" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Rank" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="ShiftLimit" class="java.lang.Double">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Addition" class="java.lang.Double">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="TotalWorkedShifts" class="java.lang.Double">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="AllownaceAmt" class="java.lang.Double">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Month" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Year" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<variable name="TotalAllow" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[$F{AllownaceAmt}]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="50" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="3" width="555" height="22" uuid="e546f85f-39c3-4114-9149-31dbe345ae13"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Shift Type wise Allowance  - "+$F{Month}+" "+$F{Year}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="0" y="48" width="555" height="1" uuid="989f8c16-f66c-417a-9658-5833e6d06504"/>
+				<graphicElement>
+					<pen lineWidth="1.5"/>
+				</graphicElement>
+			</line>
+			<textField>
+				<reportElement x="14" y="30" width="541" height="18" uuid="9fc67be3-fc07-4651-9fe4-3380c06b4760"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Location : "+$F{Loc}+" - "+$F{LocName}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="39" splitType="Stretch">
+			<staticText>
+				<reportElement x="45" y="6" width="46" height="33" uuid="663d66d6-c51d-41f1-bce8-182231d5ce45"/>
+				<box leftPadding="3" rightPadding="3">
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[EMPno]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="91" y="6" width="49" height="33" uuid="b4eae5b9-6ee2-44a1-92d8-5c9c8ec996f0"/>
+				<box leftPadding="3" rightPadding="3">
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Rank]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="397" y="6" width="73" height="33" uuid="72203ef8-04d5-4925-bfb5-d74fddce09e7"/>
+				<box leftPadding="3" rightPadding="3">
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Total Worked Shifts]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="470" y="6" width="75" height="33" uuid="572fbd84-7697-48f3-a235-b625f5aaa0b8"/>
+				<box leftPadding="3" rightPadding="3">
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Allowance]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="140" y="6" width="257" height="33" uuid="36ef0d90-98b0-460f-9053-055d4a24ca07"/>
+				<box leftPadding="3" rightPadding="3">
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Name ]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement x="45" y="0" width="46" height="20" uuid="c084f6c9-62ba-43f8-b1d3-fe36c61ccc96"/>
+				<box leftPadding="3" rightPadding="3">
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{EMPno}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="140" y="0" width="257" height="20" uuid="d4d73726-bcfe-44f7-83ea-d02853e15bc8"/>
+				<box leftPadding="3" rightPadding="3">
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{NameWithInitials}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="91" y="0" width="49" height="20" uuid="8e3001eb-ddf1-4288-88a6-b94b34c7121a"/>
+				<box leftPadding="3" rightPadding="3">
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Rank}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="397" y="0" width="73" height="20" uuid="4aa25044-3c2e-474c-9631-a34c9dc0acf1"/>
+				<box leftPadding="3" rightPadding="3">
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{TotalWorkedShifts}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="14" y="0" width="31" height="20" uuid="be075c62-1e66-4838-a137-19435e2f722b"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<paragraph rightIndent="4"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{PAGE_COUNT}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00">
+				<reportElement x="470" y="0" width="75" height="20" uuid="564dea13-4210-4909-aa89-a042d9904932"/>
+				<box leftPadding="3" rightPadding="3">
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{AllownaceAmt}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="15" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="3" width="251" height="12" uuid="bfcaeebc-5bbc-4214-b5fb-4563e2130654"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="10" isBold="false" isItalic="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Shift Type wise Allowance  - "+$F{Month}+" "+$F{Year}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy h.mm a">
+				<reportElement x="251" y="0" width="134" height="15" uuid="1dcf5568-2327-4ddc-b796-01f72da18a46"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="435" y="0" width="80" height="15" uuid="0caf1679-f875-4b1d-8bca-8db8eac80d4f"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="515" y="0" width="40" height="15" uuid="2701365c-18ee-4fa9-89da-6a4cff8033c3"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="109" splitType="Stretch">
+			<subreport>
+				<reportElement x="45" y="31" width="425" height="78" uuid="32fba8c5-ceb0-43fd-80db-4245c9e362d5"/>
+				<subreportParameter name="LOC">
+					<subreportParameterExpression><![CDATA[$F{Loc}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "ShiftTypeWise_AttenAllow_subreport_for_Formulas.jasper"]]></subreportExpression>
+			</subreport>
+			<staticText>
+				<reportElement x="45" y="0" width="425" height="21" uuid="1257e0c2-1ebd-41b3-9421-b738cfa6d550"/>
+				<box leftPadding="3" rightPadding="3">
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Total Allowance  ]]></text>
+			</staticText>
+			<textField pattern="#,##0.00;(#,##0.00)">
+				<reportElement x="470" y="0" width="75" height="21" uuid="6e056dd7-0b27-4c9a-89d7-19987cba1878"/>
+				<box rightPadding="3">
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{TotalAllow}]]></textFieldExpression>
+			</textField>
+		</band>
+	</summary>
+</jasperReport>

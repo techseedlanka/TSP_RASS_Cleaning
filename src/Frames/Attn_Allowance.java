@@ -52,6 +52,98 @@ public class Attn_Allowance extends javax.swing.JFrame {
 
     }
 
+    private void get_machineAllowance() {
+        try {
+
+            DefaultTableModel dtm1 = (DefaultTableModel) jTable3.getModel();
+            dtm1.setRowCount(0);
+            Statement st2 = DbConnection.getconnection().createStatement();
+            ResultSet rs2 = st2.executeQuery("SELECT * from machine_allowance where LocCode= '" + txt_locCode.getText() + "' ");
+            while (rs2.next()) {
+
+                Vector v1 = new Vector();
+                v1.add(rs2.getString("LocCode"));
+                v1.add(rs2.getString("Rank"));
+                v1.add(rs2.getString("Amount"));
+                v1.add(rs2.getString("Days"));
+
+                v1.add(rs2.getString("Devide"));
+                v1.add(rs2.getString("line"));
+
+                dtm1.addRow(v1);
+
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void get_attendanceAllowance() {
+        try {
+            DefaultTableModel dtm2 = (DefaultTableModel) jTable2.getModel();
+            dtm2.setRowCount(0);
+            Statement st1 = DbConnection.getconnection().createStatement();
+            ResultSet rs1 = st1.executeQuery("SELECT * from attn_allowance where LocCode= '" + txt_locCode.getText() + "' ");
+            while (rs1.next()) {
+
+                String code = rs1.getString("LocCode");
+                String rank = rs1.getString("Rank");
+                String amt = rs1.getString("Amount");
+                String min = rs1.getString("Min");
+                String max = rs1.getString("Max");
+                String line = rs1.getString("line");
+
+                Vector v = new Vector();
+                v.add(code);
+                v.add(rank);
+                v.add(amt);
+                v.add(min);
+                v.add(max);
+                v.add(line);
+
+                dtm2.addRow(v);
+
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    private void get_shiftWiseAllowance() {
+        try {
+            DefaultTableModel dtm2 = (DefaultTableModel) tbl_shiftWiseAllow.getModel();
+            dtm2.setRowCount(0);
+            Statement st1 = DbConnection.getconnection().createStatement();
+            ResultSet rs1 = st1.executeQuery("SELECT * from shift_type_wise_allowance where LocCode= '" + txt_locCode.getText() + "' ");
+            while (rs1.next()) {
+
+                String code = rs1.getString("LocCode");
+                String rank = rs1.getString("Rank");
+                String amt = rs1.getString("Amount");
+                String limit = rs1.getString("ShiftLimit");
+                String shift = rs1.getString("Shift");
+                String line = rs1.getString("line");
+
+                Vector v = new Vector();
+                v.add(code);
+                v.add(rank);
+                v.add(shift);
+                v.add(limit);
+                v.add(amt);
+                v.add(line);
+
+                dtm2.addRow(v);
+
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -93,6 +185,20 @@ public class Attn_Allowance extends javax.swing.JFrame {
         jLabel11 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
+        txt_amt_st = new javax.swing.JTextField();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        tbl_shiftWiseAllow = new javax.swing.JTable();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
+        txt_rank_st = new javax.swing.JTextField();
+        txt_limit = new javax.swing.JTextField();
+        jButton6 = new javax.swing.JButton();
+        jButton7 = new javax.swing.JButton();
+        jLabel16 = new javax.swing.JLabel();
+        jLabel18 = new javax.swing.JLabel();
+        cmb_st = new javax.swing.JComboBox<>();
+        jLabel19 = new javax.swing.JLabel();
+        jLabel17 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -117,7 +223,7 @@ public class Attn_Allowance extends javax.swing.JFrame {
                 txt_amtKeyPressed(evt);
             }
         });
-        getContentPane().add(txt_amt, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 200, 80, 25));
+        getContentPane().add(txt_amt, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 120, 80, 25));
 
         cmb_defLocation.setEditable(true);
         cmb_defLocation.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
@@ -184,7 +290,7 @@ public class Attn_Allowance extends javax.swing.JFrame {
             jTable1.getColumnModel().getColumn(1).setPreferredWidth(100);
         }
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 190, 290));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 410, 260));
 
         jTable2.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
@@ -216,19 +322,20 @@ public class Attn_Allowance extends javax.swing.JFrame {
             jTable2.getColumnModel().getColumn(5).setMaxWidth(0);
         }
 
-        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 60, 250, 320));
+        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 150, 410, 190));
 
         jLabel5.setFont(new java.awt.Font("Georgia", 0, 14)); // NOI18N
-        jLabel5.setText("    Amount :-");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 200, 80, 20));
+        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel5.setText("    Amount : ");
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 120, 80, 20));
 
         jLabel6.setFont(new java.awt.Font("Georgia", 0, 14)); // NOI18N
-        jLabel6.setText("Maximum Days :-");
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 140, 120, 20));
+        jLabel6.setText("Max. Shifts : ");
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 80, 90, 20));
 
         jLabel7.setFont(new java.awt.Font("Georgia", 0, 14)); // NOI18N
-        jLabel7.setText("Minimum Days :-");
-        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 170, 120, 20));
+        jLabel7.setText("Min. Shifts : ");
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 80, 80, 20));
 
         txt_rank.setEditable(false);
         txt_rank.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
@@ -247,7 +354,7 @@ public class Attn_Allowance extends javax.swing.JFrame {
                 txt_rankKeyPressed(evt);
             }
         });
-        getContentPane().add(txt_rank, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 110, 80, 25));
+        getContentPane().add(txt_rank, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 80, 80, 25));
 
         txt_max.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         txt_max.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -265,7 +372,7 @@ public class Attn_Allowance extends javax.swing.JFrame {
                 txt_maxKeyPressed(evt);
             }
         });
-        getContentPane().add(txt_max, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 140, 80, 25));
+        getContentPane().add(txt_max, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 80, 40, 25));
 
         txt_min.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         txt_min.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -283,41 +390,41 @@ public class Attn_Allowance extends javax.swing.JFrame {
                 txt_minKeyPressed(evt);
             }
         });
-        getContentPane().add(txt_min, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 170, 80, 25));
+        getContentPane().add(txt_min, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 80, 50, 25));
 
         jButton1.setFont(new java.awt.Font("Georgia", 0, 12)); // NOI18N
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Delete.png"))); // NOI18N
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/New Icons/icons8_delete_trash_24px.png"))); // NOI18N
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 340, 70, 40));
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 300, 50, 40));
 
         jButton2.setFont(new java.awt.Font("Georgia", 0, 12)); // NOI18N
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Save.png"))); // NOI18N
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/New Icons/icons8_save_32px.png"))); // NOI18N
         jButton2.setText("Save");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 260, 220, 50));
+        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 110, 260, 35));
 
         jButton3.setFont(new java.awt.Font("Georgia", 0, 12)); // NOI18N
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Refresh.png"))); // NOI18N
+        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/New Icons/icons8_update_left_rotation_32px.png"))); // NOI18N
         jButton3.setText("Clear All");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 340, 130, 40));
-        getContentPane().add(jSeparator11, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 1010, 10));
+        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 0, 120, 40));
+        getContentPane().add(jSeparator11, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 950, 10));
 
         jLabel8.setFont(new java.awt.Font("Georgia", 0, 14)); // NOI18N
-        jLabel8.setText(" Amount :-");
-        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 90, 70, 20));
+        jLabel8.setText(" Amount :");
+        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 430, 70, 20));
 
         txt_amt_ma.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         txt_amt_ma.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -335,11 +442,11 @@ public class Attn_Allowance extends javax.swing.JFrame {
                 txt_amt_maKeyPressed(evt);
             }
         });
-        getContentPane().add(txt_amt_ma, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 90, 80, 25));
+        getContentPane().add(txt_amt_ma, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 430, 60, 25));
 
         jLabel9.setFont(new java.awt.Font("Georgia", 0, 14)); // NOI18N
-        jLabel9.setText("Days :-");
-        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 60, 50, 20));
+        jLabel9.setText("Days : ");
+        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 390, 50, 20));
 
         txt_days_ma.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         txt_days_ma.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -357,11 +464,11 @@ public class Attn_Allowance extends javax.swing.JFrame {
                 txt_days_maKeyPressed(evt);
             }
         });
-        getContentPane().add(txt_days_ma, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 60, 70, 25));
+        getContentPane().add(txt_days_ma, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 390, 60, 25));
 
         jLabel10.setFont(new java.awt.Font("Georgia", 0, 14)); // NOI18N
-        jLabel10.setText("  Rank :-");
-        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 60, 60, 20));
+        jLabel10.setText("  Rank : ");
+        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 390, 60, 20));
 
         txt_rank_ma.setEditable(false);
         txt_rank_ma.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
@@ -380,7 +487,7 @@ public class Attn_Allowance extends javax.swing.JFrame {
                 txt_rank_maKeyPressed(evt);
             }
         });
-        getContentPane().add(txt_rank_ma, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 60, 80, 25));
+        getContentPane().add(txt_rank_ma, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 390, 60, 25));
 
         jTable3.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         jTable3.setModel(new javax.swing.table.DefaultTableModel(
@@ -392,7 +499,7 @@ public class Attn_Allowance extends javax.swing.JFrame {
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, true, false
+                false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -407,45 +514,187 @@ public class Attn_Allowance extends javax.swing.JFrame {
             jTable3.getColumnModel().getColumn(2).setPreferredWidth(80);
             jTable3.getColumnModel().getColumn(3).setPreferredWidth(50);
             jTable3.getColumnModel().getColumn(4).setPreferredWidth(60);
-            jTable3.getColumnModel().getColumn(5).setPreferredWidth(1);
+            jTable3.getColumnModel().getColumn(5).setMinWidth(0);
+            jTable3.getColumnModel().getColumn(5).setPreferredWidth(0);
+            jTable3.getColumnModel().getColumn(5).setMaxWidth(0);
         }
 
-        getContentPane().add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 160, 290, 170));
+        getContentPane().add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 480, 390, 170));
 
         jButton4.setFont(new java.awt.Font("Georgia", 0, 12)); // NOI18N
-        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Save.png"))); // NOI18N
+        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/New Icons/icons8_save_32px.png"))); // NOI18N
         jButton4.setText("Save");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton4ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 90, 120, 50));
+        getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 430, 200, 35));
 
         jButton5.setFont(new java.awt.Font("Georgia", 0, 12)); // NOI18N
-        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Delete.png"))); // NOI18N
+        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/New Icons/icons8_delete_trash_24px.png"))); // NOI18N
         jButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton5ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 340, 80, 40));
+        getContentPane().add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 650, 80, 40));
 
         jCheckBox1.setFont(new java.awt.Font("Georgia", 0, 12)); // NOI18N
         jCheckBox1.setText("Divisible");
-        getContentPane().add(jCheckBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 120, -1, -1));
+        getContentPane().add(jCheckBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 390, -1, -1));
 
         jLabel11.setFont(new java.awt.Font("Georgia", 0, 14)); // NOI18N
-        jLabel11.setText(" Rank :-");
-        getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 110, 50, 20));
+        jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel11.setText(" Rank : ");
+        getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 80, 60, 20));
 
         jLabel4.setFont(new java.awt.Font("Georgia", 0, 14)); // NOI18N
         jLabel4.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Machine Allowance", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Times New Roman", 2, 14))); // NOI18N
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 40, 310, 350));
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 360, 410, 350));
 
         jLabel12.setFont(new java.awt.Font("Georgia", 0, 14)); // NOI18N
         jLabel12.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Attendance Allowance", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Times New Roman", 2, 14))); // NOI18N
-        getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 700, 350));
+        getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 50, 490, 300));
+
+        txt_amt_st.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        txt_amt_st.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txt_amt_stFocusGained(evt);
+            }
+        });
+        txt_amt_st.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_amt_stActionPerformed(evt);
+            }
+        });
+        txt_amt_st.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txt_amt_stKeyPressed(evt);
+            }
+        });
+        getContentPane().add(txt_amt_st, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 430, 80, 25));
+
+        tbl_shiftWiseAllow.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        tbl_shiftWiseAllow.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Location", "Rank", "Shift", "Limit", "Amount", "line"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tbl_shiftWiseAllow.setRowHeight(23);
+        jScrollPane4.setViewportView(tbl_shiftWiseAllow);
+        if (tbl_shiftWiseAllow.getColumnModel().getColumnCount() > 0) {
+            tbl_shiftWiseAllow.getColumnModel().getColumn(0).setPreferredWidth(60);
+            tbl_shiftWiseAllow.getColumnModel().getColumn(1).setPreferredWidth(50);
+            tbl_shiftWiseAllow.getColumnModel().getColumn(2).setPreferredWidth(80);
+            tbl_shiftWiseAllow.getColumnModel().getColumn(3).setPreferredWidth(50);
+            tbl_shiftWiseAllow.getColumnModel().getColumn(4).setPreferredWidth(50);
+            tbl_shiftWiseAllow.getColumnModel().getColumn(5).setMinWidth(0);
+            tbl_shiftWiseAllow.getColumnModel().getColumn(5).setPreferredWidth(0);
+            tbl_shiftWiseAllow.getColumnModel().getColumn(5).setMaxWidth(0);
+        }
+
+        getContentPane().add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 500, 410, 200));
+
+        jLabel13.setFont(new java.awt.Font("Georgia", 2, 12)); // NOI18N
+        jLabel13.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel13.setText(" for every shift");
+        getContentPane().add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 430, 110, 20));
+
+        jLabel14.setFont(new java.awt.Font("Georgia", 0, 14)); // NOI18N
+        jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel14.setText("Shift Type : ");
+        getContentPane().add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 390, 80, 20));
+
+        txt_rank_st.setEditable(false);
+        txt_rank_st.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        txt_rank_st.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txt_rank_stFocusGained(evt);
+            }
+        });
+        txt_rank_st.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_rank_stActionPerformed(evt);
+            }
+        });
+        txt_rank_st.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txt_rank_stKeyPressed(evt);
+            }
+        });
+        getContentPane().add(txt_rank_st, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 390, 80, 25));
+
+        txt_limit.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        txt_limit.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txt_limitFocusGained(evt);
+            }
+        });
+        txt_limit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_limitActionPerformed(evt);
+            }
+        });
+        txt_limit.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txt_limitKeyPressed(evt);
+            }
+        });
+        getContentPane().add(txt_limit, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 430, 80, 25));
+
+        jButton6.setFont(new java.awt.Font("Georgia", 0, 12)); // NOI18N
+        jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/New Icons/icons8_delete_trash_24px.png"))); // NOI18N
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 660, 50, 40));
+
+        jButton7.setFont(new java.awt.Font("Georgia", 0, 12)); // NOI18N
+        jButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/New Icons/icons8_save_32px.png"))); // NOI18N
+        jButton7.setText("Save");
+        jButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton7ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 460, 410, 35));
+
+        jLabel16.setFont(new java.awt.Font("Georgia", 0, 14)); // NOI18N
+        jLabel16.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel16.setText(" Rank : ");
+        getContentPane().add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 390, 60, 20));
+
+        jLabel18.setFont(new java.awt.Font("Georgia", 0, 14)); // NOI18N
+        jLabel18.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel18.setText("Limit : ");
+        getContentPane().add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 430, 50, 20));
+
+        cmb_st.setFont(new java.awt.Font("Georgia", 0, 14)); // NOI18N
+        cmb_st.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "=SELECT=", "Day", "Night", "Day2", "HalfDay", "OTShift" }));
+        getContentPane().add(cmb_st, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 390, 180, 25));
+
+        jLabel19.setFont(new java.awt.Font("Georgia", 0, 14)); // NOI18N
+        jLabel19.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel19.setText("    Amount : ");
+        getContentPane().add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 430, 80, 20));
+
+        jLabel17.setFont(new java.awt.Font("Georgia", 0, 14)); // NOI18N
+        jLabel17.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Shift Type Wise Allowance", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Times New Roman", 2, 14))); // NOI18N
+        getContentPane().add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 360, 490, 350));
 
         pack();
         setLocationRelativeTo(null);
@@ -511,53 +760,13 @@ public class Attn_Allowance extends javax.swing.JFrame {
 
                 }
 
-                DefaultTableModel dtm2 = (DefaultTableModel) jTable2.getModel();
-                dtm2.setRowCount(0);
-                Statement st1 = DbConnection.getconnection().createStatement();
-                ResultSet rs1 = st1.executeQuery("SELECT * from attn_allowance where LocCode= '" + txt_locCode.getText() + "' ");
-                while (rs1.next()) {
-
-                    String code = rs1.getString("LocCode");
-                    String rank = rs1.getString("Rank");
-                    String amt = rs1.getString("Amount");
-                    String min = rs1.getString("Min");
-                    String max = rs1.getString("Max");
-                    String line = rs1.getString("line");
-
-                    Vector v = new Vector();
-                    v.add(code);
-                    v.add(rank);
-                    v.add(amt);
-                    v.add(min);
-                    v.add(max);
-                    v.add(line);
-
-                    dtm2.addRow(v);
-
-                }
-
-                DefaultTableModel dtm1 = (DefaultTableModel) jTable3.getModel();
-                dtm1.setRowCount(0);
-                Statement st2 = DbConnection.getconnection().createStatement();
-                ResultSet rs2 = st2.executeQuery("SELECT * from machine_allowance where LocCode= '" + txt_locCode.getText() + "' ");
-                while (rs2.next()) {
-
-                    Vector v1 = new Vector();
-                    v1.add(rs2.getString("LocCode"));
-                    v1.add(rs2.getString("Rank"));
-                    v1.add(rs2.getString("Amount"));
-                    v1.add(rs2.getString("Days"));
-
-                    v1.add(rs2.getString("Devide"));
-                    v1.add(rs2.getString("line"));
-
-                    dtm1.addRow(v1);
-
-                }
-
             } catch (Exception e) {
                 e.printStackTrace();
             }
+
+            get_machineAllowance();
+            get_attendanceAllowance();
+            get_shiftWiseAllowance();
 
         }
 
@@ -629,7 +838,8 @@ public class Attn_Allowance extends javax.swing.JFrame {
                 int row = jTable1.getSelectedRow();
                 txt_rank.setText(jTable1.getValueAt(row, 0).toString());
                 txt_rank_ma.setText(jTable1.getValueAt(row, 0).toString());
-                txt_max.grabFocus();
+                txt_rank_st.setText(jTable1.getValueAt(row, 0).toString());
+                // txt_max.grabFocus();
 
             }
 
@@ -659,33 +869,7 @@ public class Attn_Allowance extends javax.swing.JFrame {
                 pst_save = con.prepareStatement(sql_save);
                 pst_save.execute();
 
-                DefaultTableModel dtm = (DefaultTableModel) jTable2.getModel();
-                Vector v = new Vector();
-
-                v.add(loc);
-                v.add(rank);
-                v.add(amt);
-                v.add(min);
-                v.add(max);
-                dtm.addRow(v);
-
-                DefaultTableModel dtm2 = (DefaultTableModel) jTable2.getModel();
-                dtm2.setRowCount(0);
-                Statement st1 = DbConnection.getconnection().createStatement();
-                ResultSet rs1 = st1.executeQuery("SELECT * from attn_allowance where LocCode= '" + txt_locCode.getText() + "' ");
-                while (rs1.next()) {
-
-                    Vector v1 = new Vector();
-                    v1.add(rs1.getString("LocCode"));
-                    v1.add(rs1.getString("Rank"));
-                    v1.add(rs1.getString("Amount"));
-                    v1.add(rs1.getString("Min"));
-                    v1.add(rs1.getString("Max"));
-                    v1.add(rs1.getString("line"));
-
-                    dtm2.addRow(v1);
-
-                }
+                get_attendanceAllowance();
 
                 txt_rank.setText("");
                 //txt_locCode.setText("");
@@ -735,7 +919,7 @@ public class Attn_Allowance extends javax.swing.JFrame {
                 String min = jTable2.getValueAt(r, 3).toString();
                 String max = jTable2.getValueAt(r, 4).toString();
                 String line = jTable2.getValueAt(r, 5).toString();
-                System.out.println("line "+line);
+                System.out.println("line " + line);
 
                 String sql_del = "delete from attn_allowance where line='" + line + "'";
                 pst = con.prepareStatement(sql_del);
@@ -816,35 +1000,7 @@ public class Attn_Allowance extends javax.swing.JFrame {
                 pst_save = con.prepareStatement(sql_save);
                 pst_save.execute();
 
-                DefaultTableModel dtm = (DefaultTableModel) jTable3.getModel();
-                Vector v = new Vector();
-
-                v.add(loc);
-                v.add(rank);
-                v.add(amt);
-                v.add(day);
-                v.add(devide);
-
-                dtm.addRow(v);
-
-                DefaultTableModel dtm2 = (DefaultTableModel) jTable3.getModel();
-                dtm2.setRowCount(0);
-                Statement st1 = DbConnection.getconnection().createStatement();
-                ResultSet rs1 = st1.executeQuery("SELECT * from machine_allowance where LocCode= '" + txt_locCode.getText() + "' ");
-                while (rs1.next()) {
-
-                    Vector v1 = new Vector();
-                    v1.add(rs1.getString("LocCode"));
-                    v1.add(rs1.getString("Rank"));
-                    v1.add(rs1.getString("Amount"));
-                    v1.add(rs1.getString("Days"));
-
-                    v1.add(rs1.getString("Devide"));
-                    v1.add(rs1.getString("line"));
-
-                    dtm2.addRow(v1);
-
-                }
+                get_machineAllowance();
 
                 txt_rank_ma.setText("");
                 //txt_locCode.setText("");
@@ -887,6 +1043,112 @@ public class Attn_Allowance extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton5ActionPerformed
 
+    private void txt_amt_stFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txt_amt_stFocusGained
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_amt_stFocusGained
+
+    private void txt_amt_stActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_amt_stActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_amt_stActionPerformed
+
+    private void txt_amt_stKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_amt_stKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_amt_stKeyPressed
+
+    private void txt_rank_stFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txt_rank_stFocusGained
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_rank_stFocusGained
+
+    private void txt_rank_stActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_rank_stActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_rank_stActionPerformed
+
+    private void txt_rank_stKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_rank_stKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_rank_stKeyPressed
+
+    private void txt_limitFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txt_limitFocusGained
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_limitFocusGained
+
+    private void txt_limitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_limitActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_limitActionPerformed
+
+    private void txt_limitKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_limitKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_limitKeyPressed
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+      if(tbl_shiftWiseAllow.getSelectedRowCount()>0){
+        int reply = JOptionPane.showConfirmDialog(rootPane, "Do you want to DELETE this record?", "DELETE", JOptionPane.YES_NO_OPTION);
+
+        if (reply == JOptionPane.YES_OPTION) {
+
+            try {
+                Connection con = DbConnection.getconnection();
+                PreparedStatement pst = null;
+
+                int r = tbl_shiftWiseAllow.getSelectedRow();
+                 
+                String line = tbl_shiftWiseAllow.getValueAt(r, 5).toString();
+                System.out.println("line " + line);
+
+                String sql_del = "delete from shift_type_wise_allowance where line='" + line + "'";
+                pst = con.prepareStatement(sql_del);
+                pst.execute();
+
+                DefaultTableModel dtm = (DefaultTableModel) tbl_shiftWiseAllow.getModel();
+                dtm.removeRow(r);
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        } else {
+        }
+      }else{
+      JOptionPane.showMessageDialog(rootPane, "Select a Rrecord for Delete!");
+      }
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+        if (txt_rank_st.getText().isEmpty() | txt_locCode.getText().isEmpty() | cmb_st.getSelectedIndex() == 0) {
+        } else {
+            try {
+
+                String rank = txt_rank_st.getText();
+                String loc = txt_locCode.getText();
+                String shift = cmb_st.getSelectedItem().toString();
+                String limit = txt_limit.getText();
+                String amt = txt_amt_st.getText();
+
+                Connection con = DbConnection.getconnection();
+                PreparedStatement pst = null;
+
+                String sql_save = "insert into shift_type_wise_allowance (LocCode,Rank,ShiftLimit,Shift,Amount) values('" + loc + "','" + rank + "','" + limit + "','" + shift + "','" + amt + "')";
+              //String sql_save = "insert into machine_allowance (LocCode,Rank,Amount,Days,Devide) values('" + loc + "','" + rank + "','" + amt + "','" + day + "','" + devide + "')";
+           
+                
+                pst = con.prepareStatement(sql_save);
+                pst.execute();
+
+                get_shiftWiseAllowance();
+
+                txt_rank_st.setText("");
+                //txt_locCode.setText("");
+                txt_limit.setText("");
+                cmb_st.setSelectedItem(0);
+                txt_amt_st.setText("");
+                JOptionPane.showMessageDialog(rootPane, "Shift Wise Allowance Saved!");
+            } catch (Exception e) {
+                e.printStackTrace();
+                JOptionPane.showMessageDialog(rootPane, e);
+            }
+        }
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton7ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -925,16 +1187,25 @@ public class Attn_Allowance extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox cmb_defLocation;
+    private javax.swing.JComboBox<String> cmb_st;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton6;
+    private javax.swing.JButton jButton7;
     private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -944,18 +1215,23 @@ public class Attn_Allowance extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JSeparator jSeparator11;
     private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable2;
     private javax.swing.JTable jTable3;
+    private javax.swing.JTable tbl_shiftWiseAllow;
     public static javax.swing.JTextField txt_amt;
     public static javax.swing.JTextField txt_amt_ma;
+    public static javax.swing.JTextField txt_amt_st;
     public static javax.swing.JTextField txt_days_ma;
+    public static javax.swing.JTextField txt_limit;
     private javax.swing.JTextField txt_locCode;
     public static javax.swing.JTextField txt_max;
     public static javax.swing.JTextField txt_min;
     public static javax.swing.JTextField txt_rank;
     public static javax.swing.JTextField txt_rank_ma;
+    public static javax.swing.JTextField txt_rank_st;
     // End of variables declaration//GEN-END:variables
 
 }
