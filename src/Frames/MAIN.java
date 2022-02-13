@@ -1873,7 +1873,8 @@ public class MAIN extends javax.swing.JFrame implements Runnable {
     }//GEN-LAST:event_jMenuItem60ActionPerformed
 
     private void jMenuItem35ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem35ActionPerformed
-         
+Shift_TypeWise_Atten_Allowance em = new Shift_TypeWise_Atten_Allowance();
+        em.setVisible(true);       
     }//GEN-LAST:event_jMenuItem35ActionPerformed
 
     /**
