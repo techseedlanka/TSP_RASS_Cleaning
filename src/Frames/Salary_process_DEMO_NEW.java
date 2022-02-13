@@ -5598,6 +5598,7 @@ public class Salary_process_DEMO_NEW extends javax.swing.JFrame {
             //input doubles
             Double day_duty = 0.00;
             Double night_duty = 0.00;
+            Double halfDay_duty = 0.00;
             Double day2_duty = 0.00;
             Double extra_duty = 0.00;
             Double ot_hours = 0.00;
@@ -6260,7 +6261,7 @@ public class Salary_process_DEMO_NEW extends javax.swing.JFrame {
                 if (LocType.equals("Type01")) {
 //type 01
                     salary_for_epf = basic_salary + bra;
-                    gross_salary = total_duty_amount + Site_Incentive + Sunday_Poya_Total + total_ot_amount+shiftTypeAllowance;
+                    gross_salary = total_duty_amount + Site_Incentive + Sunday_Poya_Total + total_ot_amount + shiftTypeAllowance;
 
                     System.out.println("TYPE 01=================================================================================================================================================================");
                     System.out.println("Loc " + Loc);
@@ -6462,12 +6463,15 @@ public class Salary_process_DEMO_NEW extends javax.swing.JFrame {
                 Double D_other = Double.parseDouble(other);
                 Double D_welfare = Double.parseDouble(Welfare);
 
-                String sql_1 = "select * ,SUM(Day+Half),SUM(Night+DN),SUM(DayTwo)  from emp_atten_summery where EMPno='" + Empno + "'  and Month='" + month + "' and Year='" + year + "' ";
+                Double dayduty_tempVar = 0.00;
+                String sql_1 = "select * ,SUM(Day),SUM(Half), SUM(Night+DN),SUM(DayTwo)  from emp_atten_summery where EMPno='" + Empno + "'  and Month='" + month + "' and Year='" + year + "' ";
                 PreparedStatement pst_1 = con.prepareStatement(sql_1);
                 ResultSet rs_1 = pst_1.executeQuery();
                 while (rs_1.next()) {
+                    halfDay_duty = Double.parseDouble(rs_1.getString("SUM(Day)"));
+                    dayduty_tempVar = Double.parseDouble(rs_1.getString("SUM(Day)"));
 
-                    day_duty = Double.parseDouble(rs_1.getString("SUM(Day+Half)"));
+                    day_duty = dayduty_tempVar + (halfDay_duty / 2);
                     day2_duty = Double.parseDouble(rs_1.getString("SUM(DayTwo)"));
                     night_duty = Double.parseDouble(rs_1.getString("SUM(Night+DN)"));
 
