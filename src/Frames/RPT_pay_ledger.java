@@ -1035,8 +1035,17 @@ public class RPT_pay_ledger extends javax.swing.JFrame {
                     bds.setRpt_epf8(Double.parseDouble(rs.getString("EPF8")));
                     bds.setRpt_totDeduc(Double.parseDouble(rs.getString("TotalDeductions")));
                     bds.setNetpay(Double.parseDouble(rs.getString("NetPay")));
-                    bds.setPaytype(rs.getString("PayType"));
 
+                    String payTYpe = rs.getString("PayType");
+                    bds.setPaytype(payTYpe);
+
+                    String bankName = "";
+                    if (payTYpe.equals("Bank")) {
+                        bankName = rs.getString("BankName");
+                    } else {
+                        bankName = " ";
+                    }
+                    bds.setRpt_emp_bankName(bankName);
                     bds.setRpt_month(rs.getString("Month"));
                     bds.setRpt_year(rs.getString("Year"));
 
@@ -1047,7 +1056,7 @@ public class RPT_pay_ledger extends javax.swing.JFrame {
                     bds.setSlip(slip_net);
                     bds.setRpt_rank(rs.getString("Rank"));
                     bds.setRpt_name(rs.getString("Name"));
-                    bds.setRpt_emp_bankName(rs.getString("BankName"));
+
                     System.out.println("BankName " + (rs.getString("BankName")));
 
                     bds.setDay_duty(Double.parseDouble(rs.getString("Day")));
