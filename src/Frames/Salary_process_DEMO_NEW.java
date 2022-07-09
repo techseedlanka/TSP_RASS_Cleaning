@@ -5525,7 +5525,7 @@ public class Salary_process_DEMO_NEW extends javax.swing.JFrame {
     }
 
     //Target & Express Salary Caalculations
-    private void target() {
+    private void target_OLD() {
 
         lbl_atten.setText("Salary Processing... Please Wait.");
         lbl_atten.setForeground(Color.red);
@@ -5598,7 +5598,6 @@ public class Salary_process_DEMO_NEW extends javax.swing.JFrame {
             //input doubles
             Double day_duty = 0.00;
             Double night_duty = 0.00;
-            Double halfDay_duty = 0.00;
             Double day2_duty = 0.00;
             Double extra_duty = 0.00;
             Double ot_hours = 0.00;
@@ -5806,9 +5805,10 @@ public class Salary_process_DEMO_NEW extends javax.swing.JFrame {
                     shift_amount = Double.parseDouble(total_shift_amt);
                 }
 
+                String empSalaryType = "shiftBasis";
                 // --> check employee salary type == Gross Salary Basis or Shift Rate Basis
                 if (D_emp_gross != 0.00) { //having gross salary (supervisor)
-
+                    empSalaryType = "grossBasis";
                     //checking --> mase wada kala yuthu dina ganana employee ge gross ekata adala updarima dina gananata wada adu ho wadi bawa
                     Double month_days_for_gross = 0.0;
                     if (working_days_for_month >= D_emp_max_for_gross) {
@@ -6073,7 +6073,13 @@ public class Salary_process_DEMO_NEW extends javax.swing.JFrame {
 
                 if (LocType.equals("Type04")) {
 
-                    Double bal_salary = total_duty_amount - (basic_salary + bra + total_ot_amount);
+                    Double bal_salary = 0.00;
+                    if (empSalaryType.equals("grossBasis")) {
+                        bal_salary = total_duty_amount - (basic_salary + bra + total_ot_amount);
+                    } else {
+                        bal_salary = total_duty_amount - (basic_salary + bra);
+                    }
+
                     if (bal_salary > sunday_rate) {
                         System.out.println("bal_salary " + bal_salary);
                         System.out.println("sunday_rate " + sunday_rate);
@@ -6107,7 +6113,9 @@ public class Salary_process_DEMO_NEW extends javax.swing.JFrame {
 
                     } else {
                         sunday = 0.00;
+                        inc = bal_salary;
                     }
+                    inc = bal_salary - sunday;
 
                 }
 
@@ -6118,7 +6126,12 @@ public class Salary_process_DEMO_NEW extends javax.swing.JFrame {
 
                 if (LocType.equals("Type02")) {
 
-                    inc = total_duty_amount - (basic_salary);
+                    if (empSalaryType.equals("grossBasis")) {
+                        inc = total_duty_amount - (basic_salary + bra);
+                    } else {
+                        inc = total_duty_amount - (basic_salary);
+                    }
+
                 }
 
                 if (LocType.equals("Type01") | LocType.equals("Type02")) {
@@ -6224,6 +6237,8 @@ public class Salary_process_DEMO_NEW extends javax.swing.JFrame {
                 gross_salary = 0.00;
                 FinalGross = "0";
 
+                System.out.println("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$  EMP: " + Empno + " OT: " + total_ot_amount + " Attn: " + Attn_Incentive + " $$$$$$$$$$$$$$$$$$$");
+
                 if (LocType.equals("Type02")) {
 // 
 
@@ -6247,8 +6262,8 @@ public class Salary_process_DEMO_NEW extends javax.swing.JFrame {
                 }
                 if (LocType.equals("Type04")) {
 
-                    gross_salary = total_duty_amount + Site_Incentive + shiftTypeAllowance;
                     salary_for_epf = basic_salary + bra + Sunday_Poya_Total;
+                    gross_salary = salary_for_epf + Attn_Incentive + Site_Incentive + total_ot_amount;
                     System.out.println("Type04 SUN= " + Sunday_Poya_Total);
 
                 }
@@ -6288,7 +6303,7 @@ public class Salary_process_DEMO_NEW extends javax.swing.JFrame {
                     epf12 = 0.00;
 
                 }
-
+                System.out.println("2 $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$  EMP: " + Empno + " OT: " + total_ot_amount + " Attn: " + Attn_Incentive + " $$$$$$$$$$$$$$$$$$$");
                 String TotalMachineAllow = String.format("%.2f", MA);
                 //String TotalAttnAllow = String.format("%.2f", AA);
                 String TotalSpclAllow = String.format("%.2f", SA);
@@ -6463,15 +6478,12 @@ public class Salary_process_DEMO_NEW extends javax.swing.JFrame {
                 Double D_other = Double.parseDouble(other);
                 Double D_welfare = Double.parseDouble(Welfare);
 
-                Double dayduty_tempVar = 0.00;
-                String sql_1 = "select * ,SUM(Day),SUM(Half), SUM(Night+DN),SUM(DayTwo)  from emp_atten_summery where EMPno='" + Empno + "'  and Month='" + month + "' and Year='" + year + "' ";
+                String sql_1 = "select * ,SUM(Day+(Half/2)), SUM(Night+DN),SUM(DayTwo)  from emp_atten_summery where EMPno='" + Empno + "'  and Month='" + month + "' and Year='" + year + "' ";
                 PreparedStatement pst_1 = con.prepareStatement(sql_1);
                 ResultSet rs_1 = pst_1.executeQuery();
                 while (rs_1.next()) {
-                    halfDay_duty = Double.parseDouble(rs_1.getString("SUM(Day)"));
-                    dayduty_tempVar = Double.parseDouble(rs_1.getString("SUM(Day)"));
 
-                    day_duty = dayduty_tempVar + (halfDay_duty / 2);
+                    day_duty = Double.parseDouble(rs_1.getString("SUM(Day+(Half/2))"));
                     day2_duty = Double.parseDouble(rs_1.getString("SUM(DayTwo)"));
                     night_duty = Double.parseDouble(rs_1.getString("SUM(Night+DN)"));
 
@@ -6557,6 +6569,1436 @@ public class Salary_process_DEMO_NEW extends javax.swing.JFrame {
                     Stamp = "0.00";
                     stmp = 0.00;
                 }
+
+                System.out.println("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$  EMP: " + Empno + " OT: " + total_ot_amount + " Attn: " + Attn_Incentive + " $$$$$$$$$$$$$$$$$$$");
+
+                Double total_Deductions = D_uniform + D_loan + D_loan2 + D_advance + D_advance2 + D_rental + D_meals + D_death + D_other + epf8 + D_welfare + D_festival + stmp;
+                Double net_pay = gross_salary - total_Deductions;
+                String sql_save = "insert into  salary_final_site_employees values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)  ";
+                PreparedStatement pst_save = con.prepareStatement(sql_save);
+                pst_save.setString(1, Empno);
+                pst_save.setString(2, EPFno);
+                pst_save.setString(3, EmpName);
+                pst_save.setString(4, Rank);
+                pst_save.setString(5, Loc);
+                pst_save.setString(6, String.format("%.1f", day_duty));
+                pst_save.setString(7, String.format("%.1f", night_duty));
+                pst_save.setString(8, String.format("%.1f", total_duty));
+                pst_save.setString(9, FinalBRA);
+                pst_save.setString(10, FinalBasic);
+                pst_save.setString(11, String.format("%.2f", Sunday_Poya_Total));
+                pst_save.setString(12, String.format("%.2f", salary_for_epf));//SalaryforEPF
+                pst_save.setString(13, String.format("%.2f", total_ot_amount));
+                pst_save.setString(14, String.format("%.2f", Attn_Incentive));
+                pst_save.setString(15, String.format("%.2f", Site_Incentive));
+                pst_save.setString(16, (FinalGross));
+                pst_save.setString(17, String.format("%.2f", etf3));
+                pst_save.setString(18, String.format("%.2f", epf12));
+                pst_save.setString(19, String.format("%.2f", aa_amount));
+                pst_save.setString(20, String.format("%.2f", MA));
+                pst_save.setString(21, String.format("%.2f", SA));
+                pst_save.setString(22, String.format("%.2f", OA));
+                pst_save.setString(23, String.format("%.2f", D_welfare));
+                pst_save.setString(24, String.format("%.2f", D_advance));
+                pst_save.setString(25, String.format("%.2f", D_loan));
+                pst_save.setString(26, String.format("%.2f", D_other));
+                pst_save.setString(27, String.format("%.2f", D_uniform));
+                pst_save.setString(28, String.format("%.2f", D_meals));
+                pst_save.setString(29, String.format("%.2f", epf8));
+                pst_save.setString(30, String.format("%.2f", total_Deductions));//
+                pst_save.setString(31, String.format("%.2f", net_pay));//
+                pst_save.setString(32, PayType);
+                pst_save.setString(33, month);
+                pst_save.setString(34, year);
+                pst_save.setString(35, Company);
+                pst_save.setString(36, BankCode);
+                pst_save.setString(37, "NEW");
+                pst_save.setString(38, epf_duty);
+                pst_save.setString(39, String.format("%.2f", D_loan2));//
+                pst_save.setString(40, String.format("%.2f", D_advance2));//D_festival
+                pst_save.setString(41, String.format("%.2f", D_festival));//
+                pst_save.setString(42, SalaryType);//
+                pst_save.setString(43, LocName);//
+                pst_save.setString(44, ComAdd);//
+                pst_save.setString(45, BranchCode);//
+                pst_save.setString(46, BranchName);//
+                pst_save.setString(47, BankName);//
+                pst_save.setString(48, Acc);//
+                pst_save.setString(49, "0");//IsLocked
+                pst_save.setString(50, LocType);
+                pst_save.setString(51, Stamp);
+                pst_save.setString(52, DisplayRank);
+                pst_save.setString(53, ot_hrs);
+                pst_save.setString(54, String.format("%.1f", day2_duty));
+                pst_save.execute();
+
+                //data got from emp_atten_main
+                Empno = "";
+                Rank = "";
+                Loc = "";
+                DayDuty = "";
+                NightDuty = "";
+                DayRate = "";
+                NightRate = "";
+                OThours = "";
+                OTRate = "0";
+                Company = "0";
+                Meal = "0";
+                Rental = "0";
+                HavingGross = "0";
+                ComCode = "0";
+
+                //data got from employee_reg
+                EmpName = "0";
+                PayType = "0";
+                EPFno = "0";
+                emp_gross_salary = "0";
+                emp_basic_salary = "0";
+                emp_bra_salary = "0";
+                isExtraShiftAllowed = "0";
+                EPFActive = "0";
+                MaxShiftsforGross = "0";
+                emp_def_loc = "0";
+                Bank = "0";
+
+                //data got from salary_rates
+                MaxShiftForBasic = "0";
+                MaxShiftForBRA = "0";
+                perDayBasic = "0";
+                perDayBRA = "0";
+                Welfare = "0.00";
+                ExtraShiftRate = "0";
+                AttnAllow = "0";
+                MaxShiftForAttnAllow = "0";
+
+                //data from emp_attn_summery
+                ExtraShifts = "0";
+
+                //data from salary manual earnings
+                SundayAmount = "0";
+                PoyaDayAmount = "0";
+                Sundays = "0";
+                Poyadays = "0";
+                MachineAllow = "0";
+                AttenAlolw = "0";
+                OtherAlolw = "0";
+                SpecialAlolw = "0";
+
+                //input doubles
+                day_duty = 0.00;
+                day2_duty = 0.00;
+                night_duty = 0.00;
+                extra_duty = 0.00;
+                ot_hours = 0.00;
+                day_rate = 0.00;
+                night_rate = 0.00;
+                extra_rate = 0.00;
+                ot_rate = 0.00;
+                max_days_for_basic = 0.00;
+                per_day_basic = 0.00;
+                max_days_for_bra = 0.00;
+                per_day_bra = 0.00;
+                sunday = 0.00;
+                poyaday = 0.00;
+                sunday_rate = 0.00;
+                poya_rate = 0.00;
+
+                //total doubles
+                total_day_amount = 0.00;
+                total_night_amount = 0.00;
+                total_ot_amount = 0.00;
+                total_extra_duty_amount = 0.00;
+                total_duty = 0.00;
+                total_duty_amount = 0.00;
+                bra = 0.00;
+                basic_salary = 0.00;
+                total_sunday_amount = 0.00;
+                total_poya_amount = 0.00;
+                Attn_Incentive = 0.00;
+                Site_Incentive = 0.00;
+                salary_for_epf = 0.00;
+                aa_amount = 0.00;
+                gross_salary = 0.00;
+                epf8 = 0.00;
+                epf12 = 0.00;
+                etf3 = 0.00;
+                //Final Outputs
+                TotalDayAmount = "";
+                TotalNightAmount = "";
+                TotalDutyAmount = "";
+                FinalOTAmount = "";
+                FinalBasic = "";
+                FinalBRA = "";
+                FinalGross = "";
+                FinalAttnIncentive = "";
+
+                TotalExtraDutyAmount = "";
+                TotalSundayAmount = "";
+                TotalPoyadayAmount = "";
+            }//rs
+
+            String sql_del = "delete from salary_final_site_employees where  Status='OLD' and SalaryType='" + SalaryType + "' and Month='" + month + "' and Year='" + year + "' ";
+            PreparedStatement pst_del = con.prepareStatement(sql_del);
+            pst_del.execute();
+
+//            //data got from emp_atten_main
+//            Empno = "";
+//            Rank = "";
+//            Loc = "";
+//            DayDuty = "";
+//            NightDuty = "";
+//            DayRate = "";
+//            NightRate = "";
+//            OThours = "";
+//            OTRate = "0";
+//            Company = "0";
+//            Meal = "0";
+//            Rental = "0";
+//            HavingGross = "0";
+//
+//            //data got from employee_reg
+//            EmpName = "0";
+//            PayType = "0";
+//            EPFno = "0";
+//            emp_gross_salary = "0";
+//            emp_basic_salary = "0";
+//            emp_bra_salary = "0";
+//            isExtraShiftAllowed = "0";
+//            EPFActive = "0";
+//            MaxShiftsforGross = "0";
+//            emp_def_loc = "0";
+//            Bank = "0";
+//
+//            //data got from salary_rates
+//            MaxShiftForBasic = "0";
+//            MaxShiftForBRA = "0";
+//            perDayBasic = "0";
+//            perDayBRA = "0";
+//            Welfare = "0.00";
+//            ExtraShiftRate = "0";
+//            AttnAllow = "0";
+//            MaxShiftForAttnAllow = "0";
+//
+//            //data from emp_attn_summery
+//            ExtraShifts = "0";
+//
+//            //data from salary manual earnings
+//            SundayAmount = "0";
+//            PoyaDayAmount = "0";
+//            Sundays = "0";
+//            Poyadays = "0";
+//            MachineAllow = "0";
+//            AttenAlolw = "0";
+//            OtherAlolw = "0";
+//            SpecialAlolw = "0";
+//
+//            //input doubles
+//            day_duty = 0.00;
+//            night_duty = 0.00;
+//            extra_duty = 0.00;
+//            ot_hours = 0.00;
+//            day_rate = 0.00;
+//            night_rate = 0.00;
+//            extra_rate = 0.00;
+//            ot_rate = 0.00;
+//            max_days_for_basic = 0.00;
+//            per_day_basic = 0.00;
+//            max_days_for_bra = 0.00;
+//            per_day_bra = 0.00;
+//            sunday = 0.00;
+//            poyaday = 0.00;
+//            sunday_rate = 0.00;
+//            poya_rate = 0.00;
+//
+//            //total doubles
+//            total_day_amount = 0.00;
+//            total_night_amount = 0.00;
+//            total_ot_amount = 0.00;
+//            total_extra_duty_amount = 0.00;
+//            total_duty = 0.00;
+//            total_duty_amount = 0.00;
+//            bra = 0.00;
+//            basic_salary = 0.00;
+//            total_sunday_amount = 0.00;
+//            total_poya_amount = 0.00;
+//            Attn_Incentive = 0.00;
+//            Site_Incentive = 0.00;
+//            salary_for_epf = 0.00;
+//            aa_amount = 0.00;
+//            gross_salary = 0.00;
+//            epf8 = 0.00;
+//            epf12 = 0.00;
+//            etf3 = 0.00;
+//            //Final Outputs
+//            TotalDayAmount = "";
+//            TotalNightAmount = "";
+//            TotalDutyAmount = "";
+//            FinalOTAmount = "";
+//            FinalBasic = "";
+//            FinalBRA = "";
+//            FinalGross = "";
+//            FinalAttnIncentive = "";
+//
+//            TotalExtraDutyAmount = "";
+//            TotalSundayAmount = "";
+//            TotalPoyadayAmount = "";
+            lbl_atten.setText("Updating R-List...");
+            updat_Rlist();
+
+            JOptionPane.showMessageDialog(rootPane, "Salary Processed Complete...!");
+            lbl_atten.setText("Salary  Processed  Succesfully...!");
+            lbl_atten.setForeground(Color.GREEN);
+            lbl_atten.setVisible(true);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(rootPane, "<html>  Employee Salary Processing Error :-<br> ER1258_DOTEx </html> " + e);
+        }
+
+    }
+
+    private void target() {
+
+        lbl_atten.setText("Salary Processing... Please Wait.");
+        lbl_atten.setForeground(Color.red);
+        lbl_atten.setVisible(true);
+        salary_process.setEnabled(false);
+        System.out.println("rest");
+        days_per_month();
+        salary_ReSet_Target_Site_EMP();
+        cal_shiftWiseAllowance();
+
+        try {
+            Connection con = DbConnection.getconnection();
+
+            //data got from emp_atten_main
+            String Empno = "";
+            String Rank = "";
+            String DisplayRank = "";
+            String Loc = "";
+            String DayDuty = "";
+            String NightDuty = "";
+            String DayRate = "";
+            String NightRate = "";
+            String OThours = "";
+            String OTRate = "0";
+            String Company = "0";
+            String ComCode = "0";
+
+            String Meal = "0";
+            String Rental = "0";
+            String HavingGross = "0";
+
+            //data got from employee_reg
+            String EmpName = "0";
+            String PayType = "0";
+            String EPFno = "0";
+            String emp_gross_salary = "0";
+            String emp_basic_salary = "0";
+            String emp_bra_salary = "0";
+            String isExtraShiftAllowed = "0";
+            String EPFActive = "0";
+            String MaxShiftsforGross = "0";
+            String emp_def_loc = "0";
+            String Bank = "0";
+
+            //data got from salary_rates
+            String MaxShiftForBasic = "0";
+            String MaxShiftForBRA = "0";
+            String perDayBasic = "0";
+            String perDayBRA = "0";
+            String Welfare = "0.00";
+            String ExtraShiftRate = "0";
+            String AttnAllow = "0";
+            String MaxShiftForAttnAllow = "0";
+            String SPR = "0";
+            String minShiftforSPR = "0";
+
+            //data from emp_attn_summery
+            String ExtraShifts = "0";
+
+            //data from salary manual earnings
+            String SundayAmount = "0";
+            String PoyaDayAmount = "0";
+            String Sundays = "0";
+            String Poyadays = "0";
+            String MachineAllow = "0";
+            String AttenAlolw = "0";
+            String OtherAlolw = "0";
+            String SpecialAlolw = "0";
+            String AttnAlolw = "0";
+
+            //input doubles
+            Double day_duty = 0.00;
+            Double night_duty = 0.00;
+            Double day2_duty = 0.00;
+            Double extra_duty = 0.00;
+            Double ot_hours = 0.00;
+            Double day_rate = 0.00;
+            Double night_rate = 0.00;
+            Double extra_rate = 0.00;
+            Double ot_rate = 0.00;
+            Double max_days_for_basic = 0.00;
+            Double per_day_basic = 0.00;
+            Double max_days_for_bra = 0.00;
+            Double per_day_bra = 0.00;
+            Double sunday = 0.00;
+            Double poyaday = 0.00;
+            Double sunday_rate = 0.00;
+            Double poya_rate = 0.00;
+
+            //total doubles
+            Double total_day_amount = 0.00;
+            Double total_night_amount = 0.00;
+            Double total_ot_amount = 0.00;
+            Double total_extra_duty_amount = 0.00;
+            Double total_duty = 0.00;
+            Double total_duty_amount = 0.00;
+            Double bra = 0.00;
+            Double basic_salary = 0.00;
+            Double total_sunday_amount = 0.00;
+            Double total_poya_amount = 0.00;
+            Double Attn_Incentive = 0.00;
+            Double Site_Incentive = 0.00;
+            Double Other_Allow = 0.00;
+            Double salary_for_epf = 0.00;
+            Double aa_amount = 0.00;
+            Double ma_amount = 0.00;
+            Double gross_salary = 0.00;
+            Double epf8 = 0.00;
+            Double epf12 = 0.00;
+            Double etf3 = 0.00;
+            //Final Outputs
+            String TotalDayAmount = "";
+            String TotalNightAmount = "";
+            String TotalDutyAmount = "";
+            String FinalOTAmount = "";
+            String FinalBasic = "";
+            String FinalBRA = "";
+            String FinalGross = "";
+            String FinalAttnIncentive = "";
+
+            String TotalExtraDutyAmount = "";
+            String TotalSundayAmount = "";
+            String TotalPoyadayAmount = "";
+
+            String month = cmb_month.getSelectedItem().toString();
+            String year = cmb_year.getSelectedItem().toString();
+
+            String SalaryType = "";
+            String current_status = "";
+            if (cb_final_salary.isSelected()) {
+                SalaryType = "FINAL";
+            } else {
+                SalaryType = "TEMP";
+            }
+
+            String sql_upd = "update salary_final_site_employees set Status='OLD' where SalaryType='" + SalaryType + "' and Month='" + month + "' and Year='" + year + "' ";
+            PreparedStatement pst_upd = con.prepareStatement(sql_upd);
+            pst_upd.execute();
+
+            String sql = "select *,SUM(DayShift+NightShift+DayTwoShift+(HalfDayShift/2))  from emp_atten_main where  Month='" + month + "' and Year='" + year + "'   and Status='processed' group by EPFno    ";
+            PreparedStatement pst = con.prepareStatement(sql);
+            ResultSet rs = pst.executeQuery();
+
+            while (rs.next()) {
+
+                Empno = rs.getString("EPFno");
+                //    Empno = "05178";
+                System.out.println("sql " + Empno);
+                total_duty = rs.getDouble("SUM(DayShift+NightShift+DayTwoShift+(HalfDayShift/2))");
+
+                Double D_emp_gross = 0.00;
+                Double D_emp_basic = 0.00;
+                Double D_emp_bra = 0.00;
+                Double D_emp_max_for_gross = 0.00;
+                String epf_active = "0";
+
+                String sql_emp = "select * from employee_reg where EmployeeNo='" + Empno + "'    ";
+                PreparedStatement pst_emp = con.prepareStatement(sql_emp);
+                ResultSet rs_emp = pst_emp.executeQuery();
+                while (rs_emp.next()) {
+
+                    emp_gross_salary = rs_emp.getString("GrossSalary");
+                    isExtraShiftAllowed = rs_emp.getString("ExtraShiftAllowed");
+                    EPFActive = rs_emp.getString("ActiveEPF");
+                    MaxShiftsforGross = rs_emp.getString("ShiftRate");
+                    emp_basic_salary = rs_emp.getString("BasicSalary");
+                    emp_bra_salary = rs_emp.getString("BRAllowance");
+                    Rank = rs_emp.getString("Designation");
+                    Loc = rs_emp.getString("DefLocation");
+                    //Loc="E202";
+                    epf_active = rs_emp.getString("ActiveEPF");
+                    PayType = rs_emp.getString("PayType");
+                    EPFno = rs_emp.getString("EPFno");
+                    EmpName = rs_emp.getString("NameWithInitials");
+                    ComCode = rs_emp.getString("DefCompany");
+
+                    D_emp_gross = Double.parseDouble(emp_gross_salary);
+                    D_emp_basic = Double.parseDouble(emp_basic_salary);
+                    D_emp_bra = Double.parseDouble(emp_bra_salary);
+                    D_emp_max_for_gross = Double.parseDouble(MaxShiftsforGross);
+
+                }
+
+                String LocName = "";
+                String LocType = "";
+                String loc = "select * from  location_reg where LocCode='" + Loc + "'";
+                PreparedStatement pst_loc = con.prepareStatement(loc);
+                ResultSet rsloc = pst_loc.executeQuery();
+                while (rsloc.next()) {
+
+                    LocName = rsloc.getString("LocName");
+                    LocType = rsloc.getString("Tel3");
+                }
+
+                Double Unit_day_rate = 0.00;
+                Double Unit_night_rate = 0.00;
+
+                String sql3 = "select * from salary_rates where RankCode='" + Rank + "' and LocCode='" + Loc + "' ";
+                PreparedStatement pst3 = con.prepareStatement(sql3);
+                ResultSet rs3 = pst3.executeQuery();
+                while (rs3.next()) {
+
+                    MaxShiftForBasic = rs3.getString("MaxShiftsPerMonth");
+                    MaxShiftForBRA = rs3.getString("MaxShiftsForBRA");
+                    perDayBasic = rs3.getString("MinDayRate");
+                    perDayBRA = rs3.getString("BRAPerDay");
+                    ExtraShiftRate = rs3.getString("ExtraShiftRate");
+                    MaxShiftForAttnAllow = rs3.getString("MaxShiftsAA");
+                    Welfare = rs3.getString("Welfare");
+                    SPR = rs3.getString("SpecialShiftRate");
+                    minShiftforSPR = rs3.getString("minForSPR");
+                    sunday_rate = Double.parseDouble(rs3.getString("Sunday"));
+                    Unit_day_rate = Double.parseDouble(rs3.getString("DayRate"));
+                    Unit_night_rate = Double.parseDouble(rs3.getString("NightRate"));
+                    ot_rate = Double.parseDouble(rs3.getString("OTRate"));
+                }
+
+                if (MaxShiftForBasic == null | MaxShiftForBasic.isEmpty() | MaxShiftForBasic.equals("")) {
+                    MaxShiftForBasic = "0.00";
+                }
+                if (MaxShiftForBRA == null | MaxShiftForBRA.isEmpty() | MaxShiftForBRA.equals("")) {
+                    MaxShiftForBRA = "0.00";
+                }
+                if (perDayBasic == null | perDayBasic.isEmpty() | perDayBasic.equals("")) {
+                    perDayBasic = "0.00";
+                }
+                if (perDayBRA == null | perDayBRA.isEmpty() | perDayBRA.equals("")) {
+                    perDayBRA = "0.00";
+                }
+                if (ExtraShiftRate == null | ExtraShiftRate.isEmpty() | ExtraShiftRate.equals("")) {
+                    ExtraShiftRate = "0.00";
+                }
+
+                Double bra_Max_days = Double.parseDouble(MaxShiftForBRA);
+                Double basic_Max_days = Double.parseDouble(MaxShiftForBasic);
+                Double bra_per_day = Double.parseDouble(perDayBRA);
+                Double basic_per_day = Double.parseDouble(perDayBasic);
+                Double extra_shift_rate = Double.parseDouble(ExtraShiftRate);
+
+                Double shifts_for_aa = Double.parseDouble(MaxShiftForAttnAllow);
+                Double spr = Double.parseDouble(SPR);
+                Double shifts_for_spr = Double.parseDouble(minShiftforSPR);
+
+                Double spr_amount = 0.00;
+
+                if (total_duty >= shifts_for_spr) {
+                    spr_amount = total_duty * spr;
+
+                } else {
+                    spr_amount = 0.00;
+                }
+
+                Double extra_shifts = 0.00;
+                Double extra_shift_amt = 0.00;
+
+                Double working_days_for_month = 0.0;
+                String sql_days = "select * from working_days where Month='" + month + "' and Year='" + year + "' and Loc='" + Loc + "' ";
+                PreparedStatement pst_days = con.prepareStatement(sql_days);
+                ResultSet rs_days = pst_days.executeQuery();
+                while (rs_days.next()) {
+
+                    working_days_for_month = Double.parseDouble(rs_days.getString("Days"));
+                    System.out.println("emp  working_days_for_month " + working_days_for_month + "  " + Empno);
+                }
+
+                //get total duty amount from emp_atten_summery Table
+                Double shift_amount = 0.00;
+                String ot_hrs = "";
+                String sql1 = "select *,SUM(LineAmount),SUM(TotalOTAmount),SUM(OTHours) from emp_atten_summery where EMPno='" + Empno + "' and Month='" + month + "' and Year='" + year + "'   ";
+                PreparedStatement pst1 = con.prepareStatement(sql1);
+                ResultSet rs1 = pst1.executeQuery();
+                while (rs1.next()) {
+                    ot_hrs = rs1.getString("SUM(OTHours)");
+                    String total_shift_amt = rs1.getString("SUM(LineAmount)");
+                    String total_ot_amt = rs1.getString("SUM(TotalOTAmount)");
+
+                    total_ot_amount = Double.parseDouble(total_ot_amt);
+                    shift_amount = Double.parseDouble(total_shift_amt);
+                }
+
+                String empSalaryType = "shiftBasis";
+                // --> check employee salary type == Gross Salary Basis or Shift Rate Basis
+                if (D_emp_gross != 0.00) { //having gross salary (supervisor)
+                    empSalaryType = "grossBasis";
+                    //checking --> mase wada kala yuthu dina ganana employee ge gross ekata adala updarima dina gananata wada adu ho wadi bawa
+                    Double month_days_for_gross = 0.0;
+                    if (working_days_for_month >= D_emp_max_for_gross) {
+                        month_days_for_gross = D_emp_max_for_gross;
+                    } else {
+//                        if (Loc.equals("T154") | Loc.equals("E202")) {
+//                            month_days_for_gross = D_emp_max_for_gross;
+//                        } else {
+                        month_days_for_gross = working_days_for_month;
+//                        }
+
+                    }//<--
+
+                    if (isExtraShiftAllowed.equals("1")) { // having gross with extra shift allowed
+
+                        if (total_duty > month_days_for_gross) {
+                            extra_shifts = total_duty - month_days_for_gross;
+                            extra_shift_amt = extra_shifts * extra_shift_rate;
+                            total_duty_amount = D_emp_gross + extra_shift_amt;
+
+                        } else if (total_duty < month_days_for_gross) {
+                            total_duty_amount = (D_emp_gross / month_days_for_gross) * total_duty;
+
+                        } else {
+                            total_duty_amount = D_emp_gross;
+                        }
+
+                    } else { //no extra shift calcuating ONLY gross amount 
+
+                        if (total_duty >= month_days_for_gross) {
+                            total_duty_amount = D_emp_gross;
+
+                        } else if (total_duty < month_days_for_gross) {
+                            total_duty_amount = (D_emp_gross / month_days_for_gross) * total_duty;
+                        }
+                    }
+
+                } else {//shift basis salary (janitor)
+
+                    total_duty_amount = (shift_amount - total_ot_amount) + spr_amount;
+                    System.out.println("shift_amount " + shift_amount);
+                    System.out.println("total_ot_amount " + total_ot_amount);
+                    System.out.println("spr_amount " + spr_amount);
+                }// <-- check employee salary type 
+
+                //get basic salary for the month
+                String epf_duty = "0";
+                Double D_epf_duty = 0.00;
+                Double days_for_basic = 0.0;
+                if (basic_Max_days == 31) {
+                    days_for_basic = max_days;
+                } else {
+
+                    if (basic_Max_days >= working_days_for_month) {
+                        days_for_basic = working_days_for_month;
+                    } else {
+                        days_for_basic = basic_Max_days;
+                    }
+
+                }
+
+                System.out.println("total_duty " + total_duty);
+                System.out.println("days_for_basic " + days_for_basic);
+
+                if (total_duty >= days_for_basic) {
+                    basic_salary = basic_per_day * days_for_basic;
+                    D_epf_duty = days_for_basic;
+                } else {
+                    basic_salary = basic_per_day * total_duty;
+                    D_epf_duty = total_duty;
+                }
+                FinalBasic = String.format("%.2f", basic_salary);
+                epf_duty = String.format("%.1f", D_epf_duty);
+
+                //get BRA for the month
+                Double days_for_bra = 0.0;
+                if (working_days_for_month >= bra_Max_days) {
+                    days_for_bra = bra_Max_days;
+                } else {
+                    days_for_bra = working_days_for_month;
+                }
+
+                if (total_duty >= days_for_bra) {
+                    bra = bra_per_day * days_for_bra;
+                } else {
+                    bra = bra_per_day * total_duty;
+                }
+                FinalBRA = String.format("%.2f", bra);
+
+                //get incentive amount
+                Double inc = total_duty_amount - (bra + basic_salary);
+                //JOptionPane.showMessageDialog(rootPane, Welfare);
+
+                System.out.println("total_duty_amount: " + total_duty_amount);
+                System.out.println("INC: " + inc);
+                System.out.println("bra: " + bra);
+                System.out.println("basic_salary: " + basic_salary);
+//                if (inc > 0) {
+//                    Attn_Incentive = inc;
+//                } else {
+//                    Attn_Incentive = 0.00;
+//                }
+//                FinalAttnIncentive = String.format("%.2f", Attn_Incentive);
+
+                // Attendance Allowance
+                aa_amount = 0.00;
+                String sqlattn = "select *,COUNT(*) from attn_allowance where  LocCode='" + Loc + "' and Rank='" + Rank + "' ";
+                PreparedStatement pstattn = con.prepareStatement(sqlattn);
+                ResultSet rsattn = pstattn.executeQuery();
+                while (rsattn.next()) {
+
+                    if (rsattn.getInt("COUNT(*)") > 0) {
+                        String sqlattn2 = "select * from attn_allowance where  LocCode='" + Loc + "' and Rank='" + Rank + "' ";
+                        PreparedStatement pstattn2 = con.prepareStatement(sqlattn2);
+                        ResultSet rsattn2 = pstattn2.executeQuery();
+                        while (rsattn2.next()) {
+
+                            Double max = Double.parseDouble(rsattn2.getString("Max"));
+                            Double min = Double.parseDouble(rsattn2.getString("Min"));
+                            Double amt = Double.parseDouble(rsattn2.getString("Amount"));
+                            System.out.println("********************************************************min: " + min);
+                            if (max_days < 30) {
+                                min = min - 1;
+                            }
+
+                            System.out.println("********************************************************after if min: " + min);
+
+                            if ((max >= total_duty) && (total_duty >= min)) {
+
+                                aa_amount = amt;
+                            }
+
+                        }
+
+                    } else {
+
+                    }
+
+                }
+
+                //get machine allowance
+                System.out.println("---------- loc " + Loc);
+                System.out.println("---------- loc " + Rank);
+
+                ma_amount = 0.00;
+                String sqlma = "select *,COUNT(*) from machine_allowance where  LocCode='" + Loc + "' and Rank='" + Rank + "' ";
+                PreparedStatement pstma = con.prepareStatement(sqlma);
+                ResultSet rsma = pstma.executeQuery();
+                while (rsma.next()) {
+
+                    if (rsma.getInt("COUNT(*)") > 0) {
+                        String sqlma2 = "select * from machine_allowance where  LocCode='" + Loc + "' and Rank='" + Rank + "' ";
+                        PreparedStatement pstma2 = con.prepareStatement(sqlma2);
+                        ResultSet rsma2 = pstma2.executeQuery();
+                        while (rsma2.next()) {
+
+                            Double days = Double.parseDouble(rsma2.getString("Days"));
+                            String devide = rsma2.getString("Devide");
+                            Double amt = Double.parseDouble(rsma2.getString("Amount"));
+
+                            if (devide.equals("1")) {
+
+                                if (total_duty <= days) {
+                                    ma_amount = (amt / days) * total_duty;
+                                } else {
+                                    ma_amount = amt;
+                                }
+
+                            } else {
+
+                                if (total_duty >= days) {
+                                    ma_amount = amt;
+                                } else {
+                                    ma_amount = 0.00;
+                                }
+
+                                System.out.println("**********ma**** = " + ma_amount);
+
+                            }
+
+                        }
+
+                    } else {
+
+                    }
+
+                }
+
+                //get employee's Earnig details
+                String sql4 = "select * from salary_manual_earnings where  EMPno='" + Empno + "' and Month='" + cmb_month.getSelectedItem().toString() + "' and Year='" + cmb_year.getSelectedItem().toString() + "' ";
+                PreparedStatement pst4 = con.prepareStatement(sql4);
+                ResultSet rs4 = pst4.executeQuery();
+                while (rs4.next()) {
+
+                    PoyaDayAmount = rs4.getString("PerDayAmt_Poyaday");
+                    Poyadays = rs4.getString("PoyaDays");
+                    MachineAllow = rs4.getString("MachineAllow");
+                    SpecialAlolw = rs4.getString("SpecialAllow");
+                    OtherAlolw = rs4.getString("OtherAllow");
+
+                }//rs4
+
+//                Machine Allowance
+//                Special Allowance
+//                Attendance Allowance
+//                Other Allowance
+//                Additional Shift Amount 
+//                        Poya
+                String ear_type;
+                Double ear_amt;
+                AttnAlolw = "0";
+                String AditionalAllow = "0";
+                String poya = "0";
+                PreparedStatement pst_er = con.prepareStatement("select  *,SUM(Amount) from salary_earnings where EMPno='" + Empno + "' and Month='" + cmb_month.getSelectedItem().toString() + "' and Year='" + cmb_year.getSelectedItem().toString() + "'  group by Type ");
+                ResultSet rs_er = pst_er.executeQuery();
+                while (rs_er.next()) {
+
+                    ear_type = rs_er.getString("Type");
+                    ear_amt = rs_er.getDouble("SUM(Amount)");
+
+                    if (ear_type.equals("Machine Allowance")) {
+                        MachineAllow = Double.toString(ear_amt);
+                    } else if (ear_type.equals("Special Allowance")) {
+                        SpecialAlolw = Double.toString(ear_amt);
+                    } else if (ear_type.equals("Attendance Allowance")) {
+                        AttnAlolw = Double.toString(ear_amt);
+                    } else if (ear_type.equals("Other Allowance")) {
+                        OtherAlolw = Double.toString(ear_amt);
+                    } else if (ear_type.equals("Additional Shift Amount")) {
+                        AditionalAllow = Double.toString(ear_amt);
+                    } else if (ear_type.equals("Poya")) {
+                        poya = Double.toString(ear_amt);
+                    }
+
+                }
+
+                if (MachineAllow == null | MachineAllow.isEmpty() | MachineAllow.equals("")) {
+                    MachineAllow = "0.00";
+                }
+
+                if (SpecialAlolw == null | SpecialAlolw.isEmpty() | SpecialAlolw.equals("")) {
+                    SpecialAlolw = "0.00";
+                }
+                if (OtherAlolw == null | OtherAlolw.isEmpty() | OtherAlolw.equals("")) {
+                    OtherAlolw = "0.00";
+                }
+                if (AttnAlolw == null | AttnAlolw.isEmpty() | AttnAlolw.equals("")) {
+                    AttnAlolw = "0.00";
+                }
+
+                System.out.println(Empno);
+
+                //sunday amount 
+                System.out.println("LocType " + Loc + " - " + LocType);
+                System.out.println("sunday cal type 03 ====== ");
+                System.out.println("max days " + max_days);
+                sunday = 0.00;
+                if (LocType.equals("Type03")) {
+                    String maxdays = Double.toString(max_days);
+                    String[] intnum = maxdays.split("\\.");
+                    String new_maxdays = intnum[0];
+
+                    PreparedStatement pst_manual_sun = con.prepareStatement("select * from sundays_manual where MonthDays='" + new_maxdays + "' ");
+                    ResultSet rs_manual_sun = pst_manual_sun.executeQuery();
+                    while (rs_manual_sun.next()) {
+
+                        Double working_days = Double.parseDouble(rs_manual_sun.getString("WorkingDays"));
+                        Double month_days = Double.parseDouble(rs_manual_sun.getString("MonthDays"));
+                        System.out.println("****************************************-------------------------- ");
+                        System.out.println("sunday cal type 03 ====== ");
+                        System.out.println("max days " + max_days);
+                        System.out.println("month days " + month_days);
+                        System.out.println("working days " + working_days);
+                        System.out.println("total_duty " + total_duty);
+
+                        inc = total_duty_amount - (bra + basic_salary + total_ot_amount);
+
+//                        System.out.println("EMP " + Empno);
+//                        System.out.println("total_duty_amount " + total_duty_amount);
+//                        System.out.println("bra " + bra);
+//                        System.out.println("basic_salary " + basic_salary);
+//                        System.out.println("total_ot_amount " + total_ot_amount);
+//                        System.out.println("inc " + inc);
+                        if (Objects.equals(total_duty, working_days)) {
+                            System.out.println("total_duty >= working_days ");
+                            sunday = Double.parseDouble(rs_manual_sun.getString("Sundays")) * sunday_rate;
+                            System.out.println("sunday " + sunday);
+                            System.out.println("sunday_rate " + sunday_rate);
+                            System.out.println("Sundays " + rs_manual_sun.getString("Sundays"));
+                        } else {
+                            System.out.println("else");
+
+                        }
+                        System.out.println("****************************************--------------------------- ");
+
+                    }
+
+                }
+
+                if (LocType.equals("Type04")) {
+
+                    Double bal_salary = 0.00;
+                    if (empSalaryType.equals("grossBasis")) {
+                        bal_salary = total_duty_amount - (basic_salary + bra + total_ot_amount);
+                    } else {
+                        bal_salary = total_duty_amount - (basic_salary + bra);
+                    }
+
+                    if (bal_salary > sunday_rate) {
+                        System.out.println("bal_salary " + bal_salary);
+                        System.out.println("sunday_rate " + sunday_rate);
+
+                        Double sundays = bal_salary / sunday_rate;
+                        if (sundays > 0) {
+
+                            String sun = Double.toString(sundays);
+                            System.out.println("sun " + sun);
+                            String[] number = sun.split("\\.");
+                            String intnum = number[0];
+                            String decinum = "0." + number[1];
+                            System.out.println("intnum " + intnum);
+                            System.out.println("decinum " + decinum);
+
+                            Double int_number = Double.parseDouble(intnum);
+                            Double decimal_number = Double.parseDouble(decinum);
+
+                            Double real_sundays = 0.0;
+                            if (int_number >= 5.0) {
+                                real_sundays = 5.0;
+                            } else {
+                                real_sundays = int_number;
+                            }
+
+                            sunday = real_sundays * sunday_rate;
+                            inc = bal_salary - sunday;
+                        } else {
+                            sunday = 0.00;
+                        }
+
+                    } else {
+                        sunday = 0.00;
+                        inc = bal_salary;
+                    }
+                    inc = bal_salary - sunday;
+
+                }
+
+                if (LocType.equals("Type01")) {
+
+                    inc = total_duty_amount - (basic_salary + bra);
+                }
+
+                if (LocType.equals("Type02")) {
+
+                    if (empSalaryType.equals("grossBasis")) {
+                        inc = total_duty_amount - (basic_salary + bra);
+                    } else {
+                        inc = total_duty_amount - (basic_salary);
+                    }
+
+                }
+
+                if (LocType.equals("Type01") | LocType.equals("Type02")) {
+
+                    // inc = total_duty_amount - (basic_salary + bra);
+                    PreparedStatement pst_sun = con.prepareStatement("select *,SUM(Sunday) from special_holiday_earnings where EMPno='" + Empno + "' and Month='" + month + "' and Year='" + year + "'");
+                    ResultSet rs_sun = pst_sun.executeQuery();
+                    while (rs_sun.next()) {
+
+                        //SundayAmount = rs_sun.getString("SUM(Sunday)");
+                        sunday = rs_sun.getDouble("SUM(Sunday)");
+
+                        if (sunday == null) {
+                            sunday = 0.00;
+                        }
+
+                    }
+                }
+
+                if (LocType.equals("Type05")) {
+                    PreparedStatement pst_sum = con.prepareStatement("select *,SUM(DayTwoShift+NightShift),SUM(DayShift) from emp_atten_main where EPFno='" + Empno + "' and Month='" + month + "' and Year='" + year + "'");
+                    ResultSet rs_sum = pst_sum.executeQuery();
+                    while (rs_sum.next()) {
+                        Double d2 = Double.parseDouble(rs_sum.getString("SUM(DayTwoShift+NightShift)"));
+                        Double d1 = Double.parseDouble(rs_sum.getString("SUM(DayShift)"));
+
+                        Double ot_d1 = d1 * ot_rate;
+                        Double ot_d2 = (d2 * 2) * ot_rate;
+
+                        total_ot_amount = ot_d1 + ot_d2;
+
+                        Double bal_salary = total_duty_amount - (basic_salary + bra + total_ot_amount);
+                        if (bal_salary > 0) {
+                            inc = bal_salary;
+                        }
+
+                    }
+                }
+
+                TotalSundayAmount = String.format("%.2f", sunday);
+                System.out.println("TotalSundayAmount " + TotalSundayAmount);
+                Double get_acctual_poya_amt = 0.00;
+                if (LocType.equals("Type04") | LocType.equals("Type02") | LocType.equals("Type01")) {
+
+                    PreparedStatement pst_poya = con.prepareStatement("select *,SUM(Poyaday) from special_holiday_earnings where EMPno='" + Empno + "' and Month='" + month + "' and Year='" + year + "'");
+                    ResultSet rs_poya = pst_poya.executeQuery();
+                    while (rs_poya.next()) {
+
+                        //SundayAmount = rs_sun.getString("SUM(Sunday)");
+                        get_acctual_poya_amt = rs_poya.getDouble("SUM(Poyaday)");
+
+//                    if (get_acctual_poya_amt == null) {
+//                        get_acctual_poya_amt = 0.00;
+//                    }
+                    }
+                }
+
+                poyaday = Double.parseDouble(PoyaDayAmount) + get_acctual_poya_amt;
+
+                TotalPoyadayAmount = String.format("%.2f", poyaday);
+
+                Double Sunday_Poya_Total = poyaday + sunday;
+                System.out.println(Empno);
+
+                if (inc > 0) {
+                    Attn_Incentive = inc;
+                } else {
+                    Attn_Incentive = 0.00;
+                }
+
+                /*
+                get calculated Shift type wise allowance amount and Add it into Attn_Incentive
+                Add shiftTypeAllowance to gross salary where Attn_Incentive is not added (Attn_Incentive is not add to gross in some paytypes)
+                 */
+                Double shiftTypeAllowance = 0.00;
+                String sql_stAllow = "select EMPno,SUM(AllownaceAmt) from  shift_type_wise_allownace_calc where EMPno='" + Empno + "' and Month='" + month + "' and Year='" + year + "' GROUP BY EMPno";
+                PreparedStatement pst_stAllow = con.prepareStatement(sql_stAllow);
+                ResultSet rs_stAllow = pst_stAllow.executeQuery();
+                while (rs_stAllow.next()) {
+                    shiftTypeAllowance = rs_stAllow.getDouble("SUM(AllownaceAmt)");
+                }
+
+                Attn_Incentive = Attn_Incentive + shiftTypeAllowance;
+
+                FinalAttnIncentive = String.format("%.2f", Attn_Incentive);
+
+                Double MA = Double.parseDouble(MachineAllow);
+                Double SA = Double.parseDouble(SpecialAlolw);
+                Double OA = Double.parseDouble(OtherAlolw);
+                Double AA = Double.parseDouble(AttenAlolw);
+                Double POYA = Double.parseDouble(AttenAlolw);
+                Double Aditional = Double.parseDouble(AditionalAllow);
+
+                System.out.println("MA " + MA);
+                System.out.println("SA " + SA);
+                System.out.println("OA " + OA);
+                System.out.println("AA " + AA);
+
+                Site_Incentive = MA + SA + OA + AA + aa_amount + ma_amount + POYA + Aditional;
+
+                FinalOTAmount = String.format("%.2f", total_ot_amount);
+
+                System.out.println(Empno + ": basic= " + basic_salary);
+
+                gross_salary = 0.00;
+                FinalGross = "0";
+
+                System.out.println("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$  EMP: " + Empno + " OT: " + total_ot_amount + " Attn: " + Attn_Incentive + " $$$$$$$$$$$$$$$$$$$");
+
+                if (LocType.equals("Type02")) {
+// 
+
+                    gross_salary = bra + basic_salary + Site_Incentive + Sunday_Poya_Total + total_ot_amount + Attn_Incentive;
+
+                    salary_for_epf = basic_salary + bra;
+                    System.out.println("basic= " + basic_salary);
+                    System.out.println("bra= " + bra);
+                    System.out.println("SUN= " + Sunday_Poya_Total);
+
+                }
+                if (LocType.equals("Type03")) {
+
+                    gross_salary = bra + basic_salary + Site_Incentive + Sunday_Poya_Total + total_ot_amount + Attn_Incentive;
+
+                    salary_for_epf = basic_salary + bra + sunday;
+//                    System.out.println("basic= " + basic_salary);
+//                    System.out.println("bra= " + bra);
+                    System.out.println("Type03 SUN= " + sunday);
+
+                }
+                if (LocType.equals("Type04")) {
+
+                    salary_for_epf = basic_salary + bra + Sunday_Poya_Total;
+                    gross_salary = salary_for_epf + Attn_Incentive + Site_Incentive + total_ot_amount;
+                    System.out.println("Type04 SUN= " + Sunday_Poya_Total);
+
+                }
+                if (LocType.equals("Type05")) {
+
+                    gross_salary = total_duty_amount + MA + SA + OA + AA + shiftTypeAllowance;
+                    salary_for_epf = basic_salary + bra;
+
+                }
+                if (LocType.equals("Type01")) {
+//type 01
+                    salary_for_epf = basic_salary + bra;
+                    gross_salary = total_duty_amount + Site_Incentive + Sunday_Poya_Total + total_ot_amount + shiftTypeAllowance;
+
+                    System.out.println("TYPE 01=================================================================================================================================================================");
+                    System.out.println("Loc " + Loc);
+                    System.out.println("gross_salary = " + "total_duty_amount " + total_duty_amount + "Site_Incentive:" + Site_Incentive + "Sunday_Poya_Total:" + Sunday_Poya_Total + "total_ot_amount:" + total_ot_amount);
+                    System.out.println("salary_for_epf :" + basic_salary + "  " + bra);
+                    System.out.println("TYPE 01=================================================================================================================================================================");
+
+                }
+
+//                salary_for_epf = basic_salary + bra;
+                System.out.println("basic= " + basic_salary);
+
+                System.out.println("Gross= " + gross_salary);
+
+                FinalGross = String.format("%.2f", gross_salary);
+
+                if (epf_active.equals("1")) {
+                    epf8 = salary_for_epf * 0.08;
+                    etf3 = salary_for_epf * 0.03;
+                    epf12 = salary_for_epf * 0.12;
+                } else {
+                    epf8 = 0.00;
+                    etf3 = 0.00;
+                    epf12 = 0.00;
+
+                }
+                System.out.println("2 $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$  EMP: " + Empno + " OT: " + total_ot_amount + " Attn: " + Attn_Incentive + " $$$$$$$$$$$$$$$$$$$");
+                String TotalMachineAllow = String.format("%.2f", MA);
+                //String TotalAttnAllow = String.format("%.2f", AA);
+                String TotalSpclAllow = String.format("%.2f", SA);
+                String TotalOtherAllow = String.format("%.2f", OA);
+//                String TotalGross = String.format("%.2f", Gross);
+                String TotalEPF8 = String.format("%.2f", epf8);
+                String TotalEPF12 = String.format("%.2f", epf12);
+                String TotalETF3 = String.format("%.2f", etf3);
+
+                //**************Deductions***********
+                //Uniform
+                String uniform = "0.00";
+
+//                String sql5 = "select *,SUM(Rental),COUNT(*) from uniform_issue where  EPFno='" + Empno + "' and Status='on-going' ";
+//                PreparedStatement pst5 = con.prepareStatement(sql5);
+//                ResultSet rs5 = pst5.executeQuery();
+//                while (rs5.next()) {
+//
+//                    if (rs5.getInt("COUNT(*)") == 0) {
+//                        uniform = "0.00";
+//                    } else {
+//                        uniform = rs5.getString("SUM(Rental)");
+//                    }
+//                }
+//                if (uniform == null | uniform.isEmpty() | uniform.equals("")) {
+//                    uniform = "0.00";
+//                }
+                //Advance
+                String advance = "0.00";
+                String sql6 = "select *,SUM(Amount),COUNT(*) from salary_advance_1 where  EPFno='" + Empno + "' and PayMonth='" + cmb_month.getSelectedItem().toString() + "' and PayYear='" + cmb_year.getSelectedItem().toString() + "' and Status='PAID'  ";
+                PreparedStatement pst6 = con.prepareStatement(sql6);
+                ResultSet rs6 = pst6.executeQuery();
+                while (rs6.next()) {
+
+                    if (rs6.getInt("COUNT(*)") == 0) {
+                        advance = "0.00";
+                    } else {
+                        advance = rs6.getString("SUM(Amount)");
+                    }
+                }
+                if (advance == null | advance.isEmpty() | advance.equals("")) {
+                    advance = "0.00";
+                }
+
+                //Advance
+//                String advance2 = "0.00";
+//                String sql6_adv = "select *,SUM(Amount),COUNT(*) from salary_advance_2 where  EPFno='" + Empno + "' and PayMonth='" + cmb_month.getSelectedItem().toString() + "' and PayYear='" + cmb_year.getSelectedItem().toString() + "' and Status='PAID'  ";
+//                PreparedStatement pst6_adv = con.prepareStatement(sql6_adv);
+//                ResultSet rs6_adv = pst6_adv.executeQuery();
+//                while (rs6_adv.next()) {
+//
+//                    if (rs6_adv.getInt("COUNT(*)") == 0) {
+//                        advance2 = "0.00";
+//                    } else {
+//                        advance = rs6_adv.getString("SUM(Amount)");
+//                    }
+//                }
+//                if (advance2 == null | advance2.isEmpty() | advance2.equals("")) {
+//                    advance2 = "0.00";
+//                }
+                //Loan
+//                String loan = "0.00";
+//                String loanRef = "0.00";
+//                String sql7 = "select *,SUM(Rental),COUNT(*) from distress_loan where  EPFno='" + Empno + "' and Status='on-going' ";
+//                PreparedStatement pst7 = con.prepareStatement(sql7);
+//                ResultSet rs7 = pst7.executeQuery();
+//                while (rs7.next()) {
+//                    System.out.println("LOAN GET String : " + rs7.getString("SUM(Rental)"));
+//                    if (rs7.getInt("COUNT(*)") <= 0) {
+//                        loan = "0.00";
+//                    } else {
+//                        loan = rs7.getString("SUM(Rental)");
+//                        loanRef = rs7.getString("LoanReference");
+//                    }
+//                    System.out.println("loan : " + loan);
+//
+//                }
+//                if (loan == null | loan.isEmpty() | loan.equals("")) {
+//                    loan = "0.00";
+//                }
+//                System.out.println("loan after if : " + loan);
+//                System.out.println("***************************");
+//
+//                String loan2 = "0.00";
+//                String loanRef2 = "0.00";
+//                String sql7_loan = "select *,SUM(Rental),COUNT(*) from distress_loan_02 where  EPFno='" + Empno + "' and Status='on-going' ";
+//                PreparedStatement pst7_loan = con.prepareStatement(sql7_loan);
+//                ResultSet rs7_loan = pst7_loan.executeQuery();
+//                while (rs7_loan.next()) {
+//
+//                    if (rs7_loan.getInt("COUNT(*)") == 0) {
+//                        loan2 = "0.00";
+//                    } else {
+//                        loan2 = rs7_loan.getString("SUM(Rental)");
+//                        loanRef2 = rs7_loan.getString("LoanReference");
+//                    }
+//                }
+//                if (loan2 == null | loan2.isEmpty() | loan2.equals("")) {
+//                    loan2 = "0.00";
+//                }
+                String festvl = "0.00";
+                String festvlRef = "0.00";
+                String sql7_festvl = "select *,SUM(Amount),COUNT(*) from salary_advance_festival_monthly where  EMPno='" + Empno + "' and Month='" + month + "' and Year='" + year + "' ";
+                PreparedStatement pst7_festvl = con.prepareStatement(sql7_festvl);
+                ResultSet rs7_festvl = pst7_festvl.executeQuery();
+                while (rs7_festvl.next()) {
+
+                    if (rs7_festvl.getInt("COUNT(*)") == 0) {
+                        festvl = "0.00";
+                    } else {
+                        festvl = rs7_festvl.getString("SUM(Amount)");
+                        //festvlRef = rs7_festvl.getString("LoanReference");
+                    }
+                }
+                if (festvl == null | festvl.isEmpty() | festvl.equals("")) {
+                    festvl = "0.00";
+                }
+
+                //Other Deductions
+//                String rental = "0.00";
+//                String meals = "0.00";
+//                String death = "0.00";
+//                String other = "0.00";
+//                String sql8 = "select *,SUM(Rental),SUM(Meal),SUM(OtherDeduc),SUM(DeathDonation),COUNT(*) from salary_manual_deductions where  EPFno='" + Empno + "' and Month='" + month + "' and Year='" + year + "' ";
+//                PreparedStatement pst8 = con.prepareStatement(sql8);
+//                ResultSet rs8 = pst8.executeQuery();
+//                while (rs8.next()) {
+//
+//                    if (rs8.getInt("COUNT(*)") == 0) {
+//                        rental = "0.00";
+//                        meals = "0.00";
+//                        death = "0.00";
+//                        other = "0.00";
+//                    } else {
+//                        rental = rs8.getString("SUM(Rental)");
+//                        meals = rs8.getString("SUM(Meal)");
+//                        death = rs8.getString("SUM(DeathDonation)");
+//                        other = rs8.getString("SUM(OtherDeduc)");
+//                    }
+//                }
+//                if (rental == null | rental.isEmpty() | rental.equals("")) {
+//                    rental = "0.00";
+//                }
+//                if (meals == null | meals.isEmpty() | meals.equals("")) {
+//                    meals = "0.00";
+//                }
+//                if (death == null | death.isEmpty() | death.equals("")) {
+//                    death = "0.00";
+//                }
+//                if (other == null | other.isEmpty() | other.equals("")) {
+//                    other = "0.00";
+//                }
+//
+//                //Employee Details
+//                if (Welfare == null | Welfare.isEmpty() | Welfare.equals("")) {
+//                    Welfare = "0.00";
+//                }
+                String type = "";
+                Double amt = 0.00;
+//                                Double D_loan1 = 0.00;
+//                                Double D_loan2 = 0.00;
+//                                Double D_uniform = 0.00;
+//                                Double D_shoe = 0.00;
+//                                Double D_festival = 0.00;
+
+//                                Double Meal = 0.00;
+                Double Fines = 0.00;
+//                                Double Rental = 0.00;
+                Double LessShift = 0.00;
+                Double OtherDeductions = 0.00;
+                Double PaidSalary = 0.00;
+                Double Insuarance = 0.00;
+                Double Death = 0.00;
+                Double Adv2 = 0.00;
+
+                Double D_uniform = 0.00;
+                Double D_loan = 0.00;
+                Double D_loan2 = 0.00;
+                Double D_advance = Double.parseDouble(advance);
+                Double D_advance2 = 0.00;
+                Double D_festival = Double.parseDouble(festvl);
+                Double D_rental = 0.00;
+                Double D_meals = 0.00;
+                Double D_death = 0.00;
+                Double D_other = 0.00;
+                Double D_welfare = Double.parseDouble(Welfare);
+
+                //Fines
+                //Rent
+                //Death Donation
+                //Meals
+                //Other
+                //Uniform
+                //Insuarance
+                //Special Advance
+                //Loan 01
+                //Loan 02
+                //Fines
+                PreparedStatement pstd = con.prepareStatement("select  *,SUM(Amount) from salary_deductions where EMPno='" + Empno + "' and Month='" + month + "' and Year='" + year + "' and Status='on-going' group by Type ");
+                ResultSet rs5d = pstd.executeQuery();
+                while (rs5d.next()) {
+
+                    type = rs5d.getString("Type");
+                    amt = rs5d.getDouble("SUM(Amount)");
+
+                    if (type.equals("Uniform")) {
+                        D_uniform = amt;
+                    } else if (type.equals("Loan 01")) {
+                        D_loan = amt;
+                    } else if (type.equals("Loan 02")) {
+                        D_loan2 = amt;
+                    } else if (type.equals("Meals")) {
+                        D_meals = amt;
+                    } else if (type.equals("Other")) {
+                        D_other = amt;
+                    } else if (type.equals("Rent")) {
+                        D_rental = amt;
+                    } else if (type.equals("Fines")) {
+                        Fines = amt;
+                    } else if (type.equals("Death Donation")) {
+                        D_death = amt;
+                    } else if (type.equals("Insuarance")) {
+                        Insuarance = amt;
+                    } else if (type.equals("Special Advance")) {
+                        D_advance2 = amt;
+                    }
+
+                }
+              
+
+                String sql_1 = "select * ,SUM(Day+(Half/2)), SUM(Night+DN),SUM(DayTwo)  from emp_atten_summery where EMPno='" + Empno + "'  and Month='" + month + "' and Year='" + year + "' ";
+                PreparedStatement pst_1 = con.prepareStatement(sql_1);
+                ResultSet rs_1 = pst_1.executeQuery();
+                while (rs_1.next()) {
+
+                    day_duty = Double.parseDouble(rs_1.getString("SUM(Day+(Half/2))"));
+                    day2_duty = Double.parseDouble(rs_1.getString("SUM(DayTwo)"));
+                    night_duty = Double.parseDouble(rs_1.getString("SUM(Night+DN)"));
+
+                }
+
+//                String LocName = "";
+//                String loc = "select * from  location_reg where LocCode='" + Loc + "'";
+//                PreparedStatement pst_loc = con.prepareStatement(loc);
+//                ResultSet rsloc = pst_loc.executeQuery();
+//                while (rsloc.next()) {
+//
+//                    LocName = rsloc.getString("LocName");
+//                }
+                String ComAdd = "";
+                String com = "select * from company_reg where ComCode='" + ComCode + "'";
+                PreparedStatement pst_com = con.prepareStatement(com);
+                ResultSet rscom = pst_com.executeQuery();
+                while (rscom.next()) {
+
+                    Company = rscom.getString("ComName");
+                    ComAdd = rscom.getString("ComAddress");
+                }
+
+                String BankCode = "";
+                String BankName = "";
+                String BranchCode = "";
+                String BranchName = "";
+                String Acc = "";
+
+                String bank = "select * from emp_bank_acc where EMPno='" + Empno + "'";
+                System.out.println("---**********---------");
+                System.out.println("Emp: " + Empno);
+                PreparedStatement pst_bank = con.prepareStatement(bank);
+                ResultSet rsbank = pst_bank.executeQuery();
+                while (rsbank.next()) {
+
+                    BankCode = rsbank.getString("Bank");
+                    BranchCode = rsbank.getString("Branch");
+                    Acc = rsbank.getString("AccName");
+
+                    System.out.println("BankCode: " + BankCode);
+                    System.out.println("BranchCode: " + BranchCode);
+                    System.out.println("Acc: " + Acc);
+
+                }
+
+                String bank2 = "select * from bank_main where BankCode='" + BankCode + "' group by BankCode ";
+                PreparedStatement pst_bank2 = con.prepareStatement(bank2);
+                ResultSet rsbank2 = pst_bank2.executeQuery();
+                while (rsbank2.next()) {
+
+                    BankName = rsbank2.getString("BankName");
+                    System.out.println("BankName: " + BankName);
+
+                }
+
+                String bank3 = "select * from bank_main where BankCode='" + BankCode + "' and BranchCode='" + BranchCode + "' ";
+                PreparedStatement pst_bank3 = con.prepareStatement(bank3);
+                ResultSet rsbank3 = pst_bank3.executeQuery();
+                while (rsbank3.next()) {
+
+                    BranchName = rsbank3.getString("BranchName");
+                    System.out.println("BranchName: " + BranchName);
+                    System.out.println("------*****************---------");
+
+                }
+
+                String disrank = "select * from rank where RankCode='" + Rank + "'  ";
+                PreparedStatement pst_disrank = con.prepareStatement(disrank);
+                ResultSet rsdisrank = pst_disrank.executeQuery();
+                while (rsdisrank.next()) {
+
+                    DisplayRank = rsdisrank.getString("RankDescription");
+
+                }
+
+                String Stamp = "0.00";
+                Double stmp = 0.00;
+                if (PayType.equals("Bank")) {
+                    Stamp = "25.00";
+                    stmp = 25.00;
+                } else {
+                    Stamp = "0.00";
+                    stmp = 0.00;
+                }
+
+                System.out.println("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$  EMP: " + Empno + " OT: " + total_ot_amount + " Attn: " + Attn_Incentive + " $$$$$$$$$$$$$$$$$$$");
 
                 Double total_Deductions = D_uniform + D_loan + D_loan2 + D_advance + D_advance2 + D_rental + D_meals + D_death + D_other + epf8 + D_welfare + D_festival + stmp;
                 Double net_pay = gross_salary - total_Deductions;
