@@ -12,7 +12,6 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import javax.swing.ImageIcon;
-import javax.swing.JOptionPane;
 import net.sf.jasperreports.engine.JasperCompileManager;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
@@ -136,6 +135,8 @@ public class RPT_Pay_Slip extends javax.swing.JFrame {
         jComboBox1 = new javax.swing.JComboBox<>();
         jSeparator11 = new javax.swing.JSeparator();
         jLabel11 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        cb_withoutEPF = new javax.swing.JCheckBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -150,8 +151,8 @@ public class RPT_Pay_Slip extends javax.swing.JFrame {
         getContentPane().add(cmb_month, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 50, 100, -1));
 
         cmb_year.setFont(new java.awt.Font("Times New Roman", 0, 15)); // NOI18N
-        cmb_year.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "2015", "2016", "2017", "2018", "2019", "2020", "2021" }));
-        cmb_year.setSelectedIndex(6);
+        cmb_year.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022" }));
+        cmb_year.setSelectedIndex(7);
         cmb_year.addPopupMenuListener(new javax.swing.event.PopupMenuListener() {
             public void popupMenuCanceled(javax.swing.event.PopupMenuEvent evt) {
             }
@@ -175,8 +176,8 @@ public class RPT_Pay_Slip extends javax.swing.JFrame {
                 jButton3ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 210, 360, -1));
-        getContentPane().add(jSeparator10, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 270, 380, 10));
+        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 230, 360, -1));
+        getContentPane().add(jSeparator10, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 290, 380, 10));
 
         txt_search.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         txt_search.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -189,31 +190,31 @@ public class RPT_Pay_Slip extends javax.swing.JFrame {
                 txt_searchKeyPressed(evt);
             }
         });
-        getContentPane().add(txt_search, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 310, 220, 30));
+        getContentPane().add(txt_search, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 330, 220, 30));
 
         txt_empid.setEditable(false);
         txt_empid.setFont(new java.awt.Font("Georgia", 0, 13)); // NOI18N
-        getContentPane().add(txt_empid, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 360, 100, 21));
+        getContentPane().add(txt_empid, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 380, 100, 21));
 
         txt_name.setEditable(false);
         txt_name.setFont(new java.awt.Font("Georgia", 0, 13)); // NOI18N
-        getContentPane().add(txt_name, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 390, 260, 21));
+        getContentPane().add(txt_name, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 410, 260, 21));
 
         jLabel6.setFont(new java.awt.Font("Georgia", 0, 12)); // NOI18N
         jLabel6.setText("Employee Search :-");
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 310, -1, 30));
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 330, -1, 30));
 
         jLabel7.setFont(new java.awt.Font("Georgia", 0, 12)); // NOI18N
         jLabel7.setText("Name :-");
-        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 390, -1, 20));
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 410, -1, 20));
 
         jLabel9.setFont(new java.awt.Font("Georgia", 0, 12)); // NOI18N
         jLabel9.setText("Rank :-");
-        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 360, -1, 20));
+        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 380, -1, 20));
 
         txt_rank.setEditable(false);
         txt_rank.setFont(new java.awt.Font("Georgia", 0, 13)); // NOI18N
-        getContentPane().add(txt_rank, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 360, 90, 21));
+        getContentPane().add(txt_rank, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 380, 90, 21));
 
         jButton4.setFont(new java.awt.Font("Georgia", 0, 14)); // NOI18N
         jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Fine Print.png"))); // NOI18N
@@ -223,11 +224,11 @@ public class RPT_Pay_Slip extends javax.swing.JFrame {
                 jButton4ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 420, 300, -1));
+        getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 440, 300, -1));
 
         jLabel8.setFont(new java.awt.Font("Georgia", 0, 12)); // NOI18N
         jLabel8.setText("EPF No.  :-");
-        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 360, -1, 20));
+        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 380, -1, 20));
 
         cmb_loc_type.setFont(new java.awt.Font("Georgia", 0, 14)); // NOI18N
         cmb_loc_type.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ground & Admin Staff", "Director Staff" }));
@@ -268,7 +269,7 @@ public class RPT_Pay_Slip extends javax.swing.JFrame {
         getContentPane().add(txt_locCode, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 100, 50, 23));
 
         jLabel4.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Employee Wise Pay Slip", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Georgia", 0, 12))); // NOI18N
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 280, 370, 190));
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 300, 370, 190));
 
         jComboBox1.setFont(new java.awt.Font("Georgia", 0, 14)); // NOI18N
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "with R-List", "without R-List", "R-List Only" }));
@@ -276,8 +277,18 @@ public class RPT_Pay_Slip extends javax.swing.JFrame {
         getContentPane().add(jSeparator11, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 380, 10));
 
         jLabel11.setFont(new java.awt.Font("Georgia", 0, 12)); // NOI18N
-        jLabel11.setText("Employee Type:-");
-        getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 120, 100, 70));
+        jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel11.setText("Salary Status : ");
+        getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 160, 100, 20));
+
+        jLabel12.setFont(new java.awt.Font("Georgia", 0, 12)); // NOI18N
+        jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel12.setText("Employee Type : ");
+        getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 130, 100, 20));
+
+        cb_withoutEPF.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        cb_withoutEPF.setText("Without 3% & 12%");
+        getContentPane().add(cb_withoutEPF, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 200, 160, -1));
 
         pack();
         setLocationRelativeTo(null);
@@ -312,14 +323,24 @@ public class RPT_Pay_Slip extends javax.swing.JFrame {
                 }
 
 //                String sql = "SELECT * FROM salary_final_site_employees where Month='" + cmb_month.getSelectedItem().toString() + "' and Year ='" + cmb_year.getSelectedItem().toString() + "' and Loc='" + txt_locCode.getText() + "'";
+                String path = "";
                 if (lbl_locType.getText().equals("Type01") | lbl_locType.getText().equals("Type02")) {
-                    jd = JRXmlLoader.load("Reports\\PaySlip.jrxml");
-                    System.out.println("payslip");
-                } else {
-                    jd = JRXmlLoader.load("Reports\\PaySlip_Type03and04.jrxml");
-                    System.out.println("payslip type 03");
-                }
 
+                    if (cb_withoutEPF.isSelected()) {
+                        path = "Reports\\PaySlip_WithoutEPF.jrxml";
+                    } else {
+                        path = "Reports\\PaySlip.jrxml";
+                    }
+
+                } else {
+                    if (cb_withoutEPF.isSelected()) {
+                        path = "Reports\\PaySlip_Type03and04_WithoutEPF.jrxml";
+                    } else {
+                        path = "Reports\\PaySlip_Type03and04.jrxml";
+                    }
+
+                }
+                jd = JRXmlLoader.load(path);
                 JRDesignQuery newQuery = new JRDesignQuery();
                 newQuery.setText(sql);
                 System.out.println(sql);
@@ -612,6 +633,7 @@ public class RPT_Pay_Slip extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JCheckBox cb_withoutEPF;
     private javax.swing.JComboBox cmb_defLocation;
     private javax.swing.JComboBox cmb_loc_type;
     private javax.swing.JComboBox cmb_month;
@@ -621,6 +643,7 @@ public class RPT_Pay_Slip extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel6;

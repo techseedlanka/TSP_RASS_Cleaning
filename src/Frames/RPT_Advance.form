@@ -165,6 +165,7 @@
             <StringItem index="3" value="2022"/>
           </StringArray>
         </Property>
+        <Property name="selectedIndex" type="int" value="3"/>
       </Properties>
       <Events>
         <EventHandler event="popupMenuWillBecomeInvisible" listener="javax.swing.event.PopupMenuListener" parameters="javax.swing.event.PopupMenuEvent" handler="cmb_yearPopupMenuWillBecomeInvisible"/>

@@ -88,7 +88,7 @@ public class LocationReg extends javax.swing.JFrame {
     String inchargeID;
 
     private void TitleBar() {
-
+        company();
         try {
             Statement st = DbConnection.getconnection().createStatement();
             ResultSet rs = st.executeQuery("select * from company_reg where isDefault=1 ");
@@ -111,6 +111,30 @@ public class LocationReg extends javax.swing.JFrame {
     public void get_incharge() {
 
         inchargeID = "name";
+
+    }
+    
+    private void company() {
+
+        try {
+
+            Statement st = DbConnection.getconnection().createStatement();
+            ResultSet rs = st.executeQuery("select * from company_reg order by ComName ");
+
+            //TextAutoCompleter ta = new TextAutoCompleter(txt_search);
+
+            while (rs.next()) {
+
+                String code = rs.getString("ComCode");
+               // String Name = rs.getString("LocName");
+                
+                cmb_loc_def_company.addItem(code);
+               // ta.addItem(Name);
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
     }
 
@@ -486,7 +510,6 @@ public class LocationReg extends javax.swing.JFrame {
         getContentPane().add(btn_LocCarder, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 340, 30, 20));
 
         cmb_loc_def_company.setFont(new java.awt.Font("Georgia", 0, 14)); // NOI18N
-        cmb_loc_def_company.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Express", "Target" }));
         cmb_loc_def_company.addPopupMenuListener(new javax.swing.event.PopupMenuListener() {
             public void popupMenuCanceled(javax.swing.event.PopupMenuEvent evt) {
             }

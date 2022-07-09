@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Embassy of Maldives_SQL" language="groovy" pageWidth="1008" pageHeight="612" orientation="Landscape" columnWidth="968" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="5ed56b25-badd-4765-97ae-238516938b78">
-	<property name="ireport.zoom" value="1.6934217901613322"/>
-	<property name="ireport.x" value="536"/>
+	<property name="ireport.zoom" value="1.2722928551174546"/>
+	<property name="ireport.x" value="12"/>
 	<property name="ireport.y" value="0"/>
 	<queryString>
 		<![CDATA[]]>
@@ -47,6 +47,9 @@
 	<field name="epf_duty" class="java.lang.Double"/>
 	<field name="stamp" class="java.lang.Double"/>
 	<field name="rpt_emp_bankName" class="java.lang.String"/>
+	<field name="bankEmpCount" class="java.lang.Integer"/>
+	<field name="handEmpCount" class="java.lang.Integer"/>
+	<field name="slipEmpCount" class="java.lang.Integer"/>
 	<variable name="net_sum" class="java.lang.Double" calculation="Sum">
 		<variableExpression><![CDATA[$F{netpay}]]></variableExpression>
 	</variable>
@@ -70,6 +73,9 @@
 	</variable>
 	<variable name="Total_loan1_loan2" class="java.lang.Double">
 		<variableExpression><![CDATA[$F{rpt_loan1}+$F{loan2}]]></variableExpression>
+	</variable>
+	<variable name="emp_count" class="java.lang.Integer">
+		<variableExpression><![CDATA[$F{bankEmpCount}+$F{handEmpCount}+$F{slipEmpCount}]]></variableExpression>
 	</variable>
 	<background>
 		<band splitType="Stretch"/>
@@ -799,7 +805,7 @@
 		</band>
 	</pageFooter>
 	<summary>
-		<band height="103" splitType="Stretch">
+		<band height="143" splitType="Stretch">
 			<line>
 				<reportElement x="0" y="0" width="968" height="1" uuid="8f1aa244-a6f3-458d-89e9-5b119ab46db2"/>
 				<graphicElement>
@@ -814,7 +820,7 @@
 				<text><![CDATA[Pay Ledger Summery :-]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="177" y="3" width="105" height="25" uuid="786bf104-fc54-4194-aed4-58154dadf4c7"/>
+				<reportElement x="177" y="35" width="69" height="25" uuid="786bf104-fc54-4194-aed4-58154dadf4c7"/>
 				<box>
 					<pen lineWidth="0.25" lineStyle="Solid"/>
 					<topPen lineWidth="0.25" lineStyle="Solid"/>
@@ -826,10 +832,10 @@
 					<font fontName="Times New Roman" size="12" isBold="true"/>
 					<paragraph rightIndent="5"/>
 				</textElement>
-				<text><![CDATA[Bank Total = ]]></text>
+				<text><![CDATA[Bank :]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="177" y="53" width="105" height="25" uuid="b39b30b6-d4bd-401c-ad8f-a80da0f0569a"/>
+				<reportElement x="177" y="85" width="69" height="25" uuid="b39b30b6-d4bd-401c-ad8f-a80da0f0569a"/>
 				<box>
 					<pen lineWidth="0.25" lineStyle="Solid"/>
 					<topPen lineWidth="0.25" lineStyle="Solid"/>
@@ -841,10 +847,10 @@
 					<font fontName="Times New Roman" size="12" isBold="true"/>
 					<paragraph rightIndent="5"/>
 				</textElement>
-				<text><![CDATA[Slip Total =]]></text>
+				<text><![CDATA[Slip Total :]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="177" y="28" width="105" height="25" uuid="5e675ccd-fca6-4245-941b-55b2b8a0c4cb"/>
+				<reportElement x="177" y="60" width="69" height="25" uuid="5e675ccd-fca6-4245-941b-55b2b8a0c4cb"/>
 				<box>
 					<pen lineWidth="0.25" lineStyle="Solid"/>
 					<topPen lineWidth="0.25" lineStyle="Solid"/>
@@ -856,10 +862,10 @@
 					<font fontName="Times New Roman" size="12" isBold="true"/>
 					<paragraph rightIndent="5"/>
 				</textElement>
-				<text><![CDATA[Hand Total = ]]></text>
+				<text><![CDATA[Hand :]]></text>
 			</staticText>
 			<textField pattern="#,##0.00;-#,##0.00">
-				<reportElement x="282" y="3" width="100" height="25" uuid="a3f2d7be-67f7-4648-a14a-4a4d01cbf735"/>
+				<reportElement x="246" y="35" width="100" height="25" uuid="a3f2d7be-67f7-4648-a14a-4a4d01cbf735"/>
 				<box>
 					<pen lineWidth="0.25" lineStyle="Solid"/>
 					<topPen lineWidth="0.25" lineStyle="Solid"/>
@@ -867,13 +873,14 @@
 					<bottomPen lineWidth="0.25" lineStyle="Solid"/>
 					<rightPen lineWidth="0.25" lineStyle="Solid"/>
 				</box>
-				<textElement verticalAlignment="Middle">
+				<textElement textAlignment="Right" verticalAlignment="Middle">
 					<font fontName="Times New Roman" size="12" isBold="true"/>
+					<paragraph rightIndent="5"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{bank}]]></textFieldExpression>
 			</textField>
 			<textField pattern="#,##0.00;-#,##0.00">
-				<reportElement x="282" y="53" width="100" height="25" uuid="6105e22d-5edd-4819-b70b-5e1265bc87ad"/>
+				<reportElement x="246" y="85" width="100" height="25" uuid="6105e22d-5edd-4819-b70b-5e1265bc87ad"/>
 				<box>
 					<pen lineWidth="0.25" lineStyle="Solid"/>
 					<topPen lineWidth="0.25" lineStyle="Solid"/>
@@ -881,13 +888,14 @@
 					<bottomPen lineWidth="0.25" lineStyle="Solid"/>
 					<rightPen lineWidth="0.25" lineStyle="Solid"/>
 				</box>
-				<textElement verticalAlignment="Middle">
+				<textElement textAlignment="Right" verticalAlignment="Middle">
 					<font fontName="Times New Roman" size="12" isBold="true"/>
+					<paragraph rightIndent="5"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{slip}]]></textFieldExpression>
 			</textField>
 			<textField pattern="#,##0.00;-#,##0.00">
-				<reportElement x="282" y="28" width="100" height="25" uuid="1fca786c-450a-4dc0-a5c6-ca11e286f527"/>
+				<reportElement x="246" y="60" width="100" height="25" uuid="1fca786c-450a-4dc0-a5c6-ca11e286f527"/>
 				<box>
 					<pen lineWidth="0.25" lineStyle="Solid"/>
 					<topPen lineWidth="0.25" lineStyle="Solid"/>
@@ -895,13 +903,14 @@
 					<bottomPen lineWidth="0.25" lineStyle="Solid"/>
 					<rightPen lineWidth="0.25" lineStyle="Solid"/>
 				</box>
-				<textElement verticalAlignment="Middle">
+				<textElement textAlignment="Right" verticalAlignment="Middle">
 					<font fontName="Times New Roman" size="12" isBold="true"/>
+					<paragraph rightIndent="5"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{hand}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="177" y="78" width="105" height="25" uuid="4ecc4213-3032-4700-82ee-d54ffe303ff9"/>
+				<reportElement x="177" y="110" width="69" height="25" uuid="4ecc4213-3032-4700-82ee-d54ffe303ff9"/>
 				<box>
 					<pen lineWidth="0.25" lineStyle="Solid"/>
 					<topPen lineWidth="0.25" lineStyle="Solid"/>
@@ -913,10 +922,10 @@
 					<font fontName="Times New Roman" size="12" isBold="true" isUnderline="true"/>
 					<paragraph rightIndent="5"/>
 				</textElement>
-				<text><![CDATA[Net Salary Total =]]></text>
+				<text><![CDATA[Total :]]></text>
 			</staticText>
 			<textField pattern="#,##0.00;-#,##0.00">
-				<reportElement x="282" y="78" width="100" height="25" uuid="380d9103-e794-48e4-9f3a-b3cdffd1ad1d"/>
+				<reportElement x="246" y="110" width="100" height="25" uuid="380d9103-e794-48e4-9f3a-b3cdffd1ad1d"/>
 				<box>
 					<pen lineWidth="0.25" lineStyle="Solid"/>
 					<topPen lineWidth="0.25" lineStyle="Solid"/>
@@ -924,8 +933,9 @@
 					<bottomPen lineWidth="0.25" lineStyle="Solid"/>
 					<rightPen lineWidth="0.25" lineStyle="Solid"/>
 				</box>
-				<textElement verticalAlignment="Middle">
+				<textElement textAlignment="Right" verticalAlignment="Middle">
 					<font fontName="Times New Roman" size="14" isBold="true" isUnderline="true"/>
+					<paragraph rightIndent="5"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$V{net_sum}]]></textFieldExpression>
 			</textField>
@@ -1044,6 +1054,111 @@
 					<paragraph rightIndent="2"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$V{loan_02_total}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="246" y="10" width="100" height="25" uuid="724a657d-7ae7-4a13-a61e-ab99b10ece9f"/>
+				<box>
+					<pen lineWidth="0.5" lineStyle="Solid"/>
+					<topPen lineWidth="0.5" lineStyle="Solid"/>
+					<leftPen lineWidth="0.5" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.5" lineStyle="Solid"/>
+					<rightPen lineWidth="0.5" lineStyle="Solid"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12" isBold="true"/>
+					<paragraph rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Net Salary Total]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="177" y="10" width="69" height="25" uuid="bc6e7839-17fe-46d3-b803-96cc0be2b558"/>
+				<box>
+					<pen lineWidth="0.5" lineStyle="Solid"/>
+					<topPen lineWidth="0.5" lineStyle="Solid"/>
+					<leftPen lineWidth="0.5" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.5" lineStyle="Solid"/>
+					<rightPen lineWidth="0.5" lineStyle="Solid"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12" isBold="true"/>
+					<paragraph rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Pay Type]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="346" y="10" width="75" height="25" uuid="75d9cb0d-f78e-4cb3-962e-ac506d83449b"/>
+				<box>
+					<pen lineWidth="0.5" lineStyle="Solid"/>
+					<topPen lineWidth="0.5" lineStyle="Solid"/>
+					<leftPen lineWidth="0.5" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.5" lineStyle="Solid"/>
+					<rightPen lineWidth="0.5" lineStyle="Solid"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12" isBold="true"/>
+					<paragraph rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[EMP. Count]]></text>
+			</staticText>
+			<textField pattern="#,##0;-#,##0">
+				<reportElement x="346" y="35" width="75" height="25" uuid="4dabe2c3-2d2b-4c68-89c7-147a2f97ab98"/>
+				<box>
+					<pen lineWidth="0.25" lineStyle="Solid"/>
+					<topPen lineWidth="0.25" lineStyle="Solid"/>
+					<leftPen lineWidth="0.25" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.25" lineStyle="Solid"/>
+					<rightPen lineWidth="0.25" lineStyle="Solid"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12" isBold="true"/>
+					<paragraph rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{bankEmpCount}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0;-#,##0">
+				<reportElement x="346" y="60" width="75" height="25" uuid="a7c3d148-9940-444b-95d8-39e5b50e03c3"/>
+				<box>
+					<pen lineWidth="0.25" lineStyle="Solid"/>
+					<topPen lineWidth="0.25" lineStyle="Solid"/>
+					<leftPen lineWidth="0.25" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.25" lineStyle="Solid"/>
+					<rightPen lineWidth="0.25" lineStyle="Solid"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12" isBold="true"/>
+					<paragraph rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{handEmpCount}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0;-#,##0">
+				<reportElement x="346" y="84" width="75" height="25" uuid="87ecb334-69f4-4659-84be-b7335eb17293"/>
+				<box>
+					<pen lineWidth="0.25" lineStyle="Solid"/>
+					<topPen lineWidth="0.25" lineStyle="Solid"/>
+					<leftPen lineWidth="0.25" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.25" lineStyle="Solid"/>
+					<rightPen lineWidth="0.25" lineStyle="Solid"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12" isBold="true"/>
+					<paragraph rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{slipEmpCount}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0;-#,##0">
+				<reportElement x="346" y="110" width="75" height="25" uuid="878cdd5b-d4e3-46e1-94f6-9a4da602571d"/>
+				<box>
+					<pen lineWidth="0.25" lineStyle="Solid"/>
+					<topPen lineWidth="0.25" lineStyle="Solid"/>
+					<leftPen lineWidth="0.25" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.25" lineStyle="Solid"/>
+					<rightPen lineWidth="0.25" lineStyle="Solid"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="14" isBold="true" isUnderline="true"/>
+					<paragraph rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{emp_count}]]></textFieldExpression>
 			</textField>
 		</band>
 	</summary>

@@ -163,8 +163,8 @@ public class EMP_BankAcc_Details extends javax.swing.JFrame {
 
         } else {
 
-            for (int i = 0; nrow>i; i++) {
-                jp3.setValue(i+1);
+            for (int i = 0; nrow > i; i++) {
+                jp3.setValue(i + 1);
                 System.out.println(i);
                 bean_EMP_Bank_Acc bds = new bean_EMP_Bank_Acc();
                 bds.setUnit(cmb_defLocation.getSelectedItem().toString());
@@ -235,6 +235,7 @@ public class EMP_BankAcc_Details extends javax.swing.JFrame {
         txt_locCode = new javax.swing.JTextField();
         cmb_defLocation = new javax.swing.JComboBox();
         jLabel16 = new javax.swing.JLabel();
+        jButton5 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -442,7 +443,7 @@ public class EMP_BankAcc_Details extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 340, 110, 40));
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 340, 110, 40));
 
         jButton2.setFont(new java.awt.Font("Georgia", 0, 16)); // NOI18N
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Save.png"))); // NOI18N
@@ -463,6 +464,7 @@ public class EMP_BankAcc_Details extends javax.swing.JFrame {
         });
         getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 50, 110, 40));
 
+        jTable1.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -542,6 +544,15 @@ public class EMP_BankAcc_Details extends javax.swing.JFrame {
         jLabel16.setFont(new java.awt.Font("Georgia", 0, 14)); // NOI18N
         jLabel16.setText("Location :-");
         getContentPane().add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 10, -1, 40));
+
+        jButton5.setFont(new java.awt.Font("Georgia", 0, 12)); // NOI18N
+        jButton5.setText("COPY");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 340, 90, 40));
 
         pack();
         setLocationRelativeTo(null);
@@ -664,6 +675,14 @@ public class EMP_BankAcc_Details extends javax.swing.JFrame {
 
     private void txt_empNameKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_empNameKeyPressed
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            txt_bankName.setText("");
+            txt_branchName.setText("");
+            txt_bankCode.setText("");
+            txt_branchCode.setText("");
+            txt_AccName.setText("");
+            txt_nic.setText("");
+            txt_address.setText("");
+
             get_emp_bank_details();
             txt_bankNameKeyPressed(evt);
             txt_branchNameKeyPressed(evt);
@@ -686,7 +705,7 @@ public class EMP_BankAcc_Details extends javax.swing.JFrame {
             try {
 
                 Statement st = DbConnection.getconnection().createStatement();
-                ResultSet rs = st.executeQuery("select * from bank_main where BranchName='" + txt_branchName.getText() + "' OR BranchCode='" + txt_branchName.getText() + "' and BankCode='"+txt_bankCode.getText()+"' ");
+                ResultSet rs = st.executeQuery("select * from bank_main where BranchName='" + txt_branchName.getText() + "' OR BranchCode='" + txt_branchName.getText() + "' and BankCode='" + txt_bankCode.getText() + "' ");
                 while (rs.next()) {
 
                     String code = rs.getString("BranchCode");
@@ -768,6 +787,17 @@ public class EMP_BankAcc_Details extends javax.swing.JFrame {
             txt_nic.setEnabled(true);
             txt_branchName.setEnabled(true);
 
+            CC_bankName = "";
+            CC_bankCode = "";
+            CC_branchName = "";
+            CC_branchCode = "";
+            CC_Acc = "";
+            CC_NIC = "";
+            CC_add = "";
+            CC_payType = "";
+
+            jButton5.setText("COPY");
+
         } else {
         }
 
@@ -801,9 +831,9 @@ public class EMP_BankAcc_Details extends javax.swing.JFrame {
                 pst.setString(7, txt_address.getText().trim());
 
                 pst.executeUpdate();
-                
+
                 PreparedStatement pst_update = null;
-                String update = "update  employee_reg set PayType='"+cmb_payType.getSelectedItem().toString()+"' where EmployeeNo='" + txt_empCode.getText() + "'";
+                String update = "update  employee_reg set PayType='" + cmb_payType.getSelectedItem().toString() + "' where EmployeeNo='" + txt_empCode.getText() + "'";
                 pst_update = con.prepareStatement(update);
                 pst_update.executeUpdate();
 
@@ -908,6 +938,52 @@ public class EMP_BankAcc_Details extends javax.swing.JFrame {
 
         }
     }//GEN-LAST:event_cmb_defLocationPopupMenuWillBecomeInvisible
+
+    String CC_bankName = "";
+    String CC_bankCode = "";
+    String CC_branchName = "";
+    String CC_branchCode = "";
+    String CC_Acc = "";
+    String CC_NIC = "";
+    String CC_add = "";
+    String CC_payType = "";
+
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+
+        if (jButton5.getText().equals("COPY")) {
+            CC_bankName = txt_bankName.getText();
+            CC_bankCode = txt_bankCode.getText();
+            CC_branchName = txt_branchName.getText();
+            CC_branchCode = txt_branchCode.getText();
+            CC_Acc = txt_AccName.getText();
+            CC_NIC = txt_nic.getText();
+            CC_add = txt_address.getText();
+            CC_payType = cmb_payType.getSelectedItem().toString();
+            jButton5.setText("PASTE");
+        } else if (jButton5.getText().equals("PASTE")) {
+            txt_bankName.setText(CC_bankName);
+            txt_bankCode.setText(CC_bankCode);
+            txt_branchName.setText(CC_branchName);
+            txt_branchCode.setText(CC_branchCode);
+            txt_AccName.setText(CC_Acc);
+            txt_nic.setText(CC_NIC);
+            txt_address.setText(CC_add);
+            cmb_payType.setSelectedItem(CC_payType);
+            CC_bankName = "";
+            CC_bankCode = "";
+            CC_branchName = "";
+            CC_branchCode = "";
+            CC_Acc = "";
+            CC_NIC = "";
+            CC_add = "";
+            CC_payType = "";
+            jButton5.setText("COPY");
+
+        }
+
+
+    }//GEN-LAST:event_jButton5ActionPerformed
 
     public void get() {
         long start = System.currentTimeMillis();
@@ -1068,7 +1144,7 @@ public class EMP_BankAcc_Details extends javax.swing.JFrame {
                 } else {
                     for (int i = 0; nrow > i; i++) {
 
-                        jp3.setValue(i+1);
+                        jp3.setValue(i + 1);
                         String emp = jTable1.getModel().getValueAt(i, 0).toString();
 
                         String sql1 = null;
@@ -1153,7 +1229,7 @@ public class EMP_BankAcc_Details extends javax.swing.JFrame {
 
                 } else {
                     for (int i = 0; nrow > i; i++) {
-                        jp3.setValue(i+1);
+                        jp3.setValue(i + 1);
                         String emp = jTable1.getModel().getValueAt(i, 0).toString();
 
                         String sql1 = null;
@@ -1253,6 +1329,7 @@ public class EMP_BankAcc_Details extends javax.swing.JFrame {
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;

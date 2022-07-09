@@ -84,8 +84,12 @@ public class bean_data_salary {
     private Double festival;
     private Double epf_duty;
     private Double stamp;
+
+    private String rpt_emp_bankName;
     
-      private String rpt_emp_bankName;
+    private int bankEmpCount;
+    private int handEmpCount;
+    private int slipEmpCount;
 
     /**
      * @return the rpt_epf
@@ -995,6 +999,48 @@ public class bean_data_salary {
      */
     public void setRpt_emp_bankName(String rpt_emp_bankName) {
         this.rpt_emp_bankName = rpt_emp_bankName;
+    }
+
+    /**
+     * @return the bankEmpCount
+     */
+    public int getBankEmpCount() {
+        return bankEmpCount;
+    }
+
+    /**
+     * @param bankEmpCount the bankEmpCount to set
+     */
+    public void setBankEmpCount(int bankEmpCount) {
+        this.bankEmpCount = bankEmpCount;
+    }
+
+    /**
+     * @return the handEmpCount
+     */
+    public int getHandEmpCount() {
+        return handEmpCount;
+    }
+
+    /**
+     * @param handEmpCount the handEmpCount to set
+     */
+    public void setHandEmpCount(int handEmpCount) {
+        this.handEmpCount = handEmpCount;
+    }
+
+    /**
+     * @return the slipEmpCount
+     */
+    public int getSlipEmpCount() {
+        return slipEmpCount;
+    }
+
+    /**
+     * @param slipEmpCount the slipEmpCount to set
+     */
+    public void setSlipEmpCount(int slipEmpCount) {
+        this.slipEmpCount = slipEmpCount;
     }
 
 }

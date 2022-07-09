@@ -7,19 +7,15 @@ package Frames;
 
 import java.awt.Color;
 import java.awt.Toolkit;
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
-import static java.util.Collections.list;
 import java.util.Vector;
 
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import net.sf.jasperreports.engine.JRExporterParameter;
 import net.sf.jasperreports.engine.JasperCompileManager;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
@@ -28,7 +24,6 @@ import net.sf.jasperreports.engine.JasperReport;
 import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 import net.sf.jasperreports.engine.design.JRDesignQuery;
 import net.sf.jasperreports.engine.design.JasperDesign;
-import net.sf.jasperreports.engine.export.JRPdfExporter;
 import net.sf.jasperreports.engine.xml.JRXmlLoader;
 import net.sf.jasperreports.view.JasperViewer;
 import org.jdesktop.swingx.autocomplete.AutoCompleteDecorator;
@@ -54,6 +49,7 @@ public class RPT_pay_ledger extends javax.swing.JFrame {
         jButton2.setVisible(false);
         cmb_loc_type.setVisible(false);
         TitleBar();
+        company();
 
     }
 
@@ -62,6 +58,30 @@ public class RPT_pay_ledger extends javax.swing.JFrame {
         this.setTitle("Pay Ledger");
 
         setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("techseed.png")));
+
+    }
+    
+     private void company() {
+
+        try {
+
+            Statement st = DbConnection.getconnection().createStatement();
+            ResultSet rs = st.executeQuery("select * from company_reg order by ComName ");
+
+            //TextAutoCompleter ta = new TextAutoCompleter(txt_search);
+
+            while (rs.next()) {
+
+                String code = rs.getString("ComCode");
+               // String Name = rs.getString("LocName");
+                
+                cmb_company.addItem(code);
+               // ta.addItem(Name);
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
     }
 
@@ -312,7 +332,7 @@ public class RPT_pay_ledger extends javax.swing.JFrame {
         cmb_loc_type = new javax.swing.JComboBox();
         jButton2 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
-        jComboBox2 = new javax.swing.JComboBox<>();
+        cmb_company = new javax.swing.JComboBox<>();
         jButton5 = new javax.swing.JButton();
         CB_Signing = new javax.swing.JCheckBox();
         jCheckBox2 = new javax.swing.JCheckBox();
@@ -432,18 +452,17 @@ public class RPT_pay_ledger extends javax.swing.JFrame {
         });
         getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 350, 390, 40));
 
-        jComboBox2.setFont(new java.awt.Font("Georgia", 0, 14)); // NOI18N
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Express", "Target" }));
-        jComboBox2.addPopupMenuListener(new javax.swing.event.PopupMenuListener() {
+        cmb_company.setFont(new java.awt.Font("Georgia", 0, 14)); // NOI18N
+        cmb_company.addPopupMenuListener(new javax.swing.event.PopupMenuListener() {
             public void popupMenuCanceled(javax.swing.event.PopupMenuEvent evt) {
             }
             public void popupMenuWillBecomeInvisible(javax.swing.event.PopupMenuEvent evt) {
-                jComboBox2PopupMenuWillBecomeInvisible(evt);
+                cmb_companyPopupMenuWillBecomeInvisible(evt);
             }
             public void popupMenuWillBecomeVisible(javax.swing.event.PopupMenuEvent evt) {
             }
         });
-        getContentPane().add(jComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 30, 90, -1));
+        getContentPane().add(cmb_company, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 30, 90, -1));
 
         jButton5.setFont(new java.awt.Font("Georgia", 0, 14)); // NOI18N
         jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Print.png"))); // NOI18N
@@ -927,23 +946,23 @@ public class RPT_pay_ledger extends javax.swing.JFrame {
                 if (jComboBox1.getSelectedIndex() == 0) { //with RList
                     Report_name = "With R-List" + " - " + process_type;
                     sql = "select * from salary_final_site_employees where Loc='" + loc + "' and Month='" + month + "' and Year='" + year + "' and SalaryType='" + process_type + "' ";
-                    sql_bank = "select *,SUM(NetPay) from salary_final_site_employees where PayType='Bank' and Loc='" + loc + "' and Month='" + month + "' and Year='" + year + "' and SalaryType='" + process_type + "' ";
-                    sql_hand = "select *,SUM(NetPay) from salary_final_site_employees where PayType='Hand' and Loc='" + loc + "' and Month='" + month + "' and Year='" + year + "' and SalaryType='" + process_type + "' ";
-                    sql_slip = "select *,SUM(NetPay) from salary_final_site_employees where PayType='Slip' and Loc='" + loc + "' and Month='" + month + "' and Year='" + year + "' and SalaryType='" + process_type + "' ";
+                    sql_bank = "select *,SUM(NetPay),COUNT(*) from salary_final_site_employees where PayType='Bank' and Loc='" + loc + "' and Month='" + month + "' and Year='" + year + "' and SalaryType='" + process_type + "' ";
+                    sql_hand = "select *,SUM(NetPay),COUNT(*) from salary_final_site_employees where PayType='Hand' and Loc='" + loc + "' and Month='" + month + "' and Year='" + year + "' and SalaryType='" + process_type + "' ";
+                    sql_slip = "select *,SUM(NetPay),COUNT(*) from salary_final_site_employees where PayType='Slip' and Loc='" + loc + "' and Month='" + month + "' and Year='" + year + "' and SalaryType='" + process_type + "' ";
 
                 } else if (jComboBox1.getSelectedIndex() == 1) { //Without RList
                     Report_name = "Without R-List" + " - " + process_type;
                     sql = "select * from salary_final_site_employees where Loc='" + loc + "' and Month='" + month + "' and Year='" + year + "' and Status='NEW' and SalaryType='" + process_type + "'";
-                    sql_bank = "select *,SUM(NetPay) from salary_final_site_employees where PayType='Bank' and Loc='" + loc + "' and Month='" + month + "' and Year='" + year + "' and Status='NEW' and SalaryType='" + process_type + "' ";
-                    sql_hand = "select * ,SUM(NetPay) from salary_final_site_employees where PayType='Hand' and Loc='" + loc + "' and Month='" + month + "' and Year='" + year + "' and Status='NEW' and SalaryType='" + process_type + "' ";
-                    sql_slip = "select * ,SUM(NetPay) from salary_final_site_employees where PayType='Slip' and Loc='" + loc + "' and Month='" + month + "' and Year='" + year + "' and Status='NEW' and SalaryType='" + process_type + "'  ";
+                    sql_bank = "select *,SUM(NetPay),COUNT(*) from salary_final_site_employees where PayType='Bank' and Loc='" + loc + "' and Month='" + month + "' and Year='" + year + "' and Status='NEW' and SalaryType='" + process_type + "' ";
+                    sql_hand = "select * ,SUM(NetPay),COUNT(*) from salary_final_site_employees where PayType='Hand' and Loc='" + loc + "' and Month='" + month + "' and Year='" + year + "' and Status='NEW' and SalaryType='" + process_type + "' ";
+                    sql_slip = "select * ,SUM(NetPay),COUNT(*) from salary_final_site_employees where PayType='Slip' and Loc='" + loc + "' and Month='" + month + "' and Year='" + year + "' and Status='NEW' and SalaryType='" + process_type + "'  ";
 
                 } else {//RList Only
                     Report_name = "R-List Only" + " - " + process_type;
                     sql = "select * from salary_final_site_employees where Loc='" + loc + "' and Month='" + month + "' and Year='" + year + "' and Status='RList'  and SalaryType='" + process_type + "'  ";
-                    sql_bank = "select * ,SUM(NetPay) from salary_final_site_employees where PayType='Bank' and Loc='" + loc + "' and Month='" + month + "' and Year='" + year + "' and Status='RList'  and SalaryType='" + process_type + "'  ";
-                    sql_hand = "select * ,SUM(NetPay) from salary_final_site_employees where PayType='Hand' and Loc='" + loc + "' and Month='" + month + "' and Year='" + year + "' and Status='RList'  and SalaryType='" + process_type + "'  ";
-                    sql_slip = "select * ,SUM(NetPay) from salary_final_site_employees where PayType='Slip' and Loc='" + loc + "' and Month='" + month + "' and Year='" + year + "' and Status='RList'  and SalaryType='" + process_type + "'  ";
+                    sql_bank = "select * ,SUM(NetPay),COUNT(*) from salary_final_site_employees where PayType='Bank' and Loc='" + loc + "' and Month='" + month + "' and Year='" + year + "' and Status='RList'  and SalaryType='" + process_type + "'  ";
+                    sql_hand = "select * ,SUM(NetPay),COUNT(*) from salary_final_site_employees where PayType='Hand' and Loc='" + loc + "' and Month='" + month + "' and Year='" + year + "' and Status='RList'  and SalaryType='" + process_type + "'  ";
+                    sql_slip = "select * ,SUM(NetPay),COUNT(*) from salary_final_site_employees where PayType='Slip' and Loc='" + loc + "' and Month='" + month + "' and Year='" + year + "' and Status='RList'  and SalaryType='" + process_type + "'  ";
 
                 }
 
@@ -954,11 +973,15 @@ public class RPT_pay_ledger extends javax.swing.JFrame {
                 Double bank_net = 0.00;
                 Double hand_net = 0.00;
                 Double slip_net = 0.00;
+                int bank_emp_count = 0;
+                int hand_emp_count = 0;
+                int slip_emp_count = 0;
                 PreparedStatement pst1 = con.prepareStatement(sql_bank);
                 ResultSet rs1 = pst1.executeQuery();
                 while (rs1.next()) {
 
                     bank_net = rs1.getDouble("SUM(NetPay)");
+                    bank_emp_count = rs1.getInt("COUNT(*)");
 
                 }
 
@@ -967,6 +990,7 @@ public class RPT_pay_ledger extends javax.swing.JFrame {
                 while (rs2.next()) {
 
                     hand_net = rs2.getDouble("SUM(NetPay)");
+                    hand_emp_count = rs2.getInt("COUNT(*)");
 
                 }
 
@@ -975,6 +999,7 @@ public class RPT_pay_ledger extends javax.swing.JFrame {
                 while (rs3.next()) {
 
                     slip_net = rs3.getDouble("SUM(NetPay)");
+                    slip_emp_count = rs3.getInt("COUNT(*)");
 
                 }
 
@@ -1070,6 +1095,9 @@ public class RPT_pay_ledger extends javax.swing.JFrame {
                     bds.setFestival(Double.parseDouble(rs.getString("Festival")));
                     bds.setEpf_duty(Double.parseDouble(rs.getString("EPFDuty")));
                     bds.setStamp(Double.parseDouble(rs.getString("Stamp")));
+                    bds.setBankEmpCount(bank_emp_count);
+                    bds.setHandEmpCount(hand_emp_count);
+                    bds.setSlipEmpCount(slip_emp_count);
 
 //                    bds.setRpt_address(ComAdd);
 //                    bds.setRpt_tel(ComTel);
@@ -1166,7 +1194,7 @@ public class RPT_pay_ledger extends javax.swing.JFrame {
 //                }
             Connection con = DbConnection.getconnection();
 
-            PreparedStatement pstloc = con.prepareStatement("select * from salary_final_site_employees where Month='" + month + "' and Year='" + year + "'  group by Loc");
+            PreparedStatement pstloc = con.prepareStatement("select Loc from salary_final_site_employees where Month='" + month + "' and Year='" + year + "'  group by Loc");
             ResultSet rsloc = pstloc.executeQuery();
             while (rsloc.next()) {
 
@@ -1181,10 +1209,10 @@ public class RPT_pay_ledger extends javax.swing.JFrame {
 
                 if (jComboBox1.getSelectedIndex() == 0) { //with RList
                     Report_name = "With R-List";
-                    sql = "select * from salary_final_site_employees where Loc='" + loc + "' and Month='" + month + "' and Year='" + year + "' and SalaryType='" + process_type + "' ";
-                    sql_bank = "select *,SUM(NetPay) from salary_final_site_employees where PayType='Bank' and Loc='" + loc + "' and Month='" + month + "' and Year='" + year + "' and SalaryType='" + process_type + "' ";
-                    sql_hand = "select *,SUM(NetPay) from salary_final_site_employees where PayType='Hand' and Loc='" + loc + "' and Month='" + month + "' and Year='" + year + "' and SalaryType='" + process_type + "' ";
-                    sql_slip = "select *,SUM(NetPay) from salary_final_site_employees where PayType='Slip' and Loc='" + loc + "' and Month='" + month + "' and Year='" + year + "' and SalaryType='" + process_type + "'  ";
+                    //sql = "select * from salary_final_site_employees where Loc='" + loc + "' and Month='" + month + "' and Year='" + year + "' and SalaryType='" + process_type + "' ";
+                    sql_bank = "select  SUM(NetPay) from salary_final_site_employees where PayType='Bank' and Loc='" + loc + "' and Month='" + month + "' and Year='" + year + "' and SalaryType='" + process_type + "' ";
+                    sql_hand = "select  SUM(NetPay) from salary_final_site_employees where PayType='Hand' and Loc='" + loc + "' and Month='" + month + "' and Year='" + year + "' and SalaryType='" + process_type + "' ";
+                    sql_slip = "select  SUM(NetPay) from salary_final_site_employees where PayType='Slip' and Loc='" + loc + "' and Month='" + month + "' and Year='" + year + "' and SalaryType='" + process_type + "'  ";
 
                 } else if (jComboBox1.getSelectedIndex() == 1) { //Without RList
                     Report_name = "Without R-List";
@@ -1507,7 +1535,7 @@ public class RPT_pay_ledger extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton6ActionPerformed
 
-    private void jComboBox2PopupMenuWillBecomeInvisible(javax.swing.event.PopupMenuEvent evt) {//GEN-FIRST:event_jComboBox2PopupMenuWillBecomeInvisible
+    private void cmb_companyPopupMenuWillBecomeInvisible(javax.swing.event.PopupMenuEvent evt) {//GEN-FIRST:event_cmb_companyPopupMenuWillBecomeInvisible
 //         try {
 //
 //            if (jComboBox2.getSelectedIndex() == 0) {
@@ -1543,7 +1571,7 @@ public class RPT_pay_ledger extends javax.swing.JFrame {
 //        }
 
 
-    }//GEN-LAST:event_jComboBox2PopupMenuWillBecomeInvisible
+    }//GEN-LAST:event_cmb_companyPopupMenuWillBecomeInvisible
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
 
@@ -1859,10 +1887,11 @@ public class RPT_pay_ledger extends javax.swing.JFrame {
         try {
 
             String type = cmb_salary_type.getSelectedItem().toString();
+            String company = cmb_company.getSelectedItem().toString();
 
-            if (jComboBox2.getSelectedIndex() == 0) {
+//            if (cmb_company.getSelectedIndex() == 0) {
                 Connection con = DbConnection.getconnection();
-                PreparedStatement pst = con.prepareStatement("select * from salary_final_site_employees where LocType='" + type + "' and Month='" + cmb_month.getSelectedItem().toString() + "' and Year='" + cmb_year.getSelectedItem().toString() + "' and Loc like 'E%' group by Loc ");
+                PreparedStatement pst = con.prepareStatement("select * from salary_final_site_employees where LocType='" + type + "' and Month='" + cmb_month.getSelectedItem().toString() + "' and Year='" + cmb_year.getSelectedItem().toString() + "' and Loc = '"+company+"' group by Loc ");
                 ResultSet rs = pst.executeQuery();
                 DefaultTableModel dtm = (DefaultTableModel) jTable1.getModel();
                 // dtm.setRowCount(0);
@@ -1873,20 +1902,20 @@ public class RPT_pay_ledger extends javax.swing.JFrame {
                     dtm.addRow(v);
 
                 }
-            } else {
-                Connection con = DbConnection.getconnection();
-                PreparedStatement pst = con.prepareStatement("select * from salary_final_site_employees where LocType='" + type + "' and Month='" + cmb_month.getSelectedItem().toString() + "' and Year='" + cmb_year.getSelectedItem().toString() + "' and Loc like 'T%' group by Loc ");
-                ResultSet rs = pst.executeQuery();
-                DefaultTableModel dtm = (DefaultTableModel) jTable1.getModel();
-                dtm.setRowCount(0);
-                while (rs.next()) {
-
-                    Vector v = new Vector();
-                    v.add(rs.getString("Loc"));
-                    dtm.addRow(v);
-
-                }
-            }
+//            } else {
+//                Connection con = DbConnection.getconnection();
+//                PreparedStatement pst = con.prepareStatement("select * from salary_final_site_employees where LocType='" + type + "' and Month='" + cmb_month.getSelectedItem().toString() + "' and Year='" + cmb_year.getSelectedItem().toString() + "' and Loc like 'T%' group by Loc ");
+//                ResultSet rs = pst.executeQuery();
+//                DefaultTableModel dtm = (DefaultTableModel) jTable1.getModel();
+//                dtm.setRowCount(0);
+//                while (rs.next()) {
+//
+//                    Vector v = new Vector();
+//                    v.add(rs.getString("Loc"));
+//                    dtm.addRow(v);
+//
+//                }
+//            }
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -1943,6 +1972,7 @@ public class RPT_pay_ledger extends javax.swing.JFrame {
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.ButtonGroup buttonGroup2;
     private javax.swing.JCheckBox cb_final;
+    private javax.swing.JComboBox<String> cmb_company;
     private javax.swing.JComboBox cmb_defLocation;
     private javax.swing.JComboBox cmb_loc_type;
     private javax.swing.JComboBox cmb_month;
@@ -1958,7 +1988,6 @@ public class RPT_pay_ledger extends javax.swing.JFrame {
     private javax.swing.JButton jButton8;
     private javax.swing.JCheckBox jCheckBox2;
     private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel20;

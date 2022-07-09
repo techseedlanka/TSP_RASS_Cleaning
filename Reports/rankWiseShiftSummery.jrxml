@@ -1,0 +1,436 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Rank wise Shift Details" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="a75d2ec7-8e82-44a0-8b1b-7e08561545a6">
+	<property name="ireport.zoom" value="1.7715610000000044"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="month" class="java.lang.String"/>
+	<parameter name="year" class="java.lang.String"/>
+	<parameter name="location" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT SUM(DayShift+(`HalfDayShift`/2)), SUM(NightShift),SUM(OTShift), SUM(`OTHours`), SUM(`DNShift`),SUM(`DayTwoShift`),EffectiveRank,LocName,Location
+FROM `emp_atten_main`
+ JOIN location_reg ON Location=LocCode
+ WHERE MONTH=$P{month}   AND YEAR=$P{year} and Location=$P{location} GROUP BY `EffectiveRank`]]>
+	</queryString>
+	<field name="SUM(DayShift+(`HalfDayShift`/2))" class="java.lang.Double"/>
+	<field name="SUM(NightShift)" class="java.lang.Double"/>
+	<field name="SUM(OTShift)" class="java.lang.Double"/>
+	<field name="SUM(`OTHours`)" class="java.lang.Double"/>
+	<field name="SUM(`DNShift`)" class="java.lang.Double"/>
+	<field name="SUM(`DayTwoShift`)" class="java.lang.Double"/>
+	<field name="EffectiveRank" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="LocName" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Location" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<variable name="sumDAY" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[$F{SUM(DayShift+(`HalfDayShift`/2))}]]></variableExpression>
+	</variable>
+	<variable name="sumNight" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[$F{SUM(NightShift)}]]></variableExpression>
+	</variable>
+	<variable name="sumDAY&amp;NIGHT" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[$F{SUM(`DNShift`)}]]></variableExpression>
+	</variable>
+	<variable name="sumDAY2" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[$F{SUM(`DayTwoShift`)}]]></variableExpression>
+	</variable>
+	<variable name="sumOTSHIFT" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[$F{SUM(OTShift)}]]></variableExpression>
+	</variable>
+	<variable name="sumOTHOURS" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[$F{SUM(`OTHours`)}]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="54" splitType="Stretch">
+			<textField>
+				<reportElement x="10" y="2" width="521" height="20" uuid="c2f3126f-7e1b-4345-b9ff-7e27b1966320"/>
+				<textElement textAlignment="Center">
+					<font fontName="Times New Roman" size="14" isBold="true" isUnderline="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["RANK WISE SHIFT SUMMERY "]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="444" y="32" width="111" height="20" uuid="6a9103bf-2f5c-47b9-967d-f0441aa053a2"/>
+				<textElement textAlignment="Center">
+					<font fontName="Times New Roman" size="14" isBold="false" isUnderline="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{month}+" "+$P{year}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="10" y="32" width="424" height="20" uuid="46f3ead3-b667-449b-b105-4d07d1bdfa1d"/>
+				<textElement>
+					<font fontName="Times New Roman" size="14" isBold="false" isUnderline="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Location}+" "+$F{LocName}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="0" y="53" width="555" height="1" uuid="8a45434b-e020-4aa2-8c34-a81a04ca66da"/>
+			</line>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="22" splitType="Stretch">
+			<staticText>
+				<reportElement mode="Opaque" x="58" y="2" width="87" height="20" backcolor="#CCCCCC" uuid="0fa184be-08f2-4d4e-a8b1-5b33f52f07d7"/>
+				<box leftPadding="2" rightPadding="2">
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Rank]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="145" y="2" width="65" height="20" backcolor="#CCCCCC" uuid="0ced2ede-0bf4-4fec-90f5-eadeb545a716"/>
+				<box leftPadding="2" rightPadding="2">
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Day]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="210" y="2" width="65" height="20" backcolor="#CCCCCC" uuid="2c402cab-6776-4981-be97-e403c5bc6cfa"/>
+				<box leftPadding="2" rightPadding="2">
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Night]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="275" y="2" width="65" height="20" backcolor="#CCCCCC" uuid="2a035dfc-4a2a-40ef-9973-9bfa14293fc0"/>
+				<box leftPadding="2" rightPadding="2">
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Day&Night]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="340" y="2" width="65" height="20" backcolor="#CCCCCC" uuid="4fca89ce-2c1a-4263-9cc0-21434c8a25a4"/>
+				<box leftPadding="2" rightPadding="2">
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Day Two]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="470" y="2" width="65" height="20" backcolor="#CCCCCC" uuid="d3121253-ac86-46d6-917b-46c3540aeada"/>
+				<box leftPadding="2" rightPadding="2">
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[OT Hours]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="405" y="2" width="65" height="20" backcolor="#CCCCCC" uuid="6527bdf2-c256-441c-ab00-a42d2e158778"/>
+				<box leftPadding="2" rightPadding="2">
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[OT Shift]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="28" splitType="Stretch">
+			<textField pattern="#,##0.0">
+				<reportElement x="145" y="0" width="65" height="28" uuid="c0de37a4-f98e-46a6-8c08-1944876da6ec"/>
+				<box leftPadding="2" rightPadding="2">
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="11"/>
+					<paragraph rightIndent="3"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{SUM(DayShift+(`HalfDayShift`/2))}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.0">
+				<reportElement x="210" y="0" width="65" height="28" uuid="d0b0cdd3-7d50-4c09-8ad8-5084ef14ba71"/>
+				<box leftPadding="2" rightPadding="2">
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="11"/>
+					<paragraph rightIndent="3"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{SUM(NightShift)}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.0">
+				<reportElement x="275" y="0" width="65" height="28" uuid="eb952bd7-bb1e-4439-839e-de4d412e4909"/>
+				<box leftPadding="2" rightPadding="2">
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="11"/>
+					<paragraph rightIndent="3"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{SUM(`DNShift`)}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.0">
+				<reportElement x="340" y="0" width="65" height="28" uuid="5e9d34b4-8384-4739-aaa4-45aa2214aee0"/>
+				<box leftPadding="2" rightPadding="2">
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="11"/>
+					<paragraph rightIndent="3"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{SUM(`DayTwoShift`)}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="27" y="0" width="25" height="28" uuid="68b18867-062e-4b4e-9093-c8a8c30528c3"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{REPORT_COUNT}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="58" y="0" width="87" height="28" uuid="018db8ae-28d7-42af-a33c-5952d514b582"/>
+				<box leftPadding="2" rightPadding="2">
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{EffectiveRank}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.0">
+				<reportElement x="470" y="0" width="65" height="28" uuid="92773094-5139-459f-a51f-46d50e643c2f"/>
+				<box leftPadding="2" rightPadding="2">
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="11"/>
+					<paragraph rightIndent="3"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{SUM(`OTHours`)}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.0">
+				<reportElement x="405" y="0" width="65" height="28" uuid="4bbd4b19-932a-4447-ba8d-f5f6d4f54c11"/>
+				<box leftPadding="2" rightPadding="2">
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="11"/>
+					<paragraph rightIndent="3"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{SUM(OTShift)}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="21" splitType="Stretch">
+			<textField pattern="dd/MM/yyyy HH.mm.ss">
+				<reportElement x="219" y="1" width="151" height="20" uuid="21c8068a-3874-4c84-a2bd-dfae3b735c18"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="1" width="219" height="20" uuid="6e548832-794d-4003-a134-043e5e36638a"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="8" isBold="false" isItalic="true" isUnderline="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA["RANK WISE SHIFT SUMMERY "+$F{Location}+" "+$P{month}+" "+$P{year}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="435" y="1" width="80" height="20" uuid="52d0cf4a-f1dd-4af8-80d0-366a05228cc3"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="515" y="1" width="40" height="20" uuid="5c9491e3-a5e3-449a-b966-0492ad34d943"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="32" splitType="Stretch">
+			<textField pattern="#,##0.0">
+				<reportElement x="145" y="0" width="65" height="32" uuid="ced72551-ec09-4bd6-9b95-81b224d84e5e"/>
+				<box leftPadding="2" rightPadding="2">
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="11" isBold="true"/>
+					<paragraph rightIndent="3"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{sumDAY}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.0">
+				<reportElement x="210" y="0" width="65" height="32" uuid="93bc0927-883d-4af1-b615-91308388484b"/>
+				<box leftPadding="2" rightPadding="2">
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="11" isBold="true"/>
+					<paragraph rightIndent="3"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{sumNight}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.0">
+				<reportElement x="275" y="0" width="65" height="32" uuid="1152d629-c5e5-4f8e-94a1-0e279fab2e05"/>
+				<box leftPadding="2" rightPadding="2">
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="11" isBold="true"/>
+					<paragraph rightIndent="3"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{sumDAY&NIGHT}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.0">
+				<reportElement x="340" y="0" width="65" height="32" uuid="01e95d6c-0a0d-42b7-b889-1a7cd267eed4"/>
+				<box leftPadding="2" rightPadding="2">
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="11" isBold="true"/>
+					<paragraph rightIndent="3"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{sumDAY2}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="58" y="0" width="87" height="32" uuid="cd6da3d7-de85-4def-a613-ca6ba2f4cb70"/>
+				<box leftPadding="2" rightPadding="2">
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Totals]]></text>
+			</staticText>
+			<textField pattern="#,##0.0">
+				<reportElement x="405" y="0" width="65" height="32" uuid="c95c4507-614e-4ecb-8d21-383fe54ab548"/>
+				<box leftPadding="2" rightPadding="2">
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="11" isBold="true"/>
+					<paragraph rightIndent="3"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{sumOTSHIFT}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.0">
+				<reportElement x="470" y="0" width="65" height="32" uuid="697f330d-6edd-4094-a93a-977bfbbaf0be"/>
+				<box leftPadding="2" rightPadding="2">
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="11" isBold="true"/>
+					<paragraph rightIndent="3"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{sumOTHOURS}]]></textFieldExpression>
+			</textField>
+		</band>
+	</summary>
+</jasperReport>

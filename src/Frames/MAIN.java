@@ -45,6 +45,9 @@ public class MAIN extends javax.swing.JFrame implements Runnable {
     static ArrayList al_Loc_Rates;
     static ArrayList al_Loc_Carder;
 
+    public static final String ONGOING = "on-going";
+    public static final String SETTELED = "settled";
+
     public MAIN() {
 
         al_Loc_Rates = new ArrayList();
@@ -266,6 +269,7 @@ public class MAIN extends javax.swing.JFrame implements Runnable {
         jSeparator6 = new javax.swing.JPopupMenu.Separator();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem11 = new javax.swing.JMenuItem();
+        jMenuItem40 = new javax.swing.JMenuItem();
         jSeparator33 = new javax.swing.JPopupMenu.Separator();
         jMenuItem57 = new javax.swing.JMenuItem();
         jMenuItem59 = new javax.swing.JMenuItem();
@@ -273,8 +277,6 @@ public class MAIN extends javax.swing.JFrame implements Runnable {
         jMenuItem15 = new javax.swing.JMenuItem();
         jSeparator18 = new javax.swing.JPopupMenu.Separator();
         jMenuItem12 = new javax.swing.JMenuItem();
-        jSeparator17 = new javax.swing.JPopupMenu.Separator();
-        jMenuItem16 = new javax.swing.JMenuItem();
         jSeparator15 = new javax.swing.JPopupMenu.Separator();
         jMenuItem55 = new javax.swing.JMenuItem();
         menu_attendance = new javax.swing.JMenu();
@@ -284,7 +286,7 @@ public class MAIN extends javax.swing.JFrame implements Runnable {
         jMenuItem51 = new javax.swing.JMenuItem();
         menu_salary = new javax.swing.JMenu();
         jMenuItem24 = new javax.swing.JMenuItem();
-        jMenuItem56 = new javax.swing.JMenuItem();
+        jMenuItem43 = new javax.swing.JMenuItem();
         jSeparator14 = new javax.swing.JPopupMenu.Separator();
         subMenu_adv_delete = new javax.swing.JMenu();
         jMenuItem27 = new javax.swing.JMenuItem();
@@ -315,6 +317,7 @@ public class MAIN extends javax.swing.JFrame implements Runnable {
         jMenuItem48 = new javax.swing.JMenuItem();
         jSeparator29 = new javax.swing.JPopupMenu.Separator();
         jMenuItem18 = new javax.swing.JMenuItem();
+        jMenuItem44 = new javax.swing.JMenuItem();
         jSeparator3 = new javax.swing.JPopupMenu.Separator();
         jMenuItem21 = new javax.swing.JMenuItem();
         jSeparator37 = new javax.swing.JPopupMenu.Separator();
@@ -328,8 +331,12 @@ public class MAIN extends javax.swing.JFrame implements Runnable {
         jSeparator11 = new javax.swing.JPopupMenu.Separator();
         jMenu12 = new javax.swing.JMenu();
         jMenuItem22 = new javax.swing.JMenuItem();
+        jMenuItem56 = new javax.swing.JMenuItem();
+        jSeparator17 = new javax.swing.JPopupMenu.Separator();
         jMenuItem30 = new javax.swing.JMenuItem();
+        jSeparator39 = new javax.swing.JPopupMenu.Separator();
         jMenuItem49 = new javax.swing.JMenuItem();
+        jSeparator40 = new javax.swing.JPopupMenu.Separator();
         jMenuItem58 = new javax.swing.JMenuItem();
         jSeparator7 = new javax.swing.JPopupMenu.Separator();
         jMenuItem25 = new javax.swing.JMenuItem();
@@ -338,6 +345,8 @@ public class MAIN extends javax.swing.JFrame implements Runnable {
         jMenuItem33 = new javax.swing.JMenuItem();
         jSeparator38 = new javax.swing.JPopupMenu.Separator();
         jMenuItem35 = new javax.swing.JMenuItem();
+        jSeparator41 = new javax.swing.JPopupMenu.Separator();
+        jMenuItem16 = new javax.swing.JMenuItem();
         menu_process = new javax.swing.JMenu();
         jMenuItem23 = new javax.swing.JMenuItem();
         jSeparator31 = new javax.swing.JPopupMenu.Separator();
@@ -567,6 +576,16 @@ public class MAIN extends javax.swing.JFrame implements Runnable {
             }
         });
         jMenu1.add(jMenuItem11);
+
+        jMenuItem40.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_L, java.awt.event.InputEvent.SHIFT_MASK));
+        jMenuItem40.setFont(new java.awt.Font("Georgia", 0, 12)); // NOI18N
+        jMenuItem40.setText("Loan Managment");
+        jMenuItem40.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem40ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem40);
         jMenu1.add(jSeparator33);
 
         jMenuItem57.setFont(new java.awt.Font("Georgia", 0, 12)); // NOI18N
@@ -609,16 +628,6 @@ public class MAIN extends javax.swing.JFrame implements Runnable {
             }
         });
         menu_employee.add(jMenuItem12);
-        menu_employee.add(jSeparator17);
-
-        jMenuItem16.setFont(new java.awt.Font("Georgia", 0, 12)); // NOI18N
-        jMenuItem16.setText("Uniforms Issue");
-        jMenuItem16.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem16ActionPerformed(evt);
-            }
-        });
-        menu_employee.add(jMenuItem16);
         menu_employee.add(jSeparator15);
 
         jMenuItem55.setFont(new java.awt.Font("Georgia", 0, 12)); // NOI18N
@@ -672,7 +681,7 @@ public class MAIN extends javax.swing.JFrame implements Runnable {
         menu_salary.setFont(new java.awt.Font("Georgia", 0, 14)); // NOI18N
 
         jMenuItem24.setFont(new java.awt.Font("Georgia", 0, 12)); // NOI18N
-        jMenuItem24.setText("Earnings & Deductions");
+        jMenuItem24.setText("Monthly Deductions");
         jMenuItem24.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem24ActionPerformed(evt);
@@ -680,14 +689,14 @@ public class MAIN extends javax.swing.JFrame implements Runnable {
         });
         menu_salary.add(jMenuItem24);
 
-        jMenuItem56.setFont(new java.awt.Font("Georgia", 0, 12)); // NOI18N
-        jMenuItem56.setText("Bulk Deductions Entry ");
-        jMenuItem56.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItem43.setFont(new java.awt.Font("Georgia", 0, 12)); // NOI18N
+        jMenuItem43.setText("Monthly Earnings");
+        jMenuItem43.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem56ActionPerformed(evt);
+                jMenuItem43ActionPerformed(evt);
             }
         });
-        menu_salary.add(jMenuItem56);
+        menu_salary.add(jMenuItem43);
         menu_salary.add(jSeparator14);
 
         subMenu_adv_delete.setText("Advance");
@@ -880,13 +889,22 @@ public class MAIN extends javax.swing.JFrame implements Runnable {
         jMenu10.add(jSeparator29);
 
         jMenuItem18.setFont(new java.awt.Font("Georgia", 0, 12)); // NOI18N
-        jMenuItem18.setText("Employee Loan Details");
+        jMenuItem18.setText("All Employee Loan Details");
         jMenuItem18.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem18ActionPerformed(evt);
             }
         });
         jMenu10.add(jMenuItem18);
+
+        jMenuItem44.setFont(new java.awt.Font("Georgia", 0, 12)); // NOI18N
+        jMenuItem44.setText("Loan Managment");
+        jMenuItem44.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem44ActionPerformed(evt);
+            }
+        });
+        jMenu10.add(jMenuItem44);
         jMenu10.add(jSeparator3);
 
         jMenuItem21.setFont(new java.awt.Font("Georgia", 0, 12)); // NOI18N
@@ -951,13 +969,23 @@ public class MAIN extends javax.swing.JFrame implements Runnable {
         });
 
         jMenuItem22.setFont(new java.awt.Font("Georgia", 0, 12)); // NOI18N
-        jMenuItem22.setText("Salary Deductions Report");
+        jMenuItem22.setText("Monthly Deduction Report");
         jMenuItem22.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem22ActionPerformed(evt);
             }
         });
         jMenu12.add(jMenuItem22);
+
+        jMenuItem56.setFont(new java.awt.Font("Georgia", 0, 12)); // NOI18N
+        jMenuItem56.setText("Monthly Earning Report");
+        jMenuItem56.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem56ActionPerformed(evt);
+            }
+        });
+        jMenu12.add(jMenuItem56);
+        jMenu12.add(jSeparator17);
 
         jMenuItem30.setFont(new java.awt.Font("Georgia", 0, 12)); // NOI18N
         jMenuItem30.setText("EPF/ETF Deductions Report");
@@ -967,6 +995,7 @@ public class MAIN extends javax.swing.JFrame implements Runnable {
             }
         });
         jMenu12.add(jMenuItem30);
+        jMenu12.add(jSeparator39);
 
         jMenuItem49.setFont(new java.awt.Font("Georgia", 0, 12)); // NOI18N
         jMenuItem49.setText("Salary Advance Report");
@@ -976,6 +1005,7 @@ public class MAIN extends javax.swing.JFrame implements Runnable {
             }
         });
         jMenu12.add(jMenuItem49);
+        jMenu12.add(jSeparator40);
 
         jMenuItem58.setFont(new java.awt.Font("Georgia", 0, 12)); // NOI18N
         jMenuItem58.setText("Festival Advance  Reports");
@@ -1026,6 +1056,16 @@ public class MAIN extends javax.swing.JFrame implements Runnable {
         jMenu12.add(jMenuItem35);
 
         menu_reports.add(jMenu12);
+        menu_reports.add(jSeparator41);
+
+        jMenuItem16.setFont(new java.awt.Font("Georgia", 0, 12)); // NOI18N
+        jMenuItem16.setText("Audit Report");
+        jMenuItem16.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem16ActionPerformed(evt);
+            }
+        });
+        menu_reports.add(jMenuItem16);
 
         jMenuBar1.add(menu_reports);
 
@@ -1350,14 +1390,14 @@ public class MAIN extends javax.swing.JFrame implements Runnable {
     }//GEN-LAST:event_jMenuItem21ActionPerformed
 
     private void jMenuItem22ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem22ActionPerformed
-        RPT_Deductions ap = new RPT_Deductions();
+        RPT_DeductionsNEW ap = new RPT_DeductionsNEW();
         ap.setVisible(true);
 
 
     }//GEN-LAST:event_jMenuItem22ActionPerformed
 
     private void jMenuItem24ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem24ActionPerformed
-        Salary_Manual_Adjustments ap = new Salary_Manual_Adjustments();
+        Salary_Deductions ap = new Salary_Deductions();
         ap.setVisible(true); // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem24ActionPerformed
 
@@ -1434,11 +1474,6 @@ public class MAIN extends javax.swing.JFrame implements Runnable {
         ur.setVisible(true);  // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem38ActionPerformed
 
-    private void jMenuItem16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem16ActionPerformed
-        Uniform_Deduction_Entry uni = new Uniform_Deduction_Entry();
-        uni.setVisible(true);
-    }//GEN-LAST:event_jMenuItem16ActionPerformed
-
     private void jMenuItem12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem12ActionPerformed
 
         Decsiplinary_Details em = new Decsiplinary_Details();
@@ -1456,7 +1491,7 @@ public class MAIN extends javax.swing.JFrame implements Runnable {
     }//GEN-LAST:event_jMenuItem15ActionPerformed
 
     private void jMenuItem11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem11ActionPerformed
-        Distress_Loan em = new Distress_Loan();
+        Loan em = new Loan();
         em.setVisible(true);        // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem11ActionPerformed
 
@@ -1705,7 +1740,7 @@ public class MAIN extends javax.swing.JFrame implements Runnable {
     }//GEN-LAST:event_jMenuItem13ActionPerformed
 
     private void jMenuItem18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem18ActionPerformed
-        Loan_Details em = new Loan_Details();
+        RPT_AllEmp_Loans em = new RPT_AllEmp_Loans();
         em.setVisible(true);         // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem18ActionPerformed
 
@@ -1838,11 +1873,6 @@ public class MAIN extends javax.swing.JFrame implements Runnable {
         cm.setVisible(true);
     }//GEN-LAST:event_jMenuItem55ActionPerformed
 
-    private void jMenuItem56ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem56ActionPerformed
-        Deductions_NewUI cm = new Deductions_NewUI();
-        cm.setVisible(true);
-    }//GEN-LAST:event_jMenuItem56ActionPerformed
-
     private void jMenuItem57ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem57ActionPerformed
         FestivalAdvance cm = new FestivalAdvance();
         cm.setVisible(true);
@@ -1873,9 +1903,35 @@ public class MAIN extends javax.swing.JFrame implements Runnable {
     }//GEN-LAST:event_jMenuItem60ActionPerformed
 
     private void jMenuItem35ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem35ActionPerformed
-Shift_TypeWise_Atten_Allowance em = new Shift_TypeWise_Atten_Allowance();
-        em.setVisible(true);       
+        Shift_TypeWise_Atten_Allowance em = new Shift_TypeWise_Atten_Allowance();
+        em.setVisible(true);
     }//GEN-LAST:event_jMenuItem35ActionPerformed
+
+    private void jMenuItem40ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem40ActionPerformed
+        Loan_DetailsNEW em = new Loan_DetailsNEW();
+        em.setVisible(true);
+    }//GEN-LAST:event_jMenuItem40ActionPerformed
+
+    private void jMenuItem43ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem43ActionPerformed
+        Salary_Earnings em = new Salary_Earnings();
+        em.setVisible(true);
+    }//GEN-LAST:event_jMenuItem43ActionPerformed
+
+    private void jMenuItem44ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem44ActionPerformed
+        Loan_DetailsNEW em = new Loan_DetailsNEW();
+        em.setVisible(true); // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem44ActionPerformed
+
+    private void jMenuItem56ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem56ActionPerformed
+
+        RPT_Earnings em = new RPT_Earnings();
+        em.setVisible(true);
+    }//GEN-LAST:event_jMenuItem56ActionPerformed
+
+    private void jMenuItem16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem16ActionPerformed
+        AuditReport frm = new AuditReport();
+        frm.setVisible(true);
+    }//GEN-LAST:event_jMenuItem16ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1944,7 +2000,7 @@ Shift_TypeWise_Atten_Allowance em = new Shift_TypeWise_Atten_Allowance();
     public static javax.swing.JMenuItem jMenuItem13;
     private javax.swing.JMenuItem jMenuItem14;
     private javax.swing.JMenuItem jMenuItem15;
-    private javax.swing.JMenuItem jMenuItem16;
+    public static javax.swing.JMenuItem jMenuItem16;
     public static javax.swing.JMenuItem jMenuItem17;
     private javax.swing.JMenuItem jMenuItem18;
     private javax.swing.JMenuItem jMenuItem19;
@@ -1971,8 +2027,11 @@ Shift_TypeWise_Atten_Allowance em = new Shift_TypeWise_Atten_Allowance();
     private javax.swing.JMenuItem jMenuItem38;
     private javax.swing.JMenuItem jMenuItem39;
     private javax.swing.JMenuItem jMenuItem4;
+    private javax.swing.JMenuItem jMenuItem40;
     private javax.swing.JMenuItem jMenuItem41;
     private javax.swing.JMenuItem jMenuItem42;
+    private javax.swing.JMenuItem jMenuItem43;
+    private javax.swing.JMenuItem jMenuItem44;
     private javax.swing.JMenuItem jMenuItem45;
     private javax.swing.JMenuItem jMenuItem46;
     private javax.swing.JMenuItem jMenuItem47;
@@ -2025,7 +2084,10 @@ Shift_TypeWise_Atten_Allowance em = new Shift_TypeWise_Atten_Allowance();
     private javax.swing.JPopupMenu.Separator jSeparator36;
     private javax.swing.JPopupMenu.Separator jSeparator37;
     private javax.swing.JPopupMenu.Separator jSeparator38;
+    private javax.swing.JPopupMenu.Separator jSeparator39;
     private javax.swing.JPopupMenu.Separator jSeparator4;
+    private javax.swing.JPopupMenu.Separator jSeparator40;
+    private javax.swing.JPopupMenu.Separator jSeparator41;
     private javax.swing.JPopupMenu.Separator jSeparator5;
     private javax.swing.JPopupMenu.Separator jSeparator6;
     private javax.swing.JPopupMenu.Separator jSeparator7;

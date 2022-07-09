@@ -8,6 +8,7 @@ package Frames;
 import static Frames.PopUp_Emp_Table.POPUP_EMP_TABLE;
 import com.mxrck.autocompleter.TextAutoCompleter;
 import java.awt.Color;
+import java.awt.HeadlessException;
 import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
@@ -17,6 +18,7 @@ import java.io.FileInputStream;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -1724,15 +1726,16 @@ public class employee_reg extends javax.swing.JFrame {
         txt_shiftRate.setBackground(Color.WHITE);         // TODO add your handling code here:
     }//GEN-LAST:event_txt_shiftRateFocusLost
 
+    @SuppressWarnings("CallToPrintStackTrace")
     private void btn_saveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_saveActionPerformed
-
+    
         if (txt_locName.getText().isEmpty() | cmb_defCompany.getSelectedIndex() == 0 | cmb_designation.getSelectedIndex() == 0 | cmb_payType.getSelectedIndex() == 0) {
 
             JOptionPane.showMessageDialog(rootPane, "Please Select the Posting Location , Company , Designation & Pay Type of this Employee");
         } else {
 
             empty_txt_to_zeros();
-
+            
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
             String JoinedDate = sdf.format(DateChooser_joinedDate.getDate());
             String PostingDate = null;
@@ -1929,14 +1932,15 @@ public class employee_reg extends javax.swing.JFrame {
                     pst.setString(47, MCAllowance);
                     pst.setString(48, cmb_payType.getSelectedItem().toString());
                     pst.setString(49, employee_no);
-
+                
                     pst.execute();
                     JOptionPane.showMessageDialog(rootPane, " Employee Details Saved... ");
 
                     clear();
 //max_epfno();
-                } catch (Exception e) {
+                } catch (HeadlessException | SQLException e) {
                     e.printStackTrace();
+                    JOptionPane.showMessageDialog(rootPane, e);
                 }
 
             }
@@ -3961,7 +3965,17 @@ public class employee_reg extends javax.swing.JFrame {
                 jPanel1.setVisible(false);
             } else {
             }
-        }        // TODO add your handling code here:
+        }
+
+        if (evt.isControlDown() && evt.getKeyCode() == KeyEvent.VK_C) {
+            btn_save.setEnabled(true);
+        }
+
+        if (evt.isControlDown() && evt.getKeyCode() == KeyEvent.VK_X) {
+            btn_save.setEnabled(false);
+        }
+
+        // TODO add your handling code here:
     }//GEN-LAST:event_txt_EmployeeNoKeyPressed
 
     private void txt_searchMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txt_searchMouseReleased
@@ -3994,9 +4008,9 @@ public class employee_reg extends javax.swing.JFrame {
             txt_EmployeeNo.setText("");
             txt_EmployeeNo.setEditable(true);
 
-        }     
-        
-     
+        }
+
+
     }//GEN-LAST:event_jCheckBox2ActionPerformed
 
     private void txt_EPFnoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_EPFnoKeyTyped
@@ -4232,9 +4246,9 @@ public class employee_reg extends javax.swing.JFrame {
 
                 String sql = "SELECT * FROM employee_reg WHERE  FullName LIKE ? OR EmployeeNo Like? OR NameWithInitials Like?  ";
                 PreparedStatement pststmt = con.prepareStatement(sql);
-                pststmt.setString(1, "%"+ empno + "%");
-                pststmt.setString(2, "%"+ empno + "%");
-                pststmt.setString(3, "%"+ empno + "%");
+                pststmt.setString(1, "%" + empno + "%");
+                pststmt.setString(2, "%" + empno + "%");
+                pststmt.setString(3, "%" + empno + "%");
                 ResultSet resultset = pststmt.executeQuery();
 
                 DefaultTableModel dtm = (DefaultTableModel) jTable2.getModel();
@@ -4261,9 +4275,9 @@ public class employee_reg extends javax.swing.JFrame {
     }//GEN-LAST:event_txt_searchKeyReleased
 
     private void txt_searchFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txt_searchFocusGained
-if(txt_search.getText().equals("Search Here")){
-txt_search.setText("");  
-}      // TODO add your handling code here:
+        if (txt_search.getText().equals("Search Here")) {
+            txt_search.setText("");
+        }      // TODO add your handling code here:
     }//GEN-LAST:event_txt_searchFocusGained
 
     /**

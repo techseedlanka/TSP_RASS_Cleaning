@@ -541,7 +541,7 @@ public class RPT_Deductions_new extends javax.swing.JFrame {
                             String sql = null;
 
                             sql = " select * from salary_advance_festival_monthly join employee_reg on EMPno=EmployeeNo JOIN location_reg on LocCode=DefLocation where \n"
-                                    + "            Month='" + cmb_month1.getSelectedItem().toString() + "' and Year='" + cmb_year1.getSelectedItem().toString() + "' ORDER BY DefLocation";
+                                    + "            Month='" + cmb_month1.getSelectedItem().toString() + "' and Year='" + cmb_year1.getSelectedItem().toString() + "' ";
 
                             Connection conn = (Connection) DbConnection.getconnection();
 
@@ -919,8 +919,8 @@ public class RPT_Deductions_new extends javax.swing.JFrame {
                 bds.setEmp_name(jTable1.getModel().getValueAt(i, 1).toString());
                 bds.setRank(jTable1.getModel().getValueAt(i, 2).toString());
                 bds.setAmount(Double.parseDouble(jTable1.getModel().getValueAt(i, 3).toString()));
-                bds.setMonth(cmb_month.getSelectedItem().toString());
-                bds.setYear(cmb_year.getSelectedItem().toString());
+                bds.setMonth(cmb_month1.getSelectedItem().toString());
+                bds.setYear(cmb_year1.getSelectedItem().toString());
 
                 if (jTable1.getModel().getValueAt(i, 7) == null) {
                     bds.setBank_Name("");
@@ -945,7 +945,7 @@ public class RPT_Deductions_new extends javax.swing.JFrame {
     void print2() {
         try {
             JRBeanCollectionDataSource bcds = new JRBeanCollectionDataSource(adv);
-            String path = "Reports\\Emp_Monthly_Advance.jrxml";
+            String path = "Reports\\Emp_Monthly_FestivalAdvance.jrxml";
             JasperReport jr = JasperCompileManager.compileReport(path);
             JasperPrint jp = JasperFillManager.fillReport(jr, null, bcds);
             JasperViewer.viewReport(jp, false);

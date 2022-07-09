@@ -696,6 +696,7 @@ public class RPT_Advance extends javax.swing.JFrame {
 
         cmb_year.setFont(new java.awt.Font("Times New Roman", 0, 15)); // NOI18N
         cmb_year.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "2019", "2020", "2021", "2022" }));
+        cmb_year.setSelectedIndex(3);
         cmb_year.addPopupMenuListener(new javax.swing.event.PopupMenuListener() {
             public void popupMenuCanceled(javax.swing.event.PopupMenuEvent evt) {
             }

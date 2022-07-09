@@ -1415,6 +1415,7 @@ public class FestivalAdvance extends javax.swing.JFrame {
 
                 PreparedStatement pst2 = con.prepareStatement("insert into salary_festival_deductions_summery (EMPno,LoanAmount,Installments,InstallAmount,IssueDate,Status,"
                         + "RefNo,PayType,1stInstallment,Unit,FestivYear,FestivMonth) values(?,?,?,?,?,?,?,?,?,?,?,?)");
+//                (EMPno,Type,LoanAmount,Installments,InstallAmount,Interest,IssueDate,Status,RefNo,Location)
 
                 for (int r = 0; tbl_Advance_summery.getRowCount() > r; r++) {
 

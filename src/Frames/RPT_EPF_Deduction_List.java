@@ -66,7 +66,7 @@ public class RPT_EPF_Deduction_List extends javax.swing.JFrame {
 
         cmb_month = new javax.swing.JComboBox();
         cmb_year = new javax.swing.JComboBox();
-        cmb_Emp_Cat = new javax.swing.JComboBox();
+        cmb_empCategory = new javax.swing.JComboBox();
         jButton1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel34 = new javax.swing.JLabel();
@@ -75,7 +75,7 @@ public class RPT_EPF_Deduction_List extends javax.swing.JFrame {
         jSeparator2 = new javax.swing.JSeparator();
         jLabel36 = new javax.swing.JLabel();
         cmb_Company = new javax.swing.JComboBox();
-        cmb_Company1 = new javax.swing.JComboBox();
+        cmb_empType = new javax.swing.JComboBox();
         jLabel37 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -95,8 +95,8 @@ public class RPT_EPF_Deduction_List extends javax.swing.JFrame {
         getContentPane().add(cmb_month, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 60, 110, -1));
 
         cmb_year.setFont(new java.awt.Font("Times New Roman", 0, 15)); // NOI18N
-        cmb_year.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "2015", "2016", "2017", "2018", "2019", "2020", "2021" }));
-        cmb_year.setSelectedIndex(6);
+        cmb_year.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022" }));
+        cmb_year.setSelectedIndex(7);
         cmb_year.addPopupMenuListener(new javax.swing.event.PopupMenuListener() {
             public void popupMenuCanceled(javax.swing.event.PopupMenuEvent evt) {
             }
@@ -108,23 +108,23 @@ public class RPT_EPF_Deduction_List extends javax.swing.JFrame {
         });
         getContentPane().add(cmb_year, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 60, -1, -1));
 
-        cmb_Emp_Cat.setFont(new java.awt.Font("Georgia", 0, 15)); // NOI18N
-        cmb_Emp_Cat.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Guards", "Admin Staff", "Directors" }));
-        cmb_Emp_Cat.addPopupMenuListener(new javax.swing.event.PopupMenuListener() {
+        cmb_empCategory.setFont(new java.awt.Font("Georgia", 0, 15)); // NOI18N
+        cmb_empCategory.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Guards", "Admin Staff", "Directors" }));
+        cmb_empCategory.addPopupMenuListener(new javax.swing.event.PopupMenuListener() {
             public void popupMenuCanceled(javax.swing.event.PopupMenuEvent evt) {
             }
             public void popupMenuWillBecomeInvisible(javax.swing.event.PopupMenuEvent evt) {
-                cmb_Emp_CatPopupMenuWillBecomeInvisible(evt);
+                cmb_empCategoryPopupMenuWillBecomeInvisible(evt);
             }
             public void popupMenuWillBecomeVisible(javax.swing.event.PopupMenuEvent evt) {
             }
         });
-        cmb_Emp_Cat.addActionListener(new java.awt.event.ActionListener() {
+        cmb_empCategory.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cmb_Emp_CatActionPerformed(evt);
+                cmb_empCategoryActionPerformed(evt);
             }
         });
-        getContentPane().add(cmb_Emp_Cat, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 110, 180, -1));
+        getContentPane().add(cmb_empCategory, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 110, 180, -1));
 
         jButton1.setFont(new java.awt.Font("Georgia", 0, 18)); // NOI18N
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Fine Print.png"))); // NOI18N
@@ -155,7 +155,7 @@ public class RPT_EPF_Deduction_List extends javax.swing.JFrame {
         getContentPane().add(jLabel36, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 150, -1, 20));
 
         cmb_Company.setFont(new java.awt.Font("Georgia", 0, 15)); // NOI18N
-        cmb_Company.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Target", "Express" }));
+        cmb_Company.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Target", "Express", "Diamond" }));
         cmb_Company.addPopupMenuListener(new javax.swing.event.PopupMenuListener() {
             public void popupMenuCanceled(javax.swing.event.PopupMenuEvent evt) {
             }
@@ -172,23 +172,23 @@ public class RPT_EPF_Deduction_List extends javax.swing.JFrame {
         });
         getContentPane().add(cmb_Company, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 150, 180, -1));
 
-        cmb_Company1.setFont(new java.awt.Font("Georgia", 0, 15)); // NOI18N
-        cmb_Company1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "With R-List", "Witout R-List", "R-List Only" }));
-        cmb_Company1.addPopupMenuListener(new javax.swing.event.PopupMenuListener() {
+        cmb_empType.setFont(new java.awt.Font("Georgia", 0, 15)); // NOI18N
+        cmb_empType.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "With R-List", "Witout R-List", "R-List Only" }));
+        cmb_empType.addPopupMenuListener(new javax.swing.event.PopupMenuListener() {
             public void popupMenuCanceled(javax.swing.event.PopupMenuEvent evt) {
             }
             public void popupMenuWillBecomeInvisible(javax.swing.event.PopupMenuEvent evt) {
-                cmb_Company1PopupMenuWillBecomeInvisible(evt);
+                cmb_empTypePopupMenuWillBecomeInvisible(evt);
             }
             public void popupMenuWillBecomeVisible(javax.swing.event.PopupMenuEvent evt) {
             }
         });
-        cmb_Company1.addActionListener(new java.awt.event.ActionListener() {
+        cmb_empType.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cmb_Company1ActionPerformed(evt);
+                cmb_empTypeActionPerformed(evt);
             }
         });
-        getContentPane().add(cmb_Company1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 190, 180, -1));
+        getContentPane().add(cmb_empType, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 190, 180, -1));
 
         jLabel37.setFont(new java.awt.Font("Georgia", 0, 12)); // NOI18N
         jLabel37.setText("Emp. Type  :-");
@@ -206,19 +206,19 @@ public class RPT_EPF_Deduction_List extends javax.swing.JFrame {
 
     }//GEN-LAST:event_cmb_yearPopupMenuWillBecomeInvisible
 
-    private void cmb_Emp_CatPopupMenuWillBecomeInvisible(javax.swing.event.PopupMenuEvent evt) {//GEN-FIRST:event_cmb_Emp_CatPopupMenuWillBecomeInvisible
+    private void cmb_empCategoryPopupMenuWillBecomeInvisible(javax.swing.event.PopupMenuEvent evt) {//GEN-FIRST:event_cmb_empCategoryPopupMenuWillBecomeInvisible
         // TODO add your handling code here:
-    }//GEN-LAST:event_cmb_Emp_CatPopupMenuWillBecomeInvisible
+    }//GEN-LAST:event_cmb_empCategoryPopupMenuWillBecomeInvisible
 
-    private void cmb_Emp_CatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmb_Emp_CatActionPerformed
+    private void cmb_empCategoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmb_empCategoryActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_cmb_Emp_CatActionPerformed
+    }//GEN-LAST:event_cmb_empCategoryActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 
         String month = cmb_month.getSelectedItem().toString();
         String year = cmb_year.getSelectedItem().toString();
-        String EmpCat = cmb_Emp_Cat.getSelectedItem().toString();
+        String EmpCat = cmb_empCategory.getSelectedItem().toString();
 
         try {
 
@@ -226,16 +226,16 @@ public class RPT_EPF_Deduction_List extends javax.swing.JFrame {
 
             if (cmb_Company.getSelectedIndex() == 0) {
 
-                if (cmb_Emp_Cat.getSelectedIndex() == 0) {
+                if (cmb_empCategory.getSelectedIndex() == 0) {
                     //SSS Employee
 
                     JasperDesign jd = JRXmlLoader.load("Reports\\EPF_DeductionList.jrxml");
                     //String sql = "select * from salary_final_site_employees join location_reg on salary_final_site_employees.Loc = location_reg.LocCode join salary_advance_1 on salary_final_site_employees.EMPno= salary_advance_1.EPFno    where salary_final_site_employees.Month='" + cmb_month.getSelectedItem().toString() + "' and salary_final_site_employees.Year ='" + cmb_year.getSelectedItem().toString() + "' AND `salary_advance_1`.`PayMonth`='" + cmb_month.getSelectedItem().toString() + "' AND `salary_advance_1`.`PayYear`='" + cmb_year.getSelectedItem().toString() + "' AND EPF8 NOT IN ('0.00')  and salary_final_site_employees.Loc LIKE 'T%'Order by Loc";
                     String sql = "";
-                    if (cmb_Company1.getSelectedIndex() == 0) {
+                    if (cmb_empType.getSelectedIndex() == 0) {
                         sql = "select * from salary_final_site_employees join location_reg on salary_final_site_employees.Loc = location_reg.LocCode  where salary_final_site_employees.Month='" + cmb_month.getSelectedItem().toString() + "' and salary_final_site_employees.Year ='" + cmb_year.getSelectedItem().toString() + "'  AND salary_final_site_employees.SalaryType='FINAL' AND EPF8 NOT IN ('0.00')  and salary_final_site_employees.Loc LIKE 'T%'Order by Loc";
 
-                    } else if (cmb_Company1.getSelectedIndex() == 1) {
+                    } else if (cmb_empType.getSelectedIndex() == 1) {
                         sql = "select * from salary_final_site_employees join location_reg on salary_final_site_employees.Loc = location_reg.LocCode  where salary_final_site_employees.Month='" + cmb_month.getSelectedItem().toString() + "' and salary_final_site_employees.Year ='" + cmb_year.getSelectedItem().toString() + "'  AND salary_final_site_employees.SalaryType='FINAL' AND EPF8 NOT IN ('0.00')  and salary_final_site_employees.Loc LIKE 'T%' and salary_final_site_employees.Status='NEW' Order by Loc";
 
                     } else {
@@ -252,28 +252,28 @@ public class RPT_EPF_Deduction_List extends javax.swing.JFrame {
                     JasperViewer.viewReport(jp, false);
 
                 }
-                if (cmb_Emp_Cat.getSelectedIndex() == 1) {
+                if (cmb_empCategory.getSelectedIndex() == 1) {
                     //SIKURA
 
                 }
-                if (cmb_Emp_Cat.getSelectedIndex() == 2) {
+                if (cmb_empCategory.getSelectedIndex() == 2) {
                     //admin Staff
 
                 }
 
-            } else {
+            } else if (cmb_Company.getSelectedIndex() == 1) {
 
-                if (cmb_Emp_Cat.getSelectedIndex() == 0) {
+                if (cmb_empCategory.getSelectedIndex() == 0) {
                     //Target Employee
 
                     JasperDesign jd = JRXmlLoader.load("Reports\\EPF_DeductionList.jrxml");
 
                     //  String sql = "select * from salary_final_site_employees join location_reg on salary_final_site_employees.Loc = location_reg.LocCode join salary_advance_1 on salary_final_site_employees.EMPno= salary_advance_1.EPFno    where salary_final_site_employees.Month='" + cmb_month.getSelectedItem().toString() + "' and salary_final_site_employees.Year ='" + cmb_year.getSelectedItem().toString() + "' AND `salary_advance_1`.`PayMonth`='" + cmb_month.getSelectedItem().toString() + "' AND `salary_advance_1`.`PayYear`='" + cmb_year.getSelectedItem().toString() + "' AND EPF8 NOT IN ('0.00')  and salary_final_site_employees.Loc LIKE 'E%'Order by Loc";
                     String sql = "";
-                    if (cmb_Company1.getSelectedIndex() == 0) {
+                    if (cmb_empType.getSelectedIndex() == 0) {
                         sql = "select * from salary_final_site_employees join location_reg on salary_final_site_employees.Loc = location_reg.LocCode where salary_final_site_employees.Month='" + cmb_month.getSelectedItem().toString() + "' and salary_final_site_employees.Year ='" + cmb_year.getSelectedItem().toString() + "'  AND salary_final_site_employees.SalaryType='FINAL' AND EPF8 NOT IN ('0.00')  and salary_final_site_employees.Loc LIKE 'E%'Order by Loc";
 
-                    } else if (cmb_Company1.getSelectedIndex() == 1) {
+                    } else if (cmb_empType.getSelectedIndex() == 1) {
                         sql = "select * from salary_final_site_employees join location_reg on salary_final_site_employees.Loc = location_reg.LocCode where salary_final_site_employees.Month='" + cmb_month.getSelectedItem().toString() + "' and salary_final_site_employees.Year ='" + cmb_year.getSelectedItem().toString() + "'  AND salary_final_site_employees.SalaryType='FINAL' AND EPF8 NOT IN ('0.00')  and salary_final_site_employees.Loc LIKE 'E%' and  salary_final_site_employees.Status ='NEW'Order by Loc";
 
                     } else {
@@ -290,10 +290,45 @@ public class RPT_EPF_Deduction_List extends javax.swing.JFrame {
                     JasperViewer.viewReport(jp, false);
 
                 }
-                if (cmb_Emp_Cat.getSelectedIndex() == 1) {
+                if (cmb_empCategory.getSelectedIndex() == 1) {
 
                 }
-                if (cmb_Emp_Cat.getSelectedIndex() == 2) {
+                if (cmb_empCategory.getSelectedIndex() == 2) {
+                    //admin Staff
+
+                }
+            } else {
+                if (cmb_empCategory.getSelectedIndex() == 0) {
+                    //Target Employee
+
+                    JasperDesign jd = JRXmlLoader.load("Reports\\EPF_DeductionList.jrxml");
+
+                    //  String sql = "select * from salary_final_site_employees join location_reg on salary_final_site_employees.Loc = location_reg.LocCode join salary_advance_1 on salary_final_site_employees.EMPno= salary_advance_1.EPFno    where salary_final_site_employees.Month='" + cmb_month.getSelectedItem().toString() + "' and salary_final_site_employees.Year ='" + cmb_year.getSelectedItem().toString() + "' AND `salary_advance_1`.`PayMonth`='" + cmb_month.getSelectedItem().toString() + "' AND `salary_advance_1`.`PayYear`='" + cmb_year.getSelectedItem().toString() + "' AND EPF8 NOT IN ('0.00')  and salary_final_site_employees.Loc LIKE 'E%'Order by Loc";
+                    String sql = "";
+                    if (cmb_empType.getSelectedIndex() == 0) {
+                        sql = "select * from salary_final_site_employees join location_reg on salary_final_site_employees.Loc = location_reg.LocCode where salary_final_site_employees.Month='" + cmb_month.getSelectedItem().toString() + "' and salary_final_site_employees.Year ='" + cmb_year.getSelectedItem().toString() + "'  AND salary_final_site_employees.SalaryType='FINAL' AND EPF8 NOT IN ('0.00')  and salary_final_site_employees.Loc LIKE 'D%'Order by Loc";
+
+                    } else if (cmb_empType.getSelectedIndex() == 1) {
+                        sql = "select * from salary_final_site_employees join location_reg on salary_final_site_employees.Loc = location_reg.LocCode where salary_final_site_employees.Month='" + cmb_month.getSelectedItem().toString() + "' and salary_final_site_employees.Year ='" + cmb_year.getSelectedItem().toString() + "'  AND salary_final_site_employees.SalaryType='FINAL' AND EPF8 NOT IN ('0.00')  and salary_final_site_employees.Loc LIKE 'D%' and  salary_final_site_employees.Status ='NEW'Order by Loc";
+
+                    } else {
+                        sql = "select * from salary_final_site_employees join location_reg on salary_final_site_employees.Loc = location_reg.LocCode where salary_final_site_employees.Month='" + cmb_month.getSelectedItem().toString() + "' and salary_final_site_employees.Year ='" + cmb_year.getSelectedItem().toString() + "'  AND salary_final_site_employees.SalaryType='FINAL' AND EPF8 NOT IN ('0.00')  and salary_final_site_employees.Loc LIKE 'D%' and  salary_final_site_employees.Status ='RList' Order by Loc";
+
+                    }
+
+                    JRDesignQuery newQuery = new JRDesignQuery();
+                    newQuery.setText(sql);
+                    jd.setQuery(newQuery);
+
+                    JasperReport jr = JasperCompileManager.compileReport(jd);
+                    JasperPrint jp = JasperFillManager.fillReport(jr, null, conn);
+                    JasperViewer.viewReport(jp, false);
+
+                }
+                if (cmb_empCategory.getSelectedIndex() == 1) {
+
+                }
+                if (cmb_empCategory.getSelectedIndex() == 2) {
                     //admin Staff
 
                 }
@@ -316,13 +351,13 @@ public class RPT_EPF_Deduction_List extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_cmb_CompanyActionPerformed
 
-    private void cmb_Company1PopupMenuWillBecomeInvisible(javax.swing.event.PopupMenuEvent evt) {//GEN-FIRST:event_cmb_Company1PopupMenuWillBecomeInvisible
+    private void cmb_empTypePopupMenuWillBecomeInvisible(javax.swing.event.PopupMenuEvent evt) {//GEN-FIRST:event_cmb_empTypePopupMenuWillBecomeInvisible
         // TODO add your handling code here:
-    }//GEN-LAST:event_cmb_Company1PopupMenuWillBecomeInvisible
+    }//GEN-LAST:event_cmb_empTypePopupMenuWillBecomeInvisible
 
-    private void cmb_Company1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmb_Company1ActionPerformed
+    private void cmb_empTypeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmb_empTypeActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_cmb_Company1ActionPerformed
+    }//GEN-LAST:event_cmb_empTypeActionPerformed
 
     /**
      * @param args the command line arguments
@@ -361,8 +396,8 @@ public class RPT_EPF_Deduction_List extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox cmb_Company;
-    private javax.swing.JComboBox cmb_Company1;
-    private javax.swing.JComboBox cmb_Emp_Cat;
+    private javax.swing.JComboBox cmb_empCategory;
+    private javax.swing.JComboBox cmb_empType;
     private javax.swing.JComboBox cmb_month;
     private javax.swing.JComboBox cmb_year;
     private javax.swing.JButton jButton1;

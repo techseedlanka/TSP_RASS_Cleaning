@@ -37,7 +37,6 @@ import javax.swing.SortOrder;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
-import org.jdesktop.swingx.autocomplete.AutoCompleteDecorator;
 
 /**
  *
@@ -54,10 +53,11 @@ public class EMP_Atten_NEW extends javax.swing.JFrame {
 
         initComponents();
         auto_completer();
-        get_Location_Details();
+//        get_Location_Details();
         TitleBar();
         get_shiftType();
         jPanel2.setVisible(false);
+        jScrollPane5.setVisible(false);
 
 //        tbl_atten.setFont(new Font("Times New Roman", Font.PLAIN, 14));
 //        txt_shiftRate.setText("0.00");
@@ -70,6 +70,7 @@ public class EMP_Atten_NEW extends javax.swing.JFrame {
         lbl_total_shifts.setOpaque(true);
 
         tbl_atten.getTableHeader().setUI(null);
+        jTable1.getTableHeader().setUI(null);
 
     }
 
@@ -117,7 +118,7 @@ public class EMP_Atten_NEW extends javax.swing.JFrame {
         try {
 
             Statement st = DbConnection.getconnection().createStatement();
-            ResultSet rs = st.executeQuery("select * from employee_reg where IsResigned='0' ");
+            ResultSet rs = st.executeQuery("select EmployeeNo,NameWithInitials from employee_reg where IsResigned='0' ");
 
             TextAutoCompleter ta = new TextAutoCompleter(txt_search);
 
@@ -137,27 +138,27 @@ public class EMP_Atten_NEW extends javax.swing.JFrame {
 
     }
 
-    private void get_Location_Details() {
-        try {
-
-            Statement st = DbConnection.getconnection().createStatement();
-            ResultSet rs = st.executeQuery("SELECT * from location_reg order by LocName");
-            while (rs.next()) {
-
-                Object name = rs.getString("LocName");
-                //Object code = rs.getString("LocCode");
-
-                //cmb_defLocation.addItem(code);
-                cmb_defLocation.addItem(name);
-            }
-
-            AutoCompleteDecorator.decorate(cmb_defLocation);
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-    }
+//    private void get_Location_Details() {
+//        try {
+//
+//            Statement st = DbConnection.getconnection().createStatement();
+//            ResultSet rs = st.executeQuery("SELECT * from location_reg order by LocName");
+//            while (rs.next()) {
+//
+//                Object name = rs.getString("LocName");
+//                //Object code = rs.getString("LocCode");
+//
+//                //cmb_defLocation.addItem(code);
+//                cmb_defLocation.addItem(name);
+//            }
+//
+//            AutoCompleteDecorator.decorate(cmb_defLocation);
+//
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//
+//    }
 
     private void TitleBar() {
 
@@ -653,6 +654,8 @@ public class EMP_Atten_NEW extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
         buttonGroup1 = new javax.swing.ButtonGroup();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
         jSeparator1 = new javax.swing.JSeparator();
         lbl_day_1 = new javax.swing.JLabel();
         lbl_day_2 = new javax.swing.JLabel();
@@ -665,7 +668,6 @@ public class EMP_Atten_NEW extends javax.swing.JFrame {
         jdate_from_date = new com.toedter.calendar.JDateChooser();
         jLabel2 = new javax.swing.JLabel();
         lbl_total_shifts = new javax.swing.JLabel();
-        cmb_defLocation = new javax.swing.JComboBox();
         jSeparator2 = new javax.swing.JSeparator();
         jLabel3 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -673,7 +675,6 @@ public class EMP_Atten_NEW extends javax.swing.JFrame {
         jButton4 = new javax.swing.JButton();
         btn_Save = new javax.swing.JButton();
         txt_search = new javax.swing.JTextField();
-        txt_locCode = new javax.swing.JTextField();
         jSeparator3 = new javax.swing.JSeparator();
         btn_RemoveRow = new javax.swing.JButton();
         jLabel10 = new javax.swing.JLabel();
@@ -713,6 +714,8 @@ public class EMP_Atten_NEW extends javax.swing.JFrame {
         jButton12 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
         jComboBox1 = new javax.swing.JComboBox<>();
+        txt_Locname = new javax.swing.JTextField();
+        txt_locCode = new javax.swing.JTextField();
 
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -736,6 +739,35 @@ public class EMP_Atten_NEW extends javax.swing.JFrame {
                 formWindowOpened(evt);
             }
         });
+
+        jTable1.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "code", "name"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jTable1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jTable1.setRowHeight(23);
+        jTable1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTable1KeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTable1KeyReleased(evt);
+            }
+        });
+        jScrollPane5.setViewportView(jTable1);
 
         lbl_day_1.setBackground(new java.awt.Color(51, 204, 255));
         lbl_day_1.setFont(new java.awt.Font("Cambria Math", 0, 16)); // NOI18N
@@ -804,25 +836,6 @@ public class EMP_Atten_NEW extends javax.swing.JFrame {
         lbl_total_shifts.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         lbl_total_shifts.setText("00.00");
         lbl_total_shifts.setToolTipText("");
-
-        cmb_defLocation.setEditable(true);
-        cmb_defLocation.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        cmb_defLocation.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "=Location=" }));
-        cmb_defLocation.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                cmb_defLocationFocusGained(evt);
-            }
-        });
-        cmb_defLocation.addPopupMenuListener(new javax.swing.event.PopupMenuListener() {
-            public void popupMenuCanceled(javax.swing.event.PopupMenuEvent evt) {
-            }
-            public void popupMenuWillBecomeInvisible(javax.swing.event.PopupMenuEvent evt) {
-                cmb_defLocationPopupMenuWillBecomeInvisible(evt);
-            }
-            public void popupMenuWillBecomeVisible(javax.swing.event.PopupMenuEvent evt) {
-                cmb_defLocationPopupMenuWillBecomeVisible(evt);
-            }
-        });
 
         jLabel3.setFont(new java.awt.Font("Georgia", 0, 14)); // NOI18N
         jLabel3.setText("Employee :-");
@@ -919,17 +932,6 @@ public class EMP_Atten_NEW extends javax.swing.JFrame {
         txt_search.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txt_searchKeyPressed(evt);
-            }
-        });
-
-        txt_locCode.setEditable(false);
-        txt_locCode.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        txt_locCode.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                txt_locCodeFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                txt_locCodeFocusLost(evt);
             }
         });
 
@@ -1129,7 +1131,7 @@ public class EMP_Atten_NEW extends javax.swing.JFrame {
         jLabel4.setOpaque(true);
 
         jLabel14.setFont(new java.awt.Font("Georgia", 0, 14)); // NOI18N
-        jLabel14.setText("Location:-");
+        jLabel14.setText("Location: ");
 
         jLabel34.setFont(new java.awt.Font("Georgia", 0, 12)); // NOI18N
         jLabel34.setText(" Month  :-");
@@ -1183,6 +1185,40 @@ public class EMP_Atten_NEW extends javax.swing.JFrame {
         jComboBox1.setFont(new java.awt.Font("Georgia", 0, 14)); // NOI18N
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "==Sort Employees==", "by EMPno", "by Name", "by Rank" }));
 
+        txt_Locname.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        txt_Locname.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txt_LocnameFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txt_LocnameFocusLost(evt);
+            }
+        });
+        txt_Locname.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_LocnameActionPerformed(evt);
+            }
+        });
+        txt_Locname.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txt_LocnameKeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txt_LocnameKeyReleased(evt);
+            }
+        });
+
+        txt_locCode.setEditable(false);
+        txt_locCode.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        txt_locCode.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txt_locCodeFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txt_locCodeFocusLost(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -1191,68 +1227,67 @@ public class EMP_Atten_NEW extends javax.swing.JFrame {
                 .addGap(10, 10, 10)
                 .addComponent(jLabel1)
                 .addGap(46, 46, 46)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(70, 70, 70)
-                .addComponent(txt_Year, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(170, 170, 170)
-                .addComponent(cmb_defLocation, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(70, 70, 70)
-                .addComponent(jLabel7)
-                .addGap(1, 1, 1)
-                .addComponent(jdate_from_date, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(50, 50, 50)
-                .addComponent(jdate_to_date, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(230, 230, 230)
-                .addComponent(jLabel14))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(1050, 1050, 1050)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addGroup(layout.createSequentialGroup()
                 .addGap(10, 10, 10)
-                .addComponent(jLabel34))
+                .addComponent(jLabel34)
+                .addGap(5, 5, 5)
+                .addComponent(txt_Year, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(100, 100, 100)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(60, 60, 60)
+                        .addComponent(txt_Locname, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel14))
+                .addComponent(txt_locCode, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(60, 60, 60)
+                .addComponent(jdate_from_date, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(10, 10, 10)
+                .addComponent(jLabel2)
+                .addGap(7, 7, 7)
+                .addComponent(jdate_to_date, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addGroup(layout.createSequentialGroup()
-                .addGap(880, 880, 880)
-                .addComponent(jLabel2))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(640, 640, 640)
-                .addComponent(txt_locCode, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(710, 710, 710)
+                .addComponent(jLabel7))
             .addGroup(layout.createSequentialGroup()
                 .addGap(130, 130, 130)
                 .addComponent(txt_month, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 1240, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 1240, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 1240, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addGroup(layout.createSequentialGroup()
                 .addGap(10, 10, 10)
                 .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 360, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(115, 115, 115)
+                .addComponent(lbl_day_2, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(240, 240, 240)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(115, 115, 115)
-                        .addComponent(lbl_day_2, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(lbl_day_1, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(117, 117, 117)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(363, 363, 363)
-                        .addComponent(lbl_day_7, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(241, 241, 241)
+                        .addGap(118, 118, 118)
                         .addComponent(lbl_day_6, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lbl_day_5, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(123, 123, 123)
-                        .addComponent(lbl_day_5, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(lbl_day_4, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)))
-            .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 1080, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(240, 240, 240)
+                        .addComponent(lbl_day_7, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE))))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1220, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addGroup(layout.createSequentialGroup()
                 .addGap(370, 370, 370)
                 .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 860, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addGroup(layout.createSequentialGroup()
+                .addGap(724, 724, 724)
+                .addComponent(lbl_day_4, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
                 .addGap(606, 606, 606)
                 .addComponent(lbl_day_3, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addGroup(layout.createSequentialGroup()
-                .addGap(10, 10, 10)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1220, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(370, 370, 370)
+                .addComponent(lbl_day_1, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 1080, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addGroup(layout.createSequentialGroup()
                 .addGap(10, 10, 10)
                 .addComponent(jLabel3)
@@ -1308,60 +1343,61 @@ public class EMP_Atten_NEW extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(11, 11, 11)
                         .addComponent(jLabel1))
-                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(txt_Year, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(cmb_defLocation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(jdate_from_date, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(jdate_to_date, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(10, 10, 10)
                         .addComponent(jLabel34, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(10, 10, 10)
+                        .addComponent(txt_Year, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(txt_Locname, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(txt_locCode, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(jdate_from_date, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(10, 10, 10)
-                        .addComponent(txt_locCode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jdate_to_date, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(10, 10, 10)
                         .addComponent(txt_month, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(49, 49, 49)
-                        .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(6, 6, 6)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lbl_day_2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lbl_day_1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lbl_day_7, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lbl_day_6, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lbl_day_5, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lbl_day_4, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbl_day_7, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(355, 355, 355)
-                        .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(49, 49, 49)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 320, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(30, 30, 30)
                         .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lbl_day_4, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lbl_day_3, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbl_day_1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(49, 49, 49)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 320, Short.MAX_VALUE)))
+                        .addGap(355, 355, 355)
+                        .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(6, 6, 6)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1401,7 +1437,7 @@ public class EMP_Atten_NEW extends javax.swing.JFrame {
                         .addComponent(lbl_shifts_left, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(9, 9, 9))
+                .addGap(25, 25, 25))
         );
 
         pack();
@@ -1518,48 +1554,13 @@ public class EMP_Atten_NEW extends javax.swing.JFrame {
 
     }//GEN-LAST:event_txt_searchKeyPressed
 
-    private void cmb_defLocationPopupMenuWillBecomeInvisible(javax.swing.event.PopupMenuEvent evt) {//GEN-FIRST:event_cmb_defLocationPopupMenuWillBecomeInvisible
-
-        if (cmb_defLocation.getSelectedItem().equals("=Location=")) {
-
-            txt_locCode.setText("** Please Select a Location ");
-            txt_locCode.setForeground(Color.red);
-
-        } else {
-            txt_locCode.setForeground(Color.black);
-            try {
-
-                Statement st = DbConnection.getconnection().createStatement();
-                ResultSet rs = st.executeQuery("SELECT * from location_reg where LocCode= '" + cmb_defLocation.getSelectedItem().toString() + "' OR LocName= '" + cmb_defLocation.getSelectedItem().toString() + "' ");
-                while (rs.next()) {
-
-                    String code = rs.getString("LocCode");
-                    String name = rs.getString("LocName");
-
-                    cmb_defLocation.setSelectedItem(name);
-                    txt_locCode.setText(code);
-                }
-
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-//            
-//            get_carder_and_enterd_shifts_total();
-//            loc_carder_NIGHT();
-//            loc_carder_DAY();
-//            
-        }
-
-
-    }//GEN-LAST:event_cmb_defLocationPopupMenuWillBecomeInvisible
-
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
 
         int r = JOptionPane.showConfirmDialog(rootPane, "Do you want to clear?", "CLEAR", JOptionPane.YES_NO_OPTION);
 
         if (r == JOptionPane.YES_OPTION) {
-            cmb_defLocation.setEditable(true);
-            cmb_defLocation.setEnabled(true);
+              txt_Locname.setText("");
+              txt_locCode.setText("");
             jButton1.setEnabled(true);
             txt_month.setText("");
             txt_Year.setText("");
@@ -1640,18 +1641,6 @@ public class EMP_Atten_NEW extends javax.swing.JFrame {
 //            //String d1 = Integer.toHexString(d);
 //        }// TODO add your handling code here:
     }//GEN-LAST:event_txt_searchFocusGained
-
-    private void cmb_defLocationFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_cmb_defLocationFocusGained
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cmb_defLocationFocusGained
-
-    private void txt_locCodeFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txt_locCodeFocusGained
-        // get_carder_and_enterd_shifts_total();//
-        // TODO add your handling code here:
-
-        // get_month_and_year();
-//        get_carder_and_enterd_shifts_total();
-    }//GEN-LAST:event_txt_locCodeFocusGained
 
     private void btn_RemoveRowActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_RemoveRowActionPerformed
 
@@ -1797,10 +1786,6 @@ public class EMP_Atten_NEW extends javax.swing.JFrame {
         }
 
     }//GEN-LAST:event_btn_extraShiftsActionPerformed
-
-    private void txt_locCodeFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txt_locCodeFocusLost
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txt_locCodeFocusLost
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
 //        MAIN.jMenuItem32.setEnabled(false);        // TODO add your handling code here:
@@ -2016,8 +2001,8 @@ public class EMP_Atten_NEW extends javax.swing.JFrame {
                         tbl_atten.getColumnModel().getColumn(16).setCellEditor(new DefaultCellEditor(jt));
 
                     }
-                    cmb_defLocation.setEditable(false);
-                    cmb_defLocation.setEnabled(false);
+                    txt_Locname.setEditable(false);
+                     
                 } else {
                     JOptionPane.showMessageDialog(rootPane, "Maximum Date Range is 7days");
                 }
@@ -2039,10 +2024,6 @@ public class EMP_Atten_NEW extends javax.swing.JFrame {
     private void txt_to_dateKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_to_dateKeyPressed
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_to_dateKeyPressed
-
-    private void cmb_defLocationPopupMenuWillBecomeVisible(javax.swing.event.PopupMenuEvent evt) {//GEN-FIRST:event_cmb_defLocationPopupMenuWillBecomeVisible
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cmb_defLocationPopupMenuWillBecomeVisible
     private void add_one_emp() {
 
         if (txt_empid.getText().isEmpty() | jdate_from_date.getDate() == null | jdate_to_date.getDate() == null | txt_locCode.getText().isEmpty()) {
@@ -2188,8 +2169,8 @@ public class EMP_Atten_NEW extends javax.swing.JFrame {
                             tbl_atten.getColumnModel().getColumn(16).setCellEditor(new DefaultCellEditor(jt));
 
                         }
-                        cmb_defLocation.setEditable(false);
-                        cmb_defLocation.setEnabled(false);
+                       txt_Locname.setEditable(false);
+                        
                         jButton1.setEnabled(false);
 
                         txt_empid.setText("");
@@ -2406,7 +2387,7 @@ public class EMP_Atten_NEW extends javax.swing.JFrame {
             DefaultTableModel dtm = (DefaultTableModel) tbl_atten.getModel();
             dtm.setRowCount(0);
             dtm.getDataVector().removeAllElements();
-            cmb_defLocation.setEnabled(true);
+            txt_Locname.setEnabled(true);
 
             clear();
         } catch (Exception e) {
@@ -2468,6 +2449,124 @@ public class EMP_Atten_NEW extends javax.swing.JFrame {
 
 
     }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void txt_LocnameFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txt_LocnameFocusGained
+        txt_Locname.setBackground(Color.ORANGE);             // TODO add your handling code here:
+    }//GEN-LAST:event_txt_LocnameFocusGained
+
+    private void txt_LocnameFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txt_LocnameFocusLost
+        txt_Locname.setBackground(Color.WHITE);          // TODO add your handling code here:
+    }//GEN-LAST:event_txt_LocnameFocusLost
+
+    private void txt_LocnameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_LocnameActionPerformed
+//        if (txt_Locname.getText().isEmpty()) {
+//
+//        } else {
+//            txt_empName.grabFocus();
+//        }
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_LocnameActionPerformed
+
+    private void txt_LocnameKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_LocnameKeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_ESCAPE) {
+
+            jTable1.setVisible(false);
+            jScrollPane1.setVisible(false);
+
+        }        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_LocnameKeyPressed
+
+    private void txt_LocnameKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_LocnameKeyReleased
+ 
+        if (txt_Locname.getText().isEmpty()) {
+
+            jTable1.setVisible(false);
+            jScrollPane5.setVisible(false);
+        } else {
+            if (evt.getKeyCode() == KeyEvent.VK_DOWN) {
+
+                jTable1.grabFocus();
+            } else if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+
+            } else {
+                try {
+
+                    jTable1.setVisible(true);
+                    jScrollPane5.setVisible(true);
+                    jScrollPane5.setBounds(290, 75, 400, 200);
+
+                    Connection con = DbConnection.getconnection();
+
+                    String empno = txt_Locname.getText();
+
+                    String sql = "SELECT * FROM location_reg WHERE  LocCode LIKE ? OR LocName Like? ORDER BY LocCode  ";
+                    PreparedStatement pst = con.prepareStatement(sql);
+                    pst.setString(1, "%" + empno + "%");
+                    pst.setString(2, "%" + empno + "%");
+                    ResultSet rst = pst.executeQuery();
+
+                    DefaultTableModel dtm = (DefaultTableModel) jTable1.getModel();
+                    dtm.setRowCount(0);
+
+                    while (rst.next()) {
+
+                        Vector v = new Vector();
+                        v.add(rst.getString("LocCode"));
+                        v.add(rst.getString("LocName"));
+
+                        dtm.addRow(v);
+                    }
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    JOptionPane.showMessageDialog(rootPane, e);
+                }
+
+            }
+        }
+    }//GEN-LAST:event_txt_LocnameKeyReleased
+
+    private void txt_locCodeFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txt_locCodeFocusGained
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_locCodeFocusGained
+
+    private void txt_locCodeFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txt_locCodeFocusLost
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_locCodeFocusLost
+
+    private void jTable1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTable1KeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            int row = jTable1.getSelectedRow();
+            String code = jTable1.getValueAt(row, 0).toString();
+            String name = jTable1.getValueAt(row, 1).toString();
+
+            txt_Locname.setText(name);
+            txt_locCode.setText(code);
+            jTable1.setVisible(false);
+            jScrollPane5.setVisible(false);
+            txt_Locname.grabFocus();
+
+        }
+        if (evt.getKeyCode() == KeyEvent.VK_ESCAPE) {
+
+            jTable1.setVisible(false);
+            jScrollPane5.setVisible(false);
+            txt_Locname.grabFocus();
+
+        }
+        if (evt.getKeyCode() == KeyEvent.VK_UP) {
+            int row = jTable1.getSelectedRow();
+            if (row == 0) {
+                txt_Locname.grabFocus();
+                jTable1.setVisible(false);
+                jScrollPane5.setVisible(false);
+            }
+        }
+    }//GEN-LAST:event_jTable1KeyPressed
+
+    private void jTable1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTable1KeyReleased
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTable1KeyReleased
 
     /**
      * @param args the command line arguments
@@ -2736,7 +2835,7 @@ public class EMP_Atten_NEW extends javax.swing.JFrame {
 
     private void get_carder_and_enterd_shifts_total() {
 
-        if (cmb_defLocation.getSelectedItem().equals("=Location=") | jdate_from_date.getDate() == null) {
+        if (txt_locCode.getText().isEmpty() | jdate_from_date.getDate() == null) {
         } else {
 
             try {
@@ -2963,7 +3062,6 @@ public class EMP_Atten_NEW extends javax.swing.JFrame {
     private javax.swing.JButton btn_Save;
     private javax.swing.JButton btn_extraShifts;
     private javax.swing.ButtonGroup buttonGroup1;
-    private javax.swing.JComboBox cmb_defLocation;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton12;
     private javax.swing.JButton jButton2;
@@ -2988,9 +3086,11 @@ public class EMP_Atten_NEW extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
+    private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable2;
     private com.toedter.calendar.JDateChooser jdate_from_date;
     private com.toedter.calendar.JDateChooser jdate_to_date;
@@ -3010,6 +3110,7 @@ public class EMP_Atten_NEW extends javax.swing.JFrame {
     private javax.swing.JTable table_day_carder;
     private javax.swing.JTable table_night_carder;
     private javax.swing.JTable tbl_atten;
+    public static javax.swing.JTextField txt_Locname;
     private javax.swing.JTextField txt_Year;
     private javax.swing.JTextField txt_def_loc;
     private javax.swing.JTextField txt_def_loc_name;
